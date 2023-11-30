@@ -1,0 +1,84 @@
+
+body {
+    margin: 0;
+    font-family: 'Inter';
+    /* box-sizing: border-box; */
+   
+    
+}
+
+section {
+    margin-left: 300px;
+    max-width: 976.25px;
+    margin-top: 100px;
+    font-size: 20px;
+}  
+
+h1 {
+    font-size: 61px;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.mainContent {
+    
+    justify-content: space-between;
+   
+}
+.leftContent, .rightContent {
+    width: 440px;
+}
+
+.rightContent{
+    padding-left: 48px;
+    border-left: 1px solid #D1D1D1;
+}
+.footSection {
+    /* max-width: 976.25px; */
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+}
+input {
+    border-radius: 10px;
+    padding: 12px 21px;
+    border: 1px solid #D1D1D1;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 20px;
+    font-family: inherit;
+}
+
+.required {
+    color: #FF8190;
+}
+
+textarea {
+    height: 120px;
+    resize: none;
+    border-radius: 10px;
+    padding: 12px 21px;
+    border: 1px solid #D1D1D1;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 20px;
+    font-family: inherit;
+}
+
+select {
+    border-radius: 10px;
+    padding: 12px 21px;
+    border: 1px solid #D1D1D1;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 20px;
+    font-family: inherit;
+/*
+    -webkit-appearance: none; /* Verhindert die Standard-Dropdown-Darstellung 
+    appearance: none; 
+  */ 
+
+}
+
