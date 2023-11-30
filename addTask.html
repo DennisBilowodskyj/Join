@@ -5,53 +5,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Task</title>
+    <link rel="stylesheet" href="./assets/css/header.css" />
+    <link rel="stylesheet" href="./assets/css/sideBar.css" />
     <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="./assets/css/inter.css" />
     <link rel="stylesheet" href="assets/css/addTask.css">
+
+    <script src="./assets/js/script.js"></script>
 </head>
 
-<body>
-    <h1>Add Task</h1>
-    <form action="">
-        <div>
-            <p>Title<span>*</span></p>
-            <input required type="text" placeholder="Enter a title">
-            <p>Description</p>
-            <textarea name="" id="" cols="30" rows="10" placeholder="Enter a description"></textarea>
-            <p>Assigned to</p>
-            <select name="" id="">
-                <option value="select">Select contacts to assign</option>
-                <option value="sofia_mueller">Sofia Müller</option>
-                <option value="anton_mayer">Anton Mayer</option>
-            </select>
-        </div>
-        <div>
-            <p>Due date<span>*</span></p>
-            <input type="date" name="" id="">
-            <p>Prio</p>
-            <div>
-                <p>Urgent</p>
+<body onload="init()">
+    <div w3-include-html="./assets/tamplets/header.html"></div>
+    <div w3-include-html="./assets/tamplets/sideBar.html"></div>
+   
+    <section>
+        <h1>Add Task</h1>
+        <form action="">
+            <div class="mainContent d-flex">
+                <div class="leftContent">
+                    <p>Title<span class="required">*</span></p>
+                    <input required type="text" placeholder="Enter a title">
+                    <p>Description</p>
+                    <textarea name="" id="" cols="30" rows="10" placeholder="Enter a description"></textarea>
+                    <p>Assigned to</p>
+                    <select name="" id="">
+                        <option value="select">Select contacts to assign</option>
+                        <option value="sofia_mueller">Sofia Müller</option>
+                        <option value="anton_mayer">Anton Mayer</option>
+                    </select>
+                </div>
+                <div class="rightContent">
+                    <p>Due date<span class="required">*</span></p>
+                    <input type="date" name="" id="">
+                    <p>Prio</p>
+                    <div>
+                        <p>Urgent</p>
+                    </div>
+                    <div>
+                        <p>Medium</p>
+                    </div>
+                    <div>
+                        <p>Low</p>
+                    </div>
+                    <p>Category<span class="required">*</span></p>
+                    <select name="" id="">
+                        <option value="select">Select task category</option>
+                    </select>
+                    <p>Subtasks</p>
+                    <div>
+                        <input type="text" placeholder="Add new subtask">
+                    </div>
+                </div>
             </div>
-            <div>
-                <p>Medium</p>
+            <div class="footSection d-flex">
+                <div>
+                    <p><span class="required">*</span>This field is required</p>
+                </div>
+                <div class="d-flex">
+                    <div class="clearBtn"><img src="">
+                        <p>Clear</p>
+                    </div>
+                    <div class="createBtn"><img src="">
+                        <p>Create Task</p>
+                    </div>
+                </div>
             </div>
-            <div>
-                <p>Low</p>
-            </div>
-            <p>Category<span>*</span></p>
-            <select name="" id="">
-                <option value="select">Select task category</option>
-            </select>
-            <p>Subtasks</p>
-            <div>
-                <input type="text" placeholder="Add new subtask">
-            </div>
-        </div>
-        <div><p><span>*</span>This field is required</p></div>
-        <div>
-            <div class="clearBtn"><img src=""><p>Clear</p></div>
-            <div class="createBtn"><img src=""><p>Create Task</p></div>
-        </div>
-    </form>
+        </form>
+    </section>
 </body>
 
 </html>

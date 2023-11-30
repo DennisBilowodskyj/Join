@@ -5,15 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contacts</title>
 
-    <link rel="stylesheet" href="./assets/css/header.css">
+    <link rel="stylesheet" href="./assets/css/header.css" />
     <link rel="stylesheet" href="./assets/css/sideBar.css" />
     <link rel="stylesheet" href="./assets/css/contacts.css" />
     <link rel="stylesheet" href="./assets/css/inter.css" />
+    <link rel="stylesheet" href="./assets/css/openSans.css" />
 
     <script src="./assets/js/script.js"></script>
   </head>
   <body onload="init()">
     <div w3-include-html="./assets/tamplets/header.html"></div>
     <div w3-include-html="./assets/tamplets/sideBar.html"></div>
+
+    <section class="contact_section">
+      <!-- left Container -->
+      <div class="left_container">
+        <button id="addContactButton">
+          Add new contact
+          <img
+            src="./assets/img/contact_icons/person_add.png"
+            alt="plus Person"
+          />
+        </button>
+
+        <div class="contact_List" id="contact_List">
+          <div class="first_Latter">A</div>
+          <hr class="name_Seperator" />
+
+          <div class="centersizer">
+            <div class="name_contant activeName">
+              <!-- Will get the first Letter of first Name and second -->
+              <div class="nameIcon_leftContainer">AE</div>
+              <div>
+                <div class="name_leftContainer">Albert Einstein</div>
+                <div class="email_leftContainer">
+                  albert.einstein@physics.com
+                </div>
+              </div>
+            </div>
+
+            <div class="name_contant">
+              <!-- Will get the first Letter of first Name and second -->
+              <div class="nameIcon_leftContainer">AS</div>
+              <div>
+                <div class="name_leftContainer">Adam Sandler</div>
+                <div class="email_leftContainer">adam.sandler@funny.com</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- right Container -->
+      <div class="right_container">
+        <div class="contact_card">
+          <div class="contact_headline">
+            <h1>Contacts</h1>
+            <hr class="headline_Seperator" />
+            <span>Better with a team</span>
+          </div>
+        </div>
+      </div>
+    </section>
   </body>
 </html>
