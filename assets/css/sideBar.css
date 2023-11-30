@@ -107,3 +107,9 @@
     font-size: 14px;
 }
 }
+
+@media (max-width: 350px) {
+    .navBar_Content {
+        width: 60px;
+      }
+}
