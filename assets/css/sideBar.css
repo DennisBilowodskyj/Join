@@ -19,6 +19,10 @@
     gap: 15px;
 }
 
+.navBar a{
+    text-decoration: none;
+}
+
 .navBar_Content{
     display: flex;
     align-items: center;
@@ -28,8 +32,12 @@
 }
 
 .navBar_Content:hover{
+    background-color: #2A3D59;
+}
+
+.active_navBar{
     background-color: #091931;
-    
+
 }
 
 .navBar_Content span{

@@ -40,6 +40,10 @@
     justify-content: center;
 }
 
+.help_icon:hover{
+    transform: scale(1.1);
+}
+
 .header_UserIcon{
     width: 40px;
     height: 40px;
@@ -49,6 +53,10 @@
     justify-content: center;
     align-items: center;
     color: #29ABE2;
+}
+
+.header_UserIcon:hover{
+    background-color: #E2E6EC;
 }
 
 #popupNav{
