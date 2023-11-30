@@ -42,6 +42,7 @@ body{
     width: 600px;
     border-radius: 20px;
     font-size: 30px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 }
 .distance-line{
     height: 3px;
@@ -70,6 +71,9 @@ body{
     align-items: center;
     margin-left: 30px;
     margin: 20px;
+}
+.checkbox-input{
+    margin-right: 10px;
 }
 .log-in-button{
     border: none;
