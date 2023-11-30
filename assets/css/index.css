@@ -1,3 +1,8 @@
 body{
     background-color: rgb(246,247,248);
 }
+.index-top-section{
+    display: flex;
+    justify-content: space-between;
+    margin: 50px;
+}
