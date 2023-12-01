@@ -31,9 +31,25 @@ h1 {
     width: 440px;
 }
 
-.rightContent{
-    padding-left: 48px;
-    border-left: 1px solid #D1D1D1;
+.seperator{
+    width: 1px;
+    background-color: #D1D1D1;
+}
+
+.prioContainer{
+    width: 100%;
+    justify-content: space-between;
+    /* gap: 16px; */
+}
+
+.prioCard {
+    display: flex;
+    justify-content: center;
+    width: calc(33% - 16px);
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #D1D1D1;
+    gap: 8px;
 }
 .footSection {
     /* max-width: 976.25px; */
