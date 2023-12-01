@@ -17,7 +17,7 @@
 <body onload="init()">
     <div w3-include-html="./assets/tamplets/header.html"></div>
     <div w3-include-html="./assets/tamplets/sideBar.html"></div>
-   
+
     <section>
         <h1>Add Task</h1>
         <form action="">
@@ -34,18 +34,24 @@
                         <option value="anton_mayer">Anton Mayer</option>
                     </select>
                 </div>
+                <div class="seperator"></div>
                 <div class="rightContent">
                     <p>Due date<span class="required">*</span></p>
                     <input type="date" name="" id="">
                     <p>Prio</p>
-                    <div>
-                        <p>Urgent</p>
-                    </div>
-                    <div>
-                        <p>Medium</p>
-                    </div>
-                    <div>
-                        <p>Low</p>
+                    <div class="prioContainer d-flex">
+                        <div class="prioCard" id="prio_urgent">
+                            <p>Urgent</p>
+                            <img src="./assets/img/addTask_icons/prio_urgent.svg">
+                        </div>
+                        <div class="prioCard" id="prio_medium">
+                            <p>Medium</p>
+                            <img src="./assets/img/addTask_icons/prio_medium.svg">
+                        </div>
+                        <div class="prioCard" id="prio_low">
+                            <p>Low</p>
+                            <img src="./assets/img/addTask_icons/prio_low.svg">
+                        </div>
                     </div>
                     <p>Category<span class="required">*</span></p>
                     <select name="" id="">
