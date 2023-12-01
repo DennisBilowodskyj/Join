@@ -1,0 +1,36 @@
+.sign-up-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    height: 630px;
+    width: 598px;
+    border-radius: 20px;
+    font-size: 30px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    gap: 32px;
+}
+.sign-up-box-top-section{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.sign-up-checkbox-section{
+    font-size: 16px;
+    color: rgb(182, 185, 187);
+}
+.sign-up-checkbox-link{
+    text-decoration: none;
+    color: rgb(56,171,226);
+    transition: font-size ease-in-out 0.3s;
+}
+.sign-up-checkbox-link:hover{
+    text-decoration: underline;
+    font-size: 17px;
+}
+.sign-up-footer-section{
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
