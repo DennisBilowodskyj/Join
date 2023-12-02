@@ -7,7 +7,7 @@ body{
 .summary_headline{
     display: flex;
     margin-left: 328px;
-    margin-top: 206px;
+    margin-top: 110px;
     gap: 30px;
     align-items: center;
 }
@@ -28,16 +28,22 @@ body{
 
 .summary_content{
     display: flex;
-    margin-top: 335px;
+    margin-top: 30px;
     margin-left: 328px;
     width: 560px;
     height: 562px;
+    flex-direction: column;
 
 }
 
 .section_one{
-   
+    display: flex;
+    gap: 30px;
+    top: 370px;
+    top: 300px;
+    
 }
+
 
 .todo_number{
     width: 264px;
@@ -49,17 +55,17 @@ body{
     gap: 18px;
     align-items: center;
     transition: transform 100ms ease-in-out;
+    cursor: pointer;
 }
 
 .todo_number:hover{
     background-color: #2A3647;
     color: #FFFFFF;
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
-.todo_number:hover .edit_png {
+.todo_number:hover .edit_png   {
     background-color: #FFFFFF;
-    color: #2A3647; /* Ändere dies auf die gewünschte Hintergrundfarbe */
-}
+    }
 
 .edit_png{
     background-color: #2A3647;
@@ -93,7 +99,92 @@ body{
     font-size: 20px;
     line-height: 24px;
 }
+
+.section_two{
+    margin: 30px 0;
+}
+.section_two_style:hover{
+    background-color: #2A3647;
+    color: #FFFFFF;
+    transform: scale(1.1);
+   
+}
     
+.section_two_style{
+    width: 560px;
+    height: 168px;
+    background-color: #ffffff;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    align-items: center;
+    transition: transform 100ms ease-in-out;
+    cursor: pointer;
+}
+
+.edit_png_section_two{
+
+    background-color: #FF3D00;
+    display: inline-block;
+    width: 69px;
+    height: 69px;
+    border-radius: 35px
+}
+
+.edit_png_section_two img{
+  
+    margin-left: 18.5px;
+    margin-top: 18.5px;
+}
+
+.todoNumber2{
+    display: flex;
+    align-items: center;
+    gap: 45px;
+}
+    .urgent{
+        display: flex;
+        align-items: center;
+        gap: 18px;
+    }
+.x{
+    text-align: center;
+    margin-bottom: 50px;
+}
+.date{
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.section_three{
+    display: flex;
+    gap: 30px;
+}
+
+.section_three_card{
+    width: 168px;
+    height: 168px;
+    background-color: #FFFFFF;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    align-items: center;
+    transition: transform 100ms ease-in-out;
+    cursor: pointer;
+}
+
+.section_three_card:hover{
+    background-color: #2A3647;
+    color: #FFFFFF;
+    transform: scale(1.1);
+}
+
+
+
+
+
 
 
 

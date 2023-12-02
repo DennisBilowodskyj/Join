@@ -5,9 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/inter.css">
     <link rel="stylesheet" href="assets/css/summary.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/header.css" />
+    <link rel="stylesheet" href="./assets/css/sideBar.css" />
+    <script src="./assets/js/script.js"></script>
+    <title>Join</title>
 </head>
-<body>
+<body onload="init()">
+
+    <div w3-include-html="./assets/tamplets/header.html"></div>
+    <div w3-include-html="./assets/tamplets/sideBar.html"></div>
 
     <div class="summary_headline">
         <h1>Join 360</h1>
@@ -18,16 +24,94 @@
         <div class="summary_content">
             <div class="section_one">
                 <div class="todo_number">
+                    <a href="board.html"></a>                          
                     <span class="edit_png">
-                        <img src="/assets/img/summary_icons/edit.png">
+                        <img src="/assets/img/summary_icons/edit.svg">
                     </span>
                         <div class="todoNumber">
                             <p class="number">1</p>
                             <p class="todo">To-do</p>
-
                         </div>
+                    </div>    
+                
+                
+                <div class="todo_number">    
+                    <a href="board.html"></a>                          
+                     <span class="edit_png">
+                        <img src="/assets/img/summary_icons/Vector.svg">
+                    </span>
+                        <div class="todoNumber">
+                            <p class="number">1</p>
+                            <p class="todo">Done</p>
+                        </div>
+                   
+                        
                 </div>
             </div>
+            <div class="section_two">
+                <div class="section_two_style">
+                    <a href="board.html"></a>                           
+                    <div class="todoNumber2">
+                        <div class="urgent">
+                        <span class="edit_png_section_two">
+                            <img src="/assets/img/summary_icons/Capa 2.png">
+                        </span>
+                                
+                        
+                            <div class="x">
+                            <p class="number">1</p>
+                            <p class="todo">Urgent</p>
+                            </div>
+                             </div>
+                           
+                        <img src="/assets/img/summary_icons/SectionTwoVector 5.png">
+                        <div class="timeline">
+                            <p class="date">Dezember 01,2023</p>
+                            <p>Upcoming Deadline</p>
+                            </div>
+                        </div>
+                    </div>
+                     </div>
+               
+            
+        <div class="section_three">
+                <div class="section_three_card">   
+                    <a href="board.html"></a>                           
+                            <div class="todoNumber">
+                            <p class="number">5</p>
+                            <p class="todo">Tasks in<br>Board</br></p>
+                        </div>
+                     </div>    
+               
+                     <div class="section_three_card">  
+                        <a href="board.html"></a>                           
+                            <div class="todoNumber">
+                            <p class="number">2</p>
+                            <p class="todo">Tasks in<br>Progress</br></p>
+                        </div>
+                     </div>    
+                     <div class="section_three_card">  
+                        <a href="board.html"></a>                           
+                            <div class="todoNumber">
+                            <p class="number">2</p>
+                            <p class="todo">Awaiting<br>Feedback</br></p>
+                        </div>
+                     </div>    
+               
+
+                    </div>
+
+
+
+        </div>
+           
+            
+
+        
+        
+        
+        
+        
         </div>
     
 </body>
