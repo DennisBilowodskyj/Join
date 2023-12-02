@@ -28,7 +28,7 @@ body{
     font-size: 16px;
     transition: transform 0.3s ease-in-out;
 }
-.s{
+.sign-up-link{
     text-decoration: none;
     color: white;
 }
