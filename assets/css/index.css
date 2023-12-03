@@ -6,6 +6,9 @@ body{
 .cursor{
     cursor: pointer;
 }
+.d-none{
+    display: none;
+}
 .index-top-section{
     display: flex;
     justify-content: space-between;
@@ -151,6 +154,9 @@ body{
 }
 
 @media (max-width: 700px) {
+.d-none{
+    display: contents;
+}
 .top-section-logo{
     width: 64px;
     height: 78px;
@@ -159,6 +165,7 @@ body{
     display: none;
 }
 .mobile-sign-up-button-section{
+    display: none;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -185,5 +192,7 @@ body{
 }
 .input-div{
     width: 364px;
+}.login-button-section{
+    gap: 21px;
 }
 }
