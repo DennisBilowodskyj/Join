@@ -7,7 +7,7 @@ body{
 .summary_headline{
     display: flex;
     margin-left: 328px;
-    margin-top: 110px;
+    margin-top: 30px;
     gap: 30px;
     align-items: center;
 }
@@ -54,18 +54,27 @@ body{
     justify-content: center;
     gap: 18px;
     align-items: center;
-    transition: transform 100ms ease-in-out;
+    transition: transform 300ms ease-in-out;
     cursor: pointer;
 }
 
 .todo_number:hover{
     background-color: #2A3647;
-    color: #FFFFFF;
+    color: #ffffff;
     transform: scale(1.05);
+   
 }
 .todo_number:hover .edit_png   {
     background-color: #FFFFFF;
+     
     }
+
+    .todo_number:hover .edit_png svg  {
+        fill: #2A3647  ; 
+
+    }
+        
+        
 
 .edit_png{
     background-color: #2A3647;
@@ -75,7 +84,7 @@ body{
     border-radius: 35px;
 }
 
-.todo_number img{
+.todo_number svg{
     width: 32px;
     height: 32px;
     margin-left: 18.5px;
@@ -119,7 +128,7 @@ body{
     justify-content: center;
     gap: 48px;
     align-items: center;
-    transition: transform 100ms ease-in-out;
+    transition: transform 300ms ease-in-out;
     cursor: pointer;
 }
 
@@ -171,7 +180,7 @@ body{
     justify-content: center;
     gap: 18px;
     align-items: center;
-    transition: transform 100ms ease-in-out;
+    transition: transform 300ms ease-in-out;
     cursor: pointer;
 }
 
