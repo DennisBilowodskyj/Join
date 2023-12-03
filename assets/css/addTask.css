@@ -106,6 +106,12 @@ select {
     box-sizing: border-box;
     font-size: 20px;
     font-family: inherit;
+    appearance: none;
+    background-image: url(/assets/img/addTask_icons/arrow_drop_downaa.png);
+    background-repeat: no-repeat;
+    background-size: 24px;
+    background-position-x: calc(100% - 16px);
+    background-position-y: center;
 /*
     -webkit-appearance: none; /* Verhindert die Standard-Dropdown-Darstellung 
     appearance: none; 

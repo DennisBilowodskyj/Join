@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board</title>
+    <link rel="stylesheet" href="./assets/css/header.css" />
+    <link rel="stylesheet" href="./assets/css/sideBar.css" />
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="./assets/css/inter.css" />
+    <link rel="stylesheet" href="assets/css/board.css">
+
+    <script src="./assets/js/script.js"></script>
+</head>
+
+<body onload="init()">
+    <div w3-include-html="./assets/tamplets/header.html"></div>
+    <div w3-include-html="./assets/tamplets/sideBar.html"></div>
+
+    <section class="section_board">
+        <div class="headSection">
+            <h1>Board</h1>
+            <form action="">
+                <input type="text">
+                <img src="" alt="search">
+                <span>Add Task</span>
+            </form>
+            
+        </div>
+
+        <div class="boardDiv d-flex">
+            <div class="toDo boardTab">
+                <p>To Do</p>
+            </div>
+            <div class="inProgress boardTab">
+                <p>In Progress</p>
+            </div>
+            <div class="awaitFeedback boardTab">
+                <p>Await Feedback</p>
+            </div>
+            <div class="Done boardTab">
+                <p>Done</p>
+            </div>
+
+
+
+        </div>
+        
+            <!-- Cards to render -->
+            <div class="boardCard">
+                <p class="cardCategory">Kategorie</p>
+                <p class="cardTitle">Titel</p>
+                <p class="cardDescrition">Beschreibung</p>
+                <div class="cardFooter">
+                    <div class="cardAssignment"><span>Profilebild</span></div>
+                    <div class="cardPrio"><span>Prio</span></div>
+                </div>
+            </div>
+    </section>
+</body>
+
+</html>
