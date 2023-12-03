@@ -1,4 +1,10 @@
 function openSignUpWindow(){
-    let pageUrl = 'signUp.html';
-    window.location.href = pageUrl;
+    let pageURL = 'signUp.html';
+    window.location.href = pageURL;
+}
+
+
+function openSummary(){
+    let pageURL = 'summary.html';
+    window.location.href = pageURL;
 }
