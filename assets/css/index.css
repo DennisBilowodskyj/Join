@@ -149,3 +149,41 @@ body{
     transition: ease-in-out 225ms;
     font-size: 17px;
 }
+
+@media (max-width: 700px) {
+.top-section-logo{
+    width: 64px;
+    height: 78px;
+}
+.top-section-right{
+    display: none;
+}
+.mobile-sign-up-button-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    font-size: 22px;
+    gap: 35px;
+}
+.index-footer-section{
+    margin-top: 80px;
+}
+.login-button-section{
+    display: flex;
+    flex-direction: column;
+}
+.log-in-button{
+    width: 180px;
+}
+.guest-log-in-button{
+    width: 180px;
+}
+.log-in-box{
+    width: 396px;
+    height: 515px;
+}
+.input-div{
+    width: 364px;
+}
+}
