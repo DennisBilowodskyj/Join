@@ -112,11 +112,18 @@ select {
     background-size: 24px;
     background-position-x: calc(100% - 16px);
     background-position-y: center;
-/*
-    -webkit-appearance: none; /* Verhindert die Standard-Dropdown-Darstellung 
-    appearance: none; 
-  */ 
+}
 
+#date::-webkit-calendar-picker-indicator{
+    opacity:0;
+  }
+#date {
+    
+    background-image: url(/assets/img/addTask_icons/date.png);
+    background-repeat: no-repeat;
+    background-size: 24px;
+    background-position-x: calc(100% - 16px);
+    background-position-y: center;
 }
 
 .createBtn img{
@@ -128,4 +135,5 @@ select {
     height: 56px;
     width: 110px;
 }
+
 
