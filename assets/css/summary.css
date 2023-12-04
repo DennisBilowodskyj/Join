@@ -44,6 +44,11 @@ body{
     
 }
 
+.section_one a{
+    text-decoration: none;
+    color: #2A3647;
+}
+
 
 .todo_number{
     width: 264px;
@@ -71,7 +76,6 @@ body{
 
     .todo_number:hover .edit_png svg  {
         fill: #2A3647  ; 
-
     }
         
         
@@ -83,6 +87,23 @@ body{
     height: 69px;
     border-radius: 35px;
 }
+
+.edit_png_2{
+    background-color: #2A3647;
+    display: inline-block;
+    width: 69px;
+    height: 69px;
+    border-radius: 35px;
+}
+
+.todo_number:hover .edit_png_2   {
+    background-color: #FFFFFF;
+     
+    }
+
+    .todo_number:hover .edit_png_2 svg path  {
+        stroke: #2A3647  ; 
+    }
 
 .todo_number svg{
     width: 32px;
@@ -188,6 +209,20 @@ body{
     background-color: #2A3647;
     color: #FFFFFF;
     transform: scale(1.1);
+}
+
+
+@media (max-width: 750px) {
+
+
+
+
+
+
+
+
+
+
 }
 
 
