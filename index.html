@@ -7,18 +7,17 @@
     <link rel="icon" href="assets/img/logos/JoinLogo.png">
     <link rel="stylesheet" href="assets/css/index.css">
     <link rel="stylesheet" href="assets/css/inter.css">
+    <script src="assets/js/index.js"></script>
 </head>
 <body>
     <!-- HEADER -->
     <div class="index-top-section">
-        <div>
+        <div class="keyframe-logo">
             <img src="assets/img/logos/JoinLogoDark.png">
         </div>
         <div class="top-section-right">
             <span>Not a Join user?</span>
-            <button class="sign-up-button cursor">
-                <a class="sign-up-link" href="signUp.html">Sign up</a>
-            </button>
+            <button onclick="openSignUpWindow()" class="sign-up-button cursor">Sign up</button>
         </div>
     </div>
     <!-- MAIN CONTAINER -->
@@ -29,18 +28,28 @@
                 <div class="distance-line"></div>
             </div>
             <div class="input-section">
-                <input class="input-field cursor" type="email" placeholder="Email">
-                <input class="input-field cursor" type="password" placeholder="Password">
+                <div class="input-div">
+                    <input class="input-field cursor" type="email" placeholder="Email">
+                    <img class="input-img cursor" src="assets/img/signUp_icons/mail.png">
+                </div>
+                <div class="input-div">
+                    <input class="input-field cursor" type="password" placeholder="Password">
+                    <img class="input-img cursor" src="assets/img/signUp_icons/lock.png">
+                </div>
                 <div class="checkbox-section">
                     <input class="cursor checkbox-input" type="checkbox">
                     <span>Remember me</span>
                 </div>
             </div>
             <div class="login-button-section">
-                <button class="log-in-button cursor">Log in</button>
-                <button class="guest-log-in-button cursor">Guest Log in</button>
+                <button onclick="openSummary()" class="log-in-button cursor">Log in</button>
+                <button onclick="openSummary()" class="guest-log-in-button cursor">Guest Log in</button>
             </div>
         </div>
+    </div>
+    <div class="mobile-sign-up-button-section d-none">
+        <span>Not a Join user?</span>
+        <button onclick="openSignUpWindow()" class="sign-up-button cursor">Sign up</button>
     </div>
     <!-- FOOTER -->
     <div class="index-footer-section">
