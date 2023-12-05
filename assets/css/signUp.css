@@ -17,7 +17,14 @@
     align-items: center;
 }
 .get-back-arrow{
-    
+    position: relative;
+    right: 120px;
+    height: 32px;
+    width: 32px;
+}
+.get-back-arrow:active{
+    background-color: rgb(213,213,213);
+    border-radius: 20px;
 }
 .sign-up-checkbox-section{
     font-size: 16px;
@@ -36,4 +43,25 @@
     display: flex;
     justify-content: center;
     margin-top: 100px;
+}
+@media (max-width : 700px){
+    .join-logo{
+        width: 64px;
+        height: 78px;
+    }
+    .sign-up-box{
+        width: 396px;
+        height: 595px;
+    }
+    .get-back-arrow{
+        right: 40px;
+        margin-top: 20px;
+    }
+    .headline{
+        margin: 0;
+        margin-top: 20px;
+    }
+    .distance-line{
+        width: 88px;
+    }
 }
