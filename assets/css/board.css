@@ -1,0 +1,42 @@
+
+body {
+    margin: 0;
+    font-family: 'Inter';
+    font-size: 20px;
+    /* box-sizing: border-box; */ 
+}
+
+.d-flex{
+    display: flex;
+}
+
+.section_board {
+    margin-left: calc(8% + 232px);
+    margin-right: 9.5%;
+    height: calc(100vh - 96px);
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-evenly; */
+}
+
+h1{
+    font-size: 61px;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+.boardDiv{
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.boardTab {
+    width: 25%;
+}
+
+.boardCard {
+    width: 25%;
+    background-color: white;
+    border-radius: 10px;
+}
+
