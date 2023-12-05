@@ -44,11 +44,6 @@ body{
     
 }
 
-.section_one a{
-    text-decoration: none;
-    color: #2A3647;
-}
-
 
 .todo_number{
     width: 264px;
@@ -76,6 +71,7 @@ body{
 
     .todo_number:hover .edit_png svg  {
         fill: #2A3647  ; 
+
     }
         
         
@@ -87,23 +83,6 @@ body{
     height: 69px;
     border-radius: 35px;
 }
-
-.edit_png_2{
-    background-color: #2A3647;
-    display: inline-block;
-    width: 69px;
-    height: 69px;
-    border-radius: 35px;
-}
-
-.todo_number:hover .edit_png_2   {
-    background-color: #FFFFFF;
-     
-    }
-
-    .todo_number:hover .edit_png_2 svg path  {
-        stroke: #2A3647  ; 
-    }
 
 .todo_number svg{
     width: 32px;
@@ -211,9 +190,30 @@ body{
     transform: scale(1.1);
 }
 
+.good_morning {
+    display: flex;
+    flex-direction: column;
+    margin-left: 968px;
+    margin-top: -330px;
+}
 
-@media (max-width: 750px) {
-    
+.day_time {
+    font-weight: 500;
+    font-size: 47px;
+    line-height: 56.4px;
+    width: 338px;
+    height: 56px;
+}
+.user_name {
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 76.8px;
+    color: rgb(41, 171, 226);
+    width: 385px;
+    height: 77px;
+}
+
+@media (max-width: 750px){
     .summary_headline{
         display: flex;
         margin-left: 16px;
@@ -327,13 +327,29 @@ body{
         line-height: 16.8px;
         margin-bottom: 7px;
     }
+    .section_three_card {
+        width: 116px;
+        height: 116px;
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 20px;
+        gap: 13px;
+    }
+
+
+
+
+
+
+
+
 
 
 
 
 }
-
-
 
 
 
