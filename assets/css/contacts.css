@@ -10,7 +10,6 @@ body{
 
 .left_container{
     width: 456px;
-    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,6 +31,19 @@ body{
     justify-content: center;
     gap: 16px;
     font-size: 21px;
+}
+
+#addContactButtonResponse {
+    display: none;
+    align-items: center;
+    width: 56px;
+    height: 56px;
+    background-color: #2A3647;
+    border-radius: 100%;
+    padding: 12px;
+    position: fixed;
+    bottom: 110px;
+    right: 30px;
 }
 
 .contact_List{
@@ -66,8 +78,8 @@ body{
 .nameIcon_leftContainer{
     background-color: lightblue;
     border-radius: 100%;
-    width: 42px;
-    height: 42px;
+    min-width: 42px;
+    min-height: 42px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -102,16 +114,16 @@ body{
 .right_container{
     background-color: #F6F7F8;
     width: 100vw;
-    z-index: -1;
+    /* z-index: -1; */
 }
 
 .contact_card{
-    margin: 80px 80px 0 80px;
+    margin: 80px 16px 0 80px;
 }
 
 .contact_headline{
     display: flex;
-    text-align: center;
+    align-items: center;
     gap: 30px;
 }
 
@@ -127,6 +139,7 @@ body{
 .headline_Seperator{
     margin: 0;
     border: 3px solid #29ABE2;
+    height: 59px;
 }
 
 .contact_headline span{
@@ -217,4 +230,142 @@ body{
 .phone_rightContainer a{
     text-decoration: none;
     color: black;
+}
+
+@media (max-width: 1200px) {
+    .name_width{
+        width: auto;
+    }
+
+    .contact_headline h1{
+        font-size: 50px;
+    }
+
+    .big_circle {
+        min-width: 120px;
+        min-height: 120px;
+    }
+
+    #addContactButton {
+        width: 300px;
+    }
+
+    .contact_List {
+        width: 300px;
+    }
+
+    .name_contant {
+        width: 300px;
+        gap: 16px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .contact_headline {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .headline_Seperator {
+        height: auto;
+        width: 59px;
+    }
+
+    .contact_name{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+}
+
+@media (max-width: 860px) {
+    .contact_card {
+        margin: 80px 16px 0 40px;
+    }
+
+    .contact_overview {
+        margin-left: 40px;
+    }
+}
+
+@media (max-width: 800px) {
+    #addContactButton {
+        max-width: 200px;
+    }
+
+    .contact_List {
+        max-width: 200px;
+    }
+
+    .name_contant {
+        max-width: 200px;
+        gap: 8px;
+    }
+
+    .nameIcon_leftContainer {
+        margin-left: 3px;
+    }
+
+    .name_leftContainer {
+        font-size: 16px;
+    }
+
+    .email_leftContainer{
+        max-width: 200px;
+        line-break: anywhere;
+    }
+}
+
+@media (max-width: 750px) {
+    .left_container {
+        padding: 0;
+    }
+
+    .contact_section{
+        padding: 0;
+    }
+
+    .left_container{
+        width: 100vh;
+    }
+
+    .right_container{
+        display: none;
+    }
+
+    #addContactButton {
+        display: none;
+    }
+
+    #addContactButtonResponse {
+        display: flex;
+    }
+
+    .contact_List {
+        max-width: 100vh;
+        width: 90%;
+    }
+
+    .name_contant {
+        max-width: 100vh;
+        width: 100%;
+    }
+
+    .email_leftContainer{
+        line-break: normal;
+    }
+
+    .nameIcon_leftContainer {
+        margin-left: 20px;
+    }
+
+    .name_contant {
+        gap: 35px;
+    }
+}
+
+@media (max-width: 370px) {
+    .email_leftContainer{
+        line-break: anywhere;
+    }
 }
