@@ -71,7 +71,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    position: absolute;
+    position: fixed;
     top: auto;
     right: 0;
     width: auto;

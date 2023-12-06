@@ -120,6 +120,10 @@ body{
     margin: 0;
 }
 
+.contact_headline span{
+    font-size: 27px;
+}
+
 .headline_Seperator{
     margin: 0;
     border: 3px solid #29ABE2;
@@ -133,7 +137,14 @@ body{
 .contact_overview{
     display: flex;
     flex-direction: column;
+    margin-left: 80px;
+    margin-top: 50px;
+}
 
+.contact_name{
+    display: flex;
+    align-items: center;
+    gap: 54px;
 }
 
 .big_circle{
@@ -151,10 +162,34 @@ body{
     background-color: lightblue;
 }
 
+.name_width{
+    width: 400px;
+}
+
 .name_rightContainer {
     font-size: 47px;
     font-weight: 500;
-    line-height: 56.4px;
     text-transform: capitalize;
-    max-width: min-content;
+    width: 100%;
+}
+
+.edit_delete{
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.edit_delete a{
+    display: flex;
+    align-items: center;
+}
+
+.contact_information{
+    font-size: 20px;
+    margin: 32px 0 32px 0;
+}
+
+
+.email_rightContainer{
+    color: #007CEE;
 }
