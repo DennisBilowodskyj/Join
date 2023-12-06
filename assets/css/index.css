@@ -16,19 +16,17 @@ body{
     font-size: 22px;
 }
 .background-element {
-    width: 100vw;
-    height: 100vh;
-    background-color: white;
-    animation: transparencyEffect 2s forwards; /* 2s animation duration */
-  }
-  @keyframes transparencyEffect {
+    background-color: rgb(246,247,248);
+    animation: transparencyEffect 2s forwards; 
+}
+@keyframes transparencyEffect {
     0% {
-      opacity: 0; /* Fully opaque at the beginning */
+      opacity: 0; 
     }
     100% {
-      opacity: 1; /* Completely transparent at the end */
+      opacity: 1; 
     }
-  }
+}
 .keyframe-logo{
     height: 121px;
     width: 100px;
