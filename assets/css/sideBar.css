@@ -68,15 +68,15 @@
 
 @media (max-width: 750px) {
   .sideBar_container {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    position: fixed;
-    top: auto;
-    right: 0;
-    width: auto;
-    padding: 0;
-    height: 80px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: auto;
+  right: 0;
+  width: 100vw;
+  padding: 0;
+  height: 80px;
   }
 
   #sidebar_Logo {

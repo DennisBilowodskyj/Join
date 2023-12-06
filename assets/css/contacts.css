@@ -189,7 +189,32 @@ body{
     margin: 32px 0 32px 0;
 }
 
-
 .email_rightContainer{
+    padding: 16px 0 16px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.email_rightContainer span{
+    font-weight: bold;
+}
+
+.email_rightContainer a{
     color: #007CEE;
+    text-decoration: none;
+}
+
+.phone_rightContainer{
+    padding: 16px 0 16px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.phone_rightContainer span{
+    font-weight: bold;
+}
+
+.phone_rightContainer a{
+    text-decoration: none;
+    color: black;
 }
