@@ -15,12 +15,26 @@ body{
     margin: 50px;
     font-size: 22px;
 }
+.background-element {
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    animation: transparencyEffect 2s forwards; /* 2s animation duration */
+  }
+  @keyframes transparencyEffect {
+    0% {
+      opacity: 0; /* Fully opaque at the beginning */
+    }
+    100% {
+      opacity: 1; /* Completely transparent at the end */
+    }
+  }
 .keyframe-logo{
     height: 121px;
     width: 100px;
     background-image: 'assets/img/logos/JoinLogo.png';
     position: relative;
-    animation: mymove 2s;
+    animation: mymove 2s forwards;
 }
 @keyframes mymove {
     0%   {top: 50vh; left: 50vw;transform: scale(6);}
