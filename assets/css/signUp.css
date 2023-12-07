@@ -34,7 +34,7 @@
     text-decoration: none;
     color: rgb(56,171,226);
     display: inline-block;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 125ms ease-in-out;
 }
 .sign-up-checkbox-link:hover{
     text-decoration: underline;
