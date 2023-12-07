@@ -32,7 +32,7 @@ body{
     width: 100px;
     background-image: 'assets/img/logos/JoinLogo.png';
     position: relative;
-    animation: mymove 3s ;
+    animation: mymove 3s forwards;
 }
 @keyframes mymove {
     0% {top: 40vh; left: 45vw;transform:  scale(2.74);}
@@ -166,11 +166,11 @@ body{
     margin: 10px;
     text-decoration: none;
     color: rgb(182, 185, 187);
+    transition: all 0.3s ease-in-out;
 }
 .footer-link:hover{
     color: rgb(56,171,226);
-    transition: ease-in-out 225ms;
-    font-size: 17px;
+    transform: scale(1.1);
 }
 
 @media (max-width: 700px) {

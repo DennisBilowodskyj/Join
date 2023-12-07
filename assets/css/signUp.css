@@ -33,11 +33,12 @@
 .sign-up-checkbox-link{
     text-decoration: none;
     color: rgb(56,171,226);
-    transition: font-size ease-in-out 0.3s;
+    display: inline-block;
+    transition: transform 0.3s ease-in-out;
 }
 .sign-up-checkbox-link:hover{
     text-decoration: underline;
-    font-size: 17px;
+    transform: scale(1.04);
 }
 .sign-up-footer-section{
     display: flex;
