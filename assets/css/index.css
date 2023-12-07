@@ -17,7 +17,7 @@ body{
 }
 .background-element {
     background-color: rgb(246,247,248);
-    animation: transparencyEffect 2s forwards; 
+    animation: transparencyEffect 3s forwards; 
 }
 @keyframes transparencyEffect {
     0% {
@@ -32,13 +32,13 @@ body{
     width: 100px;
     background-image: 'assets/img/logos/JoinLogo.png';
     position: relative;
-    animation: mymove 2s forwards;
+    animation: mymove 3s ;
 }
 @keyframes mymove {
-    from {top: 50vh; left: 50vw;transform: scale(3);}
-    to {top: 0vh; left: 0vw;transform: scale(1);}
+    0% {top: 40vh; left: 45vw;transform:  scale(2.74);}
+    50% {top: 40vh; left: 45vw; transform: scale(2.74);}
+    100% {top: 0vh; left: 0vw;transform: scale(1);}
 }
-
 .sign-up-button{
     background-color: rgb(42,55,71);
     text-decoration: none;
