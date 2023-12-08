@@ -112,6 +112,8 @@ body{
     height: 24px;
     padding-right: 20px;
 }
+/*CHECKBOX DESIGN*/
+
 .checkbox-section{
     font-size: 12px;
     display: flex;
@@ -121,9 +123,28 @@ body{
     margin: 20px;
     height: 24px;
 }
-.checkbox-input{
-    margin-right: 10px;
-    margin-left: 35px;
+.checkbox-input {
+    display: none; 
+}
+.checkbox-input + label:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 24px; 
+    height: 24px; 
+    background-image: url('assets/img/login_icons/unchecked.png'); 
+    background-size: cover;
+}
+
+.checkbox-input:checked + label:before {
+    background-image: url('assets/img/login_icons/checked.png'); /* Bild für ausgewählt */
+}
+.checkbox-input + label {
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    display: inline-block;
 }
 .login-button-section{
     display: flex;
