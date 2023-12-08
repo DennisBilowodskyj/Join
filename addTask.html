@@ -8,80 +8,103 @@
     <link rel="icon" href="assets/img/logos/JoinLogo.png">
     <link rel="stylesheet" href="./assets/css/header.css" />
     <link rel="stylesheet" href="./assets/css/sideBar.css" />
-    <link rel="stylesheet" href="assets/css/index.css"/>
+    <link rel="stylesheet" href="assets/css/index.css" />
     <link rel="stylesheet" href="./assets/css/inter.css" />
     <link rel="stylesheet" href="assets/css/addTask.css">
 
     <script src="./assets/js/script.js"></script>
 </head>
+
 <body onload="init()">
     <div w3-include-html="./assets/tamplets/header.html"></div>
     <div w3-include-html="./assets/tamplets/sideBar.html"></div>
 
     <section class="section_addTask">
-        
-            <h1>Add Task</h1>
-            <form action="">
-                <div class="mainContent d-flex">
-                    <div class="leftContent">
-                        <p>Title<span class="required">*</span></p>
-                        <input required type="text" placeholder="Enter a title">
-                        <p>Description</p>
-                        <textarea name="" id="" cols="30" rows="10" placeholder="Enter a description"></textarea>
-                        <p>Assigned to</p>
-                        <select name="" id="">
+
+        <h1>Add Task</h1>
+        <form action="">
+            <div class="mainContent d-flex">
+                <div class="leftContent">
+                    <p>Title<span class="required">*</span></p>
+                    <input required type="text" placeholder="Enter a title">
+                    <p>Description</p>
+                    <textarea name="" id="" cols="30" rows="10" placeholder="Enter a description"></textarea>
+                    <p>Assigned to</p>
+                    <div class="assignedContainer">
+                        
+                        <input class="assignedInput" type="text" placeholder="Select contacts to assign">
+                        <img id="selectArrow" src="./assets/img/addTask_icons/arrow_drop_downaa.png" alt="">
+                        <div class="contacts">
+                            <div class="contact d-flex" id="contact0">
+                                <div class="contactLeft d-flex">
+                                    <div class="contactBadge">AB</div>
+                                    <div class="contactName"><span>Maria Müller</span></div>
+                                </div>
+                                <div class="contactRight">
+                                    <img src="./assets/img/addTask_icons/Check button.png" alt="">
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+
+
+                    </div>
+                    <!-- <select name="" id="">
                             <option value="select">Select contacts to assign</option>
                             <option value="sofia_mueller">Sofia Müller</option>
                             <option value="anton_mayer">Anton Mayer</option>
-                        </select>
-                    </div>
-                    <div class="seperator"></div>
-                    <div class="rightContent">
-                        <p>Due date<span class="required">*</span></p>
-                        <input type="date" name="" id="date">
-                        <p>Prio</p>
-                        <div class="prioContainer d-flex">
-                            <div class="prioCard" id="prio_urgent">
-                                <p>Urgent</p>
-                                <img src="./assets/img/addTask_icons/prio_urgent.svg">
-                            </div>
-                            <div class="prioCard" id="prio_medium">
-                                <p>Medium</p>
-                                <img src="./assets/img/addTask_icons/prio_medium.svg">
-                            </div>
-                            <div class="prioCard" id="prio_low">
-                                <p>Low</p>
-                                <img src="./assets/img/addTask_icons/prio_low.svg">
-                            </div>
-                        </div>
-                        <p>Category<span class="required">*</span></p>
-                        <select name="" id="">
-                            <option value="select">Select task category</option>
-                        </select>
-                        <p>Subtasks</p>
-                        <div>
-                            <input type="text" placeholder="Add new subtask">
-                            
-                        </div>
-                    </div>
+                        </select> -->
                 </div>
+                <div class="seperator"></div>
+                <div class="rightContent">
+                    <p>Due date<span class="required">*</span></p>
+                    <input type="date" name="" id="date">
+                    <p>Prio</p>
+                    <div class="prioContainer d-flex">
+                        <div class="prioCard" id="prio_urgent">
+                            <p>Urgent</p>
+                            <img src="./assets/img/addTask_icons/prio_urgent.svg">
+                        </div>
+                        <div class="prioCard" id="prio_medium">
+                            <p>Medium</p>
+                            <img src="./assets/img/addTask_icons/prio_medium.svg">
+                        </div>
+                        <div class="prioCard" id="prio_low">
+                            <p>Low</p>
+                            <img src="./assets/img/addTask_icons/prio_low.svg">
+                        </div>
+                    </div>
+                    <p>Category<span class="required">*</span></p>
+                    <select name="" id="">
+                        <option value="select">Select task category</option>
+                    </select>
+                    <p>Subtasks</p>
+                    <div>
+                        <input type="text" placeholder="Add new subtask">
 
-            </form>
-            <div class="footSection d-flex">
-                <div>
-                    <p><span class="required">*</span>This field is required</p>
-                </div>
-                <div class="d-flex">
-                    <div class="clearBtn"><img src="./assets/img/addTask_icons/clear.png">
-                        <!-- <p>Clear</p> -->
-                    </div>
-                    <div class="createBtn"><img src="./assets/img/addTask_icons/create.png">
-                        <!-- <p>Create Task</p> -->
                     </div>
                 </div>
             </div>
+
         </form>
-        
+        <div class="footSection d-flex">
+            <div>
+                <p><span class="required">*</span>This field is required</p>
+            </div>
+            <div class="d-flex">
+                <div class="clearBtn"><img src="./assets/img/addTask_icons/clear.png">
+                    <!-- <p>Clear</p> -->
+                </div>
+                <div class="createBtn"><img src="./assets/img/addTask_icons/create.png">
+                    <!-- <p>Create Task</p> -->
+                </div>
+            </div>
+        </div>
+        </form>
+
     </section>
 </body>
 
