@@ -138,7 +138,7 @@ body{
 }
 
 .checkbox-input:checked + label:before {
-    background-image: url('assets/img/login_icons/checked.png'); /* Bild für ausgewählt */
+    background-image: url('assets/img/login_icons/checked.png'); 
 }
 .checkbox-input + label {
     position: relative;
