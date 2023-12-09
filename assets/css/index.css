@@ -32,7 +32,15 @@ body{
     width: 100px;
     background-image: 'assets/img/logos/JoinLogo.png';
     position: relative;
-    animation: mymove 3s forwards;
+    animation: logoAnimation 3s forwards, mymove 3s forwards;
+}
+@keyframes logoAnimation {
+    0% {
+      opacity: 1; /* Startwert für Opazität auf 1 setzen */
+    }
+    100% {
+      opacity: 1; /* Endwert für Opazität auf 1 beibehalten */
+    }
 }
 @keyframes mymove {
     0% {top: 40vh; left: 45vw;transform:  scale(2.74);}
