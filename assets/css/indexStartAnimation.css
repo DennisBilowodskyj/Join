@@ -1,0 +1,32 @@
+/*BACKGROUND TRANSPARENCY EFFECT*/
+.background-element {
+    background-color: rgb(246,247,248);
+    animation: transparencyEffect 2.5s forwards; 
+    z-index: 1;
+}
+.top-section-right{
+    background-color: rgb(246,247,248);
+    animation: transparencyEffect 2.5s forwards; 
+}
+@keyframes transparencyEffect {
+    0% {
+      opacity: 0; 
+    }
+    100% {
+      opacity: 1; 
+    }
+}
+/*JOIN LOGO ANIMATION*/
+.keyframe-logo{
+    height: 121px;
+    width: 100px;
+    background-image: 'assets/img/logos/JoinLogo.png';
+    position: relative;
+    animation: mymove 1s forwards;
+    z-index: 999;
+}
+@keyframes mymove {
+    0% {top: 40vh; left: 45vw;transform:  scale(2.74);}
+    50% {top: 40vh; left: 45vw; transform: scale(2.74);}
+    100% {top: 0vh; left: 0vw;transform: scale(1);}
+}
