@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="assets/css/addTask.css">
 
     <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/addTask.js"></script>
 </head>
 
 <body onload="init()">
@@ -28,13 +29,13 @@
                     <p>Title<span class="required">*</span></p>
                     <input required type="text" placeholder="Enter a title">
                     <p>Description</p>
-                    <textarea name="" id="" cols="30" rows="10" placeholder="Enter a description"></textarea>
+                    <textarea name="" id="taskDescription" cols="30" rows="10" placeholder="Enter a description"></textarea>
                     <p>Assigned to</p>
                     <div class="assignedContainer">
                         
-                        <input class="assignedInput" type="text" placeholder="Select contacts to assign">
+                        <input onclick="openAssignedInput()" class="assignedInput"  type="text" placeholder="Select contacts to assign">
                         <img id="selectArrow" src="./assets/img/addTask_icons/arrow_drop_downaa.png" alt="">
-                        <div class="contacts">
+                        <div class="contacts d-none" id="contactsOverlay">
                             <div class="contact d-flex" id="contact0">
                                 <div class="contactLeft d-flex">
                                     <div class="contactBadge">AB</div>
@@ -60,11 +61,11 @@
                     <input type="date" name="" id="date">
                     <p>Prio</p>
                     <div class="prioContainer d-flex">
-                        <div class="prioCard" id="prio_urgent">
+                        <div class="prioCard" id="prio_urgent" onclick="setPrioUrgent()">
                             <p>Urgent</p>
                             <img src="./assets/img/addTask_icons/prio_urgent.svg">
                         </div>
-                        <div class="prioCard" id="prio_medium">
+                        <div class="prioCard" id="prio_medium" onclick="setPrioMedium()">
                             <p>Medium</p>
                             <img src="./assets/img/addTask_icons/prio_medium.svg">
                         </div>
@@ -96,7 +97,7 @@
                     <img src="./assets/img/addTask_icons/cancel.png">
                     
                 </div>
-                <div class="createBtn d-flex">
+                <div class="createBtn d-flex" onclick="addTask()">
                     <span>Create Task</span>
                     <img src="./assets/img/addTask_icons/check.png">
                 </div>

@@ -63,6 +63,7 @@ h1 {
 .prioCard {
     display: flex;
     justify-content: center;
+    align-items: center;
     /* width: calc(33% - 16px); */
     /* width: 33%; */
     background-color: white;
@@ -71,6 +72,12 @@ h1 {
     gap: 8px;
     flex: 1;
     min-width: 130px;
+    max-height: 56px;
+    box-sizing: border-box;
+}
+
+.prioCard img {
+    width: 24px;
 }
 
 .footSection {
@@ -189,11 +196,19 @@ select {
     left: calc(100% - 45px);
 }
 
+.assignedContainer {
+    position: relative;
+}
+
 .contacts {
     background-color: white;
-    position: relative;
-    top: -26px;
+    position: absolute;
+    
+    top: 40px;
     border-radius: 0 0 10px 10px;
+    width: 100%;
+    padding-top: 40px;
+    z-index: 10;
 }
 
 .contact {
@@ -242,6 +257,14 @@ select {
     
     .footSection {
         margin-bottom: 30px;
+    }
+
+    
+}
+
+@media (max-width: 950px) {
+    .clearBtn {
+        display: none;
     }
 }
 
