@@ -76,6 +76,7 @@ h1 {
 .footSection {
     /* max-width: 976.25px; */
     justify-content: space-between;
+    margin-top: 30px;
 
 }
 
@@ -134,14 +135,52 @@ select {
     background-position-y: center;
 }
 
-.createBtn img {
+.btnContainer {
+    
     height: 56px;
-    width: 183px;
+    align-items: center;
+    align-items: flex-end;
+    gap: 16px;
+}
+
+/* .requiredInfo {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+} */
+
+.createBtn {
+    background-color: #2A3647;
+    color: white;
+    height: 100%;
+    align-items: center;
+    border-radius: 10px;
+    gap: 4px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.clearBtn {
+    border: 1px solid #2A3647;
+    color: #2A3647;
+    height: 100%;
+    align-items: center;
+    border-radius: 10px;
+    gap: 4px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.createBtn img {
+    
+    width: 24px;
+    height: 24px;
+
 }
 
 .clearBtn img {
-    height: 56px;
-    width: 110px;
+    width: 24px;
+    height: 24px;
 }
 
 #selectArrow {
@@ -200,6 +239,10 @@ select {
     .seperator {
         display: none;
     }
+    
+    .footSection {
+        margin-bottom: 30px;
+    }
 }
 
 @media (max-width: 750px) {
@@ -223,5 +266,9 @@ select {
 
     h1 {
         font-size: 48px;
+    }
+
+    .footSection {
+        margin-bottom: 100px;
     }
 }
