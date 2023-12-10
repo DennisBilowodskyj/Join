@@ -27,7 +27,7 @@
             <div class="mainContent d-flex">
                 <div class="leftContent">
                     <p>Title<span class="required">*</span></p>
-                    <input required type="text" placeholder="Enter a title">
+                    <input required type="text" id="taskTitle" placeholder="Enter a title">
                     <p>Description</p>
                     <textarea name="" id="taskDescription" cols="30" rows="10" placeholder="Enter a description"></textarea>
                     <p>Assigned to</p>
@@ -61,15 +61,15 @@
                     <input type="date" name="" id="date">
                     <p>Prio</p>
                     <div class="prioContainer d-flex">
-                        <div class="prioCard" id="prio_urgent" onclick="setPrioUrgent()">
+                        <div class="prioCard" id="prio_urgent" onclick="setPrio('urgent')">
                             <p>Urgent</p>
                             <img src="./assets/img/addTask_icons/prio_urgent.svg">
                         </div>
-                        <div class="prioCard" id="prio_medium" onclick="setPrioMedium()">
+                        <div class="prioCard" id="prio_medium" onclick="setPrio('medium')">
                             <p>Medium</p>
                             <img src="./assets/img/addTask_icons/prio_medium.svg">
                         </div>
-                        <div class="prioCard" id="prio_low">
+                        <div class="prioCard" id="prio_low" onclick="setPrio('low')">
                             <p>Low</p>
                             <img src="./assets/img/addTask_icons/prio_low.svg">
                         </div>

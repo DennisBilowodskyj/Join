@@ -88,6 +88,7 @@ body{
     height: 24px;
     padding-right: 20px;
 }
+
 /*CHECKBOX DESIGN*/
 
 .checkbox-section{
@@ -193,7 +194,7 @@ body{
     gap: 35px;
 }
 .index-footer-section{
-    margin-top: 80px;
+    margin-top: 60px;
 }
 .login-button-section{
     display: flex;
