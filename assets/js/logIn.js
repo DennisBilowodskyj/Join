@@ -2,11 +2,11 @@ let users = [];
 
 
 async function initLogIn(){
-    loadusers();
+    loadUser();
 }
 
 
-async function loadusers(){
+async function loadUser(){
     try{
     users = JSON.parse(await getItem('users'));
     } catch(e){
