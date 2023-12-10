@@ -1,4 +1,4 @@
-
+let taskPrio;
 
 let tasks = [
    
@@ -11,25 +11,31 @@ function openAssignedInput() {
 }
 
 function addTask(){
+    let title = document.getElementById('taskTitle').value;
     let description = document.getElementById('taskDescription').value;
     let date = document.getElementById('date').value;
     tasks.push({
-        title: "", 
+        title: title, 
         description: description,
         date: date,
-        prio: setPrio()
+        prio: taskPrio
     });
     console.log(tasks);
 
 }
 
-function setPrio() {
-    if (setPrioUrgent()) {
-        console.log('Urgent');
-        return 0;
-    } else if (setPrioMedium()) {
-        return 1;
-    }
+// function setPrio() {
+//     if (setPrioUrgent()) {
+//         console.log('Urgent');
+//         return 0;
+//     } else if (setPrioMedium()) {
+//         return 1;
+//     }
+// }
+
+function setPrio(prio) {
+    taskPrio = prio;
+    console.log(taskPrio);
 }
 
 function setPrioUrgent(){
