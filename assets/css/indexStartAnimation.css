@@ -1,12 +1,12 @@
 /*BACKGROUND TRANSPARENCY EFFECT*/
 .background-element {
     background-color: rgb(246,247,248);
-    animation: transparencyEffect 2.5s forwards; 
+    animation: transparencyEffect 2s forwards; 
     z-index: 1;
 }
 .top-section-right{
     background-color: rgb(246,247,248);
-    animation: transparencyEffect 2.5s forwards; 
+    animation: transparencyEffect 2s forwards; 
 }
 @keyframes transparencyEffect {
     0% {
