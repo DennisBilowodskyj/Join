@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="assets/css/summary.css">
     <link rel="stylesheet" href="./assets/css/header.css" />
     <link rel="stylesheet" href="./assets/css/sideBar.css" />
-    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/script.js" ></script>
+    <script src="./assets/js/summary.js" ></script>
+
     <title>Join</title>
     <link rel="icon" href="assets/img/logos/JoinLogo.png">
 </head>
@@ -23,10 +25,10 @@
 
     </div>
         <div class="summary_content">
-            <a href="board.html" class="board_link">
+            <!--<a href="board.html" class="board_link">-->
             <div class="section_one">
                 
-                <div class="todo_number">
+                <div class="todo_number" onclick="addToSummary()">
                                              
                     <span class="edit_png">
                         <svg width="25" height="25" viewBox="0 0 25 25" fill="white" xmlns="http://www.w3.org/2000/svg">
@@ -120,7 +122,7 @@
         </div>
     </a> 
         <div class="good_morning">
-            <div class="day_time">Good morning,</div>
+            <div class="day_time" id="demo"></div>
             <div class="user_name">James Bond</div>
        </div>
 
