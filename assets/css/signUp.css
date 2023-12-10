@@ -26,8 +26,11 @@
     background-color: rgb(213,213,213);
     border-radius: 20px;
 }
-.distance-line{
-    margin-left: 30px;
+.sign-up-box-headline{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .sign-up-checkbox-section{
     font-size: 16px;
@@ -69,7 +72,6 @@
     .distance-line{
         width: 88px;
         margin-top: 20px;
-        margin-left: 40px;
     }
     .sign-up-footer-section{
         margin-top: 160px;
