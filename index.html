@@ -10,8 +10,9 @@
     <link rel="stylesheet" href="assets/css/indexStartAnimation.css">
     <script src="assets/js/index.js"></script>
     <script src="assets/js/storage.js"></script>
+    <script src="assets/js/logIn.js"></script>
 </head>
-<body>
+<body onload="initLogIn()">
     <!-- HEADER -->
     <div class="index-top-section">
         <div class="keyframe-logo">
@@ -30,7 +31,7 @@
                 <h1 class="headline">Log in</h1>
                 <div class="distance-line"></div>
             </div>
-            <form onsubmit="userLogIn()">
+            <form onsubmit="userLogIn(); return false;">
             <div class="input-section">
                 <div class="input-div">
                     <input required id="email" class="input-field cursor" type="email" placeholder="Email">
@@ -41,14 +42,14 @@
                     <img class="input-img cursor" src="assets/img/signUp_icons/lock.png">
                 </div>
                 <div class="checkbox-section">
-                    <input required class="cursor checkbox-input" type="checkbox">
+                    <input class="cursor checkbox-input" type="checkbox">
                     <label for="remember-me">
                         <span>Remember me</span>
                     </label>
                 </div>
             </div>
             <div class="login-button-section">
-                <button id="login-button-section" class="log-in-button cursor">Log in</button>
+                <button id="logInButton" class="log-in-button cursor">Log in</button>
                 <button onclick="openSummary()" class="guest-log-in-button cursor">Guest Log in</button>
             </div>
         </form>
