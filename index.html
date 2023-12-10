@@ -30,26 +30,28 @@
                 <h1 class="headline">Log in</h1>
                 <div class="distance-line"></div>
             </div>
+            <form onsubmit="userLogIn()">
             <div class="input-section">
                 <div class="input-div">
-                    <input class="input-field cursor" type="email" placeholder="Email">
+                    <input required id="email" class="input-field cursor" type="email" placeholder="Email">
                     <img class="input-img cursor" src="assets/img/signUp_icons/mail.png">
                 </div>
                 <div class="input-div">
-                    <input class="input-field cursor" type="password" placeholder="Password">
+                    <input required id="password" class="input-field cursor" type="password" placeholder="Password">
                     <img class="input-img cursor" src="assets/img/signUp_icons/lock.png">
                 </div>
                 <div class="checkbox-section">
-                    <input class="cursor checkbox-input" type="checkbox">
+                    <input required class="cursor checkbox-input" type="checkbox">
                     <label for="remember-me">
                         <span>Remember me</span>
                     </label>
                 </div>
             </div>
             <div class="login-button-section">
-                <button onclick="openSummary()" class="log-in-button cursor">Log in</button>
+                <button id="login-button-section" class="log-in-button cursor">Log in</button>
                 <button onclick="openSummary()" class="guest-log-in-button cursor">Guest Log in</button>
             </div>
+        </form>
         </div>
     </div>
     <div class="mobile-sign-up-button-section d-none">
