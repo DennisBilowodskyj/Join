@@ -13,10 +13,11 @@
     <link rel="stylesheet" href="assets/css/addTask.css">
 
     <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/storage.js"></script>
     <script src="./assets/js/addTask.js"></script>
 </head>
 
-<body onload="init()">
+<body onload="initAddTask()">
     <div w3-include-html="./assets/tamplets/header.html"></div>
     <div w3-include-html="./assets/tamplets/sideBar.html"></div>
 
@@ -29,23 +30,42 @@
                     <p>Title<span class="required">*</span></p>
                     <input required type="text" id="taskTitle" placeholder="Enter a title">
                     <p>Description</p>
-                    <textarea name="" id="taskDescription" cols="30" rows="10" placeholder="Enter a description"></textarea>
+                    <textarea name="" id="taskDescription" cols="30" rows="10"
+                        placeholder="Enter a description"></textarea>
                     <p>Assigned to</p>
                     <div class="assignedContainer">
-                        
-                        <input onclick="openAssignedInput()" class="assignedInput"  type="text" placeholder="Select contacts to assign">
+
+                        <input onclick="openAssignedInput()" class="assignedInput" type="text"
+                            placeholder="Select contacts to assign">
                         <img id="selectArrow" src="./assets/img/addTask_icons/arrow_drop_downaa.png" alt="">
                         <div class="contacts d-none" id="contactsOverlay">
-                            <div class="contact d-flex" id="contact0">
-                                <div class="contactLeft d-flex">
-                                    <div class="contactBadge">AB</div>
-                                    <div class="contactName"><span>Maria Müller</span></div>
-                                </div>
-                                <div class="contactRight">
-                                    <img src="./assets/img/addTask_icons/Check button.png" alt="">
-                                </div>
-                            </div>
+                            <div id="contactsContent">
 
+                                <!-- <div class="contact d-flex" id="contact0" onclick="assign(0)">
+                                    <div class="contactLeft d-flex">
+                                        <div class="contactBadge">AB</div>
+                                        <div class="contactName"><span>Maria Müller</span></div>
+                                    </div>
+                                    <div class="contactRight">
+                                        <img src="./assets/img/addTask_icons/Check button.png" alt="">
+                                    </div>
+                                </div> -->
+
+
+                                <!-- <div class="contact d-flex" id="contact1" onclick="assign(1)">
+                                    <div class="contactLeft d-flex">
+                                        <div class="contactBadge">JB</div>
+                                        <div class="contactName"><span>James Bond</span></div>
+                                    </div>
+                                    <div class="contactRight">
+                                        <img src="./assets/img/addTask_icons/Check button.png" alt="">
+                                    </div>
+                                </div> -->
+                            </div>
+                            <!-- Create new Contact -->
+                            <div class="newContact d-flex" id="contact1" onclick="createContact()">
+                                <span>Create new Contact</span>
+                            </div>
 
 
                         </div>
@@ -53,7 +73,7 @@
 
 
                     </div>
-                  
+
                 </div>
                 <div class="seperator"></div>
                 <div class="rightContent">
@@ -80,8 +100,12 @@
                     </select>
                     <p>Subtasks</p>
                     <div>
-                        <input type="text" placeholder="Add new subtask">
-
+                        <input type="text" placeholder="Add new subtask" id="subtaskInput">
+                        <img src="./assets/img/addTask_icons/check.png" style="background-color: black;"
+                            onclick="addSubtask()">
+                    </div>
+                    <div id="subtaskListContainer">
+                        <!-- render new subtasks -->
                     </div>
                 </div>
             </div>
@@ -95,7 +119,7 @@
                 <div class="clearBtn d-flex">
                     <span>Clear</span>
                     <img src="./assets/img/addTask_icons/cancel.png">
-                    
+
                 </div>
                 <div class="createBtn d-flex" onclick="addTask()">
                     <span>Create Task</span>

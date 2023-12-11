@@ -87,6 +87,17 @@ h1 {
 
 }
 
+.newContact {
+    margin-top: 6px;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    color: white;
+    background-color: #2A3647;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
 input {
     border-radius: 10px;
     padding: 12px 21px;
@@ -200,6 +211,7 @@ select {
     position: relative;
 }
 
+
 .contacts {
     background-color: white;
     position: absolute;
@@ -209,10 +221,22 @@ select {
     width: 100%;
     padding-top: 40px;
     z-index: 10;
+    box-sizing: border-box;
+    max-height: 280px;
+    overflow: auto;
 }
 
 .contact {
     justify-content: space-between;
+    align-items: center;
+    padding: 7px 16px 7px 16px;
+    margin-bottom: 4px;
+}
+
+.contactAktive {
+    background-color: #2A3647;
+    border-radius: 10px;
+    color: white;
 }
 
 .contactBadge {
@@ -229,8 +253,18 @@ select {
     padding: 8px;
     font-size: 12px;
     font-weight: 500;
+    border: 2px solid white;
 
 }
+
+.contactRight {
+    /* background-image: url(/assets/img/addTask_icons/check_button.png); */
+    width: 24px;
+    height: 24px;
+    /* background-repeat: no-repeat; */
+    /* padding-right: 6px; */
+}
+
 
 @media (max-width: 1100px) {
     .section_addTask {
