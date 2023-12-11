@@ -31,6 +31,7 @@ body{
     justify-content: center;
     gap: 16px;
     font-size: 21px;
+    cursor: pointer;
 }
 
 #addContactButtonResponse {
@@ -67,6 +68,7 @@ body{
     gap: 35px;
     height: 78px;
     width: 352px;
+    cursor: pointer;
 }
 
 .name_contant:hover{
@@ -114,7 +116,6 @@ body{
 .right_container{
     background-color: #F6F7F8;
     width: 100vw;
-    /* z-index: -1; */
 }
 
 .contact_card{
@@ -148,10 +149,14 @@ body{
 }
 
 .contact_overview{
-    display: flex;
+    display: none;
     flex-direction: column;
     margin-left: 80px;
     margin-top: 50px;
+}
+
+.display_flex{
+    display: flex;
 }
 
 .contact_name{
@@ -190,6 +195,7 @@ body{
     display: flex;
     align-items: center;
     gap: 24px;
+    cursor: pointer;
 }
 
 .edit_delete a{

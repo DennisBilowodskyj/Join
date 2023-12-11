@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./assets/css/openSans.css" />
 
     <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/contacts.js"></script>
   </head>
   <body onload="init()">
     <div w3-include-html="./assets/tamplets/header.html"></div>
@@ -40,7 +41,7 @@
           <hr class="name_Seperator" />
 
           <div class="centersizer">
-            <div class="name_contant activeName">
+            <div onclick="showName()" id="name1" class="name_contant">
               <!-- Will get the first Letter of first Name and second -->
               <div class="nameIcon_leftContainer">AE</div>
               <div>
@@ -75,7 +76,7 @@
         </div>
 
         <!-- automated created content of the right side -->
-        <div class="contact_overview">
+        <div id="contact_overview" class="contact_overview">
           <div class="contact_name">
             <div class="big_circle">AE</div>
             <div class="name_width">
