@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./assets/css/header.css" />
     <link rel="stylesheet" href="./assets/css/sideBar.css" />
     <link rel="stylesheet" href="./assets/css/contacts.css" />
+    <link rel="stylesheet" href="./assets/css/contactsResponse.css" />
     <link rel="stylesheet" href="./assets/css/inter.css" />
     <link rel="stylesheet" href="./assets/css/openSans.css" />
 
@@ -19,9 +20,15 @@
     <div w3-include-html="./assets/tamplets/header.html"></div>
     <div w3-include-html="./assets/tamplets/sideBar.html"></div>
 
+    <section id="newContact_bg" class="newContact_bg">
+      <div class="newContactField">
+        
+      </div>
+    </section>
+
     <section class="contact_section">
       <!-- left Container -->
-      <div class="left_container">
+      <div class="left_container" id="left_container">
         <button id="addContactButton">
           Add new contact
           <img
@@ -42,23 +49,25 @@
 
       <!-- right Container -->
       <!-- Header of the right side -->
-      <div class="right_container">
+      <div class="right_container" id="right_container">
         <div class="contact_card">
           <div class="contact_headline">
             <h1>Contacts</h1>
             <hr class="headline_Seperator" />
             <span>Better with a team</span>
+            <hr class="response_Seperator"/>
           </div>
         </div>
+        <a id="backArrow" onclick="rensponseBackToList()">
+          <img src="./assets/img/contact_icons/backarrow.png">
+        </a>
 
         <!-- automated created content of the right side -->
         <div id="contact_overview" class="contact_overview">
           <div class="contact_name">
-            <div id="big_circle" class="big_circle">AE</div>
+            <div id="big_circle" class="big_circle"></div>
             <div class="name_width">
-              <div id="name_rightContainer" class="name_rightContainer">
-                Albert Einstein
-              </div>
+              <div id="name_rightContainer" class="name_rightContainer"></div>
               <div class="edit_delete" id="edit_delete"></div>
             </div>
           </div>

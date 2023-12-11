@@ -4,7 +4,6 @@ let contacts = [
     email: "albert.einstein@physics.com",
     tel: "+41 14031879 160",
   },
-
   {
     name: "Adam Sandler",
     email: "adam.sandler@funny.com",
@@ -21,10 +20,21 @@ let activeNameList = [];
  */
 function showName(id) {
   removeActiveName();
-  document.getElementById(`name${id}`).classList.add("activeName");
-  document.getElementById("contact_overview").classList.add("display_flex");
-  activeNameList.push(`name${id}`);
+  addORremoveActiveName(id);
   renderContactInformation(id);
+  openRensponse();
+}
+
+function addORremoveActiveName(id) {
+  let markedElement = document.getElementById(`name` + id);
+  if (activeNameList.includes(`name` + id)) {
+    removeAllActiveElements(markedElement)
+  } else {
+    markedElement.classList.add("activeName");
+    document.getElementById("contact_overview").classList.add("display_flex");
+    activeNameList = [];
+    activeNameList.push(`name${id}`);
+  }
 }
 
 function removeActiveName() {
@@ -32,20 +42,39 @@ function removeActiveName() {
     let activeElement = activeNameList[i];
     document.getElementById(activeElement).classList.remove("activeName");
   }
-  activeNameList = [];
+}
+
+function removeAllActiveElements(markedElement){
+    markedElement.classList.remove("activeName");
+    document.getElementById("contact_overview").classList.remove("display_flex");
+    activeNameList = [];
+}
+
+function openRensponse() {
+  let screenWidth = window.innerWidth;
+  if (screenWidth < 750) {
+    document.getElementById("left_container").classList.add("display_none");
+    document.getElementById("right_container").classList.add("display_block");
+  }
+}
+
+function rensponseBackToList() {
+  document.getElementById("left_container").classList.remove("display_none");
+  document.getElementById("right_container").classList.remove("display_block");
+  removeActiveName();
 }
 
 function contactInit() {
   init();
-  // loadNames();
+  loadNames();
   filterLetter();
 }
 
 async function loadNames() {
   try {
-    users = JSON.parse(await getItem("users"));
+    users = JSON.parse(await getItem("contacts"));
   } catch (e) {
-    console.info("Could not load Users");
+    console.info("Could not load Contacts");
   }
 }
 
@@ -90,9 +119,13 @@ function filterContactNames(letter) {
 }
 
 function renderContactNames(i, name, email) {
-  document.getElementById("contact_Users").innerHTML += `<div class="centersizer">
+  document.getElementById(
+    "contact_Users"
+  ).innerHTML += `<div class="centersizer">
     <div onclick="showName(${i})" id="name${i}" class="name_contant">
-        <div class="nameIcon_leftContainer">${initials(name, 0) + initials(name, 1)}</div>
+        <div class="nameIcon_leftContainer">${
+          initials(name, 0) + initials(name, 1)
+        }</div>
             <div>
                 <div class="name_leftContainer">${name}</div>
                 <div class="email_leftContainer">${email}</div>
@@ -136,20 +169,20 @@ function renderEditDelete(id) {
     </a>`;
 }
 
-function renderEmail(id){
-    let email = contacts[id]['email']
-    document.getElementById('email_rightContainer').innerHTML = "";
-    document.getElementById('email_rightContainer').innerHTML = `
+function renderEmail(id) {
+  let email = contacts[id]["email"];
+  document.getElementById("email_rightContainer").innerHTML = "";
+  document.getElementById("email_rightContainer").innerHTML = `
     <span>Email</span>
     <a href="mailto:${email}?subject=Feedback&body=Message">
         ${email}
     </a>`;
 }
 
-function renderPhone(id){
-    let tel = contacts[id]['tel']
-    document.getElementById('phone_rightContainer').innerHTML = "";
-    document.getElementById('phone_rightContainer').innerHTML = `
+function renderPhone(id) {
+  let tel = contacts[id]["tel"];
+  document.getElementById("phone_rightContainer").innerHTML = "";
+  document.getElementById("phone_rightContainer").innerHTML = `
     <span>Email</span>
     <a href="mailto:${tel}?subject=Feedback&body=Message">
         ${tel}

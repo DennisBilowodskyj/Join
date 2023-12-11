@@ -15,7 +15,7 @@ body{
     align-items: center;
     padding: 32px 0 32px 0;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2);
-    height: calc(100vh - 160px) ;
+    height: calc(100vh - 160px);
     z-index: 1;
 }
 
@@ -113,6 +113,11 @@ body{
     color: white;
 }
 
+.activeName:hover{
+    background-color: #2A3647!important;
+    color: white;
+}
+
 .right_container{
     background-color: #F6F7F8;
     width: 100vw;
@@ -143,6 +148,14 @@ body{
     height: 59px;
 }
 
+.response_Seperator{
+    display: none;
+    margin: 0;
+    border: 3px solid #29ABE2;
+    width: 90px;
+    margin-top: 16px;
+}
+
 .contact_headline span{
     display: flex;
     align-items: center;
@@ -152,6 +165,7 @@ body{
     display: none;
     flex-direction: column;
     margin-left: 80px;
+    margin-right: 8px;
     margin-top: 50px;
 }
 
@@ -178,10 +192,6 @@ body{
     justify-content: center;
     align-items: center;
     background-color: lightblue;
-}
-
-.name_width{
-    width: 400px;
 }
 
 .name_rightContainer {
@@ -238,140 +248,34 @@ body{
     color: black;
 }
 
-@media (max-width: 1200px) {
-    .name_width{
-        width: auto;
-    }
-
-    .contact_headline h1{
-        font-size: 50px;
-    }
-
-    .big_circle {
-        min-width: 120px;
-        min-height: 120px;
-    }
-
-    #addContactButton {
-        width: 300px;
-    }
-
-    .contact_List {
-        width: 300px;
-    }
-
-    .name_contant {
-        width: 300px;
-        gap: 16px;
-    }
+#backArrow{
+    display: none;
+    position: absolute;
+    top: 128px;
+    right: 16px;
+    height: 32px;
+    width: 32px;
+    cursor: pointer;
 }
 
-@media (max-width: 1000px) {
-    .contact_headline {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .headline_Seperator {
-        height: auto;
-        width: 59px;
-    }
-
-    .contact_name{
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
-    }
+.newContact_bg{
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-@media (max-width: 860px) {
-    .contact_card {
-        margin: 80px 16px 0 40px;
-    }
-
-    .contact_overview {
-        margin-left: 40px;
-    }
-}
-
-@media (max-width: 800px) {
-    #addContactButton {
-        max-width: 200px;
-    }
-
-    .contact_List {
-        max-width: 200px;
-    }
-
-    .name_contant {
-        max-width: 200px;
-        gap: 8px;
-    }
-
-    .nameIcon_leftContainer {
-        margin-left: 3px;
-    }
-
-    .name_leftContainer {
-        font-size: 16px;
-    }
-
-    .email_leftContainer{
-        max-width: 200px;
-        line-break: anywhere;
-    }
-}
-
-@media (max-width: 750px) {
-    .left_container {
-        padding: 0;
-    }
-
-    .contact_section{
-        padding: 0;
-    }
-
-    .left_container{
-        width: 100vh;
-    }
-
-    .right_container{
-        display: none;
-    }
-
-    #addContactButton {
-        display: none;
-    }
-
-    #addContactButtonResponse {
-        display: flex;
-    }
-
-    .contact_List {
-        max-width: 100vh;
-        width: 90%;
-    }
-
-    .name_contant {
-        max-width: 100vh;
-        width: 100%;
-    }
-
-    .email_leftContainer{
-        line-break: normal;
-    }
-
-    .nameIcon_leftContainer {
-        margin-left: 20px;
-    }
-
-    .name_contant {
-        gap: 35px;
-    }
-}
-
-@media (max-width: 370px) {
-    .email_leftContainer{
-        line-break: anywhere;
-    }
+.newContactField{
+    height: 592px;
+    width: 1212px;
+    background-color: white;
+    border-radius: 30px;
+    margin-left: 16px;
+    margin-right: 16px;
 }

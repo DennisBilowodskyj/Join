@@ -5,6 +5,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 40px 0 348px;
+    position: relative;
 }
 
 .header_content{
