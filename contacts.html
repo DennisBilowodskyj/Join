@@ -4,17 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join</title>
-    <link rel="icon" href="assets/img/logos/JoinLogo.png">
+    <link rel="icon" href="assets/img/logos/JoinLogo.png" />
     <link rel="stylesheet" href="./assets/css/header.css" />
     <link rel="stylesheet" href="./assets/css/sideBar.css" />
     <link rel="stylesheet" href="./assets/css/contacts.css" />
     <link rel="stylesheet" href="./assets/css/inter.css" />
     <link rel="stylesheet" href="./assets/css/openSans.css" />
 
-    <script src="./assets/js/script.js"></script>
     <script src="./assets/js/contacts.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/storage.js"></script>
   </head>
-  <body onload="init()">
+  <body onload="contactInit()">
     <div w3-include-html="./assets/tamplets/header.html"></div>
     <div w3-include-html="./assets/tamplets/sideBar.html"></div>
 
@@ -30,38 +31,13 @@
         </button>
 
         <button id="addContactButtonResponse">
-            <img
-              src="./assets/img/contact_icons/person_add.png"
-              alt="plus Person"
-            />
-          </button>
+          <img
+            src="./assets/img/contact_icons/person_add.png"
+            alt="plus Person"
+          />
+        </button>
 
-        <div class="contact_List" id="contact_List">
-          <div class="first_Latter">A</div>
-          <hr class="name_Seperator" />
-
-          <div class="centersizer">
-            <div onclick="showName()" id="name1" class="name_contant">
-              <!-- Will get the first Letter of first Name and second -->
-              <div class="nameIcon_leftContainer">AE</div>
-              <div>
-                <div class="name_leftContainer">Albert Einstein</div>
-                <div class="email_leftContainer">
-                  albert.einstein@physics.com
-                </div>
-              </div>
-            </div>
-
-            <div class="name_contant">
-              <!-- Will get the first Letter of first Name and second -->
-              <div class="nameIcon_leftContainer">AS</div>
-              <div>
-                <div class="name_leftContainer">Adam Sandler</div>
-                <div class="email_leftContainer">adam.sandler@funny.com</div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="contact_List" id="contact_List"></div>
       </div>
 
       <!-- right Container -->
@@ -78,39 +54,18 @@
         <!-- automated created content of the right side -->
         <div id="contact_overview" class="contact_overview">
           <div class="contact_name">
-            <div class="big_circle">AE</div>
+            <div id="big_circle" class="big_circle">AE</div>
             <div class="name_width">
-              <div class="name_rightContainer">Albert Einstein</div>
-              <div class="edit_delete">
-                <a
-                  ><img
-                    src="./assets/img/contact_icons/edit.svg"
-                    alt="Edit Icon"
-                  />Edit</a
-                >
-                <a
-                  ><img
-                    src="./assets/img/contact_icons/delete.svg"
-                    alt="Delete Icon"
-                  />Delete</a
-                >
+              <div id="name_rightContainer" class="name_rightContainer">
+                Albert Einstein
               </div>
+              <div class="edit_delete" id="edit_delete"></div>
             </div>
           </div>
 
           <div class="contact_information">Contact Information</div>
-
-          <div class="email_rightContainer">
-            <span>Email</span>
-            <a href="mailto:albert.einstein@physics.com?subject=Feedback&body=Message">
-                albert.einstein@physics.com
-                </a>
-          </div>
-
-          <div class="phone_rightContainer">
-            <span>Phone</span>
-            <a href="tel:+41 14031879 160">+41 14031879 160</a>
-          </div>
+          <div class="email_rightContainer" id="email_rightContainer"></div>
+          <div class="phone_rightContainer" id="phone_rightContainer"></div>
         </div>
       </div>
     </section>
