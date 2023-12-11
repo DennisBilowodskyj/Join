@@ -1,10 +1,6 @@
 let users = [];
 
-/**
- * This is
- * 
- * @param {string} name-This ist a function
- */
+
 async function initLogIn(){
     loadUser();
 }

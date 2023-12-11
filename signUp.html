@@ -26,32 +26,37 @@
                     <div class="distance-line"></div>
                 </div>
             </div>
+            <form onsubmit="registerNewUser()">
             <div class="input-section">
                     <div class="input-div">
-                        <input class="input-field cursor" type="text" placeholder="Name">
+                        <input required class="input-field cursor" type="text" placeholder="Name">
                         <img class="input-img cursor" src="assets/img/signUp_icons/person.png">
                     </div>
                     <div class="input-div">
-                        <input class="input-field cursor" type="email" placeholder="Email">
+                        <input required class="input-field cursor" type="email" placeholder="Email">
                         <img class="input-img cursor" src="assets/img/signUp_icons/mail.png">
                     </div>
                     <div class="input-div">
-                        <input class="input-field cursor" type="password" placeholder="Password">
+                        <input required class="input-field cursor" type="password" placeholder="Password">
                         <img class="input-img cursor" src="assets/img/signUp_icons/lock.png">
                     </div>
                     <div class="input-div">
-                        <input class="input-field cursor" type="password" placeholder="Confirm Password">
+                        <input required class="input-field cursor" type="password" placeholder="Confirm Password">
                         <img class="input-img cursor" src="assets/img/signUp_icons/lock.png">
                     </div>
                 <div class="sign-up-checkbox-section">
-                    <input class="cursor checkbox-input" type="checkbox">
-                    <span>I accept the</span>
+                    <input id="accept-privacy-police" class="cursor checkbox-input" type="checkbox">
+                    <label for="accept-privacy-police">
+                        <span>I accept the</span>
+                    </label>
                     <a href="privacyPolice_notLoggedIn.html" class="sign-up-checkbox-link cursor">Privacy Police</a>
                 </div>
             </div>
             <div class="sign-up-button-section">
-                <button class="log-in-button cursor">Sign up</button>
+                <button id="signUpButton" class="log-in-button cursor">Sign up</button>
+            
             </div>
+        </form>
         </div>
     </div>
     <div class="sign-up-footer-section">
