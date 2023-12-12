@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./assets/css/header.css" />
     <link rel="stylesheet" href="./assets/css/sideBar.css" />
     <link rel="stylesheet" href="./assets/css/contacts.css" />
+    <link rel="stylesheet" href="./assets/css/contactsNewContacOverlayer.css" />
     <link rel="stylesheet" href="./assets/css/contactsResponse.css" />
     <link rel="stylesheet" href="./assets/css/inter.css" />
     <link rel="stylesheet" href="./assets/css/openSans.css" />
@@ -22,7 +23,61 @@
 
     <section id="newContact_bg" class="newContact_bg">
       <div class="newContactField">
-        
+        <div class="newContactField_left">
+          <img
+            class="newContactLogo"
+            src="./assets/img/contact_icons/JoinLogo.png"
+            alt=""
+          />
+          <h2>Add contact</h2>
+          <span>Task are better with a team!</span>
+          <hr />
+        </div>
+        <div class="newContact_cycle">
+          <img src="./assets/img/contact_icons/person.svg" alt="" />
+        </div>
+        <div class="newContactField_right">
+          <div>
+            <a class="closeButton" onclick=""
+              ><img
+                src="./assets/img/contact_icons/contact_mini_icons/Close.svg"
+            /></a>
+            <form class="newContactForm" onsubmit="">
+              <input
+                class="input_name"
+                required
+                type="text"
+                placeholder="Name"
+              />
+              <input
+                class="input_email"
+                required
+                type="email"
+                placeholder="Email"
+              />
+              <input
+                class="input_tel"
+                required
+                type="tel"
+                placeholder="Phone"
+              />
+              <div class="newContactButtons">
+                <button class="cancelButton">
+                  Cancel<img
+                    src="./assets/img/contact_icons/contact_mini_icons/iconoir_cancel.svg"
+                  />
+                </button>
+                <button class="createButton">
+                  Create contact
+                  <img
+                    src="./assets/img/contact_icons/contact_mini_icons/check.svg"
+                    alt=""
+                  />
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -55,11 +110,11 @@
             <h1>Contacts</h1>
             <hr class="headline_Seperator" />
             <span>Better with a team</span>
-            <hr class="response_Seperator"/>
+            <hr class="response_Seperator" />
           </div>
         </div>
         <a id="backArrow" onclick="rensponseBackToList()">
-          <img src="./assets/img/contact_icons/backarrow.png">
+          <img src="./assets/img/contact_icons/backarrow.png" />
         </a>
 
         <!-- automated created content of the right side -->
