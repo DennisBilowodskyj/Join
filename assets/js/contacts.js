@@ -1,23 +1,24 @@
-let contacts = [
-  {
-    name: "Albert Einstein",
-    email: "albert.einstein@physics.com",
-    tel: "+41 14031879 160",
-  },
-  {
-    name: "Adam Sandler",
-    email: "adam.sandler@funny.com",
-    tel: "+41 09091966 000",
-  },
-];
+let contacts = [];
+// let contacts = [
+//   {
+//     name: "Albert Einstein",
+//     email: "albert.einstein@physics.com",
+//     tel: "+41 14031879 160",
+//   },
+//   {
+//     name: "Adam Sandler",
+//     email: "adam.sandler@funny.com",
+//     tel: "+41 09091966 000",
+//   },
+// ];
 let filterLetters = [];
 let activeNameList = [];
 
 // #################### Inition of the functions #############################
 // ###########################################################################
-function contactInit() {
-  init();
-  loadContacts();
+async function contactInit() {
+  await init();
+  await loadContacts();
   filterLetter();
 }
 
@@ -119,7 +120,7 @@ function renderContacts() {
     document.getElementById("contact_List").innerHTML += `
         <div class="first_Latter">${firstLetter}</div>
         <hr class="name_Seperator" />
-        <div id="contact_Users"></div>`;
+        <div id="contact_Users(${firstLetter})"></div>`;
     filterContactNames(firstLetter);
   }
 }
@@ -145,7 +146,7 @@ function filterContactNames(letter) {
 
 function renderContactNames(i, name, email) {
   document.getElementById(
-    "contact_Users"
+    `contact_Users(${initials(name, 0)})`
   ).innerHTML += `<div class="centersizer">
     <div onclick="showName(${i})" id="name${i}" class="name_contant">
         <div class="nameIcon_leftContainer">${
