@@ -52,3 +52,19 @@ function resetForm(){
     checkPassword.value = '';
     signUpButton.disabled = false;
 }
+
+
+function checkInput(){
+    let inputIds = ['password', 'checkPassword'];
+    let imgIds = ['passwordInputImg', 'checkPasswordInputImg'];
+
+    inputIds.forEach((inputId, index) => {
+        let input = document.getElementById(inputId);
+        let img = document.getElementById(imgIds[index]);
+        if (input.value.trim() !== "") {
+            img.src = "assets/img/signUp_icons/hidePassword.png";
+        } else {
+            img.src = "assets/img/signUp_icons/lock.png";
+        }
+    });
+}

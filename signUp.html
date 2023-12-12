@@ -40,12 +40,12 @@
                         <img class="input-img cursor" src="assets/img/signUp_icons/mail.png">
                     </div>
                     <div class="input-div">
-                        <input required id="password" class="input-field cursor" type="password" placeholder="Password">
-                        <img class="input-img cursor" src="assets/img/signUp_icons/lock.png">
+                        <input required id="password" class="input-field cursor" type="password" placeholder="Password" oninput="checkInput()">
+                        <img id="passwordInputImg" class="input-img cursor" src="assets/img/signUp_icons/lock.png">
                     </div>
                     <div class="input-div">
-                        <input required id="checkPassword" class="input-field cursor" type="password" placeholder="Confirm Password">
-                        <img class="input-img cursor" src="assets/img/signUp_icons/lock.png">
+                        <input required id="checkPassword" class="input-field cursor" type="password" placeholder="Confirm Password" oninput="checkInput()">
+                        <img id="checkPasswordInputImg"  class="input-img cursor" src="assets/img/signUp_icons/lock.png">
                     </div>
                     <div id="passwordErrorMessage" class="error-message-section"></div>
                 <div class="sign-up-checkbox-section">

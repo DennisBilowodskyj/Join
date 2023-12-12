@@ -11,6 +11,7 @@
     <script src="assets/js/index.js"></script>
     <script src="assets/js/storage.js"></script>
     <script src="assets/js/signUp.js"></script>
+    <script src="assets/js/logIn.js"></script>
 </head>
 <body>
     <!-- HEADER -->
@@ -38,8 +39,8 @@
                     <img class="input-img cursor" src="assets/img/signUp_icons/mail.png">
                 </div>
                 <div class="input-div">
-                    <input required id="password" class="input-field cursor" type="password" placeholder="Password">
-                    <img class="input-img cursor" src="assets/img/signUp_icons/lock.png">
+                    <input required id="passwordLogIn" class="input-field cursor" type="password" placeholder="Password" oninput="checkInputLogIn()">
+                    <img id="passwordLogInImg" class="input-img cursor" src="assets/img/signUp_icons/lock.png">
                 </div>
                 <div class="checkbox-section">
                     <input required id="remember-me" class="cursor checkbox-input" type="checkbox">
