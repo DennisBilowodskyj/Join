@@ -27,8 +27,9 @@ async function userLogIn(){
         confirmPassword : checkPassword.value,
     });
     await setItem('users', JSON.stringify(users));
+    document.getElementById('body').classList.add('succes-sign-up');
+    document.getElementById('keyframeSignUp').classList.add('start-animation');
     resetForm();
-    
     }else{
         passwordErrorDiv.innerHTML = 'Die von ihnen eingebenen Passwörter stimmen nicht überein';
     }

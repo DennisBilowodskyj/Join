@@ -20,7 +20,6 @@
 .keyframe-logo{
     height: 121px;
     width: 100px;
-    background-image: 'assets/img/logos/JoinLogo.png';
     position: relative;
     animation: mymove 1s forwards;
     z-index: 999;
@@ -42,4 +41,31 @@
             opacity: 1; 
         }
     }
+}
+
+/*SUCCES SIGN UP*/
+.keyframe-sign-up{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+}
+.succes-sign-up{
+    background-color: rgba(128, 128, 128, 0.5);
+    z-index: 1000;
+    display: block;
+}
+.keyframe-sign-up{
+    position: relative;
+    z-index: 999;
+    
+}
+.start-animation{
+    animation: signUpSuccesfully 0.3s forwards;
+}
+@keyframes signUpSuccesfully {
+    from {bottom: -40vh;
+    opacity: 1;}
+    to {bottom: 40vh;
+    opacity: 1;}
 }

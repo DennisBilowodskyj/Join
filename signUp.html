@@ -8,17 +8,18 @@
     <link rel="stylesheet" href="assets/css/index.css">
     <link rel="stylesheet" href="assets/css/signUp.css">
     <link rel="stylesheet" href="assets/css/inter.css">
+    <link rel="stylesheet" href="assets/css/keyframeAnimation.css">
     <script src="assets/js/storage.js"></script>
     <script src="assets/js/signUp.js"></script>
 </head>
-<body onload="initLogIn()">
+<body id="body" onload="initLogIn()">
     <div class="index-top-section">
         <div>
             <img class="join-logo" src="assets/img/logos/JoinLogoDark.png">
         </div>
     </div>
-    <div class="index-main-section">
-        <div class="sign-up-box">
+    <div id="index-main-section" class="index-main-section">
+        <div id="sign-up-box" class="sign-up-box">
             <div class="sign-up-box-top-section">
                 <div class="get-back-arrow">
                     <a href="index.html"><img src="assets/img/signUp_icons/getBackArrow.png"></a>
@@ -57,10 +58,12 @@
             </div>
             <div class="sign-up-button-section">
                 <button id="signUpButton" class="log-in-button cursor">Sign up</button>
-            
             </div>
         </form>
         </div>
+    </div>
+    <div id="keyframeSignUp" class="keyframe-sign-up">
+        <img src="assets/img/signUp_icons/signUpSuccessfully.png">
     </div>
     <div class="sign-up-footer-section">
         <a href="privacyPolice_notLoggedIn.html" class="footer-link cursor">Privacy Police</a>
