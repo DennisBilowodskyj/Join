@@ -17,7 +17,7 @@ let activeNameList = [];
 // #################### Inition of the functions #############################
 // ###########################################################################
 async function contactInit() {
-  await init();
+  init();
   await loadContacts();
   filterLetter();
 }
@@ -27,9 +27,24 @@ async function contactInit() {
 async function loadContacts() {
   try {
     contacts = JSON.parse(await getItem("contacts"));
+    sortNames(contacts);
   } catch (e) {
     console.info("Could not load Contacts");
   }
+}
+
+function sortNames(daten) {
+  daten.sort(function (a, b) {
+    var nameA = a.name.toUpperCase();
+    var nameB = b.name.toUpperCase();
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+    return 0;
+  });
 }
 
 async function saveContact() {
