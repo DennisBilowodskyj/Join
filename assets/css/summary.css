@@ -233,6 +233,7 @@ body{
     color: rgb(41, 171, 226);
     width: 385px;
     height: 77px;
+    margin-top: 65px;
 }
 
 @media (max-width: 1400px){

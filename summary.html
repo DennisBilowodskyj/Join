@@ -13,7 +13,7 @@
     <title>Join</title>
     <link rel="icon" href="assets/img/logos/JoinLogo.png">
 </head>
-<body onload="init()">
+<body onload="init()" onclick="addToSummary()">
 
     <div w3-include-html="./assets/tamplets/header.html"></div>
     <div w3-include-html="./assets/tamplets/sideBar.html"></div>
@@ -25,10 +25,10 @@
 
     </div>
         <div class="summary_content">
-            <!--<a href="board.html" class="board_link">-->
+           <a href="board.html" class="board_link">
             <div class="section_one">
                 
-                <div class="todo_number" onclick="addToSummary()">
+                <div class="todo_number">
                                              
                     <span class="edit_png">
                         <svg width="25" height="25" viewBox="0 0 25 25" fill="white" xmlns="http://www.w3.org/2000/svg">
