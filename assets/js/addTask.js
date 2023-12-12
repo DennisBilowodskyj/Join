@@ -1,4 +1,5 @@
 let taskPrio;
+let assignedTo = [];
 let subtasks = [];
 let tasks = [
 ];
@@ -36,6 +37,7 @@ function initAddTask() {
     init();
     setMinDate();
     renderContacts();
+    isInputFocused();
     // getItem(key);
 }
 
@@ -52,7 +54,7 @@ function addTask() {
     tasks.push({
         title: title,
         description: description,
-        assignedTo: [],
+        assignedTo: assignedTo,
         date: date,
         prio: taskPrio,
         subtask: subtasks
@@ -75,16 +77,46 @@ function addSubtask() {
 
 }
 
-// test assigned to
+
+
 function assign(i) {
     console.log('contact' + i);
     let contactContainer = document.getElementById(`contact${i}`);
     let checkbox = document.getElementById(`assignedCechbox${i}`);
 
-    contactContainer.classList.add('contactAktive');
-    contactContainer.style.backgroundColor = ('#2A3647');
-    checkbox.src = "./assets/img/addTask_icons/checked-white.png";
-    
+    // Toggle assigned status
+    contacts[i].assigned = !contacts[i].assigned;
+
+    if (contacts[i].assigned) {
+        contactContainer.classList.add('contactAktive');
+        contactContainer.style.backgroundColor = ('#2A3647');
+        checkbox.src = "./assets/img/addTask_icons/checked-white.png";
+
+        assignedTo.push(contacts[i]);
+    } else {
+        contactContainer.classList.remove('contactAktive');
+        contactContainer.style.backgroundColor = ('');
+        checkbox.src = "./assets/img/addTask_icons/check_button.png";
+
+        let indexToRemove = assignedTo.findIndex(contact => contact === contacts[i]);
+        if (indexToRemove !== -1) {
+            assignedTo.splice(indexToRemove, 1);
+        }
+    }
+
+    console.log(assignedTo);
+    renderAssignedBadges();
+}
+
+function renderAssignedBadges() {
+    let badgesContainer = document.getElementById('badgesAssignedTo');
+    badgesContainer.innerHTML = '';
+
+    assignedTo.forEach(contact => {
+        badgesContainer.innerHTML += `
+            <div class="contactBadge">${contact.initials}</div>
+        `;
+    });
 }
 
 function setPrio(prio) {
@@ -115,7 +147,10 @@ function renderContacts() {
 
 }
 
-
+function isInputFocused() {
+    let subtaskInput = document.getElementById('subtaskInput');
+    return subtaskInput === document.activeElement;
+}
 
 
 /**

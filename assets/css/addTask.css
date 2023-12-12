@@ -257,6 +257,14 @@ select {
 
 }
 
+#badgesAssignedTo{
+    display: flex;
+}
+
+#badgesAssignedTo div{
+    margin-right: -5px !important;
+}
+
 .contactRight {
     /* background-image: url(/assets/img/addTask_icons/check_button.png); */
     width: 24px;
