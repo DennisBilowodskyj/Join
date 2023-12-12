@@ -11,7 +11,7 @@
     <script src="assets/js/storage.js"></script>
     <script src="assets/js/signUp.js"></script>
 </head>
-<body>
+<body onload="initLogIn()">
     <div class="index-top-section">
         <div>
             <img class="join-logo" src="assets/img/logos/JoinLogoDark.png">
@@ -28,26 +28,27 @@
                     <div class="distance-line"></div>
                 </div>
             </div>
-            <form onsubmit="registerNewUser()">
+            <form onsubmit="userLogIn(); return false;">
             <div class="input-section">
                     <div class="input-div">
-                        <input required class="input-field cursor" type="text" placeholder="Name">
+                        <input required id="userName" class="input-field cursor" type="text" placeholder="Name">
                         <img class="input-img cursor" src="assets/img/signUp_icons/person.png">
                     </div>
                     <div class="input-div">
-                        <input required class="input-field cursor" type="email" placeholder="Email">
+                        <input required id="email" class="input-field cursor" type="email" placeholder="Email">
                         <img class="input-img cursor" src="assets/img/signUp_icons/mail.png">
                     </div>
                     <div class="input-div">
-                        <input required class="input-field cursor" type="password" placeholder="Password">
+                        <input required id="password" class="input-field cursor" type="password" placeholder="Password">
                         <img class="input-img cursor" src="assets/img/signUp_icons/lock.png">
                     </div>
                     <div class="input-div">
-                        <input required class="input-field cursor" type="password" placeholder="Confirm Password">
+                        <input required id="checkPassword" class="input-field cursor" type="password" placeholder="Confirm Password">
                         <img class="input-img cursor" src="assets/img/signUp_icons/lock.png">
                     </div>
+                    <div id="passwordErrorMessage" class="error-message-section"></div>
                 <div class="sign-up-checkbox-section">
-                    <input id="accept-privacy-police" class="cursor checkbox-input" type="checkbox">
+                    <input required id="accept-privacy-police" class="cursor checkbox-input" type="checkbox">
                     <label for="accept-privacy-police">
                         <span>I accept the</span>
                     </label>
