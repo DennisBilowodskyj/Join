@@ -1,16 +1,4 @@
 let contacts = [];
-// let contacts = [
-//   {
-//     name: "Albert Einstein",
-//     email: "albert.einstein@physics.com",
-//     tel: "+41 14031879 160",
-//   },
-//   {
-//     name: "Adam Sandler",
-//     email: "adam.sandler@funny.com",
-//     tel: "+41 09091966 000",
-//   },
-// ];
 let filterLetters = [];
 let activeNameList = [];
 
@@ -35,8 +23,8 @@ async function loadContacts() {
 
 function sortNames(daten) {
   daten.sort(function (a, b) {
-    var nameA = a.name.toUpperCase();
-    var nameB = b.name.toUpperCase();
+    let nameA = a.name.toUpperCase();
+    let nameB = b.name.toUpperCase();
     if (nameA < nameB) {
       return -1;
     }
@@ -57,6 +45,8 @@ async function saveContact() {
 
   await setItem("contacts", JSON.stringify(contacts));
   resetForm();
+  await loadContacts();
+  filterLetter();
 }
 
 function resetForm() {
@@ -205,7 +195,7 @@ function renderEditDelete(id) {
     </a>
     <a>
         <img src="./assets/img/contact_icons/delete.svg"
-        onclick="delete(${id})"
+        onclick="deleteContact(${id})"
         alt="Delete Icon"/>Delete
     </a>`;
 }
@@ -243,5 +233,8 @@ function openNewContactDialog() {
 // function edit(id){
 // }
 
-// function delete(id){
-// }
+async function deleteContact(id) {
+  contacts.splice(id, 1);
+  await setItem("contacts", JSON.stringify(contacts));
+  contactInit()
+}
