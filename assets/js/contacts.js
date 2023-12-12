@@ -37,8 +37,9 @@ function sortNames(daten) {
 
 async function saveContact() {
   createButton.disabled = true;
+  contactNameUppercase = capitalizedName(contactName.value);
   contacts.push({
-    name: contactName.value,
+    name: contactNameUppercase,
     email: contactEmail.value,
     tel: contactTel.value,
   });
@@ -54,6 +55,15 @@ function resetForm() {
   contactEmail.value = "";
   contactTel.value = "";
   createButton.disabled = false;
+}
+
+function capitalizedName(Name) {
+  let FirstName = Name.split(" ")[0];
+  let SecondName = Name.split(" ")[1];
+  FirstName = FirstName.charAt(0).toUpperCase() + FirstName.slice(1);
+  SecondName = SecondName.charAt(0).toUpperCase() + SecondName.slice(1);
+  contactNameUppercase = FirstName+" "+SecondName;
+  return contactNameUppercase
 }
 
 // ################## Button and Design funktions ############################
@@ -171,12 +181,14 @@ function initials(name, position) {
 }
 
 function renderContactInformation(id) {
-  let name = contacts[id]["name"];
-  renderBigCircle(name);
-  document.getElementById("name_rightContainer").innerHTML = name;
-  renderEditDelete(id);
-  renderEmail(id);
-  renderPhone(id);
+  if (id >= 0 && id < contacts.length) {
+    let name = contacts[id]["name"];
+    renderBigCircle(name);
+    document.getElementById("name_rightContainer").innerHTML = name;
+    renderEditDelete(id);
+    renderEmail(id);
+    renderPhone(id);
+  }
 }
 
 function renderBigCircle(name) {
@@ -188,14 +200,12 @@ function renderBigCircle(name) {
 function renderEditDelete(id) {
   document.getElementById("edit_delete").innerHTML = "";
   document.getElementById("edit_delete").innerHTML = `
-    <a>
+    <a onclick="edit(${id})">
         <img src="./assets/img/contact_icons/edit.svg"
-        onclick="edit(${id})"
         alt="Edit Icon"/>Edit
     </a>
-    <a>
+    <a onclick="deleteContact(${id})">
         <img src="./assets/img/contact_icons/delete.svg"
-        onclick="deleteContact(${id})"
         alt="Delete Icon"/>Delete
     </a>`;
 }
@@ -236,5 +246,7 @@ function openNewContactDialog() {
 async function deleteContact(id) {
   contacts.splice(id, 1);
   await setItem("contacts", JSON.stringify(contacts));
-  contactInit()
+  filterLetters = [];
+  contactInit();
+  showName(id);
 }
