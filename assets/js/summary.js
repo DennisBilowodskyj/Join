@@ -51,3 +51,4 @@ document.getElementById("demo").innerHTML = greeting;
 }
 
 
+greet();
