@@ -29,10 +29,19 @@ async function userLogIn(){
     await setItem('users', JSON.stringify(users));
     document.getElementById('body').classList.add('succes-sign-up');
     document.getElementById('keyframeSignUp').classList.add('start-animation');
+    loadIndex();
     resetForm();
     }else{
         passwordErrorDiv.innerHTML = 'Die von ihnen eingebenen Passwörter stimmen nicht überein';
     }
+}
+
+
+function loadIndex(){
+    setTimeout(function() {
+        let pageURL = 'index.html';
+        window.location.href = pageURL;
+    }, 2000);
 }
 
 
