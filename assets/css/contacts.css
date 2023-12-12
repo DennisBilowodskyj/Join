@@ -172,6 +172,10 @@ body {
   display: flex;
 }
 
+.display_none {
+    display: none!important;
+  }
+
 .contact_name {
   display: flex;
   align-items: center;

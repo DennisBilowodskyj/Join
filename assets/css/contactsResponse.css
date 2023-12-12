@@ -42,6 +42,11 @@
   .cancelButton {
     font-size: 21px !important;
   }
+
+  .createButton {
+    padding: 5px;
+    height: 61px;
+  }
 }
 
 @media (max-width: 1000px) {
@@ -59,10 +64,6 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
-  }
-
-  .createButton {
-    padding: 5px;
   }
 }
 
@@ -229,7 +230,7 @@
     height: 100%;
 }
 
-  .newContactField_left img {
+  .newContactLogo {
     display: none;
   }
 
@@ -287,6 +288,10 @@
     height: 51px;
     margin-top: 32px;
     padding: 18px, 10px, 18px, 10px;
+  }
+
+  #closeResponse {
+    display: flex;
   }
 }
 

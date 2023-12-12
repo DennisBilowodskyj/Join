@@ -13,6 +13,45 @@ let contacts = [
 let filterLetters = [];
 let activeNameList = [];
 
+// #################### Inition of the functions #############################
+// ###########################################################################
+function contactInit() {
+  init();
+  loadContacts();
+  filterLetter();
+}
+
+// ################## Load and Save User Contacts ############################
+// ###########################################################################
+async function loadContacts() {
+  try {
+    contacts = JSON.parse(await getItem("contacts"));
+  } catch (e) {
+    console.info("Could not load Contacts");
+  }
+}
+
+async function saveContact() {
+  createButton.disabled = true;
+  contacts.push({
+    name: contactName.value,
+    email: contactEmail.value,
+    tel: contactTel.value,
+  });
+
+  await setItem("contacts", JSON.stringify(contacts));
+  resetForm();
+}
+
+function resetForm() {
+  contactName.value = "";
+  contactEmail.value = "";
+  contactTel.value = "";
+  createButton.disabled = false;
+}
+
+// ################## Button and Design funktions ############################
+// ###########################################################################
 /**
  * This function is used to create contact informations on the right side.
  *
@@ -28,7 +67,7 @@ function showName(id) {
 function addORremoveActiveName(id) {
   let markedElement = document.getElementById(`name` + id);
   if (activeNameList.includes(`name` + id)) {
-    removeAllActiveElements(markedElement)
+    removeAllActiveElements(markedElement);
   } else {
     markedElement.classList.add("activeName");
     document.getElementById("contact_overview").classList.add("display_flex");
@@ -44,10 +83,10 @@ function removeActiveName() {
   }
 }
 
-function removeAllActiveElements(markedElement){
-    markedElement.classList.remove("activeName");
-    document.getElementById("contact_overview").classList.remove("display_flex");
-    activeNameList = [];
+function removeAllActiveElements(markedElement) {
+  markedElement.classList.remove("activeName");
+  document.getElementById("contact_overview").classList.remove("display_flex");
+  activeNameList = [];
 }
 
 function openRensponse() {
@@ -62,20 +101,6 @@ function rensponseBackToList() {
   document.getElementById("left_container").classList.remove("display_none");
   document.getElementById("right_container").classList.remove("display_block");
   removeActiveName();
-}
-
-function contactInit() {
-  init();
-  loadNames();
-  filterLetter();
-}
-
-async function loadNames() {
-  try {
-    users = JSON.parse(await getItem("contacts"));
-  } catch (e) {
-    console.info("Could not load Contacts");
-  }
 }
 
 function filterLetter() {
@@ -189,7 +214,15 @@ function renderPhone(id) {
     </a>`;
 }
 
+// ######### Overlayer Functions for Add, delete and Create Contacts #########
+// ###########################################################################
+function closeButton() {
+  document.getElementById("newContact_bg").classList.add("display_none");
+}
 
+function openNewContactDialog() {
+  document.getElementById("newContact_bg").classList.remove("display_none");
+}
 
 // function edit(id){
 // }

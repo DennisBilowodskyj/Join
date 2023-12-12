@@ -101,6 +101,14 @@
   width: 32px;
 }
 
+#closeResponse {
+  display: none;
+  justify-content: end;
+  padding: 24px 16px 0 0;
+  cursor: pointer;
+}
+
+
 .newContactForm {
   display: flex;
   flex-direction: column;

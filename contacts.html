@@ -21,9 +21,12 @@
     <div w3-include-html="./assets/tamplets/header.html"></div>
     <div w3-include-html="./assets/tamplets/sideBar.html"></div>
 
-    <section id="newContact_bg" class="newContact_bg">
+    <section id="newContact_bg" class="newContact_bg display_none">
       <div class="newContactField">
         <div class="newContactField_left">
+          <a onclick="closeButton()" id="closeResponse">
+            <img src="./assets/img/contact_icons/contact_mini_icons/CloseResponse.png">
+          </a>
           <img
             class="newContactLogo"
             src="./assets/img/contact_icons/JoinLogo.png"
@@ -38,36 +41,43 @@
         </div>
         <div class="newContactField_right">
           <div>
-            <a class="closeButton" onclick=""
+            <a class="closeButton" onclick="closeButton()"
               ><img
                 src="./assets/img/contact_icons/contact_mini_icons/Close.svg"
             /></a>
-            <form class="newContactForm" onsubmit="">
+            <form
+              id="newContactForm"
+              class="newContactForm"
+              onsubmit="saveContact(); return false;"
+            >
               <input
                 class="input_name"
                 required
+                id="contactName"
                 type="text"
                 placeholder="Name"
               />
               <input
                 class="input_email"
                 required
+                id="contactEmail"
                 type="email"
                 placeholder="Email"
               />
               <input
                 class="input_tel"
                 required
+                id="contactTel"
                 type="tel"
                 placeholder="Phone"
               />
               <div class="newContactButtons">
-                <button class="cancelButton">
+                <button class="cancelButton" onclick="closeButton()">
                   Cancel<img
                     src="./assets/img/contact_icons/contact_mini_icons/iconoir_cancel.svg"
                   />
                 </button>
-                <button class="createButton">
+                <button class="createButton" id="createButton">
                   Create contact
                   <img
                     src="./assets/img/contact_icons/contact_mini_icons/check.svg"
@@ -84,7 +94,7 @@
     <section class="contact_section">
       <!-- left Container -->
       <div class="left_container" id="left_container">
-        <button id="addContactButton">
+        <button id="addContactButton" onclick="openNewContactDialog()">
           Add new contact
           <img
             src="./assets/img/contact_icons/person_add.png"
@@ -92,7 +102,7 @@
           />
         </button>
 
-        <button id="addContactButtonResponse">
+        <button id="addContactButtonResponse" onclick="openNewContactDialog()">
           <img
             src="./assets/img/contact_icons/person_add.png"
             alt="plus Person"
