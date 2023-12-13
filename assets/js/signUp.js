@@ -17,6 +17,7 @@ async function loadUser(){
 
 async function userLogIn(){
     const passwordErrorDiv = document.getElementById('passwordErrorMessage');
+    document.getElementById('inputDivRedBorder').classList.remove('check-password-red-border');
     if(password.value === checkPassword.value){
         passwordErrorDiv.innerHTML = '';
     signUpButton.disabled = true;
@@ -32,7 +33,8 @@ async function userLogIn(){
     loadIndex();
     resetForm();
     }else{
-        passwordErrorDiv.innerHTML = 'Die von ihnen eingebenen Passwörter stimmen nicht überein';
+        passwordErrorDiv.innerHTML = 'Ups! your password dont match';
+        document.getElementById('inputDivRedBorder').classList.add('check-password-red-border');
     }
 }
 
