@@ -124,6 +124,7 @@
 
   .left_container {
     width: 100vw;
+    height: calc(100vh - 175px);
   }
 
   .right_container {
@@ -292,6 +293,10 @@
 
   #closeResponse {
     display: flex;
+  }
+
+  .edit_delete{
+    display: none;
   }
 }
 

@@ -106,7 +106,7 @@ function removeAllActiveElements(markedElement) {
 
 function responseTestToOpenWindow(id) {
   let screenWidth = window.innerWidth;
-  if(screenWidth <= 750){
+  if (screenWidth <= 750) {
     document.getElementById("contact_overview").classList.add("display_flex");
     openRensponse(id);
   }
@@ -191,6 +191,7 @@ function renderContactInformation(id) {
     renderBigCircle(name);
     document.getElementById("name_rightContainer").innerHTML = name;
     renderEditDelete(id);
+    renderResponseEditDelete(id);
     renderEmail(id);
     renderPhone(id);
   }
@@ -205,7 +206,7 @@ function renderBigCircle(name) {
 function renderEditDelete(id) {
   document.getElementById("edit_delete").innerHTML = "";
   document.getElementById("edit_delete").innerHTML = `
-    <a onclick="edit(${id})">
+    <a onclick="editContact(${id})">
         <img src="./assets/img/contact_icons/edit.svg"
         alt="Edit Icon"/>Edit
     </a>
@@ -213,6 +214,26 @@ function renderEditDelete(id) {
         <img src="./assets/img/contact_icons/delete.svg"
         alt="Delete Icon"/>Delete
     </a>`;
+}
+
+function renderResponseEditDelete(id) {
+  document.getElementById("editDeletOverlay").innerHTML = "";
+  document.getElementById("editDeletOverlay").innerHTML = `
+  <button onclick="editContact(${id})" class="editDeletOverlayButton">
+    <img class="editDeletOverlayIMG" src="./assets/img/contact_icons/edit.svg"/>
+      Edit
+  </button>
+  <button onclick="deleteContact(${id})" class="editDeletOverlayButton">
+    <img class="editDeletOverlayIMG" src="./assets/img/contact_icons/delete.svg"
+    onclick=""/>
+      Delete
+  </button>`;
+}
+
+function showEditDeletOverlayButton() {
+  document.getElementById("editDeletOverlay").classList.add("display_flex");
+  let hideOverlayerButton = document.getElementById("right_container");
+  hideOverlayerButton.addEventListener("click", hideEditDeletOverlay);
 }
 
 function renderEmail(id) {
@@ -245,13 +266,28 @@ function openNewContactDialog() {
   document.getElementById("newContact_bg").classList.remove("display_none");
 }
 
-// function edit(id){
+// function editContact(id){
 // }
 
 async function deleteContact(id) {
   contacts.splice(id, 1);
   await setItem("contacts", JSON.stringify(contacts));
+  removeOptionsAfterDelete(id);
+}
+
+function removeOptionsAfterDelete(id) {
   filterLetters = [];
   contactInit();
   showName(id);
+  rensponseBackToList();
+  hideEditDeletOverlay();
 }
+
+// function hideEditDeletOverlay(event) {
+//   dropdown = document.getElementById("editDeletOverlay");
+//   if (event.target !== dropdown) {
+//     document
+//       .getElementById("editDeletOverlay")
+//       .classList.remove("display_flex");
+//   }
+// }

@@ -25,7 +25,9 @@
       <div class="newContactField">
         <div class="newContactField_left">
           <a onclick="closeButton()" id="closeResponse">
-            <img src="./assets/img/contact_icons/contact_mini_icons/CloseResponse.png">
+            <img
+              src="./assets/img/contact_icons/contact_mini_icons/CloseResponse.png"
+            />
           </a>
           <img
             class="newContactLogo"
@@ -52,7 +54,8 @@
             >
               <input
                 class="input_name"
-                required pattern="^(\w+\s\w+)$"
+                required
+                pattern="^(\w+\s\w+)$"
                 id="contactName"
                 type="text"
                 placeholder="Firstname Secondname"
@@ -72,7 +75,11 @@
                 placeholder="Phone"
               />
               <div class="newContactButtons">
-                <button type="reset" class="cancelButton" onclick="closeButton()">
+                <button
+                  type="reset"
+                  class="cancelButton"
+                  onclick="closeButton()"
+                >
                   Cancel<img
                     src="./assets/img/contact_icons/contact_mini_icons/iconoir_cancel.svg"
                   />
@@ -114,7 +121,11 @@
 
       <!-- right Container -->
       <!-- Header of the right side -->
-      <div class="right_container" id="right_container">
+      <div
+        onclick="hideEditDeletOverlay(event)"
+        class="right_container"
+        id="right_container"
+      >
         <div class="contact_card">
           <div class="contact_headline">
             <h1>Contacts</h1>
@@ -141,6 +152,18 @@
           <div class="email_rightContainer" id="email_rightContainer"></div>
           <div class="phone_rightContainer" id="phone_rightContainer"></div>
         </div>
+
+        <button
+          id="editRemoveButtonResponse"
+          onclick="showEditDeletOverlayButton()"
+        >
+          <img
+            src="./assets/img/contact_icons/contact_mini_icons/more_vert.png"
+            alt="Edit Remove Person"
+          />
+        </button>
+
+        <div id="editDeletOverlay" class="editDeletOverlay"></div>
       </div>
     </section>
   </body>
