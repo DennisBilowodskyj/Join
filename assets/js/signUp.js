@@ -56,17 +56,39 @@ function resetForm(){
 }
 
 
-function checkInput(){
+function checkInput() {
     let inputIds = ['password', 'checkPassword'];
     let imgIds = ['passwordInputImg', 'checkPasswordInputImg'];
 
     inputIds.forEach((inputId, index) => {
         let input = document.getElementById(inputId);
         let img = document.getElementById(imgIds[index]);
+
         if (input.value.trim() !== "") {
             img.src = "assets/img/signUp_icons/hidePassword.png";
+            img.onclick = function () {
+                hidePassword(input, img);
+            };
         } else {
             img.src = "assets/img/signUp_icons/lock.png";
         }
     });
+}
+
+
+function showPassword(input, img) {
+    input.type = "text";
+    img.src = "assets/img/signUp_icons/showPassword.png";
+    img.onclick = function () {
+        hidePassword(input, img);
+    };
+}
+
+
+function hidePassword(input, img) {
+    input.type = "password";
+    img.src = "assets/img/signUp_icons/hidePassword.png";
+    img.onclick = function () {
+        showPassword(input, img);
+    };
 }
