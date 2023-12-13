@@ -59,7 +59,7 @@ function resetForm(){
 function checkInput() {
     let inputIds = ['password', 'checkPassword'];
     let imgIds = ['passwordInputImg', 'checkPasswordInputImg'];
-
+    
     inputIds.forEach((inputId, index) => {
         let input = document.getElementById(inputId);
         let img = document.getElementById(imgIds[index]);
@@ -71,6 +71,7 @@ function checkInput() {
             };
         } else {
             img.src = "assets/img/signUp_icons/lock.png";
+            input.type = "password";
         }
     });
 }
