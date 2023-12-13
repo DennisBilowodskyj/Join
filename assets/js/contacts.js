@@ -21,7 +21,7 @@ async function loadContacts() {
   }
 }
 
-function sortNames(daten) {
+async function sortNames(daten) {
   daten.sort(function (a, b) {
     let nameA = a.name.toUpperCase();
     let nameB = b.name.toUpperCase();
@@ -43,11 +43,10 @@ async function saveContact() {
     email: contactEmail.value,
     tel: contactTel.value,
   });
-
   await setItem("contacts", JSON.stringify(contacts));
   resetForm();
-  await loadContacts();
-  filterLetter();
+  filterLetters = [];
+  await contactInit();
 }
 
 function resetForm() {
@@ -62,8 +61,8 @@ function capitalizedName(Name) {
   let SecondName = Name.split(" ")[1];
   FirstName = FirstName.charAt(0).toUpperCase() + FirstName.slice(1);
   SecondName = SecondName.charAt(0).toUpperCase() + SecondName.slice(1);
-  contactNameUppercase = FirstName+" "+SecondName;
-  return contactNameUppercase
+  contactNameUppercase = FirstName + " " + SecondName;
+  return contactNameUppercase;
 }
 
 // ################## Button and Design funktions ############################
@@ -77,7 +76,14 @@ function showName(id) {
   removeActiveName();
   addORremoveActiveName(id);
   renderContactInformation(id);
-  openRensponse();
+  responseTestToOpenWindow(id);
+}
+
+function removeActiveName() {
+  for (let i = 0; i < activeNameList.length; i++) {
+    let activeElement = activeNameList[i];
+    document.getElementById(activeElement).classList.remove("activeName");
+  }
 }
 
 function addORremoveActiveName(id) {
@@ -92,31 +98,30 @@ function addORremoveActiveName(id) {
   }
 }
 
-function removeActiveName() {
-  for (let i = 0; i < activeNameList.length; i++) {
-    let activeElement = activeNameList[i];
-    document.getElementById(activeElement).classList.remove("activeName");
-  }
-}
-
 function removeAllActiveElements(markedElement) {
   markedElement.classList.remove("activeName");
   document.getElementById("contact_overview").classList.remove("display_flex");
   activeNameList = [];
 }
 
-function openRensponse() {
+function responseTestToOpenWindow(id) {
   let screenWidth = window.innerWidth;
-  if (screenWidth < 750) {
-    document.getElementById("left_container").classList.add("display_none");
-    document.getElementById("right_container").classList.add("display_block");
+  if(screenWidth <= 750){
+    document.getElementById("contact_overview").classList.add("display_flex");
+    openRensponse(id);
   }
+}
+
+function openRensponse() {
+  document.getElementById("left_container").classList.add("display_none");
+  document.getElementById("right_container").classList.add("display_block");
 }
 
 function rensponseBackToList() {
   document.getElementById("left_container").classList.remove("display_none");
   document.getElementById("right_container").classList.remove("display_block");
   removeActiveName();
+  activeNameList = [];
 }
 
 function filterLetter() {

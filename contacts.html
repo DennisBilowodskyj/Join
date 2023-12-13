@@ -52,10 +52,10 @@
             >
               <input
                 class="input_name"
-                required
+                required pattern="^(\w+\s\w+)$"
                 id="contactName"
                 type="text"
-                placeholder="Name"
+                placeholder="Firstname Secondname"
               />
               <input
                 class="input_email"
@@ -72,12 +72,12 @@
                 placeholder="Phone"
               />
               <div class="newContactButtons">
-                <button class="cancelButton" onclick="closeButton()">
+                <button type="reset" class="cancelButton" onclick="closeButton()">
                   Cancel<img
                     src="./assets/img/contact_icons/contact_mini_icons/iconoir_cancel.svg"
                   />
                 </button>
-                <button class="createButton" id="createButton">
+                <button type="submit" class="createButton" id="createButton">
                   Create contact
                   <img
                     src="./assets/img/contact_icons/contact_mini_icons/check.svg"
