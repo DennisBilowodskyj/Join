@@ -232,8 +232,6 @@ function renderResponseEditDelete(id) {
 
 function showEditDeletOverlayButton() {
   document.getElementById("editDeletOverlay").classList.add("display_flex");
-  let hideOverlayerButton = document.getElementById("right_container");
-  hideOverlayerButton.addEventListener("click", hideEditDeletOverlay);
 }
 
 function renderEmail(id) {
@@ -283,11 +281,13 @@ function removeOptionsAfterDelete(id) {
   hideEditDeletOverlay();
 }
 
-// function hideEditDeletOverlay(event) {
-//   dropdown = document.getElementById("editDeletOverlay");
-//   if (event.target !== dropdown) {
-//     document
-//       .getElementById("editDeletOverlay")
-//       .classList.remove("display_flex");
-//   }
-// }
+
+document.addEventListener('DOMContentLoaded', function() {
+  let menuButton = document.getElementById('editRemoveButtonResponse');
+  let menu = document.getElementById("editDeletOverlay")
+  document.addEventListener('click', function(event) {
+    if (!menuButton.contains(event.target)) {
+      menu.classList.remove('display_flex');
+    }
+  });
+});
