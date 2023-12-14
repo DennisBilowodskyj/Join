@@ -112,6 +112,15 @@ function responseTestToOpenWindow(id) {
   }
 }
 
+window.addEventListener('resize', function() {
+  let screenWidth = window.innerWidth;
+  if (screenWidth >= 750) {
+    document.getElementById("left_container").classList.remove("display_none");
+  } else if (screenWidth <= 750) {
+    document.getElementById("right_container").classList.remove("display_block");
+  }
+});
+
 function openRensponse() {
   document.getElementById("left_container").classList.add("display_none");
   document.getElementById("right_container").classList.add("display_block");
@@ -281,13 +290,12 @@ function removeOptionsAfterDelete(id) {
   hideEditDeletOverlay();
 }
 
-
-document.addEventListener('DOMContentLoaded', function() {
-  let menuButton = document.getElementById('editRemoveButtonResponse');
-  let menu = document.getElementById("editDeletOverlay")
-  document.addEventListener('click', function(event) {
+document.addEventListener("DOMContentLoaded", function () {
+  let menuButton = document.getElementById("editRemoveButtonResponse");
+  let menu = document.getElementById("editDeletOverlay");
+  document.addEventListener("click", function (event) {
     if (!menuButton.contains(event.target)) {
-      menu.classList.remove('display_flex');
+      menu.classList.remove("display_flex");
     }
   });
 });
