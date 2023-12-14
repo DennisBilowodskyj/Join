@@ -12,9 +12,9 @@
     <script src="assets/js/storage.js"></script>
     <script type="module" src="assets/js/signUp.js"></script>
     <script type="module" src="assets/js/logIn.js"></script>
-    
+
 </head>
-<body>
+<body onload="initLogIn()">
     <!-- HEADER -->
     <div class="index-top-section">
         <div class="keyframe-logo">
@@ -36,7 +36,7 @@
             <form>
             <div class="input-section">
                 <div class="input-div">
-                    <input required id="email" class="input-field cursor" type="email" placeholder="Email">
+                    <input required id="emailLogIn" class="input-field cursor" type="email" placeholder="Email">
                     <img class="input-img cursor" src="assets/img/signUp_icons/mail.png">
                 </div>
                 <div class="input-div">

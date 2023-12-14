@@ -14,6 +14,7 @@ let users = [];
 
 async function initLogIn(){
     loadUser();
+    showLastUser(users);
 }
 
 
@@ -67,6 +68,18 @@ function resetForm(){
 }
 
 
+function showLastUser(users){
+    const logInEmailInput = document.getElementById('emailLogIn');
+    const logInPasswordInput = document.getElementById('passwordLogIn');
+    if (users.length > 0) {
+        const lastUser = users[users.length - 1];
+        console.log("Last User:", lastUser);
+        logInEmailInput.value = lastUser.email;
+        logInPasswordInput.value = lastUser.password;
+    }
+}
+
+
 function checkInput() {
     let inputIds = ['password', 'checkPassword'];
     let imgIds = ['passwordInputImg', 'checkPasswordInputImg'];
@@ -115,8 +128,14 @@ function checkInputLogIn(){
         let img = document.getElementById(imgIds[index]);
         if (input.value.trim() !== "") {
             img.src = "assets/img/signUp_icons/hidePassword.png";
+            img.onclick = function () {
+                hidePassword(input, img);
+            };
         } else {
             img.src = "assets/img/signUp_icons/lock.png";
+            input.type = "password";
         }
     });
 }
+
+
