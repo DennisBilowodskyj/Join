@@ -27,7 +27,7 @@ async function loadUser(){
 }
 
 
-async function usersignUp(){
+async function userSignUp(){
     const passwordErrorDiv = document.getElementById('passwordErrorMessage');
     document.getElementById('inputDivRedBorder').classList.remove('check-password-red-border');
     if(password.value === checkPassword.value){
@@ -139,4 +139,8 @@ function checkInputLogIn(){
     });
 }
 
+
+function logInUser(){
+    
+}
 
