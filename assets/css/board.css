@@ -66,3 +66,81 @@ h1{
     
 }
 
+.headSection{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+}
+
+.header_button_area{
+    display: flex;
+}
+
+.searching_form{
+    display: flex;
+    align-items: center;
+    width: 312px;
+    height: 48px;
+    border: 1px solid #bebebe;
+    border-radius: 10px;
+    background-color: white;
+    padding: 0px 16px;
+    cursor: pointer;
+}
+
+.searching_form:focus-within {
+    border: 1px solid rgb(255, 255, 255);
+    outline: 1px solid rgb(46, 185, 255);
+}
+
+#searching_form_input{
+    border: none;
+}
+
+#searching_form_input:focus{
+    outline: none;
+}
+
+.search_seperator{
+    height: 31px;
+    width: 1px;
+    background-color: #D1D1D1;
+}
+
+.searching_button{
+    width: 32px;
+    height: 32px;
+    margin-left: 16px;
+    cursor: pointer;
+    background-color: white;
+    border: none;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.searching_button:hover{
+    background-color: #e4e4e4;
+}
+
+.AddTaskButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0px 16px;
+    cursor: pointer;
+    color: white;
+    background-color: #2A3647;
+    font-size: 21px;
+    font-weight: bold;
+    border-radius: 10px;
+    margin-left: 32px;
+}
+
+.AddTaskButton:hover{
+    background-color: #29ABE2;
+    border-color: #29ABE2;
+}
