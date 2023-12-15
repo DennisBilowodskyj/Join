@@ -41,32 +41,65 @@
 
       <div class="boardDiv d-flex">
         <div class="toDo boardTab">
-          <p>To do</p>
+          <div class="boardTabHeader">
+            <p>To do</p>
+            <div class="boardTabAddButton" onclick="">
+              <img src="./assets/img/board/addTask.png" alt="" />
+            </div>
+          </div>
+
+          <!-- Place of cards -->
+          <div id="toDoCards">
+            <!-- Cards to render -->
+            <div class="boardCard">
+              <p class="cardCategory">Kategorie</p>
+              <p class="cardTitle">Titel</p>
+              <p class="cardDescrition">Beschreibung</p>
+              <div class="cardFooter">
+                <div class="cardAssignment"><span>Profilebild</span></div>
+                <div class="cardPrio"><span>Prio</span></div>
+              </div>
+            </div>
+          </div>
         </div>
+
         <div class="inProgress boardTab">
-          <p>In progress</p>
+          <div class="boardTabHeader">
+            <p>In progress</p>
+            <div class="boardTabAddButton" onclick="">
+              <img src="./assets/img/board/addTask.png" alt="" />
+            </div>
+          </div>
+
+          <div id="progressCards"></div>
+          <!-- Place of cards -->
         </div>
+
         <div class="awaitFeedback boardTab">
-          <p>Await feedback</p>
+          <div class="boardTabHeader">
+            <p>Await feedback</p>
+            <div class="boardTabAddButton" onclick="">
+              <img src="./assets/img/board/addTask.png" alt="" />
+            </div>
+          </div>
+
+          <div id="awaitCards"></div>
+          <!-- Place of cards -->
         </div>
+
         <div class="Done boardTab">
-          <p>Done</p>
+          <div class="boardTabHeader">
+            <p>Done</p>
+          </div>
         </div>
+
+        <div id="doneCards"></div>
+        <!-- Place of cards -->
+        
       </div>
       <div class="overlay d-none" id="addTaskOverlay">
         <div class="wrapperOverlay">
           <div w3-include-html="./assets/tamplets/addTask_template.html"></div>
-        </div>
-      </div>
-
-      <!-- Cards to render -->
-      <div class="boardCard">
-        <p class="cardCategory">Kategorie</p>
-        <p class="cardTitle">Titel</p>
-        <p class="cardDescrition">Beschreibung</p>
-        <div class="cardFooter">
-          <div class="cardAssignment"><span>Profilebild</span></div>
-          <div class="cardPrio"><span>Prio</span></div>
         </div>
       </div>
     </section>

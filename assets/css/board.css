@@ -29,12 +29,33 @@ h1{
 }
 
 .boardDiv{
+    padding-top: 48px;
     justify-content: space-between;
-    gap: 16px;
+    gap: 35px;
 }
 
-.boardTab {
+.boardTab{
+    display: flex;
+    flex-direction: column;
     width: 25%;
+}
+
+.boardTabHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.boardTabAddButton{
+    height: 24px;
+    width: 24px;
+    border: 2px solid black;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
 .boardCard {
@@ -70,7 +91,7 @@ h1{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-top: 16px;
+    padding-top: 80px;
 }
 
 .header_button_area{
