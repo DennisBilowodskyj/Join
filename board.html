@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="assets/css/board.css">
 
     <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/board.js"></script>
+    <script src="./assets/js/addTask.js"></script>
 </head>
 
 <body onload="init()">
@@ -24,9 +26,9 @@
             <form action="">
                 <input type="text">
                 <img src="" alt="search">
-                <span>Add Task</span>
+                <span onclick="openAddTaskOverlay()">Add Task</span>
             </form>
-            
+
         </div>
 
         <div class="boardDiv d-flex">
@@ -46,17 +48,24 @@
 
 
         </div>
-        
-            <!-- Cards to render -->
-            <div class="boardCard">
-                <p class="cardCategory">Kategorie</p>
-                <p class="cardTitle">Titel</p>
-                <p class="cardDescrition">Beschreibung</p>
-                <div class="cardFooter">
-                    <div class="cardAssignment"><span>Profilebild</span></div>
-                    <div class="cardPrio"><span>Prio</span></div>
-                </div>
+        <div class="overlay d-none"  id="addTaskOverlay">
+            <div class="wrapperOverlay ">
+                <div w3-include-html="./addTask.html"></div>
             </div>
+        </div>
+
+
+        <!-- Cards to render -->
+        <div class="boardCard">
+            <p class="cardCategory">Kategorie</p>
+            <p class="cardTitle">Titel</p>
+            <p class="cardDescrition">Beschreibung</p>
+            <div class="cardFooter">
+                <div class="cardAssignment"><span>Profilebild</span></div>
+                <div class="cardPrio"><span>Prio</span></div>
+            </div>
+        </div>
     </section>
 </body>
+
 </html>

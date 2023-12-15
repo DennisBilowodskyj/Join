@@ -43,3 +43,25 @@ h1{
     border-radius: 10px;
 }
 
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.wrapperOverlay {
+    background-color: white;
+    border-radius: 20px;
+    height: 80vh;
+    width: 80vw;
+    
+}
+

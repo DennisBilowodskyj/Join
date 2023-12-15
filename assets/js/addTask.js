@@ -33,10 +33,12 @@ let contacts = [
 
 ];
 
+let contactsRendered = false;
+
 function initAddTask() {
     init();
-    setMinDate();
-    renderContacts();
+    // setMinDate();
+    // renderContacts();
     isInputFocused();
     // getItem(key);
 }
@@ -45,6 +47,11 @@ function openAssignedInput() {
     let options = document.getElementById('contactsOverlay');
 
     options.classList.toggle('d-none');
+
+    if (!contactsRendered) {
+        renderContacts();
+        contactsRendered = true;
+    }
 }
 
 function addTask() {
