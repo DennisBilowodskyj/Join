@@ -62,12 +62,9 @@ greet();
  * count tasks
  */
 function countTodo() {
-  const Todo = testTask.length;
-  document.getElementById("todos").innerText = todos;
-
-  if (Todo > 0) {
-    todos++;
-  }
+  const totalTasks = testTask.length
+  const todosElement = document.getElementById('todos');
+  todosElement.innerText = totalTasks;
 }
 
 function updateTodoNumber() {
