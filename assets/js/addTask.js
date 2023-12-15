@@ -86,6 +86,7 @@ function addSubtask() {
 
 
 
+
 function assign(i) {
     console.log('contact' + i);
     let contactContainer = document.getElementById(`contact${i}`);
@@ -126,9 +127,51 @@ function renderAssignedBadges() {
     });
 }
 
-function setPrio(prio) {
-    taskPrio = prio;
+function setPrio(buttonID) {
+    taskPrio = buttonID;
     console.log(taskPrio);
+    
+    
+
+    let btnUrgent = document.getElementById('prio_urgent');
+    let btnMedium = document.getElementById('prio_medium');
+    let btnLow = document.getElementById('prio_low');
+    let prioBtn = [btnUrgent, btnMedium, btnLow]
+    
+    prioBtn.forEach(btn => {
+        btn.style.backgroundColor = 'white';
+        btn.style.color = 'black';
+        btn.style.boxShadow = '0px 0px 4px 0px #0000001A';
+
+        let img = btn.querySelector('img');
+        img.src = img.src.replace('_white.svg', '.svg');
+       
+    });
+
+    if(taskPrio === 'urgent'){
+        btnUrgent.style.backgroundColor = ('#FF3D00');
+        btnUrgent.style.color = 'white';
+        btnUrgent.style.boxShadow = '0px 4px 4px 0px #00000040';
+        let img = btnUrgent.querySelector('img');
+        img.src = './assets/img/addTask_icons/prio_urgent_white.svg';
+        
+    } else if (taskPrio === 'medium') {
+        btnMedium.style.backgroundColor = ('#FFA800');
+        btnMedium.style.color = 'white';
+        btnMedium.style.boxShadow = '0px 4px 4px 0px #00000040';
+        let img = btnMedium.querySelector('img');
+        img.src = './assets/img/addTask_icons/prio_medium_white.svg';
+        
+    }else if (taskPrio === 'low') {
+        btnLow.style.backgroundColor = ('#7AE229');
+        btnLow.style.color = 'white';
+        btnLow.style.boxShadow = '0px 4px 4px 0px #00000040';
+        let img = btnLow.querySelector('img');
+        img.src = './assets/img/addTask_icons/prio_low_white.svg';
+        
+    }
+
+
 }
 
 
