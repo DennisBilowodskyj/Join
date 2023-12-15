@@ -13,7 +13,7 @@ let users = [];
 
 
 async function initLogIn(){
-    loadUser();
+    await loadUser();
     showLastUser(users);
 }
 
@@ -27,7 +27,7 @@ async function loadUser(){
 }
 
 
-async function userLogIn(){
+async function usersignUp(){
     const passwordErrorDiv = document.getElementById('passwordErrorMessage');
     document.getElementById('inputDivRedBorder').classList.remove('check-password-red-border');
     if(password.value === checkPassword.value){
@@ -77,6 +77,7 @@ function showLastUser(users){
         logInEmailInput.value = lastUser.email;
         logInPasswordInput.value = lastUser.password;
     }
+    checkInputLogIn();
 }
 
 

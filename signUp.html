@@ -30,22 +30,22 @@
                     <div class="distance-line"></div>
                 </div>
             </div>
-            <form onsubmit="userLogIn(); return false;">
+            <form onsubmit="usersignUp(); return false;">
             <div class="input-section">
                     <div class="input-div">
-                        <input required id="userName" class="input-field cursor" type="text" placeholder="Name">
+                        <input required id="userName" class="input-field cursor" type="text" placeholder="Name" autocomplete="username">
                         <img class="input-img cursor" src="assets/img/signUp_icons/person.png">
                     </div>
                     <div class="input-div">
-                        <input required id="email" class="input-field cursor" type="email" placeholder="Email">
+                        <input required id="email" class="input-field cursor" type="email" placeholder="Email" autocomplete="username">
                         <img class="input-img cursor" src="assets/img/signUp_icons/mail.png">
                     </div>
                     <div class="input-div">
-                        <input required id="password" class="input-field cursor" type="password" placeholder="Password" oninput="checkInput()">
+                        <input required id="password" class="input-field cursor" type="password" placeholder="Password" autocomplete="new-password" oninput="checkInput()">
                         <img id="passwordInputImg" class="input-img cursor" src="assets/img/signUp_icons/lock.png">
                     </div>
                     <div id="inputDivRedBorder" class="input-div">
-                        <input required id="checkPassword" class="input-field cursor" type="password" placeholder="Confirm Password" oninput="checkInput()">
+                        <input required id="checkPassword" class="input-field cursor" type="password" placeholder="Confirm Password" autocomplete="new-password" oninput="checkInput()">
                         <img id="checkPasswordInputImg"  class="input-img cursor" src="assets/img/signUp_icons/lock.png">
                     </div>
                     <div id="passwordErrorMessage" class="error-message-section"></div>
