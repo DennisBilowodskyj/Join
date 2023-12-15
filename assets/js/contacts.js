@@ -44,6 +44,8 @@ async function saveContact() {
   resetForm();
   filterLetters = [];
   await contactInit();
+  saveNotification();
+  closeButton();
 }
 
 function pushContacts(contactNameUppercase, contactEmail, contactTel, color) {
@@ -71,13 +73,16 @@ function capitalizedName(Name) {
   return contactNameUppercase;
 }
 
-async function changeSavedContact(id){
+async function changeSavedContact(id) {
   contacts[id].name = contactName.value;
   contacts[id].email = contactEmail.value;
   contacts[id].tel = contactTel.value;
   await setItem("contacts", JSON.stringify(contacts));
   filterLetters = [];
   await contactInit();
+  showName(id);
+  changeNotification();
+  closeButton();
 }
 
 // ################## Button and Design funktions ############################
@@ -306,8 +311,8 @@ function changeCycleImg() {
 }
 
 function createCreateContactForm() {
-  document.getElementById('contactForm').innerHTML = "";
-  document.getElementById('contactForm').innerHTML = `
+  document.getElementById("contactForm").innerHTML = "";
+  document.getElementById("contactForm").innerHTML = `
   <form id="newContactForm" class="newContactForm" onsubmit="saveContact(); 
     return false;" >
     <input class="input_name" required pattern="[A-Za-zÄäÖöÜüß]+ [A-Za-zÄäÖöÜüß]+" id="contactName"
@@ -320,7 +325,7 @@ function createCreateContactForm() {
   </form>`;
 }
 
-function changeButtonOnCreate(){
+function changeButtonOnCreate() {
   OverlayerButtons = document.getElementById("OverlayerButtons");
   OverlayerButtons.innerHTML = "";
   OverlayerButtons.innerHTML = `
@@ -366,7 +371,7 @@ function changeCycleId(name, color) {
   cycle.innerHTML = `${initials(name, 0) + initials(name, 1)}`;
 }
 
-function createChangeContactForm(id){
+function createChangeContactForm(id) {
   OverlayerButtons = document.getElementById("contactForm");
   OverlayerButtons.innerHTML = "";
   OverlayerButtons.innerHTML = `
@@ -408,6 +413,7 @@ async function deleteContact(id) {
   contacts.splice(id, 1);
   await setItem("contacts", JSON.stringify(contacts));
   removeOptionsAfterDelete(id);
+  closeButton();
 }
 
 function removeOptionsAfterDelete(id) {
@@ -415,7 +421,28 @@ function removeOptionsAfterDelete(id) {
   contactInit();
   showName(id);
   rensponseBackToList();
-  hideEditDeletOverlay();
+}
+
+function saveNotification() {
+  let infoMessage = document.getElementById("saveOrChangeNotification");
+  infoMessage.innerHTML = "Contact succesfully created";
+  infoMessage.style.display = "flex";
+
+  setTimeout(function () {
+    infoMessage.style.display = "none";
+    infoMessage.textContent = "";
+  }, 2000);
+}
+
+function changeNotification() {
+  let infoMessage = document.getElementById("saveOrChangeNotification");
+  infoMessage.innerHTML = "Contact succesfully changed";
+  infoMessage.style.display = "flex";
+
+  setTimeout(function () {
+    infoMessage.style.display = "none";
+    infoMessage.textContent = "";
+  }, 2000);
 }
 
 // ######################## Event Listener ###################################

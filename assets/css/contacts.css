@@ -343,3 +343,18 @@ body {
   width: 32px;
   cursor: pointer;
 }
+
+#saveOrChangeNotification{
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background-color: #2A3647;
+  border-radius: 20px;
+  padding: 25px 30px 25px 30px;
+  color: white;
+  font-size: 20px;
+  width: 326px;
+  position: absolute;
+  top: calc(100vh - 200px);
+  right: calc(50vw - 200px);
+}
