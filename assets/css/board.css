@@ -62,6 +62,7 @@ h1{
     border-radius: 20px;
     height: 80vh;
     width: 80vw;
+    overflow: auto;
     
 }
 

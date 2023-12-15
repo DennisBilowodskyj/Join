@@ -1,18 +1,35 @@
 body {
     margin: 0;
     font-family: 'Inter';
-    /* box-sizing: border-box; */
+   
     font-size: 20px;
-
-
-    height: 100vh;
-
 
 }
 
+.d-none {
+    display: none;
+}
+
+.main{
+    position: fixed;
+    left: 200px;
+    top: 96px;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    
+}
+
+.wrapper {
+    /* height: 100%; */
+}
+
 .section_addTask {
-    margin-left: calc(8% + 232px);
-    margin-right: 9.5%;
+    /* margin-left: calc(8% + 232px);
+    margin-right: 9.5%; */
+    margin-left: 5vw;
+    margin-right: 5vw;
+
     /* height: calc(100vh - 96px); */
     display: flex;
     flex-direction: column;
@@ -323,11 +340,15 @@ select {
         font-size: 16px;
     }
 
-    .section_addTask {
+    .main{
+        left: 0;
+    }
+
+    /* .section_addTask {
         margin-left: auto;
         margin-right: auto;
         width: 80vw;
-    }
+    } */
 
     h1 {
         font-size: 48px;
