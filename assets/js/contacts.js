@@ -10,7 +10,7 @@ async function contactInit() {
   filterLetter();
 }
 
-// ################## Load and Save User Contacts ############################
+// ############## Load, Save or Change User Contacts #########################
 // ###########################################################################
 async function loadContacts() {
   try {
@@ -37,16 +37,22 @@ async function sortNames(daten) {
 
 async function saveContact() {
   createButton.disabled = true;
+  let color = Math.floor(Math.random() * 16777215).toString(16);
   contactNameUppercase = capitalizedName(contactName.value);
-  contacts.push({
-    name: contactNameUppercase,
-    email: contactEmail.value,
-    tel: contactTel.value,
-  });
+  pushContacts(contactNameUppercase, contactEmail, contactTel, color);
   await setItem("contacts", JSON.stringify(contacts));
   resetForm();
   filterLetters = [];
   await contactInit();
+}
+
+function pushContacts(contactNameUppercase, contactEmail, contactTel, color) {
+  contacts.push({
+    name: contactNameUppercase,
+    email: contactEmail.value,
+    tel: contactTel.value,
+    color: color,
+  });
 }
 
 function resetForm() {
@@ -63,6 +69,15 @@ function capitalizedName(Name) {
   SecondName = SecondName.charAt(0).toUpperCase() + SecondName.slice(1);
   contactNameUppercase = FirstName + " " + SecondName;
   return contactNameUppercase;
+}
+
+async function changeSavedContact(id){
+  contacts[id].name = contactName.value;
+  contacts[id].email = contactEmail.value;
+  contacts[id].tel = contactTel.value;
+  await setItem("contacts", JSON.stringify(contacts));
+  filterLetters = [];
+  await contactInit();
 }
 
 // ################## Button and Design funktions ############################
@@ -112,15 +127,6 @@ function responseTestToOpenWindow(id) {
   }
 }
 
-window.addEventListener('resize', function() {
-  let screenWidth = window.innerWidth;
-  if (screenWidth >= 750) {
-    document.getElementById("left_container").classList.remove("display_none");
-  } else if (screenWidth <= 750) {
-    document.getElementById("right_container").classList.remove("display_block");
-  }
-});
-
 function openRensponse() {
   document.getElementById("left_container").classList.add("display_none");
   document.getElementById("right_container").classList.add("display_block");
@@ -167,20 +173,21 @@ function filterContactNames(letter) {
   for (let i = 0; i < contacts.length; i++) {
     let name = contacts[i]["name"];
     let email = contacts[i]["email"];
+    let color = contacts[i]["color"];
     if (name.toLowerCase().charAt(0).includes(letter)) {
-      renderContactNames(i, name, email);
+      renderContactNames(i, name, email, color);
     }
   }
 }
 
-function renderContactNames(i, name, email) {
+function renderContactNames(i, name, email, color) {
   document.getElementById(
     `contact_Users(${initials(name, 0)})`
   ).innerHTML += `<div class="centersizer">
     <div onclick="showName(${i})" id="name${i}" class="name_contant">
-        <div class="nameIcon_leftContainer">${
-          initials(name, 0) + initials(name, 1)
-        }</div>
+        <div class="nameIcon_leftContainer" style=background-color:#${color}>${
+    initials(name, 0) + initials(name, 1)
+  }</div>
             <div>
                 <div class="name_leftContainer">${name}</div>
                 <div class="email_leftContainer">${email}</div>
@@ -197,7 +204,8 @@ function initials(name, position) {
 function renderContactInformation(id) {
   if (id >= 0 && id < contacts.length) {
     let name = contacts[id]["name"];
-    renderBigCircle(name);
+    let color = contacts[id]["color"];
+    renderBigCircle(name, color);
     document.getElementById("name_rightContainer").innerHTML = name;
     renderEditDelete(id);
     renderResponseEditDelete(id);
@@ -206,8 +214,9 @@ function renderContactInformation(id) {
   }
 }
 
-function renderBigCircle(name) {
+function renderBigCircle(name, color) {
   document.getElementById("big_circle").innerHTML = "";
+  document.getElementById("big_circle").style.backgroundColor = "#" + color;
   document.getElementById("big_circle").innerHTML +=
     initials(name, 0) + initials(name, 1);
 }
@@ -215,7 +224,7 @@ function renderBigCircle(name) {
 function renderEditDelete(id) {
   document.getElementById("edit_delete").innerHTML = "";
   document.getElementById("edit_delete").innerHTML = `
-    <a onclick="editContact(${id})">
+    <a onclick="openEditContactDialog(${id})">
         <img src="./assets/img/contact_icons/edit.svg"
         alt="Edit Icon"/>Edit
     </a>
@@ -270,11 +279,130 @@ function closeButton() {
 }
 
 function openNewContactDialog() {
+  editLeftSideOfOverlayer();
+  changeCycleImg();
+  createCreateContactForm();
+  changeButtonOnCreate();
   document.getElementById("newContact_bg").classList.remove("display_none");
 }
 
-// function editContact(id){
-// }
+function editLeftSideOfOverlayer() {
+  document.getElementById("newContactField_left").innerHTML = "";
+  document.getElementById("newContactField_left").innerHTML = `
+  <a onclick="closeButton()" id="closeResponse">
+    <img src="./assets/img/contact_icons/contact_mini_icons/CloseResponse.png"/>
+  </a>
+  <img class="newContactLogo" src="./assets/img/contact_icons/JoinLogo.png" />
+  <h2>Add contact</h2>
+  <span>Task are better with a team!</span>
+  <hr />`;
+}
+
+function changeCycleImg() {
+  let cycle = document.getElementById("newContact_cycle");
+  cycle.innerHTML = "";
+  cycle.style.backgroundColor = "#d1d1d1";
+  cycle.innerHTML = `<img src="./assets/img/contact_icons/person.svg" alt="" />`;
+}
+
+function createCreateContactForm() {
+  document.getElementById('contactForm').innerHTML = "";
+  document.getElementById('contactForm').innerHTML = `
+  <form id="newContactForm" class="newContactForm" onsubmit="saveContact(); 
+    return false;" >
+    <input class="input_name" required pattern="[A-Za-zÄäÖöÜüß]+ [A-Za-zÄäÖöÜüß]+" id="contactName"
+      type="text" placeholder="Firstname Secondname"/>
+    <input class="input_email" required id="contactEmail" type="email"
+      placeholder="Email" />
+    <input class="input_tel" required id="contactTel" type="tel"
+      placeholder="Phone" />
+    <div class="newContactButtons" id="OverlayerButtons"></div>
+  </form>`;
+}
+
+function changeButtonOnCreate(){
+  OverlayerButtons = document.getElementById("OverlayerButtons");
+  OverlayerButtons.innerHTML = "";
+  OverlayerButtons.innerHTML = `
+  <button type="reset" class="cancelButton" id="cancelButton" 
+    onclick="closeButton()">
+    Cancel
+    <img src="./assets/img/contact_icons/contact_mini_icons/iconoir_cancel.svg"/>
+  </button>
+  <button type="submit" class="createButton" id="createButton">
+    Create contact
+    <img src="./assets/img/contact_icons/contact_mini_icons/check.svg"/>
+  </button>`;
+}
+
+function openEditContactDialog(id) {
+  let name = contacts[id]["name"];
+  let email = contacts[id]["email"];
+  let phone = contacts[id]["tel"];
+  let color = contacts[id]["color"];
+  editLeftSideOfOverlayerForEdit();
+  changeCycleId(name, color);
+  createChangeContactForm(id);
+  fillForm(name, email, phone);
+  changeButtonOnEdit(id);
+  document.getElementById("newContact_bg").classList.remove("display_none");
+}
+
+function editLeftSideOfOverlayerForEdit() {
+  document.getElementById("newContactField_left").innerHTML = "";
+  document.getElementById("newContactField_left").innerHTML = `
+    <a onclick="closeButton()" id="closeResponse">
+      <img src="./assets/img/contact_icons/contact_mini_icons/CloseResponse.png"/>
+    </a>
+    <img class="newContactLogo" src="./assets/img/contact_icons/JoinLogo.png" alt=""/>
+    <h2>Edit contact</h2>
+    <hr />`;
+}
+
+function changeCycleId(name, color) {
+  let cycle = document.getElementById("newContact_cycle");
+  cycle.innerHTML = "";
+  cycle.style.backgroundColor = "#" + color;
+  cycle.innerHTML = `${initials(name, 0) + initials(name, 1)}`;
+}
+
+function createChangeContactForm(id){
+  OverlayerButtons = document.getElementById("contactForm");
+  OverlayerButtons.innerHTML = "";
+  OverlayerButtons.innerHTML = `
+  <form id="newContactForm" class="newContactForm" 
+    onsubmit="changeSavedContact(${id}); return false;" >
+    <input class="input_name" required pattern="[A-Za-zÄäÖöÜüß]+ [A-Za-zÄäÖöÜüß]+" 
+      id="contactName" type="text" placeholder="Firstname Secondname"/>
+    <input class="input_email" required id="contactEmail" type="email"
+      placeholder="Email" />
+    <input class="input_tel" required id="contactTel" type="tel"
+      placeholder="Phone" />
+    <div class="newContactButtons" id="OverlayerButtons"></div>
+  </form>`;
+}
+
+function fillForm(name, email, phone) {
+  document.getElementById("contactName").value = "";
+  document.getElementById("contactName").value = name;
+  document.getElementById("contactEmail").value = "";
+  document.getElementById("contactEmail").value = email;
+  document.getElementById("contactTel").value = "";
+  document.getElementById("contactTel").value = phone;
+}
+
+function changeButtonOnEdit(id) {
+  OverlayerButtons = document.getElementById("OverlayerButtons");
+  OverlayerButtons.innerHTML = "";
+  OverlayerButtons.innerHTML = `
+  <button type="reset" class="cancelButton" onclick="deleteContact(${id})"> 
+    Delete 
+  </button>
+  <button type="submit" class="createButton" id="createButton">
+    Save
+    <img src="./assets/img/contact_icons/contact_mini_icons/check.svg"/>
+  </button>`;
+}
 
 async function deleteContact(id) {
   contacts.splice(id, 1);
@@ -290,6 +418,8 @@ function removeOptionsAfterDelete(id) {
   hideEditDeletOverlay();
 }
 
+// ######################## Event Listener ###################################
+// ###########################################################################
 document.addEventListener("DOMContentLoaded", function () {
   let menuButton = document.getElementById("editRemoveButtonResponse");
   let menu = document.getElementById("editDeletOverlay");
@@ -298,4 +428,15 @@ document.addEventListener("DOMContentLoaded", function () {
       menu.classList.remove("display_flex");
     }
   });
+});
+
+window.addEventListener("resize", function () {
+  let screenWidth = window.innerWidth;
+  if (screenWidth >= 750) {
+    document.getElementById("left_container").classList.remove("display_none");
+  } else if (screenWidth <= 750) {
+    document
+      .getElementById("right_container")
+      .classList.remove("display_block");
+  }
 });

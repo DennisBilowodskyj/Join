@@ -23,76 +23,15 @@
 
     <section id="newContact_bg" class="newContact_bg display_none">
       <div class="newContactField">
-        <div class="newContactField_left">
-          <a onclick="closeButton()" id="closeResponse">
-            <img
-              src="./assets/img/contact_icons/contact_mini_icons/CloseResponse.png"
-            />
-          </a>
-          <img
-            class="newContactLogo"
-            src="./assets/img/contact_icons/JoinLogo.png"
-            alt=""
-          />
-          <h2>Add contact</h2>
-          <span>Task are better with a team!</span>
-          <hr />
-        </div>
-        <div class="newContact_cycle">
-          <img src="./assets/img/contact_icons/person.svg" alt="" />
-        </div>
+        <div class="newContactField_left" id="newContactField_left"></div>
+        <div class="newContact_cycle" id="newContact_cycle"></div>
         <div class="newContactField_right">
           <div>
             <a class="closeButton" onclick="closeButton()"
               ><img
                 src="./assets/img/contact_icons/contact_mini_icons/Close.svg"
             /></a>
-            <form
-              id="newContactForm"
-              class="newContactForm"
-              onsubmit="saveContact(); return false;"
-            >
-              <input
-                class="input_name"
-                required
-                pattern="^(\w+\s\w+)$"
-                id="contactName"
-                type="text"
-                placeholder="Firstname Secondname"
-              />
-              <input
-                class="input_email"
-                required
-                id="contactEmail"
-                type="email"
-                placeholder="Email"
-              />
-              <input
-                class="input_tel"
-                required
-                id="contactTel"
-                type="tel"
-                placeholder="Phone"
-              />
-              <div class="newContactButtons">
-                <button
-                  type="reset"
-                  class="cancelButton"
-                  onclick="closeButton()"
-                >
-                  Cancel<img
-                    src="./assets/img/contact_icons/contact_mini_icons/iconoir_cancel.svg"
-                  />
-                </button>
-                <button type="submit" class="createButton" id="createButton">
-                  Create contact
-                  <img
-                    src="./assets/img/contact_icons/contact_mini_icons/check.svg"
-                    alt=""
-                  />
-                </button>
-              </div>
-            </form>
+            <div id="contactForm"></div>
           </div>
         </div>
       </div>
