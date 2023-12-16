@@ -5,31 +5,7 @@ let tasks = [
 ];
 
 let contacts = [
-    {
-        fullname: "Anton Mayer",
-        initials: "AM",
-        assigned: false,
-    },
-    {
-        fullname: "Anja Schulz",
-        initials: "AS",
-        assigned: false,
-    },
-    {
-        fullname: "James Bond",
-        initials: "JB",
-        assigned: false,
-    },
-    {
-        fullname: "Albert Einstein",
-        initials: "AE",
-        assigned: false,
-    },
-    {
-        fullname: "Maria Müller",
-        initials: "MM",
-        assigned: false,
-    }
+    
 
 ];
 
@@ -41,6 +17,7 @@ function initAddTask() {
     // renderContacts();
     isInputFocused();
     // getItem(key);
+    getContacts();
 }
 
 function openAssignedInput() {
@@ -93,6 +70,10 @@ function addSubtask() {
 
 }
 
+async function getContacts(){
+//    return await getItem('contacts');
+   contacts = JSON.parse(await getItem("contacts"));
+}
 
 
 
@@ -183,6 +164,17 @@ function setPrio(buttonID) {
 
 }
 
+function clearInput() {
+    taskTitle.value = '';
+    taskDescription.value = '';
+    date.value = '';
+    assignedInput.value = '';
+    subtaskInput.value = '';
+    badgesAssignedTo.innerHTML = '';
+    categorySelect.value = 'select';
+    subtaskListContainer.innerHTML = '';
+}
+
 
 function renderContacts() {
     let contactsOverlay = document.getElementById('contactsContent');
@@ -190,8 +182,15 @@ function renderContacts() {
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
 
-        contactsOverlay.innerHTML += /*html*/`
-            <div class="contact d-flex" id='contact${i}' onclick="assign(${i})">
+        contactsOverlay.innerHTML += generateContactsHTML(i , contact);
+
+    }
+
+}
+
+function generateContactsHTML(i,contact) {
+    return /*html*/`
+         <div class="contact d-flex" id='contact${i}' onclick="assign(${i})">
                  <div class="contactLeft d-flex">
                      <div class="contactBadge">${contact.initials}</div>
                     <div class="contactName"><span>${contact.fullname}</span></div>
@@ -200,10 +199,7 @@ function renderContacts() {
                     <img id="assignedCechbox${i}" src="./assets/img/addTask_icons/check_button.png" alt="">
                 </div>
             </div>
-        `
-
-    }
-
+    `
 }
 
 function isInputFocused() {

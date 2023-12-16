@@ -13,7 +13,7 @@
                 <p>Assigned to</p>
                 <div class="assignedContainer">
 
-                    <input onclick="openAssignedInput()" class="assignedInput" type="text"
+                    <input onclick="openAssignedInput()" class="assignedInput" type="text" id="assignedInput"
                         placeholder="Select contacts to assign">
                     <img id="selectArrow" src="./assets/img/addTask_icons/arrow_drop_downaa.png" alt="">
                     <div class="contacts d-none" id="contactsOverlay">
@@ -57,8 +57,10 @@
                     </div>
                 </div>
                 <p>Category<span class="required">*</span></p>
-                <select name="" id="">
+                <select name="" id="categorySelect">
                     <option value="select">Select task category</option>
+                    <option value="user_story">User Story</option>
+                    <option value="technical_task">Technical Task</option>
                 </select>
                 <p>Subtasks</p>
                 <div>
@@ -78,8 +80,8 @@
             <span><span class="required">*</span>This field is required</span>
         </div>
         <div class="btnContainer d-flex">
-            <div class="clearBtn d-flex">
-                <span>Clear</span>
+            <div class="clearBtn d-flex" onclick="clearInput()">
+                <span >Clear</span>
                 <img src="./assets/img/addTask_icons/cancel.png">
 
             </div>
