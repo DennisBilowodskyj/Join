@@ -49,15 +49,25 @@
           </div>
 
           <!-- Place of cards -->
-          <div id="toDoCards">
-            <!-- Cards to render -->
-            <div class="boardCard">
-              <p class="cardCategory">Kategorie</p>
-              <p class="cardTitle">Titel</p>
-              <p class="cardDescrition">Beschreibung</p>
-              <div class="cardFooter">
-                <div class="cardAssignment"><span>Profilebild</span></div>
-                <div class="cardPrio"><span>Prio</span></div>
+          <div class="user_cards">
+            <div class="user_card_content">
+              <div class="category">User Story</div>
+              <div class="text_content_card">
+                <div class="titel_content_card">Kochwelt Page & Recipe Recommender</div>
+                <div class="description_content_card">Build start page with recipe...</div>
+              </div>
+              <div class="progress_bar_card">
+                <progress id="fileSubtask" max="100" value="0"></progress>
+                <div id="calcSubtask">1/2 Subtask</div>
+              </div>
+              <div class="contact_prio">
+                <div class="assigned_list">
+                    <div class="assigned_person">SB</div>
+                    <div class="assigned_person">SB</div>
+                    <div class="assigned_person">SB</div>
+                    <div class="assigned_person">2+</div>
+                </div>
+                <div class="prio_card"><img src="./assets/img/board/PrioUrgent.png" alt=""></div>
               </div>
             </div>
           </div>
@@ -95,7 +105,6 @@
 
         <div id="doneCards"></div>
         <!-- Place of cards -->
-        
       </div>
       <div class="overlay d-none" id="addTaskOverlay">
         <div class="wrapperOverlay">
