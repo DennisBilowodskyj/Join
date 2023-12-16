@@ -25,3 +25,55 @@
         padding-top: 0;
     }
 }
+
+@media (max-width: 750px) {
+    .section_board{
+        padding-left: 16px
+    }
+
+    .category{
+        font-size: 16px;
+    }
+
+    .cardDetails_titel h2 {
+        font-size: 36px;
+    }
+
+    .cardDetails_description {
+        font-size: 16px;
+    }
+
+    .assignedToCard{
+        font-size: 16px;
+    }
+
+    .subtasksCard{
+        font-size: 16px;
+    }
+
+    .renderSubtasksToCard{
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 500px) {
+    .responseAddTaskButton{
+        display: flex;
+    }
+
+    .AddTaskButton{
+        display: none;
+    }
+}
+
+@media (max-width: 400px) {
+    .searching_form {
+        width: 90%;
+    }
+}
+
+@media (max-width: 380px) {
+    .cardDetails_titel h2{
+        font-size: 30px;
+    }
+}

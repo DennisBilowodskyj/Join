@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="./assets/css/inter.css" />
     <link rel="stylesheet" href="./assets/css/openSans.css" />
     <link rel="stylesheet" href="assets/css/board.css" />
-    <link rel="stylesheet" href="assets/css/addTask.css" />
 
     <link rel="stylesheet" href="assets/css/boardResponse.css" />
 
@@ -24,7 +23,7 @@
     <div w3-include-html="./assets/tamplets/header.html"></div>
     <div w3-include-html="./assets/tamplets/sideBar.html"></div>
 
-    <section id="card_details_bg" class="card_details_bg d-none">
+    <section id="card_details_bg" class="card_details_bg d_none">
       <div class="cardDetails">
         <div class="cardDetails_content">
           <div class="cardDetails_header">
@@ -99,7 +98,11 @@
         <h1>Board</h1>
         <div class="header_button_area">
           <form onsubmit="" class="searching_form">
-            <input type="text" id="searching_form_input" />
+            <input
+              type="text"
+              id="searching_form_input"
+              placeholder="Find Task"
+            />
             <div class="search_seperator"></div>
             <button class="searching_button">
               <img src="./assets/img/board/search.png" alt="search" />
@@ -108,12 +111,19 @@
           <button onclick="openAddTaskOverlay()" class="AddTaskButton">
             Add Task <img src="./assets/img/board/add.png" alt="" />
           </button>
+          <button onclick="openAddTaskOverlay()" class="responseAddTaskButton">
+            <img src="./assets/img/board/add.png" alt="" />
+          </button>
         </div>
       </div>
 
       <div class="response_searchbar">
         <form onsubmit="" class="searching_form">
-          <input type="text" id="searching_form_input" />
+          <input
+            type="text"
+            id="searching_form_input"
+            placeholder="Find Task"
+          />
           <div class="search_seperator"></div>
           <button class="searching_button">
             <img src="./assets/img/board/search.png" alt="search" />
