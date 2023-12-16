@@ -1,12 +1,6 @@
 let users = [];
 
 
-function openSignUpWindow(){
-    let pageURL = 'signUp.html';
-    window.location.href = pageURL;
-}
-
-
 async function initLogIn(){
     await loadUser();
     showLastUser(users);
@@ -15,6 +9,17 @@ async function initLogIn(){
 
 async function initSignUp(){
     await loadUser();
+}
+
+
+/**
+ * This function is used to open the signUp.html
+ * 
+ * @param {string} pageURL - The URL of the page to open.
+ */
+function openSignUpWindow(){
+    let pageURL = 'signUp.html';
+    window.location.href = pageURL;
 }
 
 
@@ -142,8 +147,9 @@ function checkInputLogIn(){
 
 function logInUser(){
     event.preventDefault();
-    let passwordErrorDiv = document.getElementById('passwordErrorMessageLogIn');
-    let EmailErrorDiv = document.getElementById('emailErrorMessageLogIn');
+    const { passwordErrorDiv, emailErrorDiv } = setVariablesForLogInInput();
+    removeClasslistFromInputDivRedBorderLogIn();
+    clearErrorDiv(passwordErrorDiv, emailErrorDiv);
     const emailInput = document.getElementById('emailLogIn').value;
     const passwordInput = document.getElementById('passwordLogIn').value;
     const foundPassword = findPasswordByEmail(users, emailInput);
@@ -155,9 +161,28 @@ function logInUser(){
             document.getElementById('inputDivRedBorderLogInPassword').classList.add('check-password-red-border');
         }
     } else {
-        EmailErrorDiv.innerHTML = 'Wrong Email Ups! Try again.';
+        emailErrorDiv.innerHTML = 'Wrong Email Ups! Try again.';
         document.getElementById('inputDivRedBorderLogInEmail').classList.add('check-password-red-border');
     }
+}
+
+
+function setVariablesForLogInInput(){
+    let passwordErrorDiv = document.getElementById('passwordErrorMessageLogIn');
+    let emailErrorDiv = document.getElementById('emailErrorMessageLogIn');
+    return { passwordErrorDiv, emailErrorDiv };
+}
+
+
+function removeClasslistFromInputDivRedBorderLogIn(){
+    document.getElementById('inputDivRedBorderLogInPassword').classList.remove('check-password-red-border');
+    document.getElementById('inputDivRedBorderLogInEmail').classList.remove('check-password-red-border');
+}
+
+
+function clearErrorDiv(passwordErrorDiv, emailErrorDiv){
+    passwordErrorDiv.innerHTML = '';
+    emailErrorDiv.innerHTML = '';
 }
 
 
@@ -167,7 +192,6 @@ function findPasswordByEmail(users, emailToCheck) {
             return user.password;
         }
     }
-
     return "E-Mail nicht gefunden";
 }
 
