@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="assets/css/board.css" />
     <link rel="stylesheet" href="assets/css/addTask.css" />
 
+    <link rel="stylesheet" href="assets/css/boardResponse.css" />
+
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/board.js"></script>
     <script src="./assets/js/addTask.js"></script>
@@ -28,7 +30,7 @@
           <div class="cardDetails_header">
             <div class="category">User Story</div>
             <a onclick="closeCardDetails()" class="cardCloseButton">
-                <img src="./assets/img/board/close.png" alt=""/>
+              <img src="./assets/img/board/close.png" alt="" />
             </a>
           </div>
           <div class="cardDetails_titel">
@@ -109,7 +111,17 @@
         </div>
       </div>
 
-      <div class="boardDiv d-flex">
+      <div class="response_searchbar">
+        <form onsubmit="" class="searching_form">
+          <input type="text" id="searching_form_input" />
+          <div class="search_seperator"></div>
+          <button class="searching_button">
+            <img src="./assets/img/board/search.png" alt="search" />
+          </button>
+        </form>
+      </div>
+
+      <div class="boardDiv">
         <div class="toDo boardTab">
           <div class="boardTabHeader">
             <p>To do</p>
@@ -182,7 +194,7 @@
         <div id="doneCards"></div>
         <!-- Place of cards -->
       </div>
-      <div class="overlay " id="addTaskOverlay">
+      <div class="overlay" id="addTaskOverlay">
         <div class="wrapperOverlay">
           <div class="closeBtn" onclick="closeAddTaskOverlay()">
             <img src="./assets/img/addTask_icons/close.png" alt="" />

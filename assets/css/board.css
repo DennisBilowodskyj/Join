@@ -30,6 +30,7 @@ h1{
 }
 
 .boardDiv{
+    display: flex;
     padding-top: 48px;
     justify-content: space-between;
     gap: 35px;
@@ -106,6 +107,7 @@ h1{
 .searching_form{
     display: flex;
     align-items: center;
+    justify-content: end;
     width: 312px;
     height: 48px;
     border: 1px solid #bebebe;
@@ -151,12 +153,19 @@ h1{
     background-color: #e4e4e4;
 }
 
+.response_searchbar{
+    display: none;
+    width: 100%;
+    padding-top: 40px;
+}
+
 .AddTaskButton{
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
     padding: 0px 16px;
+    height: 48px;
     cursor: pointer;
     color: white;
     background-color: #2A3647;

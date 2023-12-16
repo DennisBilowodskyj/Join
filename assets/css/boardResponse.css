@@ -1,0 +1,27 @@
+@media (max-width: 1400px) {
+    .boardDiv{
+        display: block;
+    }
+
+    .boardTab{
+        width: 100%;
+        padding-top: 26px;
+    } 
+}
+
+@media (max-width: 1200px) {
+    .header_button_area form{
+        display: none;
+    }
+    .response_searchbar{
+        display: block;
+    }
+
+    .searching_form{
+        width: 100%;
+    }
+
+    .boardDiv{
+        padding-top: 0;
+    }
+}
