@@ -13,10 +13,9 @@ let contactsRendered = false;
 
 function initAddTask() {
     init();
-    // setMinDate();
-    // renderContacts();
+    
     isInputFocused();
-    // getItem(key);
+    getItem('tasks');
     getContacts();
 }
 
@@ -71,7 +70,6 @@ function addSubtask() {
 }
 
 async function getContacts(){
-//    return await getItem('contacts');
    contacts = JSON.parse(await getItem("contacts"));
 }
 
@@ -111,8 +109,9 @@ function renderAssignedBadges() {
     badgesContainer.innerHTML = '';
 
     assignedTo.forEach(contact => {
+        let initials = getInitials(contact.name)
         badgesContainer.innerHTML += `
-            <div class="contactBadge">${contact.initials}</div>
+            <div class="contactBadge" style="background-color: #${contact.color};">${initials}</div>
         `;
     });
 }
@@ -173,6 +172,7 @@ function clearInput() {
     badgesAssignedTo.innerHTML = '';
     categorySelect.value = 'select';
     subtaskListContainer.innerHTML = '';
+    contactsRendered = false;
 }
 
 
@@ -181,25 +181,36 @@ function renderContacts() {
 
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
+        const initials = getInitials(contact.name)
+        console.log(contact.name)
 
-        contactsOverlay.innerHTML += generateContactsHTML(i , contact);
+        contactsOverlay.innerHTML += generateContactsHTML(i , contact, initials);
 
     }
 
 }
 
-function generateContactsHTML(i,contact) {
+function generateContactsHTML(i,contact, initials) {
     return /*html*/`
          <div class="contact d-flex" id='contact${i}' onclick="assign(${i})">
                  <div class="contactLeft d-flex">
-                     <div class="contactBadge">${contact.initials}</div>
-                    <div class="contactName"><span>${contact.fullname}</span></div>
+                     <div class="contactBadge" style="background-color: #${contact.color};">${initials}</div>
+                    <div class="contactName"><span>${contact.name}</span></div>
                  </div>
                 <div class="contactRight">
                     <img id="assignedCechbox${i}" src="./assets/img/addTask_icons/check_button.png" alt="">
                 </div>
             </div>
     `
+}
+
+function getInitials(fullName) {
+    const names = fullName.split(' ');
+    let initials = '';
+    names.forEach(name => {
+        initials += name.charAt(0);
+    });
+    return initials.toUpperCase(); 
 }
 
 function isInputFocused() {
