@@ -8,10 +8,11 @@
     <link rel="stylesheet" href="assets/css/index.css">
     <link rel="stylesheet" href="assets/css/inter.css">
     <link rel="stylesheet" href="assets/css/keyframeAnimation.css">
+    <link rel="stylesheet" href="assets/css/signUp.css">
     <script src="assets/js/index.js"></script>
     <script src="assets/js/storage.js"></script>
-    <script type="module" src="assets/js/signUp.js"></script>
-    <script type="module" src="assets/js/logIn.js"></script>
+    <script type="module" defer src="assets/js/signUp.js"></script>
+    <script type="module" defer src="assets/js/logIn.js"></script>
 
 </head>
 <body onload="initLogIn()">
@@ -35,14 +36,16 @@
             </div>
             <form onsubmit="logInUser(); return false;">
             <div class="input-section">
-                <div class="input-div">
+                <div id="inputDivRedBorderLogInEmail" class="input-div">
                     <input required id="emailLogIn" class="input-field cursor" type="email" placeholder="Email" autocomplete="username">
                     <img class="input-img cursor" src="assets/img/signUp_icons/mail.png">
                 </div>
-                <div class="input-div">
+                <div id="emailErrorMessageLogIn" class="error-message-section"></div>
+                <div id="inputDivRedBorderLogInPassword" class="input-div">
                     <input required id="passwordLogIn" class="input-field cursor" type="password" placeholder="Password" autocomplete="new-password" oninput="checkInputLogIn()">
                     <img id="passwordLogInImg" class="input-img cursor" src="assets/img/signUp_icons/lock.png">
                 </div>
+                <div id="passwordErrorMessageLogIn" class="error-message-section"></div>
                 <div class="checkbox-section">
                     <input required id="remember-me" class="cursor checkbox-input" type="checkbox">
                     <label for="remember-me">

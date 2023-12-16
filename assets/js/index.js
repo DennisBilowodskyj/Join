@@ -1,20 +1,20 @@
+let users = [];
+
+
 function openSignUpWindow(){
     let pageURL = 'signUp.html';
     window.location.href = pageURL;
 }
 
 
-function openSummary(){
-    let pageURL = 'summary.html';
-    window.location.href = pageURL;
-}
-
-let users = [];
-
-
 async function initLogIn(){
     await loadUser();
     showLastUser(users);
+}
+
+
+async function initSignUp(){
+    await loadUser();
 }
 
 
@@ -28,8 +28,8 @@ async function loadUser(){
 
 
 async function userSignUp(){
-    const passwordErrorDiv = document.getElementById('passwordErrorMessage');
-    document.getElementById('inputDivRedBorder').classList.remove('check-password-red-border');
+    let passwordErrorDiv = document.getElementById('passwordErrorMessageSignUp');
+    document.getElementById('inputDivRedBorderSignUp').classList.remove('check-password-red-border');
     if(password.value === checkPassword.value){
         passwordErrorDiv.innerHTML = '';
     signUpButton.disabled = true;
@@ -46,7 +46,7 @@ async function userSignUp(){
     resetForm();
     }else{
         passwordErrorDiv.innerHTML = 'Ups! your password dont match';
-        document.getElementById('inputDivRedBorder').classList.add('check-password-red-border');
+        document.getElementById('inputDivRedBorderSignUp').classList.add('check-password-red-border');
     }
 }
 
@@ -141,6 +141,38 @@ function checkInputLogIn(){
 
 
 function logInUser(){
-    
+    event.preventDefault();
+    let passwordErrorDiv = document.getElementById('passwordErrorMessageLogIn');
+    let EmailErrorDiv = document.getElementById('emailErrorMessageLogIn');
+    const emailInput = document.getElementById('emailLogIn').value;
+    const passwordInput = document.getElementById('passwordLogIn').value;
+    const foundPassword = findPasswordByEmail(users, emailInput);
+    if (foundPassword !== "E-Mail nicht gefunden") {
+        if (foundPassword === passwordInput) {
+            openSummary();
+        } else {
+            passwordErrorDiv.innerHTML = 'Wrong password Ups! Try again.';
+            document.getElementById('inputDivRedBorderLogInPassword').classList.add('check-password-red-border');
+        }
+    } else {
+        EmailErrorDiv.innerHTML = 'Wrong Email Ups! Try again.';
+        document.getElementById('inputDivRedBorderLogInEmail').classList.add('check-password-red-border');
+    }
 }
 
+
+function findPasswordByEmail(users, emailToCheck) {
+    for (const user of users) {
+        if (user.email === emailToCheck) {
+            return user.password;
+        }
+    }
+
+    return "E-Mail nicht gefunden";
+}
+
+
+function openSummary(){
+    let pageURL = 'summary.html';
+    window.location.href = pageURL;
+}

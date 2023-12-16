@@ -13,7 +13,7 @@
     <script src="assets/js/storage.js"></script>
     <script src="assets/js/signUp.js"></script>
 </head>
-<body id="body" onload="initLogIn()">
+<body id="body" onload="initSignUp()">
     <div class="index-top-section">
         <div>
             <img class="join-logo" src="assets/img/logos/JoinLogoDark.png">
@@ -44,11 +44,11 @@
                         <input required id="password" class="input-field cursor" type="password" placeholder="Password" autocomplete="new-password" oninput="checkInput()">
                         <img id="passwordInputImg" class="input-img cursor" src="assets/img/signUp_icons/lock.png">
                     </div>
-                    <div id="inputDivRedBorder" class="input-div">
+                    <div id="inputDivRedBorderSignUp" class="input-div">
                         <input required id="checkPassword" class="input-field cursor" type="password" placeholder="Confirm Password" autocomplete="new-password" oninput="checkInput()">
                         <img id="checkPasswordInputImg"  class="input-img cursor" src="assets/img/signUp_icons/lock.png">
                     </div>
-                    <div id="passwordErrorMessage" class="error-message-section"></div>
+                    <div id="passwordErrorMessageSignUp" class="error-message-section"></div>
                 <div class="sign-up-checkbox-section">
                     <input required id="accept-privacy-police" class="cursor checkbox-input" type="checkbox">
                     <label for="accept-privacy-police">
