@@ -5,39 +5,52 @@ let inBoard = 0;
 let inProgress = 0;
 let feedback = 0;
 
-const STORAGE_TOKEN = "TZ7FHNN2CSHAW65PQ44EZFBYHAEPS99VXZJH45MK";
-const STORAGE_URL = "https://remote-storage.developerakademie.org/item";
-
-async function setItem(key, value) {
-  const payload = { key, value, token: STORAGE_TOKEN };
-  return fetch(STORAGE_URL, {
-    method: "POST",
-    body: JSON.stringify(payload),
-  }).then((res) => res.json());
-}
-
-async function getItem(key) {
-  const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
-  return fetch(url).then((res) => res.json());
-}
-
 /**
  * test json
  */
-let testTask = [];
 
-async function addToSummary() {
-  let task = {
-    title: "test",
-    description: "beispieltask in datenbank speichern",
-    "due date": "10.12.2023",
-    priority: "urgent",
-  };
-  testTask.push(task);
-  await setItem("allTasks", testTask);
-  console.log(testTask);
-  countTodo();
+let task = [];
+
+function resetCounters() {
+  todos = 0;
+  done = 0;
+  urgent = 0;
+  inBoard = 0;
+  inProgress = 0;
+  feedback = 0;
 }
+resetCounters();
+async function addToSummary() {
+  task = [
+    {
+      title: "test",
+      description: "beispieltask in datenbank speichern",
+      "due date": "10.12.2023",
+      priority: "urgent",
+      status: "inProgress",
+    },
+    {
+      title: "test",
+      description: "beispieltask in datenbank speichern",
+      "due date": "10.12.2023",
+      priority: "urgent",
+      status: "feedback",
+    },
+  ];
+
+  await updateTaskCounts();
+  updateTodoNumber();
+}
+function summaryInit() {
+  init();
+  addToSummary();
+}
+
+// function loadTask(){
+//   try{
+//     task=JSON.parse(await getItem())
+//   }
+// }
 
 /**
  * implement daytime
@@ -61,10 +74,25 @@ greet();
 /**
  * count tasks
  */
-function countTodo() {
-  const totalTasks = testTask.length
-  const todosElement = document.getElementById('todos');
-  todosElement.innerText = totalTasks;
+function countTasksByStatus(status) {
+  let count = 0;
+
+  task.forEach((task) => {
+    if (task.status === status) {
+      count++;
+    }
+  });
+  
+  return count;
+}
+
+async function updateTaskCounts() {
+  todos = countTasksByStatus("todo");
+  done = countTasksByStatus("done");
+  urgent = countTasksByStatus("urgent");
+  inBoard = countTasksByStatus("inBoard");
+  inProgress = countTasksByStatus("inProgress");
+  feedback = countTasksByStatus("feedback");
 }
 
 function updateTodoNumber() {
@@ -75,4 +103,3 @@ function updateTodoNumber() {
   document.getElementById("inProgress").innerText = inProgress;
   document.getElementById("feedback").innerText = feedback;
 }
-updateTodoNumber();
