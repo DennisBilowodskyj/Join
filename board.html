@@ -22,6 +22,76 @@
     <div w3-include-html="./assets/tamplets/header.html"></div>
     <div w3-include-html="./assets/tamplets/sideBar.html"></div>
 
+    <section id="card_details_bg" class="card_details_bg d-none">
+      <div class="cardDetails">
+        <div class="cardDetails_content">
+          <div class="cardDetails_header">
+            <div class="category">User Story</div>
+            <a onclick="closeCardDetails()" class="cardCloseButton">
+                <img src="./assets/img/board/close.png" alt=""/>
+            </a>
+          </div>
+          <div class="cardDetails_titel">
+            <h2>Kochwelt Page & Recipe Recommender</h2>
+          </div>
+          <div class="cardDetails_description">
+            Build start page with recipe recommendation.
+          </div>
+          <div class="cardDetails_description">
+            <div class="cardDetails_description_text_width">Due date:</div>
+            <div>10/05/2023</div>
+          </div>
+          <div class="cardDetails_description">
+            <div class="cardDetails_description_text_width">Priority:</div>
+            <div>
+              Medium <img src="./assets/img/board/PrioMedia.png" alt="" />
+            </div>
+          </div>
+          <div class="assignedToCard">
+            <div>Assigned To:</div>
+            <div id="renderAssignedToCard">
+              <div class="assignedToCardName">
+                <div class="assignedToCardCyrcle">EM</div>
+                <div>Emmanuel Mauer</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="subtasksCard">
+            <div>Subtasks</div>
+            <div id="renderSubtasksToCard">
+              <div class="renderSubtasksToCard">
+                <div>
+                  <img src="./assets/img/board/checkButton.png" alt="" />
+                </div>
+                <div>Implement Recipe Recommendation</div>
+              </div>
+              <div class="renderSubtasksToCard">
+                <div>
+                  <img src="./assets/img/board/noneCheckButton.png" alt="" />
+                </div>
+                <div>Start Page Layout</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="deleteEditCard">
+            <div class="deleteEditCardContent">
+              <div class="renderDeleteEditCardContent">
+                <img src="./assets/img/board/delete.png" alt="" />
+                <div>Delete</div>
+              </div>
+              <hr />
+              <div class="renderDeleteEditCardContent">
+                <img src="./assets/img/board/edit.png" alt="" />
+                <div>Edit</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section_board">
       <div class="headSection">
         <h1>Board</h1>
@@ -53,21 +123,27 @@
             <div class="user_card_content">
               <div class="category">User Story</div>
               <div class="text_content_card">
-                <div class="titel_content_card">Kochwelt Page & Recipe Recommender</div>
-                <div class="description_content_card">Build start page with recipe...</div>
+                <div class="titel_content_card">
+                  Kochwelt Page & Recipe Recommender
+                </div>
+                <div class="description_content_card">
+                  Build start page with recipe...
+                </div>
               </div>
               <div class="progress_bar_card">
-                <progress id="fileSubtask" max="100" value="0"></progress>
+                <progress id="fileSubtask" max="100" value="50"></progress>
                 <div id="calcSubtask">1/2 Subtask</div>
               </div>
               <div class="contact_prio">
                 <div class="assigned_list">
-                    <div class="assigned_person">SB</div>
-                    <div class="assigned_person">SB</div>
-                    <div class="assigned_person">SB</div>
-                    <div class="assigned_person">2+</div>
+                  <div class="assigned_person">SB</div>
+                  <div class="assigned_person">SB</div>
+                  <div class="assigned_person">SB</div>
+                  <div class="assigned_person">2+</div>
                 </div>
-                <div class="prio_card"><img src="./assets/img/board/PrioUrgent.png" alt=""></div>
+                <div class="prio_card">
+                  <img src="./assets/img/board/PrioUrgent.png" alt="" />
+                </div>
               </div>
             </div>
           </div>
@@ -109,7 +185,7 @@
       <div class="overlay d-none" id="addTaskOverlay">
         <div class="wrapperOverlay">
           <div class="closeBtn" onclick="closeAddTaskOverlay()">
-            <img src="./assets/img/addTask_icons/close.png" alt="">
+            <img src="./assets/img/addTask_icons/close.png" alt="" />
           </div>
           <div w3-include-html="./assets/tamplets/addTask_template.html"></div>
         </div>
