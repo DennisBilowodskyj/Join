@@ -11,12 +11,15 @@ let contacts = [
 
 let contactsRendered = false;
 
-function initAddTask() {
-    init();
-    
+async function initAddTask() {
+    await init();
     isInputFocused();
-    getItem('tasks');
+    await loadTasks();
     getContacts();
+}
+
+async function loadTasks() {
+    tasks = JSON.parse(await getItem("tasks"));
 }
 
 function openAssignedInput() {
@@ -30,19 +33,23 @@ function openAssignedInput() {
     }
 }
 
-function addTask() {
+async function addTask() {
     let title = document.getElementById('taskTitle').value;
     let description = document.getElementById('taskDescription').value;
     let date = document.getElementById('date').value;
+    let category = document.getElementById('categorySelect').value;
     tasks.push({
         title: title,
         description: description,
         assignedTo: assignedTo,
         date: date,
         prio: taskPrio,
-        subtask: subtasks
+        category: category,
+        subtask: subtasks,
+        status: 'todo',
     });
     console.log(tasks);
+    await setItem("tasks", JSON.stringify(tasks));
     clearInput();
 
 }
