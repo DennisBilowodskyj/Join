@@ -1,9 +1,12 @@
 let users = [];
 
 
+let currentUser = [];
+
+
 async function initLogIn(){
     await loadUser();
-    showLastUser(users);
+    showLastUser(currentUser);
 }
 
 
@@ -45,6 +48,14 @@ async function userSignUp(){
         confirmPassword : checkPassword.value,
     });
     await setItem('users', JSON.stringify(users));
+    while (currentUser.length > 0) {
+        currentUser.pop(); 
+    }
+    currentUser.push({
+        currentEmail: email.value,
+        currentPassword: password.value,
+    });
+    localStorage.setItem('currentUser', JSON.stringify(currentUser));
     document.getElementById('body').classList.add('succes-sign-up');
     document.getElementById('keyframeSignUp').classList.add('start-animation');
     loadIndex();
@@ -73,14 +84,17 @@ function resetForm(){
 }
 
 
-function showLastUser(users){
+function showLastUser(){
+    let currentData = localStorage.getItem('currentUser');
     const logInEmailInput = document.getElementById('emailLogIn');
     const logInPasswordInput = document.getElementById('passwordLogIn');
-    if (users.length > 0) {
-        const lastUser = users[users.length - 1];
-        console.log("Last User:", lastUser);
-        logInEmailInput.value = lastUser.email;
-        logInPasswordInput.value = lastUser.password;
+    if (currentData) {
+        const currentUserArray = JSON.parse(currentData);
+        if (currentUserArray.length > 0) {
+            const lastUser = currentUserArray[currentUserArray.length - 1];
+            logInEmailInput.value = lastUser.currentEmail;
+            logInPasswordInput.value = lastUser.currentPassword;
+        }
     }
     checkInputLogIn();
 }
