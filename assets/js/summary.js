@@ -44,6 +44,7 @@ async function addToSummary() {
 function summaryInit() {
   init();
   addToSummary();
+  greetByUser();
 }
 
 // function loadTask(){
@@ -53,7 +54,7 @@ function summaryInit() {
 // }
 
 /**
- * implement daytime
+ * daytime and display user
  */
 function greet() {
   let hour = new Date().getHours();
@@ -70,6 +71,13 @@ function greet() {
   document.getElementById("demo").innerHTML = greeting;
 }
 greet();
+
+async function greetByUser(){
+  const users = JSON.parse(await getItem("users"));
+  const lastUser = users[users.length - 1];  
+  const userName = lastUser.name;
+  document.getElementById('userName').innerHTML = userName;
+}
 
 /**
  * count tasks
