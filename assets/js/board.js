@@ -12,8 +12,10 @@ function closeCardDetails(){
     document.getElementById('card_details_bg').classList.add("d-none");
 }
 
-// function openCardDetails(){
-// }
+function openCardDetails(){
+    document.getElementById('card_details_bg').classList.remove("d-none");
+}
+
 // document.getElementById('addTaskOverlay').classList.toggle("d-none");
 document.getElementById('addTaskOverlay').style.transform = ('translateX(0)');
 
@@ -22,3 +24,4 @@ document.getElementById('addTaskOverlay').style.transform = ('translateX(0)');
 function closeAddTaskOverlay() {
     document.getElementById('addTaskOverlay').style.transform = ('translateX(100%)');
 }
+
