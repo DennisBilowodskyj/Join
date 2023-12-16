@@ -44,7 +44,7 @@ function addTask() {
         subtask: subtasks
     });
     console.log(tasks);
-    console.log(tasks.date);
+    clearInput();
 
 }
 
