@@ -6,6 +6,8 @@
     .boardTab{
         width: 100%;
         padding-top: 26px;
+        flex-direction: row;
+        flex-wrap: wrap;
     } 
 }
 

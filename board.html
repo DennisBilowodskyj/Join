@@ -17,9 +17,10 @@
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/board.js"></script>
     <script src="./assets/js/addTask.js"></script>
+    <script src="./assets/js/storage.js"></script>
   </head>
 
-  <body onload="init()">
+  <body onload="boardInit()">
     <div w3-include-html="./assets/tamplets/header.html"></div>
     <div w3-include-html="./assets/tamplets/sideBar.html"></div>
 
@@ -140,35 +141,39 @@
             </div>
           </div>
 
-          <!-- Place of cards -->
-          <div class="user_cards" onclick="openCardDetails()">
-            <div class="user_card_content">
-              <div class="category">User Story</div>
-              <div class="text_content_card">
-                <div class="titel_content_card">
-                  Kochwelt Page & Recipe Recommender
-                </div>
-                <div class="description_content_card">
-                  Build start page with recipe...
+          <div id="toDoCards" class="cardPosition">
+
+            <!-- <div class="user_cards" onclick="openCardDetails()">
+              <div class="user_card_content">
+                <div class="category">User Story</div>
+                <div class="text_content_card">
+                  <div class="titel_content_card">
+                    Kochwelt Page & Recipe Recommender
+                  </div>
+                  <div class="description_content_card">
+                    Build start page with recipe...
+                  </div>
+                </div> -->
+                <!-- <div class="progress_bar_card">
+                  <progress id="fileSubtask()" max="100" value="50"></progress>
+                  <div id="calcSubtask">1/2 Subtask</div>
+                </div> -->
+                <!-- <div class="contact_prio">
+                  <div class="assigned_list" id="assigned_list">
+                    <div class="assigned_person">SB</div>
+                    <div class="assigned_person">SB</div>
+                    <div class="assigned_person">SB</div>
+                    <div class="assigned_person">2+</div>
+                  </div>
+                  <div class="prio_card">
+                    <img src="./assets/img/board/PrioUrgent.png" alt="" />
+                  </div>
                 </div>
               </div>
-              <div class="progress_bar_card">
-                <progress id="fileSubtask" max="100" value="50"></progress>
-                <div id="calcSubtask">1/2 Subtask</div>
-              </div>
-              <div class="contact_prio">
-                <div class="assigned_list">
-                  <div class="assigned_person">SB</div>
-                  <div class="assigned_person">SB</div>
-                  <div class="assigned_person">SB</div>
-                  <div class="assigned_person">2+</div>
-                </div>
-                <div class="prio_card">
-                  <img src="./assets/img/board/PrioUrgent.png" alt="" />
-                </div>
-              </div>
-            </div>
+            </div> -->
+
           </div>
+
         </div>
 
         <div class="inProgress boardTab">
@@ -179,7 +184,7 @@
             </div>
           </div>
 
-          <div id="progressCards"></div>
+          <div id="inProgressCards"></div>
           <!-- Place of cards -->
         </div>
 
@@ -191,7 +196,7 @@
             </div>
           </div>
 
-          <div id="awaitCards"></div>
+          <div id="awaitFeedbackCards"></div>
           <!-- Place of cards -->
         </div>
 
