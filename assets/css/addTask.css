@@ -300,6 +300,27 @@ select {
     /* padding-right: 6px; */
 }
 
+.subtaskContainer {
+    justify-content: space-between;
+}
+
+.subtaskContainer li {
+    font-size: 19px;
+}
+
+.seperatorSubtask {
+    width: 2px;
+    background-color: #E2E2E2;
+}
+
+.closeBtn {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    /* top: 64px; */
+    top: calc(20vh - 64px);
+    left: calc(90vw - 60px);
+}
 
 @media (max-width: 1100px) {
     .section_addTask {
