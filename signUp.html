@@ -36,16 +36,17 @@
                         <input required id="userName" class="input-field cursor" type="text" placeholder="Name" autocomplete="username">
                         <img class="input-img cursor" src="assets/img/signUp_icons/person.png">
                     </div>
-                    <div class="input-div">
+                    <div id="inputEmailDivRedBorderSignUp" class="input-div">
                         <input required id="email" class="input-field cursor" type="email" placeholder="Email" autocomplete="username">
                         <img class="input-img cursor" src="assets/img/signUp_icons/mail.png">
                     </div>
+                    <div id="emailErrorMessageSignUp" class="error-message-section"></div>
                     <div class="input-div">
-                        <input required id="password" class="input-field cursor" type="password" placeholder="Password" autocomplete="new-password" oninput="checkInput()">
+                        <input required id="password" class="input-field cursor" type="password" placeholder="Password" autocomplete="new-password" oninput="checkInputSignUp()">
                         <img id="passwordInputImg" class="input-img cursor" src="assets/img/signUp_icons/lock.png">
                     </div>
-                    <div id="inputDivRedBorderSignUp" class="input-div">
-                        <input required id="checkPassword" class="input-field cursor" type="password" placeholder="Confirm Password" autocomplete="new-password" oninput="checkInput()">
+                    <div id="inputPasswordDivRedBorderSignUp" class="input-div">
+                        <input required id="checkPassword" class="input-field cursor" type="password" placeholder="Confirm Password" autocomplete="new-password" oninput="checkInputSignUp()">
                         <img id="checkPasswordInputImg"  class="input-img cursor" src="assets/img/signUp_icons/lock.png">
                     </div>
                     <div id="passwordErrorMessageSignUp" class="error-message-section"></div>
