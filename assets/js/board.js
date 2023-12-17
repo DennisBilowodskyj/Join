@@ -2,7 +2,12 @@ async function boardInit() {
   init();
   await loadTasks();
   valueAppender();
+  saveFunction();
+}
+
+async function saveFunction() {
   await setItem("tasks", JSON.stringify(tasks));
+  setIdFunction();
   filterStatus();
   renderCards();
 }
@@ -13,6 +18,17 @@ let todos = [];
 let inProgress = [];
 let feedback = [];
 let done = [];
+let currentDraggedElement;
+
+function setIdFunction() {
+  for (let i = 0; i < tasks.length; i++) {
+    let task = tasks[i];
+    if ("id" in task) {
+    } else {
+      task.id = i;
+    }
+  }
+}
 
 function filterStatus() {
   todos = tasks.filter((task) => task["status"] == "todo");
@@ -44,9 +60,9 @@ function calcValuesToAppend(task) {
 // #####################################################################
 function renderCards() {
   renderCardsTodo("toDo");
-  //   renderCardsProgress("inProgress");
-  //   renderCardsAwait("awaitFeedback");
-  //   renderCardsDone("done");
+  renderCardsProgress("inProgress");
+  renderCardsAwait("awaitFeedback");
+  renderCardsDone("done");
 }
 
 function renderCardsTodo(status) {
@@ -54,6 +70,30 @@ function renderCardsTodo(status) {
   for (let i = 0; i < todos.length; i++) {
     let todo = todos[i];
     renderCardFunction(status, todo, i);
+  }
+}
+
+function renderCardsProgress(status) {
+  document.getElementById(`${status}Cards`).innerHTML = "";
+  for (let i = 0; i < inProgress.length; i++) {
+    let inProgressTask = inProgress[i];
+    renderCardFunction(status, inProgressTask, i);
+  }
+}
+
+function renderCardsAwait(status) {
+  document.getElementById(`${status}Cards`).innerHTML = "";
+  for (let i = 0; i < awaitFeedback.length; i++) {
+    let awaitFeedbackTask = awaitFeedback[i];
+    renderCardFunction(status, awaitFeedbackTask, i);
+  }
+}
+
+function renderCardsDone(status) {
+  document.getElementById(`${status}Cards`).innerHTML = "";
+  for (let i = 0; i < done.length; i++) {
+    let doneTask = done[i];
+    renderCardFunction(status, doneTask, i);
   }
 }
 
@@ -80,11 +120,24 @@ function renderCardDetails(index) {
 
 function renderCardDetailsHeader(index) {
   let category = tasks[index]["category"];
+  category = changeCategoryValue(category);
+  let color = categoryColorCheck(category);
   let header = document.getElementById("cardDetails_header");
-  header.innerHTML = `<div class="category">${category}</div>
+  header.innerHTML = `<div class="category" 
+  style="background-color: #${color}">${category}</div>
     <a onclick="closeCardDetails()" class="cardCloseButton">
       <img src="./assets/img/board/close.png" alt="" />
     </a>`;
+}
+
+function changeCategoryValue(category) {
+  if (category == "technical_task") {
+    return "Technical Task";
+  } else if (category == "user_story") {
+    return "User Story";
+  } else {
+    return "Standard Task";
+  }
 }
 
 function renderCardDetailsTitel(index) {
@@ -171,14 +224,12 @@ async function addProgress(task, subtask) {
     tasks[task]["progressValue"][subtask]--;
   }
   renderCardDetailsSubTasks(task);
-  await setItem("tasks", JSON.stringify(tasks));
-  filterStatus();
-  renderCards();
+  saveFunction();
 }
 
-function renderCardDetailsDeleteEdit(index){
-    let deleteEdit = document.getElementById('deleteEditCard')
-    deleteEdit.innerHTML = `<div class="deleteEditCardContent">
+function renderCardDetailsDeleteEdit(index) {
+  let deleteEdit = document.getElementById("deleteEditCard");
+  deleteEdit.innerHTML = `<div class="deleteEditCardContent">
     <div class="renderDeleteEditCardContent" onclick="deleteTask(${index})">
       <img src="./assets/img/board/delete.png" alt="" />
       <div>Delete</div>
@@ -221,17 +272,19 @@ function closeAddTaskOverlay() {
 // ############################ Card Templets ##########################
 // #####################################################################
 function renderHeader(task, i) {
-  return `<div class="user_cards" onclick="openCardDetails(${i})">
-    <div class="user_card_content">
-        <div class="category">${task["category"]}</div>
+  let category = changeCategoryValue(task["category"]);
+  let color = categoryColorCheck(category);
+  return `<div class="user_cards" draggable="true" ondragstart="startDragging(${task.id})"
+  onclick="openCardDetails(${task.id})">
+    <div class="user_card_content"> <div class="category" 
+        style="background-color: #${color}">${category}</div>
         <div class="text_content_card">
             <div class="titel_content_card">
                 ${task["title"]}
             </div>
             <div class="description_content_card">
                 ${task["description"]}
-            </div>
-        </div>`;
+            </div></div>`;
 }
 
 function renderProgressBar(task, i) {
@@ -239,9 +292,9 @@ function renderProgressBar(task, i) {
   let sumOfTasks = task["progressValue"].length;
   let calcValueOfProgress = calcValueOfProgressbar(finalSubTasks, sumOfTasks);
   return `<div class="progress_bar_card">
-        <progress id="fileSubtask(${i})" max="100" value="${calcValueOfProgress}">
+        <progress id="fileSubtask(${task.id})" max="100" value="${calcValueOfProgress}">
         </progress>
-        <div id="calcSubtask(${i})">${finalSubTasks}/${sumOfTasks} Subtask</div>
+        <div id="calcSubtask(${task.id})">${finalSubTasks}/${sumOfTasks} Subtask</div>
     </div>`;
 }
 
@@ -299,4 +352,45 @@ function rightPrioImg(task) {
   } else {
     return "./assets/img/board/PrioLight.png";
   }
+}
+
+function categoryColorCheck(category) {
+  if (category == "Technical Task") {
+    return "1FD7C1";
+  } else if (category == "User Story") {
+    return "0938FF";
+  } else {
+    return "808080";
+  }
+}
+
+// ####################### Drag and Drop Card ##########################
+// #####################################################################
+function startDragging(id) {
+  currentDraggedElement = id;
+}
+
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function moveTo(status) {
+  tasks[currentDraggedElement]["status"] = status;
+  saveFunction();
+}
+
+function highlight(id) {
+    document.getElementById(id).classList.add('dragHighlight');
+}
+
+function removeHighlight(id) {
+    document.getElementById(id).classList.remove('dragHighlight');
+}
+
+// ########################## Delete and Edit ##########################
+// #####################################################################
+async function deleteTask(id) {
+  tasks.splice(id, 1);
+  closeCardDetails();
+  saveFunction();
 }
