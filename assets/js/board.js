@@ -66,8 +66,99 @@ function renderCardFunction(status, task, i) {
 
 // ############################ Render Info ############################
 // #####################################################################
-function renderCardDetails() {
-  console.log("Should open the dialog!");
+function renderCardDetails(index) {
+  renderCardDetailsHeader(index);
+  renderCardDetailsTitel(index);
+  renderCardDetailsDescription(index);
+  renderCardDetailsDate(index);
+  renderCardDetailsPriority(index);
+  renderCardDetailsAssignedTo(index);
+  renderCardDetailsSubTasks(index);
+}
+
+function renderCardDetailsHeader(index) {
+  let category = tasks[index]["category"];
+  let header = document.getElementById("cardDetails_header");
+  header.innerHTML = `<div class="category">${category}</div>
+    <a onclick="closeCardDetails()" class="cardCloseButton">
+      <img src="./assets/img/board/close.png" alt="" />
+    </a>`;
+}
+
+function renderCardDetailsTitel(index) {
+  let titelText = tasks[index]["title"];
+  let titelSection = document.getElementById("cardDetails_titel");
+  titelSection.innerHTML = `<h2>${titelText}</h2>`;
+}
+
+function renderCardDetailsDescription(index) {
+  let descriptionText = tasks[index]["description"];
+  let descriptionSection = document.getElementById("cardDetails_description");
+  descriptionSection.innerHTML = `${descriptionText}`;
+}
+
+function renderCardDetailsDate(index) {
+  let dateText = tasks[index]["date"].split("-");
+  let year = dateText[0];
+  let month = dateText[1];
+  let day = dateText[2];
+  let dateSection = document.getElementById("cardDetails_date");
+  dateSection.innerHTML = `${day}/${month}/${year}`;
+}
+
+function renderCardDetailsPriority(index) {
+  let standardPrioText = tasks[index];
+  prioText = standardPrioText["prio"];
+  prioText = prioText.charAt(0).toUpperCase() + prioText.slice(1);
+  let prioImg = rightPrioImg(standardPrioText);
+  let prioSection = document.getElementById("cardDetails_prio");
+  prioSection.innerHTML = `
+    ${prioText} <img src="${prioImg}" alt="" />`;
+}
+
+function renderCardDetailsAssignedTo(index) {
+  let assignedToArray = tasks[index]["assignedTo"];
+  //   let prioImg = calcAssignedPersons(task);
+  let assignedToSection = document.getElementById("assignedToCardName");
+  assignedToSection.innerHTML = ``;
+  for (let i = 0; i < assignedToArray.length; i++) {
+    let assignedToText = assignedToArray[i].name;
+    let assignedToColor = assignedToArray[i].color;
+    assignedToSection.innerHTML += `
+    <div class="assignedToCardNameValue">
+        <div class="assignedToCardCyrcle" 
+        style="background-color: #${assignedToColor};">${
+      initialsAssignedTo(assignedToText, 0) +
+      initialsAssignedTo(assignedToText, 1)
+    }</div>
+        <div>${assignedToText}</div>
+    </div>`;
+  }
+}
+
+function renderCardDetailsSubTasks(index) {
+  let subTasksSection = document.getElementById("renderSubtasksToCard");
+  subTasksSection.innerHTML = "";
+  let subTasks = tasks[index]["subtask"];
+  let progressValue = tasks[index]["progressValue"];
+  for (let i = 0; i < subTasks.length; i++) {
+    let subTask = subTasks[i];
+    subTasksSection.innerHTML += `
+        <div class="renderSubtasksToCard">
+            <div>
+                <img src="${progressCheckOnSubtask(progressValue[i])}" alt="" />
+            </div>
+            <div>${subTask}</div>
+        </div>`;
+  }
+}
+
+function progressCheckOnSubtask(progressValue) {
+  if (progressValue == 1) {
+    return "./assets/img/board/checkButton.png";
+  } else {
+    return "./assets/img/board/noneCheckButton.png";
+  }
 }
 
 // ################### Open & Close Layer and Cards ####################
@@ -124,7 +215,7 @@ function renderProgressBar(task, i) {
     </div>`;
 }
 
-function renderAssignedPerson(task, i) {
+function renderAssignedPerson(task) {
   return `<div class="contact_prio">
     <div class="assigned_list">
     ${calcAssignedPersons(task)}
@@ -170,12 +261,12 @@ function initialsAssignedTo(name, position) {
   return nameArray[position].charAt(0);
 }
 
-function rightPrioImg(task){
-    if (task["prio"] == "urgent") {
-        return "./assets/img/board/PrioUrgent.png"
-    } else if (task["prio"] == "medium") {
-        return "./assets/img/board/PrioMedia.png"
-    } else {
-        return "./assets/img/board/PrioLight.png"
-    }
+function rightPrioImg(task) {
+  if (task["prio"] == "urgent") {
+    return "./assets/img/board/PrioUrgent.png";
+  } else if (task["prio"] == "medium") {
+    return "./assets/img/board/PrioMedia.png";
+  } else {
+    return "./assets/img/board/PrioLight.png";
+  }
 }

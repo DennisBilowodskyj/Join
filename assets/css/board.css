@@ -383,10 +383,16 @@ body {
 
 .assignedToCardName{
     display: flex;
+    flex-direction: column;
+}
+
+.assignedToCardNameValue{
+    display: flex;
     align-items: center;
     gap: 10px;
     padding-top: 15px;
 }
+
 
 .assignedToCardCyrcle{
     display: flex;
