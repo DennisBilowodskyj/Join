@@ -54,7 +54,7 @@ function checkInputLogIn(){ /**LOGIN */
                 hidePassword(input, img);
             };
         } else {
-            changeInputTypeToPassword();
+            changeInputTypeToPassword(img, input);
         }
     });
 }
@@ -257,7 +257,7 @@ function checkInputSignUp() {
                 hidePassword(input, img);
             };
         } else {
-            changeInputTypeToPassword();
+            changeInputTypeToPassword(img, input);
         }
     });
 }
@@ -292,7 +292,7 @@ function showPassword(input, img) {
 }
 
 
-function changeInputTypeToPassword(){
+function changeInputTypeToPassword(img, input){
     img.src = "assets/img/signUp_icons/lock.png";
     input.type = "password";
 }
