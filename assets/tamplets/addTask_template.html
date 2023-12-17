@@ -13,9 +13,9 @@
                 <p>Assigned to</p>
                 <div class="assignedContainer">
 
-                    <input onclick="openAssignedInput()" class="assignedInput" type="text" id="assignedInput"
+                    <input onclick="openAssignedInput()" class="assignedInput inputArrow" type="text" id="assignedInput"
                         placeholder="Select contacts to assign">
-                    <img id="selectArrow" src="./assets/img/addTask_icons/arrow_drop_downaa.png" alt="">
+                    <!-- <img id="selectArrow" src="./assets/img/addTask_icons/arrow_drop_downaa.png" alt=""> -->
                     <div class="contacts d-none" id="contactsOverlay">
                         <div id="contactsContent">
 
@@ -57,16 +57,21 @@
                     </div>
                 </div>
                 <p>Category<span class="required">*</span></p>
-                <select name="" id="categorySelect">
+                <select name="" class="" id="categorySelect">
                     <option value="select">Select task category</option>
                     <option value="user_story">User Story</option>
                     <option value="technical_task">Technical Task</option>
                 </select>
                 <p>Subtasks</p>
                 <div>
-                    <input type="text" placeholder="Add new subtask" id="subtaskInput">
-                    <img src="./assets/img/addTask_icons/check.png" style="background-color: black;"
-                        onclick="addSubtask()">
+                    <input type="text" placeholder="Add new subtask" id="subtaskInput" oninput="renderSubtaskBtn()">
+                    <span id="subtaskAddBtn">
+                        <div id="subtaskControls" class ="d-flex d-none">
+                            <img src="./assets/img/addTask_icons/subtask_close.png" onclick="resetSubtaskInput()">
+                            <img src="./assets/img/addTask_icons/subtask_check.png" onclick="addSubtask()">
+                            </div>
+                        <img src="./assets/img/addTask_icons/add_subtask.png" onclick="addSubtask()" id="add_subtaskBtn">
+                    </span>
                 </div>
                 <div id="subtaskListContainer">
                     <!-- render new subtasks -->

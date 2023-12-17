@@ -1,24 +1,47 @@
 body {
     margin: 0;
     font-family: 'Inter';
-   
+
     font-size: 20px;
 
 }
 
 .d-none {
-    display: none;
+    display: none !important;
 }
 
-.main{
+.main {
     position: fixed;
     left: 200px;
     top: 96px;
     right: 0;
     bottom: 0;
     overflow: auto;
-    
+
 }
+
+/* ######### scrollbar ########## */
+*::-webkit-scrollbar {
+    width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #F6F7F8;
+    border-radius: 10px;
+    border: solid 2px #A8A8A8;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #e7e7e7;
+    border-radius: 10px;
+    border: 2px solid #bbc3ba;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background-color: #29abe2;
+}
+
+/* ############################## */
 
 
 .section_addTask {
@@ -89,10 +112,11 @@ h1 {
     max-height: 56px;
     box-sizing: border-box;
     box-shadow: 0px 0px 4px 0px #0000001A;
+    cursor: pointer;
 
 }
 
-.activePrio{
+.activePrio {
     color: white;
 }
 
@@ -135,6 +159,8 @@ input {
     box-sizing: border-box;
     font-size: 20px;
     font-family: inherit;
+    position: relative;
+    z-index: 12;
 }
 
 .required {
@@ -151,6 +177,11 @@ textarea {
     box-sizing: border-box;
     font-size: 20px;
     font-family: inherit;
+    background-image: url(/assets/img/addTask_icons/resize.png);
+    background-repeat: no-repeat;
+    background-position-x: 99%;
+    background-position-y: 94%;
+
 }
 
 select {
@@ -180,10 +211,11 @@ select {
     background-size: 24px;
     background-position-x: calc(100% - 16px);
     background-position-y: center;
+    z-index: 1;
 }
 
 .btnContainer {
-    
+
     height: 56px;
     align-items: center;
     align-items: flex-end;
@@ -205,6 +237,7 @@ select {
     gap: 4px;
     padding-left: 16px;
     padding-right: 16px;
+    cursor: pointer;
 }
 
 .clearBtn {
@@ -219,7 +252,7 @@ select {
 }
 
 .createBtn img {
-    
+
     width: 24px;
     height: 24px;
 
@@ -240,15 +273,33 @@ select {
     position: relative;
 }
 
+.inputArrow {
+    cursor: pointer;
+    background-image: url(/assets/img/addTask_icons/arrow_drop_downaa.png);
+    background-repeat: no-repeat;
+    background-position: calc(100% - 16px) center;
+}
+
+
+#subtaskAddBtn {
+    position: absolute;
+    right: calc(5vw + 10px);
+    margin-top: 9px;
+    width: 25px;
+    padding: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 12;
+}
 
 .contacts {
     background-color: white;
     position: absolute;
-    
+
     top: 40px;
     border-radius: 0 0 10px 10px;
     width: 100%;
-    padding-top: 40px;
+    padding-top: 10px;
     z-index: 10;
     box-sizing: border-box;
     max-height: 280px;
@@ -285,7 +336,7 @@ select {
 
 }
 
-#badgesAssignedTo{
+#badgesAssignedTo {
     display: flex;
     gap: 6px;
 }
@@ -300,8 +351,20 @@ select {
     /* padding-right: 6px; */
 }
 
+#subtaskControls {
+    position: relative;
+    right: 20px;
+    gap: 4px;
+}
+
 .subtaskContainer {
     justify-content: space-between;
+    height: 32px;
+    align-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+    margin-top: 4px;
+    padding: 4px 16px 4px 16px;
 }
 
 .subtaskContainer li {
@@ -312,6 +375,23 @@ select {
     width: 2px;
     background-color: #E2E2E2;
 }
+
+
+.subtaskChange {
+    opacity: 0;
+}
+
+.subtaskContainer:hover {
+    background-color: #D1D1D1;
+    border-radius: 10px;
+
+}
+
+.subtaskContainer:hover .subtaskChange {
+    background-color: #D1D1D1;
+    opacity: 1;
+}
+
 
 .closeBtn {
     width: 32px;
@@ -345,12 +425,12 @@ select {
     .seperator {
         display: none;
     }
-    
+
     .footSection {
         margin-bottom: 30px;
     }
 
-    
+
 }
 
 @media (max-width: 950px) {
@@ -372,7 +452,7 @@ select {
         font-size: 16px;
     }
 
-    .main{
+    .main {
         left: 0;
     }
 

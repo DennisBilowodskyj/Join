@@ -5,7 +5,7 @@ let tasks = [
 ];
 
 let contacts = [
-    
+
 
 ];
 
@@ -63,7 +63,7 @@ function addSubtask() {
     subtaskOutput.innerHTML += /*html*/`
        <div class="subtaskContainer d-flex">
             <li>${subtask}</li>
-            <div class="d-flex">
+            <div class="subtaskChange d-flex">
                 <img src="./assets/img/addTask_icons/subtask_edit.png" alt="">
                 <div class="seperatorSubtask"></div>
                 <img src="./assets/img/addTask_icons/subtask_delete.png" alt="">
@@ -72,14 +72,24 @@ function addSubtask() {
     `;
     subtasks.push(subtask);
 
+    resetSubtaskInput();
+
+}
+
+async function getContacts() {
+    contacts = JSON.parse(await getItem("contacts"));
+}
+
+function renderSubtaskBtn() {
+    subtaskControls.classList.remove('d-none');
+    add_subtaskBtn.classList.add('d-none');
+}
+
+function resetSubtaskInput() {
     subtaskInput.value = '';
-
+    subtaskControls.classList.add('d-none');
+    add_subtaskBtn.classList.remove('d-none');
 }
-
-async function getContacts(){
-   contacts = JSON.parse(await getItem("contacts"));
-}
-
 
 
 function assign(i) {
@@ -191,13 +201,13 @@ function renderContacts() {
         const initials = getInitials(contact.name)
         console.log(contact.name)
 
-        contactsOverlay.innerHTML += generateContactsHTML(i , contact, initials);
+        contactsOverlay.innerHTML += generateContactsHTML(i, contact, initials);
 
     }
 
 }
 
-function generateContactsHTML(i,contact, initials) {
+function generateContactsHTML(i, contact, initials) {
     return /*html*/`
          <div class="contact d-flex" id='contact${i}' onclick="assign(${i})">
                  <div class="contactLeft d-flex">
@@ -217,7 +227,7 @@ function getInitials(fullName) {
     names.forEach(name => {
         initials += name.charAt(0);
     });
-    return initials.toUpperCase(); 
+    return initials.toUpperCase();
 }
 
 function isInputFocused() {
