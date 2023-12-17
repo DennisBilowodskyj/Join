@@ -25,7 +25,7 @@
     height: 32px;
     width: 32px;
 }
-.get-back-arrow:active{
+.get-back-arrow:hover{
     background-color: rgb(213,213,213);
     border-radius: 20px;
 }

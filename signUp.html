@@ -12,6 +12,7 @@
     <script src="assets/js/index.js"></script>
     <script src="assets/js/storage.js"></script>
     <script src="assets/js/signUp.js"></script>
+    <script src="assets/js/undersides.js"></script>
 </head>
 <body id="body" onload="initSignUp()">
     <!-- HEADER -->
@@ -57,7 +58,7 @@
                     <label for="accept-privacy-police">
                         <span>I accept the</span>
                     </label>
-                    <a href="privacyPolice_notLoggedIn.html" class="sign-up-checkbox-link cursor">Privacy Police</a>
+                    <a href="#" class="sign-up-checkbox-link cursor" onclick="openNewTab('privacyPolice_notLoggedIn.html')">Privacy Police</a>
                 </div>
             </div>
             <div class="sign-up-button-section">
@@ -71,8 +72,8 @@
         <img src="assets/img/signUp_icons/signUpSuccessfully.png">
     </div>
     <div class="sign-up-footer-section">
-        <a href="privacyPolice_notLoggedIn.html" class="footer-link cursor">Privacy Police</a>
-        <a href="legalNotice_ notLoggedIn.html" class="footer-link cursor">Legal notice</a>
+        <a href="#" class="footer-link cursor" onclick="openNewTab('privacyPolice_notLoggedIn.html')">Privacy Policy</a>
+        <a href="#" class="footer-link cursor" onclick="openNewTab('legalNotice_ notLoggedIn.html')">Legal Notice</a>
     </div>
 </body>
 </html>

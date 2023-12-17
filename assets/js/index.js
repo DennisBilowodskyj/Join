@@ -151,7 +151,7 @@ async function userSignUp(){
     emptyErrorDivText(emailErrorDiv, passwordErrorDiv);
     if (checkEmail(users, emailToSearch.value)) {
         emailErrorDiv = setEmailAlertSignUp(emailErrorDiv);
-    }
+    } else{
     if(password.value === checkPassword.value){
         signUpButton.disabled = true;
         pushIntoUsers();
@@ -165,6 +165,7 @@ async function userSignUp(){
     }else{
         passwordErrorDiv = setPasswordAlertSignUp(passwordErrorDiv);
     }
+}
 }
 
 
