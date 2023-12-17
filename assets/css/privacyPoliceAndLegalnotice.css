@@ -13,14 +13,27 @@ span{
 p{
     font-size: 18px;
 }
+b{
+    font-size: 24px;
+}
 .header{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    text-align: center;
     font-size: 40px;
 }
 .get-back-arrow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    width: 32px;
     margin-right: 40px;
+}
+.get-back-arrow:active{
+    background-color: rgb(213,213,213);
+    border-radius: 30px;
 }
 .span-join{
     color: rgb(56,171,226);
@@ -34,26 +47,15 @@ p{
 }
 .table-container{
     display: flex;
-    flex-direction: row;
-}
-table{
-    display: flex;
     flex-direction: column;
-    font-size: 16px;
-}
-tr{
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-}
-td{
-    display: flex;
-    flex-direction: column;
-    padding-top: 60px;
-}
-b{
-    font-size: 24px;
 }
 .table-span{
     font-size: 16px;
+}
+.under-table-section{
+    display: flex;
+    flex-direction: row;
+}
+.p-distance{
+    margin: 0;
 }
