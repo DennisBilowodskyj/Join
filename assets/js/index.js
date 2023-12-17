@@ -1,6 +1,5 @@
 let users = [];
 
-
 let currentUser = [];
 
 
@@ -24,7 +23,6 @@ function openSignUpWindow(){ /**LOGIN */
 }
 
 
-
 function showLastUser(){ /**LOGIN */
     let currentData = localStorage.getItem('currentUser');
     const logInEmailInput = document.getElementById('emailLogIn');
@@ -39,7 +37,6 @@ function showLastUser(){ /**LOGIN */
     }
     checkInputLogIn();
 }
-
 
 
 function checkInputLogIn(){ /**LOGIN */
@@ -261,6 +258,7 @@ function checkInputSignUp() {
         }
     });
 }
+
 
 /*HELP FUNCTIONS */
 

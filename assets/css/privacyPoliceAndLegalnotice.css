@@ -7,3 +7,53 @@ section {
     margin-right: 20px;
     font-size: 10px;
 }  
+span{
+    font-size: 18px;
+}
+p{
+    font-size: 18px;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 40px;
+}
+.get-back-arrow{
+    margin-right: 40px;
+}
+.span-join{
+    color: rgb(56,171,226);
+    cursor: default;
+}
+.undersection-headline{
+    font-size: 25px;
+}
+.distance{
+    margin-top: 20px;
+}
+.table-container{
+    display: flex;
+    flex-direction: row;
+}
+table{
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+}
+tr{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+td{
+    display: flex;
+    flex-direction: column;
+    padding-top: 60px;
+}
+b{
+    font-size: 24px;
+}
+.table-span{
+    font-size: 16px;
+}
