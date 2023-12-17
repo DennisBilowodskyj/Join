@@ -41,10 +41,13 @@ async function addToSummary() {
   await updateTaskCounts();
   updateTodoNumber();
 }
+
+
+
 function summaryInit() {
   init();
   addToSummary();
-  greetByUser();
+  checkEmailSummary();
 }
 
 // function loadTask(){
@@ -72,12 +75,25 @@ function greet() {
 }
 greet();
 
-async function greetByUser(){
-  const users = JSON.parse(await getItem("users"));
-  const lastUser = users[users.length - 1];  
-  const userName = lastUser.name;
-  document.getElementById('userName').innerHTML = userName;
+
+function checkEmailSummary(users) {
+  const emailInput = document.getElementById('emailLogIn');
+
+  if (emailInput) {
+    const emailToSearch = emailInput.value;
+
+    for (const user of users) {
+      if (user.email === emailToSearch) {
+        return user.name;
+      }
+      document.getElementById('userName').innerHTML = user.name;
+
+    }
+  } else {
+    console.error("Element with ID 'emailLogIn' not found");
+  }
 }
+
 
 /**
  * count tasks
