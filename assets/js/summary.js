@@ -26,14 +26,14 @@ async function addToSummary() {
     {
       title: "test",
       description: "beispieltask in datenbank speichern",
-      "due date": "10.12.2023",
+      duedate: "10.12.2023",
       priority: "urgent",
       status: "inProgress",
     },
     {
       title: "test",
       description: "beispieltask in datenbank speichern",
-      "due date": "10.12.2023",
+      duedate: "15.01.2024",
       priority: "urgent",
       status: "feedback",
     },
@@ -50,6 +50,8 @@ async function summaryInit() {
   await loadUser();
   addToSummary();
   checkEmailSummary(users);
+  sortByDate(task);
+
 }
 
 
@@ -78,24 +80,30 @@ function greet() {
 }
 greet();
 
-
 async function checkEmailSummary(users) {
   const emailToSearch = localStorage.getItem('checkinUser');
+  const cleanedEmailToSearch = emailToSearch.replace(/^"(.*)"$/, '$1'); // Entfernt Anführungszeichen
   if (emailToSearch) {
-    users.forEach(user => {
-      if (user.email === emailToSearch) {
-        // Übereinstimmung gefunden, Schleife beenden
-        return user.name;
-      }
-      document.getElementById('userName').innerHTML = user.name;
+    const lowerCaseEmailToSearch = cleanedEmailToSearch.toLowerCase();
+    console.log("Lowercase search email:", lowerCaseEmailToSearch);
 
+    const matchingUser = users.find(user => {
+      console.log("Lowercase user email:", user.email.toLowerCase());
+      return user.email.toLowerCase() === lowerCaseEmailToSearch;
     });
+
+    if (matchingUser) {
+      // Übereinstimmung gefunden, setze den Benutzernamen
+      document.getElementById('userName').innerHTML = matchingUser.name;
+      console.log("Match found. User name:", matchingUser.name);
+      return; // Beende die Funktion nach der Aktualisierung des Benutzernamens
+    } else {
+      console.error("Kein Benutzer mit der angegebenen E-Mail-Adresse gefunden.");
+    }
   } else {
     console.error("Fehlender oder ungültiger Wert im localStorage für den Schlüssel 'checkinUser'");
-    return null;
   }
 }
-
 /**
  * count tasks
  */
@@ -105,10 +113,25 @@ function countTasksByStatus(status) {
   task.forEach((task) => {
     if (task.status === status) {
       count++;
+
+      if (task.priority === 'urgent') {
+        urgent++;
+      }
     }
   });
   
   return count;
+}
+
+function sortByDate(task) {
+  const filteredTasks = task.filter((task) => task.hasOwnProperty('dueDate'));
+  filteredTasks.sort((task1, task2) => new Date(task1.dueDate) - new Date(task2.dueDate));
+
+  if (filteredTasks.length > 0) {
+    document.getElementById("date").innerHTML = filteredTasks[0].dueDate;
+  } else {
+    console.error('No tasks with due dates found');
+  }
 }
 
 async function updateTaskCounts() {
