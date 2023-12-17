@@ -27,12 +27,12 @@
     <section id="card_details_bg" class="card_details_bg d_none">
       <div class="cardDetails">
         <div class="cardDetails_content">
-          <div class="cardDetails_header" id="cardDetails_header">
-          </div>
-          <div class="cardDetails_titel" id="cardDetails_titel">
-          </div>
-          <div class="cardDetails_description" id="cardDetails_description">
-          </div>
+          <div class="cardDetails_header" id="cardDetails_header"></div>
+          <div class="cardDetails_titel" id="cardDetails_titel"></div>
+          <div
+            class="cardDetails_description"
+            id="cardDetails_description"
+          ></div>
           <div class="cardDetails_description">
             <div class="cardDetails_description_text_width">Due date:</div>
             <div id="cardDetails_date">10/05/2023</div>
@@ -46,17 +46,14 @@
           <div class="assignedToCard">
             <div>Assigned To:</div>
             <div id="renderAssignedToCard">
-              <div class="assignedToCardName" id="assignedToCardName">
-              </div>
+              <div class="assignedToCardName" id="assignedToCardName"></div>
             </div>
           </div>
           <div class="subtasksCard">
             <div>Subtasks</div>
-            <div id="renderSubtasksToCard">
-            </div>
+            <div id="renderSubtasksToCard"></div>
           </div>
-          <div class="deleteEditCard" id="deleteEditCard">
-          </div>
+          <div class="deleteEditCard" id="deleteEditCard"></div>
         </div>
       </div>
     </section>
@@ -100,7 +97,12 @@
       </div>
 
       <div class="boardDiv">
-        <div class="toDo boardTab">
+        <div
+          class="toDo boardTab"
+          ondrop="moveTo('todo')"
+          ondragleave="removeHighlight('toDoCards')"
+          ondragover="allowDrop(event); highlight('toDoCards')"
+        >
           <div class="boardTabHeader">
             <p>To do</p>
             <div class="boardTabAddButton" onclick="">
@@ -109,10 +111,14 @@
           </div>
 
           <div id="toDoCards" class="cardPosition"></div>
-
         </div>
 
-        <div class="inProgress boardTab">
+        <div
+          class="inProgress boardTab"
+          ondrop="moveTo('inProgress')"
+          ondragleave="removeHighlight('inProgressCards')"
+          ondragover="allowDrop(event); highlight('inProgressCards')"
+        >
           <div class="boardTabHeader">
             <p>In progress</p>
             <div class="boardTabAddButton" onclick="">
@@ -120,11 +126,15 @@
             </div>
           </div>
 
-          <div id="inProgressCards"></div>
-          <!-- Place of cards -->
+          <div id="inProgressCards" class="cardPosition"></div>
         </div>
 
-        <div class="awaitFeedback boardTab">
+        <div
+          class="awaitFeedback boardTab"
+          ondrop="moveTo('awaitFeedback')"
+          ondragleave="removeHighlight('awaitFeedbackCards')"
+          ondragover="allowDrop(event); highlight('awaitFeedbackCards')"
+        >
           <div class="boardTabHeader">
             <p>Await feedback</p>
             <div class="boardTabAddButton" onclick="">
@@ -132,18 +142,20 @@
             </div>
           </div>
 
-          <div id="awaitFeedbackCards"></div>
-          <!-- Place of cards -->
+          <div id="awaitFeedbackCards" class="cardPosition"></div>
         </div>
 
-        <div class="Done boardTab">
+        <div
+          class="Done boardTab"
+          ondrop="moveTo('done')"
+          ondragleave="removeHighlight('doneCards')"
+          ondragover="allowDrop(event); highlight('doneCards')"
+        >
           <div class="boardTabHeader">
             <p>Done</p>
           </div>
+          <div id="doneCards" class="cardPosition"></div>
         </div>
-
-        <div id="doneCards"></div>
-        <!-- Place of cards -->
       </div>
       <div class="overlay" id="addTaskOverlay">
         <div class="wrapperOverlay">
