@@ -45,11 +45,13 @@ async function addToSummary() {
 
 
 
-function summaryInit() {
+async function summaryInit() {
   init();
+  await loadUser();
   addToSummary();
   checkEmailSummary(users);
 }
+
 
 // function loadTask(){
 //   try{
@@ -77,22 +79,17 @@ function greet() {
 greet();
 
 
-function checkEmailSummary(users) {
+async function checkEmailSummary(users) {
   const emailToSearch = localStorage.getItem('checkinUser');
-
   if (emailToSearch) {
-    for (const user of users) {
+    users.forEach(user => {
       if (user.email === emailToSearch) {
-        
-
+        // Übereinstimmung gefunden, Schleife beenden
         return user.name;
-
       }
       document.getElementById('userName').innerHTML = user.name;
-    }
 
-   console.log("Kein Benutzer mit der angegebenen E-Mail-Adresse gefunden.");
-    return null;
+    });
   } else {
     console.error("Fehlender oder ungültiger Wert im localStorage für den Schlüssel 'checkinUser'");
     return null;
