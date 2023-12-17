@@ -368,27 +368,36 @@ select {
 }
 
 .subtaskContainer li {
-    font-size: 19px;
+    font-size: 18px;
 }
 
 .seperatorSubtask {
     width: 2px;
     background-color: #E2E2E2;
+    height: 100%;
 }
 
 
 .subtaskChange {
     opacity: 0;
+    align-items: center;
+    gap: 4px;
+}
+
+.subtaskChange img {
+    width: 19px;
+    height: 19px;
+    cursor: pointer;
 }
 
 .subtaskContainer:hover {
-    background-color: #D1D1D1;
+    background-color: #d1d1d13d;
     border-radius: 10px;
 
 }
 
 .subtaskContainer:hover .subtaskChange {
-    background-color: #D1D1D1;
+    /* background-color: #D1D1D1; */
     opacity: 1;
 }
 
