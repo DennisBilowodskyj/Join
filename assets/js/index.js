@@ -67,6 +67,7 @@ function logInUser(){ /**LOGIN */
     const foundPassword = findPasswordByEmail(users, emailInput);
     if (foundPassword !== "E-Mail nicht gefunden") {
         if (foundPassword === passwordInput) {
+            localStorage.setItem('checkinUser', JSON.stringify(emailInput));
             openSummary();
         } else {
             passwordErrorDiv = setPasswordAlertLogIn(passwordErrorDiv);
