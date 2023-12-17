@@ -376,15 +376,30 @@ function allowDrop(ev) {
 
 function moveTo(status) {
   tasks[currentDraggedElement]["status"] = status;
+  let rightID = findIdToremoveHighlight();
+  removeHighlight(rightID);
   saveFunction();
 }
 
 function highlight(id) {
-    document.getElementById(id).classList.add('dragHighlight');
+  document.getElementById(id).classList.add("dragHighlight");
 }
 
 function removeHighlight(id) {
-    document.getElementById(id).classList.remove('dragHighlight');
+  document.getElementById(id).classList.remove("dragHighlight");
+}
+
+function findIdToremoveHighlight() {
+  let status = tasks[currentDraggedElement]["status"];
+  if ((status == "todo")) {
+    return "toDoCards";
+  } else if ((status == "inProgress")) {
+    return "inProgressCards";
+  } else if ((status == "awaitFeedback")) {
+    return "awaitFeedbackCards";
+  } else {
+    return "doneCards";
+  }
 }
 
 // ########################## Delete and Edit ##########################
