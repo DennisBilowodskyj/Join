@@ -1,6 +1,8 @@
 async function boardInit() {
   init();
   await loadTasks();
+  valueAppender();
+  await setItem("tasks", JSON.stringify(tasks));
   filterStatus();
   renderCards();
 }
@@ -19,32 +21,54 @@ function filterStatus() {
   done = tasks.filter((task) => task["status"] == "done");
 }
 
+// ###################### Append Values in Tasks #######################
+// #####################################################################
+async function valueAppender() {
+  for (let i = 0; i < tasks.length; i++) {
+    let task = tasks[i];
+    if ("progressValue" in task) {
+    } else {
+      task.progressValue = [];
+      calcValuesToAppend(task);
+    }
+  }
+}
+
+function calcValuesToAppend(task) {
+  let subtasks = task["subtask"];
+  for (let i = 0; i < subtasks.length; i++) {
+    task.progressValue.push(0);
+  }
+}
 // ########################### Render Cards ############################
 // #####################################################################
 function renderCards() {
   renderCardsTodo("toDo");
-//   renderCardsProgress("inProgress");
-//   renderCardsAwait("awaitFeedback");
-//   renderCardsDone("done");
+  //   renderCardsProgress("inProgress");
+  //   renderCardsAwait("awaitFeedback");
+  //   renderCardsDone("done");
 }
 
 function renderCardsTodo(status) {
-    for (let i = 0; i < todos.length; i++) {
-        let todo = todos[i];
-        renderCardFunction(status, todo)
-    }
+  for (let i = 0; i < todos.length; i++) {
+    let todo = todos[i];
+    renderCardFunction(status, todo, i);
+  }
 }
 
 function renderCardFunction(status, task, i) {
   document.getElementById(`${status}Cards`).innerHTML += `
-  ${renderHeader(task,i)} 
+  ${renderHeader(task, i)} 
   ${renderProgressBar(task, i)} 
   ${renderAssignedPerson(task, i)} 
-  ${renderPrio(task, i)}` 
+  ${renderPrio(task, i)}`;
 }
 
 // ############################ Render Info ############################
 // #####################################################################
+function renderCardDetails() {
+  console.log("Should open the dialog!");
+}
 
 // ################### Open & Close Layer and Cards ####################
 // #####################################################################
@@ -60,7 +84,8 @@ function closeCardDetails() {
   document.getElementById("card_details_bg").classList.add("d_none");
 }
 
-function openCardDetails() {
+function openCardDetails(index) {
+  renderCardDetails(index);
   document.getElementById("card_details_bg").classList.remove("d_none");
 }
 
@@ -89,24 +114,68 @@ function renderHeader(task, i) {
 }
 
 function renderProgressBar(task, i) {
-    // Berechnung der Progressbar muss noch erledigt werden
-    return `<div class="progress_bar_card">
-        <progress id="fileSubtask()" max="100" value="50"></progress>
-        <div id="calcSubtask(${i})">1/2 Subtask</div>
-    </div>`
+  let finalSubTasks = calcSubtask(task);
+  let sumOfTasks = task["progressValue"].length;
+  let calcValueOfProgress = calcValueOfProgressbar(finalSubTasks, sumOfTasks);
+  return `<div class="progress_bar_card">
+        <progress id="fileSubtask()" max="100" value="${calcValueOfProgress}">
+        </progress>
+        <div id="calcSubtask(${i})">${finalSubTasks}/${sumOfTasks} Subtask</div>
+    </div>`;
 }
 
-function renderAssignedPerson(task, i){
-    return `<div class="contact_prio">
+function renderAssignedPerson(task, i) {
+  return `<div class="contact_prio">
     <div class="assigned_list">
-      <div class="assigned_person">SB</div>
-      <div class="assigned_person">SB</div>
-      <div class="assigned_person">SB</div>
-      <div class="assigned_person">2+</div>
-    </div>`
+    ${calcAssignedPersons(task)}
+    </div>`;
 }
-function renderPrio(task, i){
-    return `<div class="prio_card">
-            <img src="./assets/img/board/PrioUrgent.png" alt="" />
-            </div></div></div></div>`
+function renderPrio(task, i) {
+  return `<div class="prio_card">
+            <img src="${rightPrioImg(task)}" alt="" />
+            </div></div></div></div>`;
+}
+
+function calcSubtask(task) {
+  let sum = 0;
+  let values = task["progressValue"];
+  for (let i = 0; i < values.length; i++) {
+    let value = values[i];
+    sum + value;
+  }
+  return sum;
+}
+
+function calcValueOfProgressbar(finalSubTasks, sumOfTasks) {
+  let progressBarValue = 0;
+  progressBarValue = (finalSubTasks / sumOfTasks) * 100;
+  return progressBarValue;
+}
+
+function calcAssignedPersons(task) {
+  let assignedToHTML = "";
+  for (let i = 0; i < task["assignedTo"].length; i++) {
+    let assignedTo = task["assignedTo"][i];
+    assignedToHTML += `<div class="assigned_person" 
+    style = "background-color: #${assignedTo.color};">${
+      initialsAssignedTo(assignedTo.name, 0) +
+      initialsAssignedTo(assignedTo.name, 1)
+    }</div>`;
+  }
+  return assignedToHTML;
+}
+
+function initialsAssignedTo(name, position) {
+  let nameArray = name.split(" ");
+  return nameArray[position].charAt(0);
+}
+
+function rightPrioImg(task){
+    if (task["prio"] == "urgent") {
+        return "./assets/img/board/PrioUrgent.png"
+    } else if (task["prio"] == "medium") {
+        return "./assets/img/board/PrioMedia.png"
+    } else {
+        return "./assets/img/board/PrioLight.png"
+    }
 }
