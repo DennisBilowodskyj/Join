@@ -50,6 +50,7 @@ function renderCards() {
 }
 
 function renderCardsTodo(status) {
+  document.getElementById(`${status}Cards`).innerHTML = "";
   for (let i = 0; i < todos.length; i++) {
     let todo = todos[i];
     renderCardFunction(status, todo, i);
@@ -74,6 +75,7 @@ function renderCardDetails(index) {
   renderCardDetailsPriority(index);
   renderCardDetailsAssignedTo(index);
   renderCardDetailsSubTasks(index);
+  renderCardDetailsDeleteEdit(index);
 }
 
 function renderCardDetailsHeader(index) {
@@ -144,7 +146,8 @@ function renderCardDetailsSubTasks(index) {
   for (let i = 0; i < subTasks.length; i++) {
     let subTask = subTasks[i];
     subTasksSection.innerHTML += `
-        <div class="renderSubtasksToCard">
+        <div class="renderSubtasksToCard" 
+        onclick="addProgress(${index}, ${i})">
             <div>
                 <img src="${progressCheckOnSubtask(progressValue[i])}" alt="" />
             </div>
@@ -159,6 +162,33 @@ function progressCheckOnSubtask(progressValue) {
   } else {
     return "./assets/img/board/noneCheckButton.png";
   }
+}
+
+async function addProgress(task, subtask) {
+  if (tasks[task]["progressValue"][subtask] == 0) {
+    tasks[task]["progressValue"][subtask]++;
+  } else if (tasks[task]["progressValue"][subtask] == 1) {
+    tasks[task]["progressValue"][subtask]--;
+  }
+  renderCardDetailsSubTasks(task);
+  await setItem("tasks", JSON.stringify(tasks));
+  filterStatus();
+  renderCards();
+}
+
+function renderCardDetailsDeleteEdit(index){
+    let deleteEdit = document.getElementById('deleteEditCard')
+    deleteEdit.innerHTML = `<div class="deleteEditCardContent">
+    <div class="renderDeleteEditCardContent" onclick="deleteTask(${index})">
+      <img src="./assets/img/board/delete.png" alt="" />
+      <div>Delete</div>
+    </div>
+    <hr />
+    <div class="renderDeleteEditCardContent" onclick="editTask(${index})">
+      <img src="./assets/img/board/edit.png" alt="" />
+      <div>Edit</div>
+    </div>
+  </div>`;
 }
 
 // ################### Open & Close Layer and Cards ####################
@@ -209,7 +239,7 @@ function renderProgressBar(task, i) {
   let sumOfTasks = task["progressValue"].length;
   let calcValueOfProgress = calcValueOfProgressbar(finalSubTasks, sumOfTasks);
   return `<div class="progress_bar_card">
-        <progress id="fileSubtask()" max="100" value="${calcValueOfProgress}">
+        <progress id="fileSubtask(${i})" max="100" value="${calcValueOfProgress}">
         </progress>
         <div id="calcSubtask(${i})">${finalSubTasks}/${sumOfTasks} Subtask</div>
     </div>`;
@@ -232,7 +262,7 @@ function calcSubtask(task) {
   let values = task["progressValue"];
   for (let i = 0; i < values.length; i++) {
     let value = values[i];
-    sum + value;
+    sum += value;
   }
   return sum;
 }
