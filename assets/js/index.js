@@ -13,15 +13,6 @@ async function initLogIn(){ /**LOGIN */
 }
 
 
-async function loadUser(){ /**LOGIN */
-    try{
-    users = JSON.parse(await getItem('users'));
-    } catch(e){
-        console.info('Could not load Users')
-    }
-}
-
-
 /**
  * This function is used to open the signUp.html
  * 
@@ -54,7 +45,6 @@ function showLastUser(){ /**LOGIN */
 function checkInputLogIn(){ /**LOGIN */
     let inputIds = ['passwordLogIn'];
     let imgIds = ['passwordLogInImg'];
-
     inputIds.forEach((inputId, index) => {
         let input = document.getElementById(inputId);
         let img = document.getElementById(imgIds[index]);
@@ -64,8 +54,7 @@ function checkInputLogIn(){ /**LOGIN */
                 hidePassword(input, img);
             };
         } else {
-            img.src = "assets/img/signUp_icons/lock.png";
-            input.type = "password";
+            changeInputTypeToPassword();
         }
     });
 }
@@ -163,7 +152,7 @@ async function userSignUp(){
     removeRedBorderClassList();
     emptyErrorDivText(emailErrorDiv, passwordErrorDiv);
     if (checkEmail(users, emailToSearch.value)) {
-        emailErrorDiv = setEmailAlert(emailErrorDiv);
+        emailErrorDiv = setEmailAlertSignUp(emailErrorDiv);
     }
     if(password.value === checkPassword.value){
         signUpButton.disabled = true;
@@ -176,7 +165,7 @@ async function userSignUp(){
     loadIndex();
     resetForm();
     }else{
-        passwordErrorDiv = setPasswordAlert(passwordErrorDiv);
+        passwordErrorDiv = setPasswordAlertSignUp(passwordErrorDiv);
     }
 }
 
@@ -193,7 +182,7 @@ function emptyErrorDivText(emailErrorDiv, passwordErrorDiv){
 }
 
 
-function setEmailAlert(emailErrorDiv){
+function setEmailAlertSignUp(emailErrorDiv){
     emailErrorDiv.innerHTML = 'Ups! Diese Email ist schon vergeben.';
     document.getElementById('inputEmailDivRedBorderSignUp').classList.add('check-password-red-border');
     return emailErrorDiv;
@@ -248,7 +237,7 @@ function resetForm(){
 }
 
 
-function setPasswordAlert(passwordErrorDiv){
+function setPasswordAlertSignUp(passwordErrorDiv){
     passwordErrorDiv.innerHTML = 'Ups! your password dont match';
     document.getElementById('inputPasswordDivRedBorderSignUp').classList.add('check-password-red-border');
 }
@@ -268,19 +257,20 @@ function checkInputSignUp() {
                 hidePassword(input, img);
             };
         } else {
-            img.src = "assets/img/signUp_icons/lock.png";
-            input.type = "password";
+            changeInputTypeToPassword();
         }
     });
 }
 
 /*HELP FUNCTIONS */
-function showPassword(input, img) {
-    input.type = "text";
-    img.src = "assets/img/signUp_icons/showPassword.png";
-    img.onclick = function () {
-        hidePassword(input, img);
-    };
+
+
+async function loadUser(){ 
+    try{
+    users = JSON.parse(await getItem('users'));
+    } catch(e){
+        console.info('Could not load Users')
+    }
 }
 
 
@@ -290,4 +280,19 @@ function hidePassword(input, img) {
     img.onclick = function () {
         showPassword(input, img);
     };
+}
+
+
+function showPassword(input, img) {
+    input.type = "text";
+    img.src = "assets/img/signUp_icons/showPassword.png";
+    img.onclick = function () {
+        hidePassword(input, img);
+    };
+}
+
+
+function changeInputTypeToPassword(){
+    img.src = "assets/img/signUp_icons/lock.png";
+    input.type = "password";
 }
