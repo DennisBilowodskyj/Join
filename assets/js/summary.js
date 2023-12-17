@@ -48,7 +48,7 @@ async function addToSummary() {
 function summaryInit() {
   init();
   addToSummary();
-  checkEmailSummary();
+  checkEmailSummary(users);
 }
 
 // function loadTask(){
@@ -78,23 +78,26 @@ greet();
 
 
 function checkEmailSummary(users) {
-  const emailInput = document.getElementById('emailLogIn');
+  const emailToSearch = localStorage.getItem('checkinUser');
 
-  if (emailInput) {
-    const emailToSearch = emailInput.value;
-
+  if (emailToSearch) {
     for (const user of users) {
       if (user.email === emailToSearch) {
+        
+
         return user.name;
+
       }
       document.getElementById('userName').innerHTML = user.name;
-
     }
+
+   console.log("Kein Benutzer mit der angegebenen E-Mail-Adresse gefunden.");
+    return null;
   } else {
-    console.error("Element with ID 'emailLogIn' not found");
+    console.error("Fehlender oder ungültiger Wert im localStorage für den Schlüssel 'checkinUser'");
+    return null;
   }
 }
-
 
 /**
  * count tasks
