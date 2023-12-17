@@ -274,7 +274,7 @@ function closeAddTaskOverlay() {
 function renderHeader(task, i) {
   let category = changeCategoryValue(task["category"]);
   let color = categoryColorCheck(category);
-  return `<div class="user_cards" draggable="true" ondragstart="startDraggin(${task.id})"
+  return `<div class="user_cards" draggable="true" ondragstart="startDragging(${task.id})"
   onclick="openCardDetails(${task.id})">
     <div class="user_card_content"> <div class="category" 
         style="background-color: #${color}">${category}</div>
@@ -366,7 +366,7 @@ function categoryColorCheck(category) {
 
 // ####################### Drag and Drop Card ##########################
 // #####################################################################
-function startDraggin(id) {
+function startDragging(id) {
   currentDraggedElement = id;
 }
 
