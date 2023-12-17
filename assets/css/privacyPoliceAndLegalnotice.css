@@ -56,3 +56,6 @@ b{
     display: flex;
     flex-direction: row;
 }
+.p-distance{
+    margin: 0;
+}
