@@ -73,6 +73,7 @@ function renderCardDetails(index) {
   renderCardDetailsDate(index);
   renderCardDetailsPriority(index);
   renderCardDetailsAssignedTo(index);
+  renderCardDetailsSubTasks(index);
 }
 
 function renderCardDetailsHeader(index) {
@@ -116,15 +117,48 @@ function renderCardDetailsPriority(index) {
 }
 
 function renderCardDetailsAssignedTo(index) {
-  let assignedToArray = tasks[index]['assignedTo'];
-//   let prioImg = calcAssignedPersons(task);
+  let assignedToArray = tasks[index]["assignedTo"];
+  //   let prioImg = calcAssignedPersons(task);
   let assignedToSection = document.getElementById("assignedToCardName");
   assignedToSection.innerHTML = ``;
   for (let i = 0; i < assignedToArray.length; i++) {
-    const assignedToText = assignedToArray[i].name;
-    assignedToSection.innerHTML += `<div class="assignedToCardCyrcle">EM</div>
-    <div>${assignedToText}</div>`;
-  } 
+    let assignedToText = assignedToArray[i].name;
+    let assignedToColor = assignedToArray[i].color;
+    assignedToSection.innerHTML += `
+    <div class="assignedToCardNameValue">
+        <div class="assignedToCardCyrcle" 
+        style="background-color: #${assignedToColor};">${
+      initialsAssignedTo(assignedToText, 0) +
+      initialsAssignedTo(assignedToText, 1)
+    }</div>
+        <div>${assignedToText}</div>
+    </div>`;
+  }
+}
+
+function renderCardDetailsSubTasks(index) {
+  let subTasksSection = document.getElementById("renderSubtasksToCard");
+  subTasksSection.innerHTML = "";
+  let subTasks = tasks[index]["subtask"];
+  let progressValue = tasks[index]["progressValue"];
+  for (let i = 0; i < subTasks.length; i++) {
+    let subTask = subTasks[i];
+    subTasksSection.innerHTML += `
+        <div class="renderSubtasksToCard">
+            <div>
+                <img src="${progressCheckOnSubtask(progressValue[i])}" alt="" />
+            </div>
+            <div>${subTask}</div>
+        </div>`;
+  }
+}
+
+function progressCheckOnSubtask(progressValue) {
+  if (progressValue == 1) {
+    return "./assets/img/board/checkButton.png";
+  } else {
+    return "./assets/img/board/noneCheckButton.png";
+  }
 }
 
 // ################### Open & Close Layer and Cards ####################
