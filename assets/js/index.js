@@ -73,7 +73,7 @@ function checkInputLogIn(){ /**LOGIN */
 
 function logInUser(){ /**LOGIN */
     event.preventDefault();
-    const { passwordErrorDiv, emailErrorDiv } = setVariablesForLogInInput();
+    let { passwordErrorDiv, emailErrorDiv } = setVariablesForLogInInput();
     removeClasslistFromInputDivRedBorderLogIn();
     clearErrorDiv(passwordErrorDiv, emailErrorDiv);
     const emailInput = document.getElementById('emailLogIn').value;
@@ -83,15 +83,12 @@ function logInUser(){ /**LOGIN */
         if (foundPassword === passwordInput) {
             openSummary();
         } else {
-            passwordErrorDiv.innerHTML = 'Wrong password Ups! Try again.';
-            document.getElementById('inputDivRedBorderLogInPassword').classList.add('check-password-red-border');
+            passwordErrorDiv = setPasswordAlertLogIn(passwordErrorDiv);
         }
     } else {
-        emailErrorDiv.innerHTML = 'Wrong Email Ups! Try again.';
-        document.getElementById('inputDivRedBorderLogInEmail').classList.add('check-password-red-border');
+        emailErrorDiv = setEmailAlertLogIn(emailErrorDiv);
     }
 }
-
 
 
 function setVariablesForLogInInput(){
@@ -126,6 +123,18 @@ function findPasswordByEmail(users, emailToCheck) {
 function openSummary(){
     let pageURL = 'summary.html';
     window.location.href = pageURL;
+}
+
+
+function setPasswordAlertLogIn(passwordErrorDiv){
+    passwordErrorDiv.innerHTML = 'Wrong password Ups! Try again.';
+    document.getElementById('inputDivRedBorderLogInPassword').classList.add('check-password-red-border');
+}
+
+
+function setEmailAlertLogIn(emailErrorDiv){
+    emailErrorDiv.innerHTML = 'Wrong Email Ups! Try again.';
+    document.getElementById('inputDivRedBorderLogInEmail').classList.add('check-password-red-border');
 }
 
 
