@@ -71,10 +71,10 @@
               <img src="./assets/img/board/search.png" alt="search" />
             </button>
           </form>
-          <button onclick="openAddTaskOverlay()" class="AddTaskButton">
+          <button onclick="openAddTaskOverlay('todo')" class="AddTaskButton">
             Add Task <img src="./assets/img/board/add.png" alt="" />
           </button>
-          <button onclick="openAddTaskOverlay()" class="responseAddTaskButton">
+          <button onclick="openAddTaskOverlay('todo')" class="responseAddTaskButton">
             <img src="./assets/img/board/add.png" alt="" />
           </button>
         </div>
@@ -103,7 +103,7 @@
         >
           <div class="boardTabHeader">
             <p>To do</p>
-            <div class="boardTabAddButton" onclick="">
+            <div class="boardTabAddButton" onclick="openAddTaskOverlay('todo')">
               <img src="./assets/img/board/addTask.png" alt="" />
             </div>
           </div>
@@ -119,7 +119,7 @@
         >
           <div class="boardTabHeader">
             <p>In progress</p>
-            <div class="boardTabAddButton" onclick="">
+            <div class="boardTabAddButton" onclick="openAddTaskOverlay('inProgress')">
               <img src="./assets/img/board/addTask.png" alt="" />
             </div>
           </div>
@@ -135,7 +135,7 @@
         >
           <div class="boardTabHeader">
             <p>Await feedback</p>
-            <div class="boardTabAddButton" onclick="">
+            <div class="boardTabAddButton" onclick="openAddTaskOverlay('awaitFeedback')">
               <img src="./assets/img/board/addTask.png" alt="" />
             </div>
           </div>
@@ -157,7 +157,7 @@
       </div>
     </section>
 
-    <div class="overlay" id="addTaskOverlay">
+    <div class="overlay d_none" id="addTaskOverlay">
       <div class="wrapperOverlay">
         <div class="closeBtn" onclick="closeAddTaskOverlay()">
           <img src="./assets/img/addTask_icons/close.png" alt="" />

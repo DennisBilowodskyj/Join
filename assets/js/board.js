@@ -6,8 +6,8 @@ async function boardInit() {
 }
 
 async function saveFunction() {
-  await setItem("tasks", JSON.stringify(tasks));
   setIdFunction();
+  await setItem("tasks", JSON.stringify(tasks));
   filterStatus();
   renderCards();
 }
@@ -19,6 +19,7 @@ let inProgress = [];
 let feedback = [];
 let done = [];
 let currentDraggedElement;
+let statusCheck = "todo";
 
 function setIdFunction() {
   for (let i = 0; i < tasks.length; i++) {
@@ -244,9 +245,10 @@ function renderCardDetailsDeleteEdit(index) {
 
 // ################### Open & Close Layer and Cards ####################
 // #####################################################################
-function openAddTaskOverlay() {
-    document.getElementById("addTaskOverlay").classList.remove("d_none");
-  }
+function openAddTaskOverlay(status) {
+  statusCheck = status;
+  document.getElementById("addTaskOverlay").classList.remove("d_none");
+}
 
 function closeAddTaskOverlay() {
   document.getElementById("addTaskOverlay").classList.add("d_none");
@@ -312,9 +314,11 @@ function renderPrio(task, i) {
 function calcSubtask(task) {
   let sum = 0;
   let values = task["progressValue"];
-  for (let i = 0; i < values.length; i++) {
-    let value = values[i];
-    sum += value;
+  if (values.length > 0) {
+    for (let i = 0; i < values.length; i++) {
+      let value = values[i];
+      sum += value;
+    }
   }
   return sum;
 }
@@ -390,11 +394,11 @@ function removeHighlight(id) {
 
 function findIdToremoveHighlight() {
   let status = tasks[currentDraggedElement]["status"];
-  if ((status == "todo")) {
+  if (status == "todo") {
     return "toDoCards";
-  } else if ((status == "inProgress")) {
+  } else if (status == "inProgress") {
     return "inProgressCards";
-  } else if ((status == "awaitFeedback")) {
+  } else if (status == "awaitFeedback") {
     return "awaitFeedbackCards";
   } else {
     return "doneCards";
@@ -407,4 +411,27 @@ async function deleteTask(id) {
   tasks.splice(id, 1);
   closeCardDetails();
   saveFunction();
+}
+
+// ######################## Overlayer AddTask ##########################
+// #####################################################################
+async function overlayerAddTask() {
+  let title = document.getElementById("taskTitle").value;
+  let description = document.getElementById("taskDescription").value;
+  let date = document.getElementById("date").value;
+  let category = document.getElementById("categorySelect").value;
+  tasks.push({
+    title: title,
+    description: description,
+    assignedTo: assignedTo,
+    date: date,
+    prio: taskPrio,
+    category: category,
+    subtask: subtasks,
+    status: statusCheck,
+  });
+  saveFunction();
+  clearInput();
+  valueAppender();
+  closeAddTaskOverlay();
 }
