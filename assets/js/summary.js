@@ -109,8 +109,8 @@ async function checkEmailSummary(users) {
 
 function loadInitialsHeader(matchingUser){
     const [firstName, lastName] = matchingUser.name.split(' ');
-    const firstLetterFirstName = firstName.charAt(0);
-    const firstLetterLastName = lastName.charAt(0);
+    const firstLetterFirstName = firstName.charAt(0).toUpperCase();
+    const firstLetterLastName = lastName.charAt(0).toUpperCase();
     document.getElementById('user').innerHTML = firstLetterFirstName + firstLetterLastName;
 }
 /**
