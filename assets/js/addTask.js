@@ -110,15 +110,15 @@ function addSubtask() {
     let subtaskOutput = document.getElementById('subtaskListContainer');
 
     let subtask = subtaskInput.value;
-    let subtaskId = `subtask_${subtasks.length}`;
+    let subtaskId = subtasks.length;
 
     subtaskOutput.innerHTML += /*html*/`
-       <div class="subtaskContainer d_flex">
-            <li id="${subtaskId}" ondblclick="editSubtask('${subtaskId}')">${subtask}</li>
+       <div id="subtask_${subtaskId}" class="subtaskContainer d_flex">
+            <li  ondblclick="editSubtask('${subtaskId}')">${subtask}</li>
             <div class="subtaskChange d_flex">
-                <img src="./assets/img/addTask_icons/subtask_edit.png" alt="">
+                <img src="./assets/img/addTask_icons/subtask_edit.png" alt=""  onclick="editSubtask('${subtaskId}')">
                 <div class="seperatorSubtask"></div>
-                <img src="./assets/img/addTask_icons/subtask_delete.png" alt="">
+                <img src="./assets/img/addTask_icons/subtask_delete.png" alt="" onclick="deleteSubtask('${subtaskId}')">
             </div>
        </div>
     `;
@@ -127,14 +127,43 @@ function addSubtask() {
     resetSubtaskInput();
 }
 
-// ######## ToDo: diese Funtion überarbeiten
-function editSubtask(id) {
-    let subtask = document.getElementById(id);
-    subtask.innerhtml = 'test';
-    console.log(subtask.innerHTML);
-    // subtask.innerHTML = 'test';
+// Edit subtask
+function editSubtask(subtaskId) {
+    let subtaskElement = document.getElementById(`subtask_${subtaskId}`);
+    let subtaskText = subtaskElement.querySelector('li');
+    let subtaskContainer = subtaskElement.closest('.subtaskContainer');
+
+    // Element bearbeitbar machen
+    subtaskText.contentEditable = true;
+    subtaskText.focus();
+
+    subtaskContainer.classList.add('subtaskContainerActive');
+
+    // Eventlistener für Verlassen des Editiermodus (Blur-Event)
+    subtaskText.addEventListener('blur', function () {
+        subtaskText.contentEditable = false; 
+        subtasks[subtaskId] = subtaskText.innerHTML; 
+        subtaskContainer.classList.remove('subtaskContainerActive');
+    });
+
+    // Eventlistener für Drücken der Enter-Taste
+    subtaskText.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            subtaskText.contentEditable = false; 
+            subtasks[subtaskId] = subtaskText.innerHTML; 
+            subtaskContainer.classList.remove('subtaskContainerActive');
+        }
+    });
 }
 
+// delete subtask
+function deleteSubtask(subtaskId) {
+    let subtaskContainer = document.getElementById(`subtask_${subtaskId}`);
+   
+        subtasks.splice(subtaskId, 1);
+
+    subtaskContainer.remove();
+}
 
 async function getContacts() {
     contacts = JSON.parse(await getItem("contacts"));
