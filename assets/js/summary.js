@@ -81,6 +81,10 @@ function greet() {
 greet();
 
 async function checkEmailSummary(users) {
+  const guestUser = localStorage.getItem('guestUser')
+  if(guestUser === 'Guest'){
+    document.getElementById('userName').innerHTML += 'Guest';
+  }else{
   const emailToSearch = localStorage.getItem('checkinUser');
   const cleanedEmailToSearch = emailToSearch.replace(/^"(.*)"$/, '$1'); // Entfernt Anführungszeichen
   if (emailToSearch) {
@@ -104,6 +108,7 @@ async function checkEmailSummary(users) {
   } else {
     console.error("Fehlender oder ungültiger Wert im localStorage für den Schlüssel 'checkinUser'");
   }
+}
 }
 
 

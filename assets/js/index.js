@@ -57,7 +57,15 @@ function checkInputLogIn(){ /**LOGIN */
 }
 
 
+function guestLogIn(){
+    localStorage.removeItem('checkinUser');
+    localStorage.setItem('guestUser', 'Guest');
+    openSummary();
+}
+
+
 function logInUser(){ /**LOGIN */
+    localStorage.removeItem('guestUser');
     event.preventDefault();
     let { passwordErrorDiv, emailErrorDiv } = setVariablesForLogInInput();
     removeClasslistFromInputDivRedBorderLogIn();
