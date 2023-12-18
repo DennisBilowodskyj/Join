@@ -4,6 +4,7 @@ async function boardInit() {
   valueAppender();
   saveFunction();
   await getContacts();
+  renderContacts();
 }
 
 async function saveFunction() {
@@ -25,10 +26,7 @@ let statusCheck = "todo";
 function setIdFunction() {
   for (let i = 0; i < tasks.length; i++) {
     let task = tasks[i];
-    if ("id" in task) {
-    } else {
-      task.id = i;
-    }
+    task.id = i;
   }
 }
 
@@ -102,7 +100,7 @@ function renderCardsDone(status) {
 function renderCardFunction(status, task, i) {
   document.getElementById(`${status}Cards`).innerHTML += `
   ${renderHeader(task, i)} 
-  ${renderProgressBar(task, i)} 
+  ${renderProgressBar(task)} 
   ${renderAssignedPerson(task, i)} 
   ${renderPrio(task, i)}`;
 }
@@ -182,14 +180,12 @@ function renderCardDetailsAssignedTo(index) {
     let assignedToText = assignedToArray[i].name;
     let assignedToColor = assignedToArray[i].color;
     assignedToSection.innerHTML += `
-    <div class="assignedToCardNameValue">
-        <div class="assignedToCardCyrcle" 
-        style="background-color: #${assignedToColor};">${
+        <div class="assignedToCardNameValue">
+            <div class="assignedToCardCyrcle" 
+            style="background-color: #${assignedToColor};">${
       initialsAssignedTo(assignedToText, 0) +
       initialsAssignedTo(assignedToText, 1)
-    }</div>
-        <div>${assignedToText}</div>
-    </div>`;
+    }</div><div>${assignedToText}</div></div>`;
   }
 }
 
@@ -277,7 +273,7 @@ function openCardDetails(index) {
 
 // ############################ Card Templets ##########################
 // #####################################################################
-function renderHeader(task, i) {
+function renderHeader(task) {
   let category = changeCategoryValue(task["category"]);
   let color = categoryColorCheck(category);
   return `<div class="user_cards" draggable="true" ondragstart="startDragging(${task.id})"
@@ -293,15 +289,19 @@ function renderHeader(task, i) {
             </div></div>`;
 }
 
-function renderProgressBar(task, i) {
+function renderProgressBar(task) {
   let finalSubTasks = calcSubtask(task);
   let sumOfTasks = task["progressValue"].length;
-  let calcValueOfProgress = calcValueOfProgressbar(finalSubTasks, sumOfTasks);
-  return `<div class="progress_bar_card">
+  if (sumOfTasks > 0) {
+    let calcValueOfProgress = calcValueOfProgressbar(finalSubTasks, sumOfTasks);
+    return `<div class="progress_bar_card">
         <progress id="fileSubtask(${task.id})" max="100" value="${calcValueOfProgress}">
         </progress>
         <div id="calcSubtask(${task.id})">${finalSubTasks}/${sumOfTasks} Subtask</div>
     </div>`;
+  } else {
+    return `<div class="progress_bar_card"></div>`;
+  }
 }
 
 function renderAssignedPerson(task) {
@@ -424,20 +424,6 @@ async function editTask(id) {
   document.getElementById("addTaskOverlay").classList.remove("d_none");
 }
 
-function openEditContactDialog(id) {
-  let titel = tasks[id]["title"];
-  let description = tasks[id]["description"];
-  //   let assignedTo = tasks[id]["assignedTo"];
-  let dueDate = tasks[id]["date"];
-  let prio = tasks[id]["prio"];
-  let category = tasks[id]["category"];
-  //   let subtasks = tasks[id]["subtask"];
-  statusCheck = tasks[id]["status"];
-  fillForm(titel, description, assignedTo, dueDate, prio, category, subtasks);
-  changeOnSubmitFunction(id);
-  changeTaskButtonOnEdit();
-}
-
 function changeTaskButtonOnEdit() {
   OverlayerButtons = document.getElementById("createButton");
   OverlayerButtons.innerHTML = "";
@@ -470,19 +456,19 @@ function changeButtonToRegularAddTask() {
 function fillForm(
   titel,
   description,
-  assignedTo,
+  assignedToEdit,
   dueDate,
   prio,
   category,
-  subtasks
+  subtasksEdit
 ) {
   document.getElementById("taskTitle").value = titel;
   document.getElementById("taskDescription").value = description;
-  //   document.getElementById("contactName").value = assignedTo;
+  assignedTo = assignedToEdit;
   document.getElementById("date").value = dueDate;
   setPrio(prio);
   document.getElementById("categorySelect").value = category;
-  //   document.getElementById("contactTel").value = subtasks;
+  subtasks = subtasksEdit;
 }
 
 function changeEditSettings() {
@@ -508,6 +494,35 @@ function saveTaskButton(id) {
 
 // ######################## Overlayer AddTask ##########################
 // #####################################################################
+function openEditContactDialog(id) {
+  let titel = tasks[id]["title"];
+  let description = tasks[id]["description"];
+  let assignedToEdit = tasks[id]["assignedTo"];
+  let dueDate = tasks[id]["date"];
+  let prio = tasks[id]["prio"];
+  let category = tasks[id]["category"];
+  let subtasksEdit = tasks[id]["subtask"];
+  statusCheck = tasks[id]["status"];
+  fillForm(
+    titel,
+    description,
+    assignedToEdit,
+    dueDate,
+    prio,
+    category,
+    subtasksEdit
+  );
+  necessaryFunctionsToEditTasks(id);
+}
+
+function necessaryFunctionsToEditTasks(id) {
+  renderAssignedBadges();
+  renderSubtasksToEdit();
+  changeOnSubmitFunction(id);
+  changeTaskButtonOnEdit();
+  addAssignedToContacts(id);
+}
+
 async function overlayerAddTask() {
   let title = document.getElementById("taskTitle").value;
   let description = document.getElementById("taskDescription").value;
@@ -527,5 +542,49 @@ async function overlayerAddTask() {
   saveFunction();
   valueAppender();
   closeAddTaskOverlay();
-  return false
+  return false;
+}
+
+function renderSubtasksToEdit() {
+  if (subtasks.length > 0) {
+    let subtaskOutput = document.getElementById("subtaskListContainer");
+    let subtaskId = `subtask_${subtasks.length}`;
+    for (let i = 0; i < subtasks.length; i++) {
+      let subtask = subtasks[i];
+      renderSubtasksHTML(subtaskOutput, subtaskId, subtask);
+    }
+  }
+}
+
+function renderSubtasksHTML(subtaskOutput, subtaskId, subtask) {
+  subtaskOutput.innerHTML += `
+       <div class="subtaskContainer d_flex">
+            <li id="${subtaskId}" ondblclick="editSubtask('${subtaskId}')">${subtask}</li>
+            <div class="subtaskChange d_flex">
+                <img src="./assets/img/addTask_icons/subtask_edit.png" alt="">
+                <div class="seperatorSubtask"></div>
+                <img src="./assets/img/addTask_icons/subtask_delete.png" alt="">
+            </div>
+       </div>`;
+}
+
+function addAssignedToContacts(id) {
+  AssignedPersons = tasks[id].assignedTo;
+  for (let i = 0; i < AssignedPersons.length; i++) {
+    let AssignedPerson = AssignedPersons[i];
+    for (let y = 0; y < contacts.length; y++) {
+      let contact = contacts[y];
+      addAssignedTrueTest(AssignedPerson, contact);
+    }
+  }
+
+  function addAssignedTrueTest(AssignedPerson, contact) {
+    if (contact.assigned == false || contact.assigned == undefined) {
+      if (AssignedPerson.email == contact.email) {
+        contact.assigned = true;
+      } else {
+        contact.assigned = false;
+      }
+    }
+  }
 }
