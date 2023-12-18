@@ -45,21 +45,11 @@ body {
 
 
 .section_addTask {
-    /* margin-left: calc(8% + 232px);
-    margin-right: 9.5%; */
     margin-left: 5vw;
     margin-right: 5vw;
-
-    /* height: calc(100vh - 96px); */
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    /* max-width: 976.25px; */
-    /* margin-top: 110px;
-    font-size: 20px;
-    max-width: 100vw; */
-    /* max-height: calc(100% - 96px); */
-    /* height: 100%; */
 }
 
 
@@ -101,8 +91,6 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* width: calc(33% - 16px); */
-    /* width: 33%; */
     background-color: white;
     border-radius: 10px;
     border: 1px solid #D1D1D1;
@@ -134,10 +122,8 @@ h1 {
 }
 
 .footSection {
-    /* max-width: 976.25px; */
     justify-content: space-between;
     margin-top: 30px;
-
 }
 
 .newContact {
@@ -344,11 +330,8 @@ h1 {
 
 
 .contactRight {
-    /* background-image: url(/assets/img/addTask_icons/check_button.png); */
     width: 24px;
     height: 24px;
-    /* background-repeat: no-repeat; */
-    /* padding-right: 6px; */
 }
 
 #subtaskControls {
@@ -403,7 +386,6 @@ h1 {
 }
 
 .subtaskContainer:hover .subtaskChange {
-    /* background-color: #D1D1D1; */
     opacity: 1;
 }
 
@@ -419,7 +401,6 @@ li:focus {
     width: 32px;
     height: 32px;
     position: absolute;
-    /* top: 64px; */
     top: calc(20vh - 64px);
     left: calc(90vw - 60px);
     cursor: pointer;
@@ -477,12 +458,6 @@ li:focus {
     .main {
         left: 0;
     }
-
-    /* .section_addTask {
-        margin-left: auto;
-        margin-right: auto;
-        width: 80vw;
-    } */
 
     h1 {
         font-size: 48px;

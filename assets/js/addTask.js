@@ -113,18 +113,25 @@ function addSubtask() {
     let subtaskId = subtasks.length;
 
     subtaskOutput.innerHTML += /*html*/`
-       <div id="subtask_${subtaskId}" class="subtaskContainer d_flex">
-            <li  ondblclick="editSubtask('${subtaskId}')">${subtask}</li>
-            <div class="subtaskChange d_flex">
-                <img src="./assets/img/addTask_icons/subtask_edit.png" alt=""  onclick="editSubtask('${subtaskId}')">
-                <div class="seperatorSubtask"></div>
-                <img src="./assets/img/addTask_icons/subtask_delete.png" alt="" onclick="deleteSubtask('${subtaskId}')">
-            </div>
+       <div id="subtask_${subtaskId}" class="subtaskContainer d_flex" ondblclick="editSubtask('${subtaskId}')">
+            <li  >${subtask}</li>
+            ${generateSubtaskChange(subtaskId)}
+
        </div>
     `;
     subtasks.push(subtask);
 
     resetSubtaskInput();
+}
+
+function generateSubtaskChange(subtaskId) {
+    return /*html*/`
+        <div class="subtaskChange d_flex">
+                <img src="./assets/img/addTask_icons/subtask_edit.png" alt=""  onclick="editSubtask('${subtaskId}')">
+                <div class="seperatorSubtask"></div>
+                <img src="./assets/img/addTask_icons/subtask_delete.png" alt="" onclick="deleteSubtask('${subtaskId}')">
+            </div>
+    `;
 }
 
 // Edit subtask
