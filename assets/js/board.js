@@ -420,6 +420,7 @@ async function overlayerAddTask() {
   let description = document.getElementById("taskDescription").value;
   let date = document.getElementById("date").value;
   let category = document.getElementById("categorySelect").value;
+  prioCheck()
   tasks.push({
     title: title,
     description: description,

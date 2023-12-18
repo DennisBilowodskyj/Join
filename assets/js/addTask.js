@@ -84,6 +84,7 @@ async function addTask() {
     let description = document.getElementById('taskDescription').value;
     let date = document.getElementById('date').value;
     let category = document.getElementById('categorySelect').value;
+    prioCheck()
     tasks.push({
         title: title,
         description: description,
@@ -98,6 +99,11 @@ async function addTask() {
     clearInput();
 }
 
+function prioCheck(){
+    if(taskPrio === undefined){
+        taskPrio = 'medium'
+    }
+}
 
 function addSubtask() {
     let subtaskInput = document.getElementById('subtaskInput');
@@ -167,7 +173,7 @@ function setPrio(buttonID) {
     let btnMedium = document.getElementById('prio_medium');
     let btnLow = document.getElementById('prio_low');
     let prioBtn = [btnUrgent, btnMedium, btnLow]
-
+    
     prioBtn.forEach(btn => {
         setPrioInactive(btn)
     });
@@ -179,7 +185,6 @@ function setPrio(buttonID) {
         setPrioBtn(btnLow, '#7AE229', 'prio_low_white.svg');
     }
 }
-
 
 function setPrioBtn(btnID, bgColor, imgSrc) {
     btnID.style.backgroundColor = (bgColor);

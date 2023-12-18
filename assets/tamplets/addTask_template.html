@@ -2,7 +2,7 @@
 <section class="section_addTask">
 
     <h1>Add Task</h1>
-    <form action="">
+    <form onsubmit="overlayerAddTask(); return false;">
         <div class="mainContent d_flex">
             <div class="leftContent">
                 <p>Title<span class="required">*</span></p>
@@ -17,30 +17,19 @@
                         placeholder="Select contacts to assign">
                     <!-- <img id="selectArrow" src="./assets/img/addTask_icons/arrow_drop_downaa.png" alt=""> -->
                     <div class="contacts d_none" id="contactsOverlay">
-                        <div id="contactsContent">
-
-                          
-                        </div>
+                        <div id="contactsContent"> </div>
                         <!-- Create new Contact -->
                         <div class="newContact d_flex" id="contact1" onclick="createContact()">
                             <span>Create new Contact</span>
                         </div>
-
-
                     </div>
-
-
-
                 </div>
-
-                <div id="badgesAssignedTo">
-                    
-                </div>
+                <div id="badgesAssignedTo"></div>
             </div>
             <div class="seperator"></div>
             <div class="rightContent">
                 <p>Due date<span class="required">*</span></p>
-                <input class="OverlayerInput" type="date" name="" id="date" onclick="setMinDate();">
+                <input required class="OverlayerInput" type="date" name="" id="date" onclick="setMinDate();">
                 <p>Prio</p>
                 <div class="prioContainer d_flex">
                     <div class="prioCard" id="prio_urgent" onclick="setPrio('urgent')">
@@ -57,8 +46,8 @@
                     </div>
                 </div>
                 <p>Category<span class="required">*</span></p>
-                <select class="selectOverlayer" name="" class="" id="categorySelect">
-                    <option value="select">Select task category</option>
+                <select class="selectOverlayer" name="Category" id="categorySelect" required>
+                    <option value="">Select task category</option>
                     <option value="user_story">User Story</option>
                     <option value="technical_task">Technical Task</option>
                 </select>
@@ -79,7 +68,6 @@
             </div>
         </div>
 
-    </form>
     <div class="footSection d_flex">
         <div>
             <span><span class="required">*</span>This field is required</span>
@@ -90,10 +78,10 @@
                 <img src="./assets/img/addTask_icons/cancel.png">
 
             </div>
-            <div class="createBtn d_flex" onclick="overlayerAddTask()">
+            <button class="createBtn d_flex" type="submit">
                 <span>Create Task</span>
                 <img src="./assets/img/addTask_icons/check.png">
-            </div>
+            </button>
         </div>
     </div>
     </form>
