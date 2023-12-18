@@ -96,6 +96,7 @@ async function checkEmailSummary(users) {
       // Übereinstimmung gefunden, setze den Benutzernamen
       document.getElementById('userName').innerHTML = matchingUser.name;
       console.log("Match found. User name:", matchingUser.name);
+      loadInitialsHeader(matchingUser);
       return; // Beende die Funktion nach der Aktualisierung des Benutzernamens
     } else {
       console.error("Kein Benutzer mit der angegebenen E-Mail-Adresse gefunden.");
@@ -103,6 +104,14 @@ async function checkEmailSummary(users) {
   } else {
     console.error("Fehlender oder ungültiger Wert im localStorage für den Schlüssel 'checkinUser'");
   }
+}
+
+
+function loadInitialsHeader(matchingUser){
+    const [firstName, lastName] = matchingUser.name.split(' ');
+    const firstLetterFirstName = firstName.charAt(0);
+    const firstLetterLastName = lastName.charAt(0);
+    document.getElementById('user').innerHTML = firstLetterFirstName + firstLetterLastName;
 }
 /**
  * count tasks
