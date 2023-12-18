@@ -151,7 +151,7 @@ h1 {
     cursor: pointer;
 }
 
-input {
+.OverlayerInput {
     border-radius: 10px;
     padding: 12px 21px;
     border: 1px solid #D1D1D1;
@@ -167,7 +167,7 @@ input {
     color: #FF8190;
 }
 
-textarea {
+.textareaOverlayer {
     height: 120px;
     resize: none;
     border-radius: 10px;
@@ -184,7 +184,7 @@ textarea {
 
 }
 
-select {
+.selectOverlayer {
     border-radius: 10px;
     padding: 12px 21px;
     border: 1px solid #D1D1D1;
@@ -427,7 +427,7 @@ select {
         width: 100%;
     }
 
-    form {
+    .addTaksForm {
         flex-direction: column;
     }
 
@@ -453,11 +453,11 @@ select {
         font-size: 16px;
     }
 
-    input {
+    .OverlayerInput {
         font-size: 16px;
     }
 
-    textarea {
+    .textareaOverlayer {
         font-size: 16px;
     }
 

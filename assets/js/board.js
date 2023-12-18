@@ -3,6 +3,7 @@ async function boardInit() {
   await loadTasks();
   valueAppender();
   saveFunction();
+  await getContacts();
 }
 
 async function saveFunction() {
@@ -174,7 +175,7 @@ function renderCardDetailsPriority(index) {
 
 function renderCardDetailsAssignedTo(index) {
   let assignedToArray = tasks[index]["assignedTo"];
-//   let prioImg = calcAssignedPersons(task);
+  //   let prioImg = calcAssignedPersons(task);
   let assignedToSection = document.getElementById("assignedToCardName");
   assignedToSection.innerHTML = ``;
   for (let i = 0; i < assignedToArray.length; i++) {
@@ -247,6 +248,8 @@ function renderCardDetailsDeleteEdit(index) {
 // #####################################################################
 function openAddTaskOverlay(status) {
   statusCheck = status;
+  let submitFunction = document.getElementById("addTaksForm");
+  submitFunction.onsubmit = overlayerAddTask;
   document.getElementById("addTaskOverlay").classList.remove("d_none");
 }
 
@@ -424,11 +427,11 @@ async function editTask(id) {
 function openEditContactDialog(id) {
   let titel = tasks[id]["title"];
   let description = tasks[id]["description"];
-//   let assignedTo = tasks[id]["assignedTo"];
+  //   let assignedTo = tasks[id]["assignedTo"];
   let dueDate = tasks[id]["date"];
   let prio = tasks[id]["prio"];
   let category = tasks[id]["category"];
-//   let subtasks = tasks[id]["subtask"];
+  //   let subtasks = tasks[id]["subtask"];
   statusCheck = tasks[id]["status"];
   fillForm(titel, description, assignedTo, dueDate, prio, category, subtasks);
   changeOnSubmitFunction(id);
@@ -446,8 +449,8 @@ function changeTaskButtonOnEdit() {
 }
 
 function changeOnSubmitFunction(id) {
-  submitFunction = document.getElementById("addTaksForm");
-  submitFunction.onsubmit = saveTaskButton(id);
+  let submitFunction = document.getElementById("addTaksForm");
+  submitFunction.onsubmit = saveTaskButton;
 }
 
 function changeButtonToRegularAddTask() {
@@ -524,4 +527,5 @@ async function overlayerAddTask() {
   saveFunction();
   valueAppender();
   closeAddTaskOverlay();
+  return false
 }
