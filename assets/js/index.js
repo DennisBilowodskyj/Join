@@ -296,3 +296,9 @@ function changeInputTypeToPassword(img, input){
     img.src = "assets/img/signUp_icons/lock.png";
     input.type = "password";
 }
+
+
+function openNewTab(url) {
+    sessionStorage.setItem('previousPage', window.location.href);
+    window.open(url, '_blank');
+}
