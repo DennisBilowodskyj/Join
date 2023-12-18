@@ -8,13 +8,17 @@
 .top-section-right{
     background-color: rgb(246,247,248);
     animation: transparencyEffect 2s forwards; 
+    z-index: 1;
 }
 @keyframes transparencyEffect {
     0% {
       opacity: 0; 
     }
+    50% {
+        opacity: 0;
+    }
     100% {
-      opacity: 1; 
+      opacity: 1;
     }
 }
 
@@ -24,7 +28,7 @@
     height: 121px;
     width: 100px;
     position: relative;
-    animation: mymove 1s forwards;
+    animation: mymove 2s forwards;
     z-index: 999;
 }
 @keyframes mymove {
@@ -32,17 +36,11 @@
     50% {top: 40vh; left: 45vw; transform: scale(2.74);}
     100% {top: 0vh; left: 0vw;transform: scale(1);}
 }
-@media (max-width: 700px) {
-    
-    @keyframes transparencyEffect {
-        0% {
-            background-color: rgb(42,55,71);
-            opacity: 0; 
-        }
-        100% {
-            background-color: rgb(246,247,248);
-            opacity: 1; 
-        }
+@media (max-width: 700px){
+    @keyframes mymove {
+        0% {top: 40vh;right: 40vw; left: 40vw;transform:  scale(2.74);}
+        50% {top: 40vh;right: 40vw; left: 40vw; transform: scale(2.74);}
+        100% {top: 0vh;right: 0vw; left: 0vw;transform: scale(1);}
     }
 }
 

@@ -177,10 +177,13 @@ body{
     color: rgb(56,171,226);
     transform: scale(1.1);
 }
+.mobile-sign-up-button-section{
+    display: none;
+}
 
 @media (max-width: 700px) {
 .d-none{
-    display: contents;
+    display: block;
 }
 .top-section-logo{
     width: 64px;
@@ -190,7 +193,6 @@ body{
     display: none;
 }
 .mobile-sign-up-button-section{
-    display: none;
     display: flex;
     justify-content: center;
     align-items: center;
