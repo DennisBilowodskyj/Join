@@ -1,3 +1,4 @@
+let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 let todos = 0;
 let done = 0;
@@ -50,8 +51,7 @@ async function summaryInit() {
   await loadUser();
   addToSummary();
   checkEmailSummary(users);
-  sortByDate(task);
-
+  displayEarliestDueDate();
 }
 
 
@@ -123,16 +123,7 @@ function countTasksByStatus(status) {
   return count;
 }
 
-function sortByDate(task) {
-  const filteredTasks = task.filter((task) => task.hasOwnProperty('dueDate'));
-  filteredTasks.sort((task1, task2) => new Date(task1.dueDate) - new Date(task2.dueDate));
 
-  if (filteredTasks.length > 0) {
-    document.getElementById("date").innerHTML = filteredTasks[0].dueDate;
-  } else {
-    console.error('No tasks with due dates found');
-  }
-}
 
 async function updateTaskCounts() {
   todos = countTasksByStatus("todo");
@@ -141,7 +132,9 @@ async function updateTaskCounts() {
   inBoard = countTasksByStatus("inBoard");
   inProgress = countTasksByStatus("inProgress");
   feedback = countTasksByStatus("feedback");
+
 }
+
 
 function updateTodoNumber() {
   document.getElementById("todos").innerText = todos;
@@ -151,3 +144,35 @@ function updateTodoNumber() {
   document.getElementById("inProgress").innerText = inProgress;
   document.getElementById("feedback").innerText = feedback;
 }
+
+
+// display the earliest prio:urgent dueDate
+function displayEarliestDueDate() {
+  const earliestTask = findEarliestDueDate(task);
+
+  if (earliestTask && earliestTask.priority === 'urgent') {
+    const earliestDate = new Date(earliestTask.duedate.replace(/(\d{2}).(\d{2}).(\d{4})/, '$3-$2-$1'));
+    const monthIndex = earliestDate.getMonth();
+    const month = months[monthIndex];
+    const formattedDate = `${month} ${earliestDate.getDate()}, ${earliestDate.getFullYear()}`;
+
+    document.getElementById("date").innerHTML = formattedDate;
+  } else {
+    document.getElementById("date").innerHTML = "No urgent tasks found.";
+  }
+}
+
+function findEarliestDueDate(tasks) {
+  const urgentTasks = tasks.filter(task => task.priority === 'urgent');
+
+  if (urgentTasks.length === 0) {
+    return null; 
+  }
+
+  return urgentTasks.reduce((earliest, current) => {
+    const currentDate = new Date(current.duedate.replace(/(\d{2}).(\d{2}).(\d{4})/, '$3-$2-$1'));
+    const earliestDate = new Date(earliest.duedate.replace(/(\d{2}).(\d{2}).(\d{4})/, '$3-$2-$1'));
+    return currentDate < earliestDate ? current : earliest;
+  }, urgentTasks[0]); 
+}
+findEarliestDueDate(task);
