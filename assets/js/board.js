@@ -431,6 +431,7 @@ function openEditContactDialog(id) {
   let subtasks = tasks[id]["subtask"];
   statusCheck = tasks[id]["status"];
   fillForm(titel, description, assignedTo, dueDate, prio, category, subtasks);
+  changeOnSubmitFunction(id);
   changeTaskButtonOnEdit();
 }
 
@@ -444,10 +445,15 @@ function changeTaskButtonOnEdit() {
     </button>`;
 }
 
+function changeOnSubmitFunction(id) {
+  submitFunction = document.getElementById("addTaksForm");
+  submitFunction.onsubmit = saveTaskButton(id);
+}
+
 function changeButtonToRegularAddTask() {
-    OverlayerButtons = document.getElementById("createButton");
-    OverlayerButtons.innerHTML = "";
-    OverlayerButtons.innerHTML = `
+  OverlayerButtons = document.getElementById("createButton");
+  OverlayerButtons.innerHTML = "";
+  OverlayerButtons.innerHTML = `
     <div class="clearBtn d_flex" onclick="clearInput()">
         <span>Clear</span>
         <img src="./assets/img/addTask_icons/cancel.png" />
@@ -456,7 +462,7 @@ function changeButtonToRegularAddTask() {
         <span>Create Task</span>
         <img src="./assets/img/addTask_icons/check.png" />
     </button>`;
-  }
+}
 
 function fillForm(
   titel,
@@ -474,7 +480,6 @@ function fillForm(
   setPrio(prio);
   document.getElementById("categorySelect").value = category;
   //   document.getElementById("contactTel").value = subtasks;
-  //   document.getElementById("contactTel").value = status;
 }
 
 function changeEditSettings() {
@@ -482,6 +487,20 @@ function changeEditSettings() {
   document.getElementById("createButton").classList.remove("d_flex");
   document.getElementById("editButtons").classList.add("d_flex");
   document.getElementById("editButtons").classList.remove("d_none");
+}
+
+function saveTaskButton(id) {
+  prioCheck();
+  tasks[id]["title"] = taskTitle.value;
+  tasks[id]["description"] = taskDescription.value;
+  tasks[id]["assignedTo"] = assignedTo;
+  tasks[id]["date"] = date.value;
+  tasks[id]["prio"] = taskPrio;
+  tasks[id]["category"] = categorySelect.value;
+  tasks[id]["subtask"] = subtasks;
+  statusCheck = tasks[id]["status"];
+  saveFunction();
+  valueAppender();
 }
 
 // ######################## Overlayer AddTask ##########################
