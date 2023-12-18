@@ -245,11 +245,11 @@ function renderCardDetailsDeleteEdit(index) {
 // ################### Open & Close Layer and Cards ####################
 // #####################################################################
 function openAddTaskOverlay() {
-  document.getElementById("addTaskOverlay").classList.toggle("d_none");
-}
+    document.getElementById("addTaskOverlay").classList.remove("d_none");
+  }
 
 function closeAddTaskOverlay() {
-  document.getElementById("addTaskOverlay").classList.toggle("d_none");
+  document.getElementById("addTaskOverlay").classList.add("d_none");
 }
 
 function closeCardDetails() {
@@ -261,13 +261,12 @@ function openCardDetails(index) {
   document.getElementById("card_details_bg").classList.remove("d_none");
 }
 
-// document.getElementById('addTaskOverlay').classList.toggle("d_none");
-document.getElementById("addTaskOverlay").style.transform = "translateX(0)";
+// document.getElementById("addTaskOverlay").style.transform = "translateX(0)";
 
-function closeAddTaskOverlay() {
-  document.getElementById("addTaskOverlay").style.transform =
-    "translateX(100%)";
-}
+// function closeAddTaskOverlay() {
+//   document.getElementById("addTaskOverlay").style.transform =
+//     "translateX(100%)";
+// }
 
 // ############################ Card Templets ##########################
 // #####################################################################

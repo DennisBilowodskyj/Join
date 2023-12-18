@@ -7,11 +7,10 @@
     <link rel="icon" href="assets/img/logos/JoinLogo.png" />
     <link rel="stylesheet" href="./assets/css/header.css" />
     <link rel="stylesheet" href="./assets/css/sideBar.css" />
-    <!-- <link rel="stylesheet" href="assets/css/index.css"> -->
+    <link rel="stylesheet" href="./assets/css/boardOverlayer.css">
     <link rel="stylesheet" href="./assets/css/inter.css" />
     <link rel="stylesheet" href="./assets/css/openSans.css" />
     <link rel="stylesheet" href="assets/css/board.css" />
-
     <link rel="stylesheet" href="assets/css/boardResponse.css" />
 
     <script src="./assets/js/script.js"></script>
@@ -57,7 +56,6 @@
         </div>
       </div>
     </section>
-
     <section class="section_board">
       <div class="headSection">
         <h1>Board</h1>
@@ -157,14 +155,16 @@
           <div id="doneCards" class="cardPosition"></div>
         </div>
       </div>
-      <div class="overlay" id="addTaskOverlay">
-        <div class="wrapperOverlay">
-          <div class="closeBtn" onclick="closeAddTaskOverlay()">
-            <img src="./assets/img/addTask_icons/close.png" alt="" />
-          </div>
-          <div w3-include-html="./assets/tamplets/addTask_template.html"></div>
-        </div>
-      </div>
     </section>
+
+    <div class="overlay" id="addTaskOverlay">
+      <div class="wrapperOverlay">
+        <div class="closeBtn" onclick="closeAddTaskOverlay()">
+          <img src="./assets/img/addTask_icons/close.png" alt="" />
+        </div>
+        <div w3-include-html="./assets/tamplets/addTask_template.html"></div>
+      </div>
+    </div>
+
   </body>
 </html>

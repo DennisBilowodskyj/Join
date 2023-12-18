@@ -3,26 +3,26 @@
 
     <h1>Add Task</h1>
     <form action="">
-        <div class="mainContent d-flex">
+        <div class="mainContent d_flex">
             <div class="leftContent">
                 <p>Title<span class="required">*</span></p>
-                <input required type="text" id="taskTitle" placeholder="Enter a title">
+                <input class="OverlayerInput" required type="text" id="taskTitle" placeholder="Enter a title">
                 <p>Description</p>
-                <textarea name="" id="taskDescription" cols="30" rows="10"
+                <textarea class="textareaOverlayer" id="taskDescription" cols="30" rows="10"
                     placeholder="Enter a description"></textarea>
                 <p>Assigned to</p>
                 <div class="assignedContainer">
 
-                    <input onclick="openAssignedInput()" class="assignedInput inputArrow" type="text" id="assignedInput"
+                    <input class="OverlayerInput" onclick="openAssignedInput()" class="assignedInput inputArrow" type="text" id="assignedInput"
                         placeholder="Select contacts to assign">
                     <!-- <img id="selectArrow" src="./assets/img/addTask_icons/arrow_drop_downaa.png" alt=""> -->
-                    <div class="contacts d-none" id="contactsOverlay">
+                    <div class="contacts d_none" id="contactsOverlay">
                         <div id="contactsContent">
 
                           
                         </div>
                         <!-- Create new Contact -->
-                        <div class="newContact d-flex" id="contact1" onclick="createContact()">
+                        <div class="newContact d_flex" id="contact1" onclick="createContact()">
                             <span>Create new Contact</span>
                         </div>
 
@@ -40,9 +40,9 @@
             <div class="seperator"></div>
             <div class="rightContent">
                 <p>Due date<span class="required">*</span></p>
-                <input type="date" name="" id="date" onclick="setMinDate();">
+                <input class="OverlayerInput" type="date" name="" id="date" onclick="setMinDate();">
                 <p>Prio</p>
-                <div class="prioContainer d-flex">
+                <div class="prioContainer d_flex">
                     <div class="prioCard" id="prio_urgent" onclick="setPrio('urgent')">
                         <p>Urgent</p>
                         <img src="./assets/img/addTask_icons/prio_urgent.svg">
@@ -57,16 +57,16 @@
                     </div>
                 </div>
                 <p>Category<span class="required">*</span></p>
-                <select name="" class="" id="categorySelect">
+                <select class="selectOverlayer" name="" class="" id="categorySelect">
                     <option value="select">Select task category</option>
                     <option value="user_story">User Story</option>
                     <option value="technical_task">Technical Task</option>
                 </select>
                 <p>Subtasks</p>
                 <div>
-                    <input type="text" placeholder="Add new subtask" id="subtaskInput" oninput="renderSubtaskBtn()">
+                    <input class="OverlayerInput" type="text" placeholder="Add new subtask" id="subtaskInput" oninput="renderSubtaskBtn()">
                     <span id="subtaskAddBtn">
-                        <div id="subtaskControls" class ="d-flex d-none">
+                        <div id="subtaskControls" class ="d_flex d_none">
                             <img src="./assets/img/addTask_icons/subtask_close.png" onclick="resetSubtaskInput()">
                             <img src="./assets/img/addTask_icons/subtask_check.png" onclick="addSubtask()">
                             </div>
@@ -80,17 +80,17 @@
         </div>
 
     </form>
-    <div class="footSection d-flex">
+    <div class="footSection d_flex">
         <div>
             <span><span class="required">*</span>This field is required</span>
         </div>
-        <div class="btnContainer d-flex">
-            <div class="clearBtn d-flex" onclick="clearInput()">
+        <div class="btnContainer d_flex">
+            <div class="clearBtn d_flex" onclick="clearInput()">
                 <span >Clear</span>
                 <img src="./assets/img/addTask_icons/cancel.png">
 
             </div>
-            <div class="createBtn d-flex" onclick="addTask()">
+            <div class="createBtn d_flex" onclick="addTask()">
                 <span>Create Task</span>
                 <img src="./assets/img/addTask_icons/check.png">
             </div>
