@@ -7,9 +7,11 @@ section {
     margin-left: 300px;
     margin-right: 20px;
     font-size: 10px;
+}  
+.section-scrollbar{
     overflow: scroll;
     height: calc(100vh - 96px);
-}  
+}
 span{
     font-size: 18px;
 }
@@ -80,4 +82,31 @@ b{
 
   *::-webkit-scrollbar-thumb:hover {
     background-color: #29abe2;
+  }
+  @media (max-width: 900px){
+    h1{
+        font-size: 30px;
+    }
+    .undersection-headline{
+        font-size: 20px;
+    }
+    @media (max-width: 750px){
+        section{
+            margin-left: 20px;
+        }
+    }
+    @media (max-width: 450px){
+        h1{
+            font-size: 20px;
+        }
+        p{
+            font-size: 14px;
+        }
+        .undersection-headline{
+            font-size: 15px;
+        }
+        .get-back-arrow{
+            margin-right: 10px;
+        }
+    }
   }
