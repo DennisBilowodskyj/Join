@@ -204,6 +204,17 @@ function setPrioInactive(btn) {
     img.src = img.src.replace('_white.svg', '.svg');
 }
 
+function deselectprio() {
+    if (taskPrio === 'urgent') {
+        setPrioInactive(document.getElementById('prio_urgent'));
+    } else if (taskPrio === 'medium') {
+        setPrioInactive(document.getElementById('prio_medium'))
+    } else if (taskPrio === 'low') {
+        setPrioInactive(document.getElementById('prio_low'))
+    }
+    taskPrio = undefined;
+}
+
 
 function clearInput() {
     taskTitle.value = '';
@@ -211,11 +222,12 @@ function clearInput() {
     date.value = '';
     subtaskInput.value = '';
     badgesAssignedTo.innerHTML = '';
-    categorySelect.value = 'select';
+    categorySelect.value = '';
     subtaskListContainer.innerHTML = '';
     contactsRendered = false;
     resetAssignedContacts();
     assignedTo = [];
+    deselectprio();
 }
 
 
