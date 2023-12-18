@@ -6,7 +6,7 @@ body {
 
 }
 
-.d-none {
+.d_none {
     display: none !important;
 }
 
@@ -70,7 +70,7 @@ h1 {
 
 }
 
-.d-flex {
+.d_flex {
     display: flex;
 }
 

@@ -1,89 +1,133 @@
-
 <section class="section_addTask">
-
-    <h1>Add Task</h1>
-    <form onsubmit="overlayerAddTask(); return false;">
-        <div class="mainContent d_flex">
-            <div class="leftContent">
-                <p>Title<span class="required">*</span></p>
-                <input class="OverlayerInput" required type="text" id="taskTitle" placeholder="Enter a title">
-                <p>Description</p>
-                <textarea class="textareaOverlayer" id="taskDescription" cols="30" rows="10"
-                    placeholder="Enter a description"></textarea>
-                <p>Assigned to</p>
-                <div class="assignedContainer">
-
-                    <input class="OverlayerInput" onclick="openAssignedInput()" class="assignedInput inputArrow" type="text" id="assignedInput"
-                        placeholder="Select contacts to assign">
-                    <!-- <img id="selectArrow" src="./assets/img/addTask_icons/arrow_drop_downaa.png" alt=""> -->
-                    <div class="contacts d_none" id="contactsOverlay">
-                        <div id="contactsContent"> </div>
-                        <!-- Create new Contact -->
-                        <div class="newContact d_flex" id="contact1" onclick="createContact()">
-                            <span>Create new Contact</span>
-                        </div>
-                    </div>
-                </div>
-                <div id="badgesAssignedTo"></div>
+  <h1>Add Task</h1>
+  <form id="addTaksForm" onsubmit="overlayerAddTask(); return false;">
+    <div class="mainContent d_flex">
+      <div class="leftContent">
+        <p>Title<span class="required">*</span></p>
+        <input
+          class="OverlayerInput"
+          required
+          type="text"
+          id="taskTitle"
+          placeholder="Enter a title"
+        />
+        <p>Description</p>
+        <textarea
+          class="textareaOverlayer"
+          id="taskDescription"
+          cols="30"
+          rows="10"
+          placeholder="Enter a description"
+        ></textarea>
+        <p>Assigned to</p>
+        <div class="assignedContainer">
+          <input
+            class="OverlayerInput"
+            onclick="openAssignedInput()"
+            class="assignedInput inputArrow"
+            type="text"
+            id="assignedInput"
+            placeholder="Select contacts to assign"
+          />
+          <!-- <img id="selectArrow" src="./assets/img/addTask_icons/arrow_drop_downaa.png" alt=""> -->
+          <div class="contacts d_none" id="contactsOverlay">
+            <div id="contactsContent"></div>
+            <!-- Create new Contact -->
+            <div
+              class="newContact d_flex"
+              id="contact1"
+              onclick="createContact()"
+            >
+              <span>Create new Contact</span>
             </div>
-            <div class="seperator"></div>
-            <div class="rightContent">
-                <p>Due date<span class="required">*</span></p>
-                <input required class="OverlayerInput" type="date" name="" id="date" onclick="setMinDate();">
-                <p>Prio</p>
-                <div class="prioContainer d_flex">
-                    <div class="prioCard" id="prio_urgent" onclick="setPrio('urgent')">
-                        <p>Urgent</p>
-                        <img src="./assets/img/addTask_icons/prio_urgent.svg">
-                    </div>
-                    <div class="prioCard" id="prio_medium" onclick="setPrio('medium')">
-                        <p>Medium</p>
-                        <img src="./assets/img/addTask_icons/prio_medium.svg">
-                    </div>
-                    <div class="prioCard" id="prio_low" onclick="setPrio('low')">
-                        <p>Low</p>
-                        <img src="./assets/img/addTask_icons/prio_low.svg">
-                    </div>
-                </div>
-                <p>Category<span class="required">*</span></p>
-                <select class="selectOverlayer" name="Category" id="categorySelect" required>
-                    <option value="">Select task category</option>
-                    <option value="user_story">User Story</option>
-                    <option value="technical_task">Technical Task</option>
-                </select>
-                <p>Subtasks</p>
-                <div>
-                    <input class="OverlayerInput" type="text" placeholder="Add new subtask" id="subtaskInput" oninput="renderSubtaskBtn()">
-                    <span id="subtaskAddBtn">
-                        <div id="subtaskControls" class ="d_flex d_none">
-                            <img src="./assets/img/addTask_icons/subtask_close.png" onclick="resetSubtaskInput()">
-                            <img src="./assets/img/addTask_icons/subtask_check.png" onclick="addSubtask()">
-                            </div>
-                        <img src="./assets/img/addTask_icons/add_subtask.png" onclick="addSubtask()" id="add_subtaskBtn">
-                    </span>
-                </div>
-                <div id="subtaskListContainer">
-                    <!-- render new subtasks -->
-                </div>
-            </div>
+          </div>
         </div>
+        <div id="badgesAssignedTo"></div>
+      </div>
+      <div class="seperator"></div>
+      <div class="rightContent">
+        <p>Due date<span class="required">*</span></p>
+        <input
+          required
+          class="OverlayerInput"
+          type="date"
+          name=""
+          id="date"
+          onclick="setMinDate();"
+        />
+        <p>Prio</p>
+        <div class="prioContainer d_flex">
+          <div class="prioCard" id="prio_urgent" onclick="setPrio('urgent')">
+            <p>Urgent</p>
+            <img src="./assets/img/addTask_icons/prio_urgent.svg" />
+          </div>
+          <div class="prioCard" id="prio_medium" onclick="setPrio('medium')">
+            <p>Medium</p>
+            <img src="./assets/img/addTask_icons/prio_medium.svg" />
+          </div>
+          <div class="prioCard" id="prio_low" onclick="setPrio('low')">
+            <p>Low</p>
+            <img src="./assets/img/addTask_icons/prio_low.svg" />
+          </div>
+        </div>
+        <p>Category<span class="required">*</span></p>
+        <select
+          class="selectOverlayer"
+          name="Category"
+          id="categorySelect"
+          required
+        >
+          <option value="">Select task category</option>
+          <option value="user_story">User Story</option>
+          <option value="technical_task">Technical Task</option>
+        </select>
+        <p>Subtasks</p>
+        <div>
+          <input
+            class="OverlayerInput"
+            type="text"
+            placeholder="Add new subtask"
+            id="subtaskInput"
+            oninput="renderSubtaskBtn()"
+          />
+          <span id="subtaskAddBtn">
+            <div id="subtaskControls" class="d_flex d_none">
+              <img
+                src="./assets/img/addTask_icons/subtask_close.png"
+                onclick="resetSubtaskInput()"
+              />
+              <img
+                src="./assets/img/addTask_icons/subtask_check.png"
+                onclick="addSubtask()"
+              />
+            </div>
+            <img
+              src="./assets/img/addTask_icons/add_subtask.png"
+              onclick="addSubtask()"
+              id="add_subtaskBtn"
+            />
+          </span>
+        </div>
+        <div id="subtaskListContainer">
+          <!-- render new subtasks -->
+        </div>
+      </div>
+    </div>
 
     <div class="footSection d_flex">
-        <div>
-            <span><span class="required">*</span>This field is required</span>
+      <div>
+        <span><span class="required">*</span>This field is required</span>
+      </div>
+      <div class="btnContainer d_flex" id="createButton">
+        <div class="clearBtn d_flex" onclick="clearInput()">
+          <span>Clear</span>
+          <img src="./assets/img/addTask_icons/cancel.png" />
         </div>
-        <div class="btnContainer d_flex">
-            <div class="clearBtn d_flex" onclick="clearInput()">
-                <span >Clear</span>
-                <img src="./assets/img/addTask_icons/cancel.png">
-
-            </div>
-            <button class="createBtn d_flex" type="submit">
-                <span>Create Task</span>
-                <img src="./assets/img/addTask_icons/check.png">
-            </button>
-        </div>
+        <button class="createBtn d_flex" type="submit">
+          <span>Create Task</span>
+          <img src="./assets/img/addTask_icons/check.png" />
+        </button>
+      </div>
     </div>
-    </form>
-
+  </form>
 </section>

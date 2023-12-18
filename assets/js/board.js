@@ -174,7 +174,7 @@ function renderCardDetailsPriority(index) {
 
 function renderCardDetailsAssignedTo(index) {
   let assignedToArray = tasks[index]["assignedTo"];
-  //   let prioImg = calcAssignedPersons(task);
+//   let prioImg = calcAssignedPersons(task);
   let assignedToSection = document.getElementById("assignedToCardName");
   assignedToSection.innerHTML = ``;
   for (let i = 0; i < assignedToArray.length; i++) {
@@ -251,6 +251,8 @@ function openAddTaskOverlay(status) {
 }
 
 function closeAddTaskOverlay() {
+  clearInput();
+  changeButtonToRegularAddTask();
   document.getElementById("addTaskOverlay").classList.add("d_none");
 }
 
@@ -413,6 +415,94 @@ async function deleteTask(id) {
   saveFunction();
 }
 
+async function editTask(id) {
+  closeCardDetails();
+  openEditContactDialog(id);
+  document.getElementById("addTaskOverlay").classList.remove("d_none");
+}
+
+function openEditContactDialog(id) {
+  let titel = tasks[id]["title"];
+  let description = tasks[id]["description"];
+//   let assignedTo = tasks[id]["assignedTo"];
+  let dueDate = tasks[id]["date"];
+  let prio = tasks[id]["prio"];
+  let category = tasks[id]["category"];
+//   let subtasks = tasks[id]["subtask"];
+  statusCheck = tasks[id]["status"];
+  fillForm(titel, description, assignedTo, dueDate, prio, category, subtasks);
+  changeOnSubmitFunction(id);
+  changeTaskButtonOnEdit();
+}
+
+function changeTaskButtonOnEdit() {
+  OverlayerButtons = document.getElementById("createButton");
+  OverlayerButtons.innerHTML = "";
+  OverlayerButtons.innerHTML = `
+    <button class="createBtn d_flex" type="submit">
+          <span>Save Task</span>
+          <img src="./assets/img/addTask_icons/check.png" />
+    </button>`;
+}
+
+function changeOnSubmitFunction(id) {
+  submitFunction = document.getElementById("addTaksForm");
+  submitFunction.onsubmit = saveTaskButton(id);
+}
+
+function changeButtonToRegularAddTask() {
+  OverlayerButtons = document.getElementById("createButton");
+  OverlayerButtons.innerHTML = "";
+  OverlayerButtons.innerHTML = `
+    <div class="clearBtn d_flex" onclick="clearInput()">
+        <span>Clear</span>
+        <img src="./assets/img/addTask_icons/cancel.png" />
+    </div>
+    <button class="createBtn d_flex" type="submit">
+        <span>Create Task</span>
+        <img src="./assets/img/addTask_icons/check.png" />
+    </button>`;
+}
+
+function fillForm(
+  titel,
+  description,
+  assignedTo,
+  dueDate,
+  prio,
+  category,
+  subtasks
+) {
+  document.getElementById("taskTitle").value = titel;
+  document.getElementById("taskDescription").value = description;
+  //   document.getElementById("contactName").value = assignedTo;
+  document.getElementById("date").value = dueDate;
+  setPrio(prio);
+  document.getElementById("categorySelect").value = category;
+  //   document.getElementById("contactTel").value = subtasks;
+}
+
+function changeEditSettings() {
+  document.getElementById("createButton").classList.add("d_none");
+  document.getElementById("createButton").classList.remove("d_flex");
+  document.getElementById("editButtons").classList.add("d_flex");
+  document.getElementById("editButtons").classList.remove("d_none");
+}
+
+function saveTaskButton(id) {
+  prioCheck();
+  tasks[id]["title"] = taskTitle.value;
+  tasks[id]["description"] = taskDescription.value;
+  tasks[id]["assignedTo"] = assignedTo;
+  tasks[id]["date"] = date.value;
+  tasks[id]["prio"] = taskPrio;
+  tasks[id]["category"] = categorySelect.value;
+  tasks[id]["subtask"] = subtasks;
+  statusCheck = tasks[id]["status"];
+  saveFunction();
+  valueAppender();
+}
+
 // ######################## Overlayer AddTask ##########################
 // #####################################################################
 async function overlayerAddTask() {
@@ -420,7 +510,7 @@ async function overlayerAddTask() {
   let description = document.getElementById("taskDescription").value;
   let date = document.getElementById("date").value;
   let category = document.getElementById("categorySelect").value;
-  prioCheck()
+  prioCheck();
   tasks.push({
     title: title,
     description: description,
@@ -432,7 +522,6 @@ async function overlayerAddTask() {
     status: statusCheck,
   });
   saveFunction();
-  clearInput();
   valueAppender();
   closeAddTaskOverlay();
 }

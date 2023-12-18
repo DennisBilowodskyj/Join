@@ -22,7 +22,7 @@ async function loadTasks() {
 function openAssignedInput() {
     let options = document.getElementById('contactsOverlay');
     
-    options.classList.toggle('d-none');
+    options.classList.toggle('d_none');
     // Überprüfen, ob ein Kontakt zugewiesen ist
     for (let i = 0; i < contacts.length; i++) {
         if (contacts[i].assigned) {
@@ -113,9 +113,9 @@ function addSubtask() {
     let subtaskId = `subtask_${subtasks.length}`;
 
     subtaskOutput.innerHTML += /*html*/`
-       <div class="subtaskContainer d-flex">
+       <div class="subtaskContainer d_flex">
             <li id="${subtaskId}" ondblclick="editSubtask('${subtaskId}')">${subtask}</li>
-            <div class="subtaskChange d-flex">
+            <div class="subtaskChange d_flex">
                 <img src="./assets/img/addTask_icons/subtask_edit.png" alt="">
                 <div class="seperatorSubtask"></div>
                 <img src="./assets/img/addTask_icons/subtask_delete.png" alt="">
@@ -142,15 +142,15 @@ async function getContacts() {
 
 
 function renderSubtaskBtn() {
-    subtaskControls.classList.remove('d-none');
-    add_subtaskBtn.classList.add('d-none');
+    subtaskControls.classList.remove('d_none');
+    add_subtaskBtn.classList.add('d_none');
 }
 
 
 function resetSubtaskInput() {
     subtaskInput.value = '';
-    subtaskControls.classList.add('d-none');
-    add_subtaskBtn.classList.remove('d-none');
+    subtaskControls.classList.add('d_none');
+    add_subtaskBtn.classList.remove('d_none');
 }
 
 
@@ -233,8 +233,8 @@ function renderContacts() {
 
 function generateContactsHTML(i, contact, initials) {
     return /*html*/`
-         <div class="contact d-flex" id='contact${i}' onclick="assign(${i})">
-                 <div class="contactLeft d-flex">
+         <div class="contact d_flex" id='contact${i}' onclick="assign(${i})">
+                 <div class="contactLeft d_flex">
                      <div class="contactBadge" style="background-color: #${contact.color};">${initials}</div>
                     <div class="contactName"><span>${contact.name}</span></div>
                  </div>
