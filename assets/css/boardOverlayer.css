@@ -78,8 +78,16 @@
     box-sizing: border-box;
     box-shadow: 0px 0px 4px 0px #0000001A;
     cursor: pointer;
-
 }
+
+.prioCard:hover {
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.prioCard img {
+    width: 24px;
+}
+
 .footSection {
     justify-content: space-between;
     margin-top: 30px;
@@ -103,6 +111,13 @@
     font-family: inherit;
     position: relative;
     z-index: 12;
+}
+
+.inputArrow {
+    cursor: pointer;
+    background-image: url(/assets/img/addTask_icons/arrow_drop_downaa.png);
+    background-repeat: no-repeat;
+    background-position: calc(100% - 16px) center;
 }
 
 .textareaOverlayer {
@@ -138,6 +153,12 @@
     background-position-y: center;
 }
 
+#selectArrow {
+    position: relative;
+    bottom: 35px;
+    left: calc(100% - 45px);
+}
+
 #subtaskAddBtn {
     position: absolute;
     right: calc(15vw + 10px);
@@ -170,6 +191,11 @@
     padding-right: 16px;
 }
 
+.clearBtn img {
+    width: 24px;
+    height: 24px;
+}
+
 .createBtn {
     background-color: #2A3647;
     color: white;
@@ -182,13 +208,51 @@
     cursor: pointer;
 }
 
-#date::-webkit-calendar-picker-indicator {
-    opacity: 0;
+.createBtn img {
+    width: 24px;
+    height: 24px;
 }
 
 @media (max-width: 1100px) {
+    .section_addTask {
+        height: unset;
+    }
+
     .leftContent,
     .rightContent {
         width: 100%;
+    }
+
+    .mainContent {
+        flex-wrap: wrap;
+    }
+
+    .seperator {
+        display: none;
+    }
+
+    .footSection {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 950px) {
+    .clearBtn {
+        display: none;
+    }
+}
+
+@media (max-width: 750px) {
+
+    .OverlayerInput {
+        font-size: 16px;
+    }
+
+    .textareaOverlayer {
+        font-size: 16px;
+    }
+
+    .footSection {
+        margin-bottom: 100px;
     }
 }
