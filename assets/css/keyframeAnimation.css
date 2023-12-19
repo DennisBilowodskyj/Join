@@ -1,6 +1,6 @@
 /*BACKGROUND TRANSPARENCY EFFECT*/
 
-.background-element {
+.background-element{
     background-color: rgb(246,247,248);
     animation: transparencyEffect 2s forwards; 
     z-index: 1;
