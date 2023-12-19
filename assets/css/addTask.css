@@ -60,6 +60,14 @@ h1 {
 
 }
 
+.arrowNotactive {
+    background-image: url(/assets/img/addTask_icons/arrow_drop_downaa.png);
+    background-repeat: no-repeat;
+    background-size: 24px;
+    background-position-x: calc(100% - 16px);
+    background-position-y: center;
+}
+
 .d_flex {
     display: flex;
 }
@@ -167,6 +175,29 @@ h1 {
     background-repeat: no-repeat;
     background-position-x: 99%;
     background-position-y: 94%;
+
+}
+
+.categoryContainer {
+    position: relative;
+}
+
+#categoryInput{
+    z-index: 14;
+}
+
+.categoryAddTask {
+    display: block;
+    background-color: white;
+    position: absolute;
+    top: 40px;
+    border-radius: 0 0 10px 10px;
+    width: 100%;
+    padding-top: 10px;
+    z-index: 13;
+    box-sizing: border-box;
+    max-height: 280px;
+    overflow: auto;
 
 }
 

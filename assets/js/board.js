@@ -463,7 +463,8 @@ function fillForm(
   assignedTo = assignedToEdit;
   document.getElementById("date").value = dueDate;
   setPrio(prio);
-  document.getElementById("categorySelect").value = category;
+  // document.getElementById("categorySelect").value = category;   
+  categoryFromAddTask = category;
   subtasks = subtasksEdit;
 }
 
@@ -481,7 +482,8 @@ function saveTaskButton(id) {
   tasks[id]["assignedTo"] = assignedTo;
   tasks[id]["date"] = date.value;
   tasks[id]["prio"] = taskPrio;
-  tasks[id]["category"] = categorySelect.value;
+  // tasks[id]["category"] = categorySelect.value;
+  tasks[id]["category"] = categoryFromAddTask;
   tasks[id]["subtask"] = subtasks;
   statusCheck = tasks[id]["status"];
   saveFunction();
@@ -524,7 +526,7 @@ async function overlayerAddTask() {
   let title = document.getElementById("taskTitle").value;
   let description = document.getElementById("taskDescription").value;
   let date = document.getElementById("date").value;
-  let category = document.getElementById("categorySelect").value;
+  // let category = document.getElementById("categorySelect").value;
   prioCheck();
   tasks.push({
     title: title,
@@ -532,7 +534,8 @@ async function overlayerAddTask() {
     assignedTo: assignedTo,
     date: date,
     prio: taskPrio,
-    category: category,
+    // category: category,
+    category: categoryFromAddTask,
     subtask: subtasks,
     status: statusCheck,
   });
