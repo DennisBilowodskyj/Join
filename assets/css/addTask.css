@@ -268,10 +268,29 @@ h1 {
     background-position: calc(100% - 16px) center;
 }
 
+.SubtasksInputField{
+    display: flex;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    background-color: white;
+}
+
+.SubtasksInputField:focus-within{
+    border: 2px solid rgba(0, 0, 0, 1);
+}
+
+.SubtasksInputField input{
+    border: none;
+}
+
+.SubtasksInputField input:focus-within{
+    border: none;
+    outline: none;
+}
 
 #subtaskAddBtn {
-    position: absolute;
-    right: calc(5vw + 10px);
+    /* position: absolute; */
+    /* right: calc(5vw + 10px); */
     margin-top: 9px;
     width: 25px;
     padding: 5px;

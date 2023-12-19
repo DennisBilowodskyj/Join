@@ -355,6 +355,8 @@ body {
 
 .cardDetails_content{
     padding: 48px 40px;
+    max-height: 88vh;
+    overflow: auto;
 }
 
 .cardDetails_header{
@@ -413,8 +415,6 @@ body {
 }
 
 .subtasksCard{
-    height: 150px;
-    overflow: auto;
     font-size: 20px;
     padding-top: 24px;
 }
