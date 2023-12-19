@@ -92,6 +92,31 @@
         margin-top: 20px;
     }
     .sign-up-footer-section{
-        margin-top: 160px;
+        margin-top: 80px;
     }
+    
+    @media (max-width: 450px) {
+        .sign-up-box{
+            width: 350px;
+        }
+        .input-div{
+            width: 320px;
+        }
+        .join-logo{
+            width: 80px;
+            height: 100px;
+        }
+        .sign-up-footer-section{
+            margin-top: 60px;
+        }
+        }
+        @media (max-width: 360px) {
+            .sign-up-box{
+                width: 300px;
+            }
+            .input-div{
+                width: 280px;
+            }
+            }
+        
 }

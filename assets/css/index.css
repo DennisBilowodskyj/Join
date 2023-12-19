@@ -185,10 +185,6 @@ body{
 .d-none{
     display: block;
 }
-.top-section-logo{
-    width: 64px;
-    height: 78px;
-}
 .top-section-right{
     display: none;
 }
@@ -219,7 +215,29 @@ body{
 }
 .input-div{
     width: 364px;
-}.login-button-section{
+}
+.login-button-section{
     gap: 21px;
 }
 }
+@media (max-width: 450px) {
+.log-in-box{
+    width: 350px;
+}
+.input-div{
+    width: 320px;
+}
+.join-logo-log-in{
+    width: 80px;
+    height: 100px;
+}
+}
+@media (max-width: 360px) {
+    .log-in-box{
+        width: 300px;
+    }
+    .input-div{
+        width: 280px;
+    }
+    }
+
