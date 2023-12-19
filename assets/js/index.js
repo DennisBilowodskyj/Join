@@ -58,6 +58,8 @@ function checkInputLogIn(){ /**LOGIN */
 
 
 function guestLogIn(){
+    emailLogIn.value = '';
+    passwordLogIn = '';
     localStorage.removeItem('checkinUser');
     localStorage.setItem('guestUser', 'Guest');
     openSummary();
