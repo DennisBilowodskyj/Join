@@ -52,6 +52,7 @@ async function summaryInit() {
   init();
   
   await loadUser();
+  
   addToSummary(); 
   checkEmailSummary(users);
   displayEarliestDueDate();
@@ -175,7 +176,7 @@ function updateTodoNumber() {
 function displayEarliestDueDate() {
   const earliestTask = findEarliestDueDate(tasks);
 
-  if (earliestTask && earliestTask.priority === 'urgent') {
+  if (earliestTask && earliestTask.prio === 'urgent') {
     const earliestDate = new Date(earliestTask.date.replace(/(\d{2}).(\d{2}).(\d{4})/, '$3-$2-$1'));
     const monthIndex = earliestDate.getMonth();
     const month = months[monthIndex];
