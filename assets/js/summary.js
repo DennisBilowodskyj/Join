@@ -11,7 +11,7 @@ let feedback = 0;
  * test json
  */
 
-let task = [];
+let tasks = [];
 
 function resetCounters() {
   todos = 0;
@@ -23,35 +23,46 @@ function resetCounters() {
 }
 resetCounters();
 async function addToSummary() {
-  task = [
-    {
-      title: "test",
-      description: "beispieltask in datenbank speichern",
-      duedate: "10.12.2023",
-      priority: "urgent",
-      status: "inProgress",
-    },
-    {
-      title: "test",
-      description: "beispieltask in datenbank speichern",
-      duedate: "15.01.2024",
-      priority: "urgent",
-      status: "feedback",
-    },
-  ];
-
+  // task = [
+  //   {
+  //     title: "test",
+  //     description: "beispieltask in datenbank speichern",
+  //     duedate: "10.12.2023",
+  //     priority: "urgent",
+  //     status: "inProgress",
+  //   },
+  //   {
+  //     title: "test",
+  //     description: "beispieltask in datenbank speichern",
+  //     duedate: "15.01.2024",
+  //     priority: "urgent",
+  //     status: "feedback",
+  //   },
+  // ];
+  
   await updateTaskCounts();
-  updateTodoNumber();
+  updateTodoNumber();   
+
+
 }
 
 
 
 async function summaryInit() {
   init();
+  
   await loadUser();
-  addToSummary();
+  addToSummary(); 
   checkEmailSummary(users);
   displayEarliestDueDate();
+   await loadTasks();
+
+   
+ 
+
+}
+async function loadTasks() {
+  tasks = JSON.parse(await getItem("tasks"));
 }
 
 
@@ -124,11 +135,11 @@ function loadInitialsHeader(matchingUser){
 function countTasksByStatus(status) {
   let count = 0;
 
-  task.forEach((task) => {
-    if (task.status === status) {
+  tasks.forEach((tasks) => {
+    if (tasks.status === status) {
       count++;
 
-      if (task.priority === 'urgent') {
+      if (tasks.prio === 'urgent') {
         urgent++;
       }
     }
@@ -162,10 +173,10 @@ function updateTodoNumber() {
 
 // display the earliest prio:urgent dueDate
 function displayEarliestDueDate() {
-  const earliestTask = findEarliestDueDate(task);
+  const earliestTask = findEarliestDueDate(tasks);
 
   if (earliestTask && earliestTask.priority === 'urgent') {
-    const earliestDate = new Date(earliestTask.duedate.replace(/(\d{2}).(\d{2}).(\d{4})/, '$3-$2-$1'));
+    const earliestDate = new Date(earliestTask.date.replace(/(\d{2}).(\d{2}).(\d{4})/, '$3-$2-$1'));
     const monthIndex = earliestDate.getMonth();
     const month = months[monthIndex];
     const formattedDate = `${month} ${earliestDate.getDate()}, ${earliestDate.getFullYear()}`;
@@ -177,16 +188,16 @@ function displayEarliestDueDate() {
 }
 
 function findEarliestDueDate(tasks) {
-  const urgentTasks = tasks.filter(task => task.priority === 'urgent');
+  const urgentTasks = tasks.filter(tasks => tasks.prio === 'urgent');
 
   if (urgentTasks.length === 0) {
     return null; 
   }
 
   return urgentTasks.reduce((earliest, current) => {
-    const currentDate = new Date(current.duedate.replace(/(\d{2}).(\d{2}).(\d{4})/, '$3-$2-$1'));
-    const earliestDate = new Date(earliest.duedate.replace(/(\d{2}).(\d{2}).(\d{4})/, '$3-$2-$1'));
+    const currentDate = new Date(current.date.replace(/(\d{2}).(\d{2}).(\d{4})/, '$3-$2-$1'));
+    const earliestDate = new Date(earliest.date.replace(/(\d{2}).(\d{2}).(\d{4})/, '$3-$2-$1'));
     return currentDate < earliestDate ? current : earliest;
   }, urgentTasks[0]); 
 }
-findEarliestDueDate(task);
+findEarliestDueDate(tasks);

@@ -270,7 +270,10 @@ body{
         margin-left: 450px;
         margin-top: 50px;
     }
-
+    .user_name {
+        margin-left: 50px;
+        margin-top: 20px;
+    }
 }
 
 @media (max-width: 970px){
@@ -325,10 +328,10 @@ body{
     .good_morning {
         display: flex;
         flex-direction: column;
-        margin-left: 250px;
+        margin-left: 400px;
         margin-top: 50px;
     }
-
+    
 }
 
 @media (max-width: 815px){
@@ -381,6 +384,9 @@ body{
         transition: transform 300ms ease-in-out;
         cursor: pointer;
     }
+    .good_morning {
+        margin-left: 300px;
+    }
 }
 
 @media (max-width: 750px){
@@ -398,7 +404,7 @@ body{
     
     margin-left: 95px;
     width: 560px;
-    height: 562px;
+    height: 100vh;
     flex-direction: column;
 
     }
@@ -417,14 +423,18 @@ body{
 @media (max-width: 450px){
         .summary_content {
            
-            width: 330px;
-          
+            width: 320px;
+            margin-left: 10px;
+        
         }
         .section_two_style {
-            width: 330px;
+            width: 320px;
            
         }
-
+        .todo {
+            
+            font-size: 15px;
+        }
 }  
 
 
