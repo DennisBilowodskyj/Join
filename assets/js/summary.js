@@ -94,9 +94,9 @@ greet();
 async function checkEmailSummary(users) {
   const guestUser = localStorage.getItem('guestUser')
   if(guestUser === 'Guest'){
-    document.getElementById('userName').innerHTML += 'Guest';
+    document.getElementById('userName').innerHTML = 'Guest';
     document.getElementById('user').innerHTML = 'G';
-  }else{
+  } else{
   const emailToSearch = localStorage.getItem('checkinUser');
   const cleanedEmailToSearch = emailToSearch.replace(/^"(.*)"$/, '$1'); // Entfernt Anführungszeichen
   if (emailToSearch) {
@@ -176,7 +176,7 @@ function updateTodoNumber() {
 function displayEarliestDueDate() {
   const earliestTask = findEarliestDueDate(tasks);
 
-  if (earliestTask && earliestTask.prio === 'urgent') {
+  if (earliestTask && earliestTask.priority === 'urgent') {
     const earliestDate = new Date(earliestTask.date.replace(/(\d{2}).(\d{2}).(\d{4})/, '$3-$2-$1'));
     const monthIndex = earliestDate.getMonth();
     const month = months[monthIndex];
