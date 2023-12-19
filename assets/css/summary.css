@@ -164,7 +164,7 @@ body{
 .section_two_style:hover{
     background-color: #2A3647;
     color: #FFFFFF;
-    transform: scale(1.1);
+    transform: scale(1.05);
    
 }
     
@@ -238,7 +238,7 @@ body{
 .section_three_card:hover{
     background-color: #2A3647;
     color: #FFFFFF;
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .good_morning {
@@ -411,6 +411,8 @@ body{
     flex-direction: column;
 
     }
+   
+    
 }
   
 @media (max-width: 550px){
@@ -439,8 +441,6 @@ body{
             font-size: 15px;
         }
 }  
-
-
 
 
 

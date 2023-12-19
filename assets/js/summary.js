@@ -53,8 +53,9 @@ async function summaryInit() {
   
   await loadUser();
   await loadTasks();
+  greet();
   addToSummary(); 
-  checkEmailSummary(users);
+  checkEmailSummary();
   displayEarliestDueDate();
 
    
@@ -89,9 +90,12 @@ function greet() {
 
   document.getElementById("demo").innerHTML = greeting;
 }
+
 greet();
 
-async function checkEmailSummary(users) {
+
+
+async function checkEmailSummary() {
   const guestUser = localStorage.getItem('guestUser')
   if(guestUser === 'Guest'){
     document.getElementById('userName').innerHTML = 'Guest';
@@ -149,15 +153,18 @@ function countTasksByStatus(status) {
   return count;
 }
 
+function countAllTasks() {
+  return tasks.length;
+}
 
 
 async function updateTaskCounts() {
   todos = countTasksByStatus("todo");
   done = countTasksByStatus("done");
   urgent = countTasksByStatus("urgent");
-  inBoard = countTasksByStatus("inBoard");
+  inBoard = countAllTasks();
   inProgress = countTasksByStatus("inProgress");
-  feedback = countTasksByStatus("feedback");
+  feedback = countTasksByStatus("awaitFeedback");
 
 }
 
@@ -176,7 +183,7 @@ function updateTodoNumber() {
 function displayEarliestDueDate() {
   const earliestTask = findEarliestDueDate(tasks);
 
-  if (earliestTask && earliestTask.priority === 'urgent') {
+  if (earliestTask && earliestTask.prio === 'urgent') {
     const earliestDate = new Date(earliestTask.date.replace(/(\d{2}).(\d{2}).(\d{4})/, '$3-$2-$1'));
     const monthIndex = earliestDate.getMonth();
     const month = months[monthIndex];
