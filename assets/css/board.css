@@ -382,6 +382,8 @@ body {
 }
 
 .assignedToCard{
+    height: 150px;
+    overflow: auto;
     font-size: 20px;
     padding-top: 24px;
 }
@@ -411,6 +413,8 @@ body {
 }
 
 .subtasksCard{
+    height: 150px;
+    overflow: auto;
     font-size: 20px;
     padding-top: 24px;
 }

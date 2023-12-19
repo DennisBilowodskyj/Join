@@ -52,11 +52,10 @@ async function summaryInit() {
   init();
   
   await loadUser();
-  
+  await loadTasks();
   addToSummary(); 
   checkEmailSummary(users);
   displayEarliestDueDate();
-   await loadTasks();
 
    
  
