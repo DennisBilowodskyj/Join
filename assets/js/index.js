@@ -23,38 +23,41 @@ function openSignUpWindow(){ /**LOGIN */
 }
 
 
-function showLastUser(){ /**LOGIN */
-    let currentData = localStorage.getItem('currentUser');
-    const logInEmailInput = document.getElementById('emailLogIn');
-    const logInPasswordInput = document.getElementById('passwordLogIn');
+function showLastUser() {
+    /**LOGIN */
+    let currentData = localStorage.getItem("currentUser");
+    const logInEmailInput = document.getElementById("emailLogIn");
+    const logInPasswordInput = document.getElementById("passwordLogIn");
     if (currentData) {
-        const currentUserArray = JSON.parse(currentData);
-        if (currentUserArray.length > 0) {
-            const lastUser = currentUserArray[currentUserArray.length - 1];
-            logInEmailInput.value = lastUser.currentEmail;
-            logInPasswordInput.value = lastUser.currentPassword;
-        }
+      const currentUserArray = JSON.parse(currentData);
+      if (currentUserArray.length > 0) {
+        const lastUser = currentUserArray[currentUserArray.length - 1];
+        logInEmailInput.value = lastUser.currentEmail;
+        logInPasswordInput.value = lastUser.currentPassword;
+      }
     }
     checkInputLogIn();
 }
+  
 
 
-function checkInputLogIn(){ /**LOGIN */
-    let inputIds = ['passwordLogIn'];
-    let imgIds = ['passwordLogInImg'];
+function checkInputLogIn() {  /**LOGIN */
+    let inputIds = ["passwordLogIn"];
+    let imgIds = ["passwordLogInImg"];
     inputIds.forEach((inputId, index) => {
-        let input = document.getElementById(inputId);
-        let img = document.getElementById(imgIds[index]);
-        if (input.value.trim() !== "") {
-            img.src = "assets/img/signUp_icons/hidePassword.png";
-            img.onclick = function () {
-                hidePassword(input, img);
-            };
-        } else {
-            changeInputTypeToPassword(img, input);
-        }
+      let input = document.getElementById(inputId);
+      let img = document.getElementById(imgIds[index]);
+      if (input.value.trim() !== "") {
+        img.src = "assets/img/signUp_icons/hidePassword.png";
+        img.onclick = function () {
+          hidePassword(input, img);
+        };
+      } else {
+        changeInputTypeToPassword(img, input);
+      }
     });
 }
+  
 
 
 function guestLogIn(){
@@ -66,26 +69,28 @@ function guestLogIn(){
 }
 
 
-function logInUser(){ /**LOGIN */
-    localStorage.removeItem('guestUser');
+function logInUser() {
+    /**LOGIN */
+    localStorage.removeItem("guestUser");
     event.preventDefault();
     let { passwordErrorDiv, emailErrorDiv } = setVariablesForLogInInput();
     removeClasslistFromInputDivRedBorderLogIn();
     clearErrorDiv(passwordErrorDiv, emailErrorDiv);
-    const emailInput = document.getElementById('emailLogIn').value;
-    const passwordInput = document.getElementById('passwordLogIn').value;
+    const emailInput = document.getElementById("emailLogIn").value;
+    const passwordInput = document.getElementById("passwordLogIn").value;
     const foundPassword = findPasswordByEmail(users, emailInput);
     if (foundPassword !== "E-Mail nicht gefunden") {
-        if (foundPassword === passwordInput) {
-            localStorage.setItem('checkinUser', JSON.stringify(emailInput));
-            openSummary();
-        } else {
-            passwordErrorDiv = setPasswordAlertLogIn(passwordErrorDiv);
-        }
+      if (foundPassword === passwordInput) {
+        localStorage.setItem("checkinUser", JSON.stringify(emailInput));
+        openSummary();
+      } else {
+        passwordErrorDiv = setPasswordAlertLogIn(passwordErrorDiv);
+      }
     } else {
-        emailErrorDiv = setEmailAlertLogIn(emailErrorDiv);
+      emailErrorDiv = setEmailAlertLogIn(emailErrorDiv);
     }
 }
+  
 
 
 function setVariablesForLogInInput(){
@@ -109,9 +114,9 @@ function clearErrorDiv(passwordErrorDiv, emailErrorDiv){
 
 function findPasswordByEmail(users, emailToCheck) {
     for (const user of users) {
-        if (user.email === emailToCheck) {
-            return user.password;
-        }
+      if (user.email === emailToCheck) {
+        return user.password;
+      }
     }
     return "E-Mail nicht gefunden";
 }
@@ -145,38 +150,40 @@ async function initSignUp(){
 
 function checkEmail(users, emailToSearch) {
     for (const user of users) {
-        if (user.email === emailToSearch) {
-            return true;
-        }
+      if (user.email === emailToSearch) {
+        return true;
+      }
     }
     return false;
 }
+  
 
 
-async function userSignUp(){
-    let emailErrorDiv = document.getElementById('emailErrorMessageSignUp');
-    let passwordErrorDiv = document.getElementById('passwordErrorMessageSignUp');
-    let emailToSearch = document.getElementById('email');
+async function userSignUp() {
+    let emailErrorDiv = document.getElementById("emailErrorMessageSignUp");
+    let passwordErrorDiv = document.getElementById("passwordErrorMessageSignUp");
+    let emailToSearch = document.getElementById("email");
     removeRedBorderClassList();
     emptyErrorDivText(emailErrorDiv, passwordErrorDiv);
     if (checkEmail(users, emailToSearch.value)) {
-        emailErrorDiv = setEmailAlertSignUp(emailErrorDiv);
-    } else{
-    if(password.value === checkPassword.value){
+      emailErrorDiv = setEmailAlertSignUp(emailErrorDiv);
+    } else {
+      if (password.value === checkPassword.value) {
         signUpButton.disabled = true;
         pushIntoUsers();
-    await setItem('users', JSON.stringify(users));
-    deleteCurrentUser();
-    pushIntoCurrentUser();
-    localStorage.setItem('currentUser', JSON.stringify(currentUser));
-    keyframeAnimationSignUp();
-    loadIndex();
-    resetForm();
-    }else{
+        await setItem("users", JSON.stringify(users));
+        deleteCurrentUser();
+        pushIntoCurrentUser();
+        localStorage.setItem("currentUser", JSON.stringify(currentUser));
+        keyframeAnimationSignUp();
+        loadIndex();
+        resetForm();
+      } else {
         passwordErrorDiv = setPasswordAlertSignUp(passwordErrorDiv);
+      }
     }
 }
-}
+  
 
 
 function removeRedBorderClassList(){
@@ -198,14 +205,15 @@ function setEmailAlertSignUp(emailErrorDiv){
 }
 
 
-function pushIntoUsers(){
+function pushIntoUsers() {
     users.push({
-        name: userName.value,
-        email: email.value,
-        password: password.value,
-        confirmPassword : checkPassword.value,
+      name: userName.value,
+      email: email.value,
+      password: password.value,
+      confirmPassword: checkPassword.value,
     });
 }
+  
 
 
 function deleteCurrentUser(){
@@ -253,22 +261,23 @@ function setPasswordAlertSignUp(passwordErrorDiv){
 
 
 function checkInputSignUp() {
-    let inputIds = ['password', 'checkPassword'];
-    let imgIds = ['passwordInputImg', 'checkPasswordInputImg'];
-    
+    let inputIds = ["password", "checkPassword"];
+    let imgIds = ["passwordInputImg", "checkPasswordInputImg"];
+  
     inputIds.forEach((inputId, index) => {
-        let input = document.getElementById(inputId);
-        let img = document.getElementById(imgIds[index]);
-        if (input.value.trim() !== "") {
-            img.src = "assets/img/signUp_icons/hidePassword.png";
-            img.onclick = function () {
-                hidePassword(input, img);
-            };
-        } else {
-            changeInputTypeToPassword(img, input);
-        }
+      let input = document.getElementById(inputId);
+      let img = document.getElementById(imgIds[index]);
+      if (input.value.trim() !== "") {
+        img.src = "assets/img/signUp_icons/hidePassword.png";
+        img.onclick = function () {
+          hidePassword(input, img);
+        };
+      } else {
+        changeInputTypeToPassword(img, input);
+      }
     });
 }
+  
 
 
 /*HELP FUNCTIONS */
