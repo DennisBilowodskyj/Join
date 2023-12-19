@@ -40,14 +40,13 @@ function assign(i) {
         assignedTo.push(contacts[i]);
     } else {
         unmarkContactAssigned(i);
-        let indexToRemove = assignedTo.findIndex(contact => contact === contacts[i]);
+        let indexToRemove = assignedTo.findIndex(contact => contact.email === contacts[i]["email"]);
         if (indexToRemove !== -1) {
             assignedTo.splice(indexToRemove, 1);
         }
     }
     renderAssignedBadges();
 }
-
 
 function markContactAssigned(i) {
   let contactContainer = document.getElementById(`contact${i}`);
