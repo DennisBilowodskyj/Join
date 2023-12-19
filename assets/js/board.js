@@ -244,14 +244,14 @@ function renderCardDetailsDeleteEdit(index) {
 // #####################################################################
 function openAddTaskOverlay(status) {
   statusCheck = status;
-  let submitFunction = document.getElementById("addTaksForm");
-  submitFunction.onsubmit = overlayerAddTask;
+  CameFrom = "AddTaskOnStatus";
   document.getElementById("addTaskOverlay").classList.remove("d_none");
 }
 
 function closeAddTaskOverlay() {
   clearInput();
   changeButtonToRegularAddTask();
+  CameFrom = "addTask";
   document.getElementById("addTaskOverlay").classList.add("d_none");
 }
 
@@ -419,6 +419,7 @@ async function deleteTask(id) {
 }
 
 async function editTask(id) {
+  taskOnEdit = id;
   closeCardDetails();
   openEditContactDialog(id);
   document.getElementById("addTaskOverlay").classList.remove("d_none");
@@ -432,11 +433,6 @@ function changeTaskButtonOnEdit() {
           <span>Save Task</span>
           <img src="./assets/img/addTask_icons/check.png" />
     </button>`;
-}
-
-function changeOnSubmitFunction(id) {
-  let submitFunction = document.getElementById("addTaksForm");
-  submitFunction.onsubmit = saveTaskButton;
 }
 
 function changeButtonToRegularAddTask() {
@@ -490,6 +486,7 @@ function saveTaskButton(id) {
   statusCheck = tasks[id]["status"];
   saveFunction();
   valueAppender();
+  closeAddTaskOverlay();
 }
 
 // ######################## Overlayer AddTask ##########################
@@ -518,9 +515,9 @@ function openEditContactDialog(id) {
 function necessaryFunctionsToEditTasks(id) {
   renderAssignedBadges();
   renderSubtasksToEdit();
-  changeOnSubmitFunction(id);
   changeTaskButtonOnEdit();
   addAssignedToContacts(id);
+  CameFrom = "EditTaskFromBoard";
 }
 
 async function overlayerAddTask() {
@@ -542,7 +539,6 @@ async function overlayerAddTask() {
   saveFunction();
   valueAppender();
   closeAddTaskOverlay();
-  return false;
 }
 
 function renderSubtasksToEdit() {
