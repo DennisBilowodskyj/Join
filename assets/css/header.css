@@ -58,6 +58,7 @@
     justify-content: center;
     align-items: center;
     color: #29ABE2;
+    font-size: 24px;
 }
 
 .header_UserIcon:hover{

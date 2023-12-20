@@ -18,7 +18,7 @@ async function checkEmailSummary() {
   const guestUser = localStorage.getItem("guestUser");
   if (guestUser === "Guest") {
     //document.getElementById("userName").innerHTML = "Guest";
-    document.getElementById("user").innerHTML = "G";
+    document.getElementById("user").innerHTML = "<b>G</b>";
   } else {
     const emailToSearch = localStorage.getItem("checkinUser");
     const cleanedEmailToSearch = emailToSearch.replace(/^"(.*)"$/, "$1"); // Entfernt Anführungszeichen
