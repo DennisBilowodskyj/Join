@@ -180,3 +180,11 @@ function findEarliestDueDate(tasks) {
   }, urgentTasks[0]); 
 }
 findEarliestDueDate(tasks);
+
+
+// display name after login
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(function() {
+    document.querySelector('.welcomeOverlayer').style.display = 'none';
+  }, 3000); 
+});
