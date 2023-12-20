@@ -45,6 +45,7 @@ body {
     display: flex;
     padding-top: 48px;
     justify-content: space-between;
+    padding-bottom: 80px;
 }
 
 .boardTab{

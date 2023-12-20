@@ -1,6 +1,7 @@
 @media (max-width: 1400px) {
     .boardDiv{
         display: block;
+        padding-bottom: 0;
     }
 
     .boardTab{
@@ -8,7 +9,11 @@
         padding-top: 26px;
         flex-direction: row;
         flex-wrap: wrap;
-    } 
+    }
+    
+    #doneCards{
+        padding-bottom: 80px;
+    }
 }
 
 @media (max-width: 1200px) {
@@ -55,6 +60,10 @@
 
     .renderSubtasksToCard{
         font-size: 16px;
+    }
+
+    #doneCards{
+        padding-bottom: 120px;
     }
 }
 

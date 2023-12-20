@@ -43,7 +43,7 @@ async function valueAppender() {
   for (let i = 0; i < tasks.length; i++) {
     let task = tasks[i];
     let testSum = task["subtask"].length;
-    if (task.progressSum != testSum) {
+    if ("progressValue" in task && task.progressSum != testSum) {
       let difference = task.progressSum - testSum;
       calcValuesToAppend(task, difference);
     } else if ("progressValue" in task && task["progressValue"].length > 0) {
