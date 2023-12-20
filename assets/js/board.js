@@ -42,20 +42,37 @@ function filterStatus() {
 async function valueAppender() {
   for (let i = 0; i < tasks.length; i++) {
     let task = tasks[i];
-    if ("progressValue" in task && task["progressValue"].length > 0) {
+    let testSum = task["subtask"].length;
+    if (task.progressSum != testSum) {
+      let difference = task.progressSum - testSum;
+      calcValuesToAppend(task, difference);
+    } else if ("progressValue" in task && task["progressValue"].length > 0) {
     } else {
       task.progressValue = [];
-      calcValuesToAppend(task);
+      task.progressSum = 0;
+      difference = 0;
+      calcValuesToAppend(task, difference);
     }
   }
 }
 
-function calcValuesToAppend(task) {
+function calcValuesToAppend(task, difference) {
   let subtasks = task["subtask"];
-  for (let i = 0; i < subtasks.length; i++) {
-    task.progressValue.push(0);
+  if (difference < 0) {
+    for (let i = 0; i < (-difference); i++) {
+      task.progressValue.push(0);
+    } task.progressSum = subtasks.length;
+  } else if (difference > 0){
+    for (let i = 0; i < (-difference); i++) {
+        task.progressValue.splice(subtasks.length, 1);
+      } task.progressSum = subtasks.length;
+  }else {
+    for (let i = 0; i < subtasks.length; i++) {
+      task.progressValue.push(0);
+    } task.progressSum = subtasks.length;
   }
 }
+
 // ########################### Render Cards ############################
 // #####################################################################
 function renderCards() {
@@ -463,7 +480,7 @@ function fillForm(
   assignedTo = assignedToEdit;
   document.getElementById("date").value = dueDate;
   setPrio(prio);
-  // document.getElementById("categorySelect").value = category;   
+  // document.getElementById("categorySelect").value = category;
   categoryFromAddTask = category;
   subtasks = subtasksEdit;
 }
@@ -619,7 +636,7 @@ function inputFieldFinder() {
     return firstField.value.toLowerCase();
   } else if (secondField.value.length > 0) {
     return secondField.value.toLowerCase();
-  } else{
-    return firstField.value.toLowerCase()
+  } else {
+    return firstField.value.toLowerCase();
   }
 }
