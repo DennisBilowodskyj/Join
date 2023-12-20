@@ -17,6 +17,21 @@ body {
     overflow: auto;
 }
 
+input:focus {
+    outline: none;
+    border-color: #29ABE2 !important;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #29ABE2 !important;
+}
+
+.SubtasksInputField:focus {
+    outline: none;
+    border-color: #29ABE2 !important;
+}
+
 /* ######### scrollbar ########## */
 *::-webkit-scrollbar {
     width: 10px;
@@ -184,11 +199,12 @@ h1 {
     border-radius: 0 0 10px 10px;
     width: 100%;
     padding-top: 10px;
+    padding-left: 16px;
     z-index: 13;
     box-sizing: border-box;
     max-height: 280px;
     overflow: auto;
-    box-shadow: 0px 0px 14px 3px #0000000A;
+    box-shadow: 0px 0px 14px 3px #0000000A !important;
 }
 
 .selectOverlayer {
@@ -300,17 +316,14 @@ h1 {
 }
 
 .SubtasksInputField:focus-within {
-    border: 2px solid rgba(0, 0, 0, 1);
+    border: 1px solid #29ABE2;
 }
 
 .SubtasksInputField input {
-    border: none;
+    border: none !important;
 }
 
-.SubtasksInputField input:focus-within {
-    border: none;
-    outline: none;
-}
+
 
 #subtaskAddBtn {
     /* position: absolute; */
