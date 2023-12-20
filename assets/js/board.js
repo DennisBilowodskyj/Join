@@ -42,7 +42,7 @@ function filterStatus() {
 async function valueAppender() {
   for (let i = 0; i < tasks.length; i++) {
     let task = tasks[i];
-    if ("progressValue" in task) {
+    if ("progressValue" in task && task["progressValue"].length > 0) {
     } else {
       task.progressValue = [];
       calcValuesToAppend(task);
@@ -244,14 +244,14 @@ function renderCardDetailsDeleteEdit(index) {
 // #####################################################################
 function openAddTaskOverlay(status) {
   statusCheck = status;
-  let submitFunction = document.getElementById("addTaksForm");
-  submitFunction.onsubmit = overlayerAddTask;
+  CameFrom = "AddTaskOnStatus";
   document.getElementById("addTaskOverlay").classList.remove("d_none");
 }
 
 function closeAddTaskOverlay() {
   clearInput();
   changeButtonToRegularAddTask();
+  CameFrom = "addTask";
   document.getElementById("addTaskOverlay").classList.add("d_none");
 }
 
@@ -419,6 +419,7 @@ async function deleteTask(id) {
 }
 
 async function editTask(id) {
+  taskOnEdit = id;
   closeCardDetails();
   openEditContactDialog(id);
   document.getElementById("addTaskOverlay").classList.remove("d_none");
@@ -432,11 +433,6 @@ function changeTaskButtonOnEdit() {
           <span>Save Task</span>
           <img src="./assets/img/addTask_icons/check.png" />
     </button>`;
-}
-
-function changeOnSubmitFunction(id) {
-  let submitFunction = document.getElementById("addTaksForm");
-  submitFunction.onsubmit = saveTaskButton;
 }
 
 function changeButtonToRegularAddTask() {
@@ -490,6 +486,7 @@ function saveTaskButton(id) {
   statusCheck = tasks[id]["status"];
   saveFunction();
   valueAppender();
+  closeAddTaskOverlay();
 }
 
 // ######################## Overlayer AddTask ##########################
@@ -518,9 +515,9 @@ function openEditContactDialog(id) {
 function necessaryFunctionsToEditTasks(id) {
   renderAssignedBadges();
   renderSubtasksToEdit();
-  changeOnSubmitFunction(id);
   changeTaskButtonOnEdit();
   addAssignedToContacts(id);
+  CameFrom = "EditTaskFromBoard";
 }
 
 async function overlayerAddTask() {
@@ -542,7 +539,6 @@ async function overlayerAddTask() {
   saveFunction();
   valueAppender();
   closeAddTaskOverlay();
-  return false;
 }
 
 function renderSubtasksToEdit() {
@@ -586,5 +582,41 @@ function addAssignedToContacts(id) {
         contact.assigned = false;
       }
     }
+  }
+}
+
+// ########################## Searching Cards ##########################
+// #####################################################################
+function searchingCard() {
+  let filterTask = [];
+  let wantedTask = inputFieldFinder();
+  for (let i = 0; i < tasks.length; i++) {
+    let task = tasks[i];
+    if (task["title"].toLowerCase().includes(wantedTask)) {
+      filterTask.push(task);
+    }
+  }
+  filterTasksOnSearchingCards(filterTask);
+}
+
+function filterTasksOnSearchingCards(fillterdtasks) {
+  todos = fillterdtasks.filter((task) => task["status"] == "todo");
+  inProgress = fillterdtasks.filter((task) => task["status"] == "inProgress");
+  awaitFeedback = fillterdtasks.filter(
+    (task) => task["status"] == "awaitFeedback"
+  );
+  done = fillterdtasks.filter((task) => task["status"] == "done");
+  renderCards();
+}
+
+function inputFieldFinder() {
+  firstField = document.getElementById("searching_form_input");
+  secondField = document.getElementById("responseSearching_form_input");
+  if (firstField.value.length > 0) {
+    return firstField.value.toLowerCase();
+  } else if (secondField.value.length > 0) {
+    return secondField.value.toLowerCase();
+  } else{
+    return firstField.value.toLowerCase()
   }
 }

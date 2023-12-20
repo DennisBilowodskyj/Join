@@ -62,14 +62,15 @@
       <div class="headSection">
         <h1>Board</h1>
         <div class="header_button_area">
-          <form onsubmit="" class="searching_form">
+          <form onsubmit="searchingCard(); return false;" class="searching_form">
             <input
               type="text"
               id="searching_form_input"
               placeholder="Find Task"
+              onkeyup="searchingCard()"
             />
             <div class="search_seperator"></div>
-            <button class="searching_button">
+            <button class="searching_button" type="submit">
               <img src="./assets/img/board/search.png" alt="search" />
             </button>
           </form>
@@ -83,14 +84,15 @@
       </div>
 
       <div class="response_searchbar">
-        <form onsubmit="" class="searching_form">
+        <form onsubmit="searchingCard()" class="searching_form">
           <input
             type="text"
-            id="searching_form_input"
+            id="responseSearching_form_input"
             placeholder="Find Task"
+            onkeyup="searchingCard()"
           />
           <div class="search_seperator"></div>
-          <button class="searching_button">
+          <button class="searching_button" type="submit">
             <img src="./assets/img/board/search.png" alt="search" />
           </button>
         </form>

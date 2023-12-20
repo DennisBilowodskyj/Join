@@ -158,6 +158,14 @@ body {
     outline: none;
 }
 
+#responseSearching_form_input{
+    border: none;
+}
+
+#responseSearching_form_input:focus{
+    outline: none;
+}
+
 .search_seperator{
     height: 31px;
     width: 1px;

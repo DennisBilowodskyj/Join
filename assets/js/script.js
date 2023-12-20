@@ -1,6 +1,47 @@
-function init() {
+let matchingUser;
+
+async function init() {
   includeHTML();
+  await loadUserHeader();
+  checkEmailSummary(users);
 }
+
+
+async function loadUserHeader(){ 
+  try{
+  users = JSON.parse(await getItem('users'));
+  } catch(e){
+      console.info('Could not load Users')
+  }
+}
+
+
+async function checkEmailSummary() {
+  const guestUser = localStorage.getItem("guestUser");
+  if (guestUser === "Guest") {
+    //document.getElementById("userName").innerHTML = "Guest";
+    document.getElementById("user").innerHTML = "G";
+  } else {
+    const emailToSearch = localStorage.getItem("checkinUser");
+    const cleanedEmailToSearch = emailToSearch.replace(/^"(.*)"$/, "$1"); // Entfernt Anführungszeichen
+    const lowerCaseEmailToSearch = cleanedEmailToSearch.toLowerCase();
+    matchingUser = users.find((user) => {
+      return user.email.toLowerCase() === lowerCaseEmailToSearch;
+    });
+    // Übereinstimmung gefunden, setze den Benutzernamen
+    //document.getElementById("userName").innerHTML = matchingUser.name;
+    loadInitialsHeader(matchingUser);
+    return; // Beende die Funktion nach der Aktualisierung des Benutzernamens
+  }
+}
+function loadInitialsHeader(matchingUser){
+  const [firstName, lastName] = matchingUser.name.split(' ');
+  const firstLetterFirstName = firstName.charAt(0).toUpperCase();
+  const firstLetterLastName = lastName.charAt(0).toUpperCase();
+  document.getElementById('user').innerHTML = firstLetterFirstName + firstLetterLastName;
+}
+
+
 
 async function includeHTML() {
   let includeElements = document.querySelectorAll("[w3-include-html]");

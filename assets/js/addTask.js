@@ -1,8 +1,10 @@
+let CameFrom = "addTask";
 let taskPrio;
 let assignedTo = [];
 let subtasks = [];
 let tasks = [];
 let contacts = [];
+let taskOnEdit = 0;
 
 let contactsRendered = false;
 
@@ -70,6 +72,16 @@ function resetAssignedContacts() {
   contacts.forEach((contact) => {
     contact.assigned = false;
   });
+}
+
+async function addTaskTest(){
+    if (CameFrom == "addTask"){
+        addTask()
+    } else if(CameFrom == "AddTaskOnStatus"){
+        overlayerAddTask()
+    } else if(CameFrom == "EditTaskFromBoard"){
+        saveTaskButton(taskOnEdit)
+    }
 }
 
 async function addTask() {
