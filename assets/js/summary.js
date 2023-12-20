@@ -185,6 +185,12 @@ findEarliestDueDate(tasks);
 // display name after login
 document.addEventListener('DOMContentLoaded', function() {
   setTimeout(function() {
-    document.querySelector('.welcomeOverlayer').style.display = 'none';
+    let welcomeOverlayer = document.querySelector('.welcomeOverlayer');
+    
+  welcomeOverlayer.style.opacity = '0';
+   setTimeout(function() {
+      welcomeOverlayer.style.display = 'none';
+    }, 500); 
   }, 3000); 
 });
+ 
