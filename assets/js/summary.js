@@ -191,6 +191,6 @@ document.addEventListener('DOMContentLoaded', function() {
    setTimeout(function() {
       welcomeOverlayer.style.display = 'none';
     }, 500); 
-  }, 3000); 
+  }, 2000); 
 });
  

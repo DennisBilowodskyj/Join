@@ -683,7 +683,9 @@ body {
         .summary_headline {
             display: flex;
             margin-left: 15px;}
-       
+       .good_morning{
+        margin-left: 20%;
+       }
 }
 
 @media (max-width: 450px){
@@ -701,8 +703,16 @@ body {
             
             font-size: 15px;
         }
+        .good_morning {
+          margin-left: 15%;
+      }
 }  
+@media (max-width: 370px){
+  .good_morning {
+    margin-left: 10%;
+}
 
+}
 
 
 
