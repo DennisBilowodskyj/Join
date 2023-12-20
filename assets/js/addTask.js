@@ -6,7 +6,6 @@ let tasks = [];
 let contacts = [];
 let taskOnEdit = 0;
 let categoryFromAddTask = undefined;
-
 let contactsRendered = false;
 
 async function initAddTask() {
@@ -35,7 +34,6 @@ function openAssignedInput() {
 }
 
 function assign(i) {
-  // Toggle assigned status
   contacts[i].assigned = !contacts[i].assigned;
 
   if (contacts[i].assigned) {
@@ -104,7 +102,7 @@ async function addTask() {
   let title = document.getElementById("taskTitle").value;
   let description = document.getElementById("taskDescription").value;
   let date = document.getElementById("date").value;
-  // let category = document.getElementById("categorySelect").value;
+
   prioCheck();
   tasks.push({
     title: title,
@@ -125,7 +123,7 @@ function setCategory(element) {
   
   categoryFromAddTask = element.getAttribute('data-value');
   input.placeholder = element.innerHTML;
-  console.log(categoryFromAddTask);
+  openOverlay();
 }
 
 function clearCategory() {
@@ -150,7 +148,6 @@ function addSubtask() {
        <div id="subtask_${subtaskId}" class="subtaskContainer d_flex" ondblclick="editSubtask('${subtaskId}')">
             <li  >${subtask}</li>
             ${generateSubtaskChange(subtaskId)}
-
        </div>
     `;
   subtasks.push(subtask);
@@ -202,7 +199,6 @@ function deleteSubtask(subtaskId) {
   let subtaskContainer = document.getElementById(`subtask_${subtaskId}`);
 
   subtasks.splice(subtaskId, 1);
-
   subtaskContainer.remove();
 }
 
