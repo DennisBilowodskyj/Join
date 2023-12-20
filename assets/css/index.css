@@ -12,7 +12,10 @@ body{
 .index-top-section{
     display: flex;
     justify-content: space-between;
-    margin: 50px;
+    margin-left: 50px;
+    margin-top: 50px;
+    margin-right: 50px;
+    padding-bottom: 100px;
     font-size: 22px;
 }
 .sign-up-button{
@@ -165,7 +168,7 @@ body{
 .index-footer-section{
     display: flex;
     justify-content: center;
-    margin-top: 200px;
+    padding-top: 180px;
 }
 .footer-link{
     margin: 10px;
@@ -180,24 +183,36 @@ body{
 .mobile-sign-up-button-section{
     display: none;
 }
-
 @media (max-width: 700px) {
 .d-none{
     display: block;
 }
+.index-top-section{
+    padding-bottom: 10px;
+}
+.join-logo-log-in{
+    height: 80px;
+}
+.keyframe-logo{
+    padding-bottom: 0;
+}
 .top-section-right{
     display: none;
+}
+.log-in-box{
+    margin-top: 0px;
 }
 .mobile-sign-up-button-section{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 100px;
+    margin-top: 0px;
     font-size: 22px;
     gap: 35px;
+    margin-top: 100px;
 }
 .index-footer-section{
-    margin-top: 60px;
+    padding-top: 100px;
 }
 .login-button-section{
     display: flex;
@@ -211,7 +226,7 @@ body{
 }
 .log-in-box{
     width: 396px;
-    height: 515px;
+    height: 480px;
 }
 .input-div{
     width: 364px;
