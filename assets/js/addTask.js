@@ -130,6 +130,15 @@ function clearCategory() {
   input.placeholder = "Select task category";
 }
 /**
+ * open category-overlay
+ */
+function openOverlay() {
+  const overlay = document.getElementById('categoryOverlay');
+  overlay.style.display = 'block';
+  overlay.classList.toggle('d_none');
+}
+
+/**
  * set a default priority for undefined tasks
  */
 function prioCheck() {
@@ -169,26 +178,26 @@ function generateSubtaskChange(subtaskId) {
     `;
 }
 
-// Edit subtask
+
 function editSubtask(subtaskId) {
   let subtaskElement = document.getElementById(`subtask_${subtaskId}`);
   let subtaskText = subtaskElement.querySelector("li");
   let subtaskContainer = subtaskElement.closest(".subtaskContainer");
 
-  // Element bearbeitbar machen
+  // make subtask editable
   subtaskText.contentEditable = true;
   subtaskText.focus();
 
   subtaskContainer.classList.add("subtaskContainerActive");
 
-  // Eventlistener für Verlassen des Editiermodus (Blur-Event)
+  // eventlistener to leave editable-modus
   subtaskText.addEventListener("blur", function () {
     subtaskText.contentEditable = false;
     subtasks[subtaskId] = subtaskText.innerHTML;
     subtaskContainer.classList.remove("subtaskContainerActive");
   });
 
-  // Eventlistener für Drücken der Enter-Taste
+  // eventlistener to leave editable-modus with "Enter"
   subtaskText.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
       subtaskText.contentEditable = false;
@@ -255,7 +264,9 @@ function renderAssignedBadges() {
         `;
   });
 }
-
+/**
+ * set priority for the task in the global variable and set the button on active
+ */
 function setPrio(buttonID) {
   taskPrio = buttonID;
   let btnUrgent = document.getElementById("prio_urgent");
@@ -264,7 +275,7 @@ function setPrio(buttonID) {
   let prioBtn = [btnUrgent, btnMedium, btnLow];
 
   prioBtn.forEach((btn) => {
-    setPrioInactive(btn);
+    setPrioBtnInactive(btn);
   });
   if (taskPrio === "urgent") {
     setPrioBtn(btnUrgent, "#FF3D00", "prio_urgent_white.svg");
@@ -283,7 +294,7 @@ function setPrioBtn(btnID, bgColor, imgSrc) {
   img.src = "./assets/img/addTask_icons/" + imgSrc;
 }
 
-function setPrioInactive(btn) {
+function setPrioBtnInactive(btn) {
   btn.style.backgroundColor = "white";
   btn.style.color = "black";
   btn.style.boxShadow = "0px 0px 4px 0px #0000001A";
@@ -291,18 +302,22 @@ function setPrioInactive(btn) {
   let img = btn.querySelector("img");
   img.src = img.src.replace("_white.svg", ".svg");
 }
-
+/**
+ * set priority to undefined an deselect the Button
+ */
 function deselectprio() {
   if (taskPrio === "urgent") {
-    setPrioInactive(document.getElementById("prio_urgent"));
+    setPrioBtnInactive(document.getElementById("prio_urgent"));
   } else if (taskPrio === "medium") {
-    setPrioInactive(document.getElementById("prio_medium"));
+    setPrioBtnInactive(document.getElementById("prio_medium"));
   } else if (taskPrio === "low") {
-    setPrioInactive(document.getElementById("prio_low"));
+    setPrioBtnInactive(document.getElementById("prio_low"));
   }
   taskPrio = undefined;
 }
-
+/**
+ * clear the form
+ */
 function clearInput() {
   taskTitle.value = "";
   taskDescription.value = "";
@@ -341,7 +356,9 @@ function generateContactsHTML(i, contact, initials) {
             </div>
     `;
 }
-
+/**
+ * @returns initials of the contact´s fullname
+ */
 function getInitials(fullName) {
   const names = fullName.split(" ");
   let initials = "";
@@ -350,7 +367,9 @@ function getInitials(fullName) {
   });
   return initials.toUpperCase();
 }
-
+/**
+ * set the available due Date to the present day
+ */
 function setMinDate() {
   const dateField = document.getElementById("date");
   const date = new Date();
@@ -358,12 +377,5 @@ function setMinDate() {
   dateField.min = dateFormated;
 }
 
-function openOverlay() {
-  const overlay = document.getElementById('categoryOverlay');
-  overlay.style.display = 'block';
-  overlay.classList.toggle('d_none');
-}
 
-function createContact() {
-  alert("new contact");
-}
+
