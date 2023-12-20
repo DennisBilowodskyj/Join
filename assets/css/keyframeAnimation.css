@@ -5,11 +5,13 @@
     animation: transparencyEffect 2s forwards; 
     z-index: 1;
 }
+
 .top-section-right{
     background-color: rgb(246,247,248);
     animation: transparencyEffect 2s forwards; 
     z-index: 1;
 }
+
 @keyframes transparencyEffect {
     0% {
       opacity: 0; 
@@ -31,11 +33,13 @@
     animation: mymove 2s forwards;
     z-index: 999;
 }
+
 @keyframes mymove {
     0% {top: 40vh; left: 45vw;transform:  scale(2.74);}
     50% {top: 40vh; left: 45vw; transform: scale(2.74);}
     100% {top: 0vh; left: 0vw;transform: scale(1);}
 }
+
 @media (max-width: 700px){
     @keyframes mymove {
         0% {top: 40vh;right: 40vw; left: 40vw;transform:  scale(2.74);}
@@ -43,6 +47,7 @@
         100% {top: 0vh;right: 0vw; left: 0vw;transform: scale(1);}
     }   
 }
+
 @media (max-width: 450px){
     @keyframes mymove {
         0% {top: 40vh;right: 30vw; left: 35vw;transform:  scale(2.74);}
@@ -50,6 +55,7 @@
         100% {top: 0vh;right: 0vw; left: 0vw;transform: scale(1);}
     }
 }
+
 /*SUCCES SIGN UP*/
 
 .keyframe-sign-up{
@@ -60,14 +66,17 @@
     position: relative;
     z-index: 999;
 }
+
 .succes-sign-up{
     background-color: rgba(128, 128, 128, 0.5);
     z-index: 1000;
     display: block;
 }
+
 .start-animation{
     animation: signUpSuccesfully 0.4s forwards;
 }
+
 @keyframes signUpSuccesfully {
     from {bottom: -40vh;
     opacity: 1;}
