@@ -232,16 +232,7 @@ body {
   flex-direction: column;
   margin-left: 968px;
   margin-top: -330px;
-  display: none;
 }
-
-.good_morning_desktop {
-  display: flex;
-  flex-direction: column;
-  margin-left: 968px;
-  margin-top: -330px;
-}
-
 
 .day_time {
   font-weight: 500;
@@ -263,7 +254,7 @@ body {
 
 
 @media (max-width: 1400px) {
-  .good_morning_desktop {
+  .good_morning {
     display: flex;
     flex-direction: column;
     margin-left: 450px;
@@ -322,7 +313,7 @@ body {
     height: 68px;
     width: 2px;
   }
-  .good_morning_desktop{
+  .good_morning {
     display: flex;
     flex-direction: column;
     margin-left: 400px;
@@ -465,7 +456,7 @@ body {
     transition: transform 300ms ease-in-out;
     cursor: pointer;
   }
-  .good_morning_desktop {
+  .good_morning {
     margin-left: 300px;
   }
 
@@ -500,7 +491,7 @@ body {
 }
 @media (max-width: 1400px){
 
-  .good_morning_desktop {
+    .good_morning {
         display: flex;
         flex-direction: column;
         margin-left: 450px;
@@ -560,7 +551,7 @@ body {
         height: 68px;
         width: 2px;
     }
-    .good_morning_desktop {
+    .good_morning {
         display: flex;
         flex-direction: column;
         margin-left: 400px;
@@ -619,16 +610,14 @@ body {
         transition: transform 300ms ease-in-out;
         cursor: pointer;
     }
-    .good_morning_desktop {
+    .good_morning {
         margin-left: 300px;
     }
 }
 
 @media (max-width: 750px){
 
-  .good_morning_desktop{
-    display: none;
-  }
+    
     .good_morning {
         display: flex;
         flex-direction: column;
