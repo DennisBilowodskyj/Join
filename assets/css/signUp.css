@@ -7,8 +7,8 @@
     align-items: center;
     text-align: center;
     background-color: white;
-    height: 630px;
-    width: 598px;
+    height: 62vh;
+    width: 35vw;
     border-radius: 20px;
     font-size: 30px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
@@ -17,11 +17,12 @@
 .sign-up-box-top-section{
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
     align-items: center;
 }
 .get-back-arrow{
     position: relative;
-    right: 120px;
+    right: 80px;
     height: 32px;
     width: 32px;
 }
@@ -49,7 +50,7 @@
 .sign-up-checkbox-section{
     font-size: 16px;
     color: rgb(182, 185, 187);
-    margin-top: 40px;
+    
 }
 .sign-up-checkbox-link{
     text-decoration: none;
@@ -62,25 +63,41 @@
     transform: scale(1.04);
 }
 .sign-up-button-section{
-    margin-top: 40px;
+    margin-top: 3vh;
 }
 .sign-up-footer-section{
     display: flex;
     justify-content: center;
     margin-top: 0px;
 }
+@media (max-width : 1350px){
+    .get-back-arrow{
+        right: 30px;
+    }
+}
+@media (max-width : 1200px){
+    .sign-up-box{
+        width: 50vw;
+        
+     }
+}
+@media (max-width : 800px){
+    .sign-up-box{
+        height: 60vh;
+        width: 70vw;
+        
+     }
+}
 @media (max-width : 700px){
     .join-logo{
-        width: 64px;
-        height: 78px;
-    }
-    .sign-up-box{
-        width: 396px;
-        height: 595px;
+        width: 8vh;
+        height: 12vw;
+    }.sign-up-box{
+        margin-top: 5vh;
     }
     .get-back-arrow{
-        right: 40px;
-        margin-top: 20px;
+        right: 80px;
+        
     }
     .headline{
         margin: 0;
@@ -92,9 +109,19 @@
         margin-top: 20px;
     }
     .sign-up-footer-section{
-        margin-top: 80px;
+        margin-top: 5vh;
     }
-    
+    @media (max-width: 550px) {
+        .get-back-arrow{
+            right: 40px;
+        }
+        .sign-up-box{
+            width: 80vw;
+        }
+        .input-div{
+            width: 70vw;
+        }
+    }
     @media (max-width: 450px) {
         .sign-up-box{
             width: 350px;
@@ -107,15 +134,15 @@
             height: 100px;
         }
         .sign-up-footer-section{
-            margin-top: 60px;
+            margin-top: 2vh;
         }
         }
         @media (max-width: 360px) {
             .sign-up-box{
-                width: 300px;
+                width: 90vw;
             }
             .input-div{
-                width: 280px;
+                width: 80vw;
             }
             }
         

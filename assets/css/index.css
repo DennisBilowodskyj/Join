@@ -13,9 +13,9 @@ body{
     display: flex;
     justify-content: space-between;
     margin-left: 50px;
-    margin-top: 50px;
+    margin-top: 5vh;
     margin-right: 50px;
-    padding-bottom: 100px;
+    padding-bottom: 2vh;
     font-size: 22px;
 }
 .sign-up-button{
@@ -41,7 +41,6 @@ body{
 .index-main-section{
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 .log-in-box{
     display: flex;
@@ -49,8 +48,8 @@ body{
     align-items: center;
     text-align: center;
     background-color: white;
-    height: 493px;
-    width: 652px;
+    height: 55vh;
+    width: 40vw;
     border-radius: 20px;
     font-size: 30px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
@@ -78,8 +77,7 @@ body{
 .input-div{
     border: 1px solid rgb(213,213,213);
     border-radius: 10px;
-    width: 422px;
-    height: 40px;
+    height: 4vh;
     display: flex;
     align-items: center;
     justify-content: space-between;   
@@ -89,7 +87,7 @@ body{
     padding-left: 20px;
     outline: none;
     font-size: 20px;
-    width: 400px;
+    width: 22vw;
 }
 .input-img{
     width: 24px;
@@ -136,6 +134,7 @@ body{
     justify-content: center;
     align-items: center;
     gap: 35px;
+    margin-top: 5vh;
 }
 .log-in-button{
     border: none;
@@ -168,7 +167,7 @@ body{
 .index-footer-section{
     display: flex;
     justify-content: center;
-    padding-top: 180px;
+    padding-top: 14vh;
 }
 .footer-link{
     margin: 10px;
@@ -183,18 +182,27 @@ body{
 .mobile-sign-up-button-section{
     display: none;
 }
+@media (max-width: 1200px) {
+.log-in-box{
+    width: 60vw;
+}
+.input-field{
+    width: 40vw;
+}
+}
 @media (max-width: 700px) {
 .d-none{
     display: block;
 }
 .index-top-section{
-    padding-bottom: 10px;
+    padding-bottom: 0;
 }
 .join-logo-log-in{
-    height: 80px;
+    height: 10vh;
 }
-.keyframe-logo{
-    padding-bottom: 0;
+.checkbox-section{
+    margin: 0;
+    margin-left: 10px;
 }
 .top-section-right{
     display: none;
@@ -206,13 +214,13 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 0px;
     font-size: 22px;
     gap: 35px;
-    margin-top: 100px;
+    margin-top: 5vh;
+    
 }
 .index-footer-section{
-    padding-top: 100px;
+    padding-top: 5vh;
 }
 .login-button-section{
     display: flex;
@@ -237,22 +245,15 @@ body{
 }
 @media (max-width: 450px) {
 .log-in-box{
-    width: 350px;
+    height: 55vh;
 }
-.input-div{
-    width: 320px;
-}
-.join-logo-log-in{
-    width: 80px;
-    height: 100px;
+.login-button-section {
+    margin-top: 0;
+    padding-top: 1vh;
 }
 }
 @media (max-width: 360px) {
     .log-in-box{
-        width: 300px;
-    }
-    .input-div{
-        width: 280px;
+        width: 90vw;
     }
     }
-
