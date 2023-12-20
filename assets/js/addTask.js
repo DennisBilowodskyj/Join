@@ -18,12 +18,14 @@ async function initAddTask() {
 async function loadTasks() {
   tasks = JSON.parse(await getItem("tasks"));
 }
-
+/**
+ * open Overlay below Input and mark contacts if assigned
+ */
 function openAssignedInput() {
   let options = document.getElementById("contactsOverlay");
 
   options.classList.toggle("d_none");
-  // Überprüfen, ob ein Kontakt zugewiesen ist
+
   for (let i = 0; i < contacts.length; i++) {
     if (contacts[i].assigned) {
       markContactAssigned(i);
@@ -33,6 +35,10 @@ function openAssignedInput() {
   }
 }
 
+/**
+ * set a contact as assigned
+ * @param {index of contacts-array} i 
+ */
 function assign(i) {
   contacts[i].assigned = !contacts[i].assigned;
 
@@ -49,21 +55,11 @@ function assign(i) {
   renderAssignedBadges();
 }
 
-document.addEventListener('click', function(event) {
-  const contactsOverlay = document.getElementById('contactsOverlay');
-  const categoryOverlay = document.getElementById('categoryOverlay');
-  const categoryContainer = document.querySelector('.categoryContainer');
-  const assignedContainer = document.querySelector('.assignedContainer');
-
-  if (!assignedContainer.contains(event.target) && !contactsOverlay.contains(event.target)) {
-      contactsOverlay.classList.add('d_none');
-  }
-  if (!categoryContainer.contains(event.target)) {
-      categoryOverlay.classList.add('d_none');
-  }
-});
 
 
+/**
+ * change css properties when assigned
+ */
 function markContactAssigned(i) {
   let contactContainer = document.getElementById(`contact${i}`);
   let checkbox = document.getElementById(`assignedCechbox${i}`);
@@ -73,6 +69,9 @@ function markContactAssigned(i) {
   checkbox.src = "./assets/img/addTask_icons/checked-white.png";
 }
 
+/**
+ * change css proberties to initially
+ */
 function unmarkContactAssigned(i) {
   let contactContainer = document.getElementById(`contact${i}`);
   let checkbox = document.getElementById(`assignedCechbox${i}`);
@@ -130,7 +129,9 @@ function clearCategory() {
   let input = document.getElementById('categoryInput');
   input.placeholder = "Select task category";
 }
-
+/**
+ * set a default priority for undefined tasks
+ */
 function prioCheck() {
   if (taskPrio === undefined) {
     taskPrio = "medium";
@@ -154,7 +155,10 @@ function addSubtask() {
 
   resetSubtaskInput();
 }
-
+/**
+ * generates html for subtask options button 
+ * @returns html
+ */
 function generateSubtaskChange(subtaskId) {
   return /*html*/ `
         <div class="subtaskChange d_flex">
@@ -194,7 +198,24 @@ function editSubtask(subtaskId) {
   });
 }
 
-// delete subtask
+/**
+ * close overlays when not focused
+ */
+document.addEventListener('click', function(event) {
+  const contactsOverlay = document.getElementById('contactsOverlay');
+  const categoryOverlay = document.getElementById('categoryOverlay');
+  const categoryContainer = document.querySelector('.categoryContainer');
+  const assignedContainer = document.querySelector('.assignedContainer');
+
+  if (!assignedContainer.contains(event.target) && !contactsOverlay.contains(event.target)) {
+      contactsOverlay.classList.add('d_none');
+  }
+  if (!categoryContainer.contains(event.target)) {
+      categoryOverlay.classList.add('d_none');
+  }
+});
+
+
 function deleteSubtask(subtaskId) {
   let subtaskContainer = document.getElementById(`subtask_${subtaskId}`);
 
@@ -205,18 +226,24 @@ function deleteSubtask(subtaskId) {
 async function getContacts() {
   contacts = JSON.parse(await getItem("contacts"));
 }
-
+/**
+ * render otption button for subtasks oninput
+ */
 function renderSubtaskBtn() {
   subtaskControls.classList.remove("d_none");
   add_subtaskBtn.classList.add("d_none");
 }
-
+/**
+ * set the value of subtaskInput to default
+ */
 function resetSubtaskInput() {
   subtaskInput.value = "";
   subtaskControls.classList.add("d_none");
   add_subtaskBtn.classList.remove("d_none");
 }
-
+/**
+ * render the initials for the assigned contacts with different colors
+ */
 function renderAssignedBadges() {
   let badgesContainer = document.getElementById("badgesAssignedTo");
   badgesContainer.innerHTML = "";
