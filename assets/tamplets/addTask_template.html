@@ -4,42 +4,21 @@
     <div class="mainContent d_flex">
       <div class="leftContent">
         <p>Title<span class="required">*</span></p>
-        <input
-          class="OverlayerInput"
-          required
-          type="text"
-          id="taskTitle"
-          placeholder="Enter a title"
-        />
+        <input class="OverlayerInput" required type="text" id="taskTitle" placeholder="Enter a title" />
         <p>Description</p>
-        <textarea
-          class="textareaOverlayer"
-          id="taskDescription"
-          cols="30"
-          rows="10"
-          placeholder="Enter a description"
-        ></textarea>
+        <textarea class="textareaOverlayer" id="taskDescription" cols="30" rows="10"
+          placeholder="Enter a description"></textarea>
         <p>Assigned to</p>
         <div class="assignedContainer">
-          <input
-            class="OverlayerInput"
-            onclick="openAssignedInput()"
-            class="assignedInput inputArrow"
-            type="text"
-            id="assignedInput"
-            placeholder="Select contacts to assign"
-          />
+          <input class="OverlayerInput arrowNotactive" onclick="openAssignedInput()" class="assignedInput inputArrow"
+            type="text" id="assignedInput" placeholder="Select contacts to assign" />
           <!-- <img id="selectArrow" src="./assets/img/addTask_icons/arrow_drop_downaa.png" alt=""> -->
           <div class="contacts d_none" id="contactsOverlay">
             <div id="contactsContent"></div>
             <!-- Create new Contact -->
-            <div
-              class="newContact d_flex"
-              id="contact1"
-              onclick="createContact()"
-            >
+            <!-- <div class="newContact d_flex" id="contact1" onclick="createContact()">
               <span>Create new Contact</span>
-            </div>
+            </div> -->
           </div>
         </div>
         <div id="badgesAssignedTo"></div>
@@ -47,14 +26,7 @@
       <div class="seperator"></div>
       <div class="rightContent">
         <p>Due date<span class="required">*</span></p>
-        <input
-          required
-          class="OverlayerInput"
-          type="date"
-          name=""
-          id="date"
-          onclick="setMinDate();"
-        />
+        <input required class="OverlayerInput" type="date" name="" id="date" onclick="setMinDate();" />
         <p>Prio</p>
         <div class="prioContainer d_flex">
           <div class="prioCard" id="prio_urgent" onclick="setPrio('urgent')">
@@ -71,41 +43,30 @@
           </div>
         </div>
         <p>Category<span class="required">*</span></p>
-        <select
-          class="selectOverlayer"
-          name="Category"
-          id="categorySelect"
-          required
-        >
-          <option value="">Select task category</option>
-          <option value="user_story">User Story</option>
-          <option value="technical_task">Technical Task</option>
-        </select>
+        <div class="categoryContainer">
+          <input class="OverlayerInput arrowNotactive" readonly type="text" id="categoryInput"
+            placeholder="Select task category" onclick="openOverlay()" />
+
+          <div class="categoryAddTask d_none" id="categoryOverlay">
+            <div id="categoryOptions">
+              <p id="optionUserStory" data-value="user_story" onclick="setCategory(this)">User Story</p>
+              <p id="optionTechnicalTask" data-value="technical_task" onclick="setCategory(this)">Technical Task</p>
+            </div>
+
+          </div>
+
+
+        </div>
         <p>Subtasks</p>
         <div class="SubtasksInputField">
-          <input
-            class="OverlayerInput"
-            type="text"
-            placeholder="Add new subtask"
-            id="subtaskInput"
-            oninput="renderSubtaskBtn()"
-          />
+          <input class="OverlayerInput" type="text" placeholder="Add new subtask" id="subtaskInput"
+            oninput="renderSubtaskBtn()" />
           <span id="subtaskAddBtn">
             <div id="subtaskControls" class="d_flex d_none">
-              <img
-                src="./assets/img/addTask_icons/subtask_close.png"
-                onclick="resetSubtaskInput()"
-              />
-              <img
-                src="./assets/img/addTask_icons/subtask_check.png"
-                onclick="addSubtask()"
-              />
+              <img src="./assets/img/addTask_icons/subtask_close.png" onclick="resetSubtaskInput()" />
+              <img src="./assets/img/addTask_icons/subtask_check.png" onclick="addSubtask()" />
             </div>
-            <img
-              src="./assets/img/addTask_icons/add_subtask.png"
-              onclick="addSubtask()"
-              id="add_subtaskBtn"
-            />
+            <img src="./assets/img/addTask_icons/add_subtask.png" onclick="addSubtask()" id="add_subtaskBtn" />
           </span>
         </div>
         <div id="subtaskListContainer">

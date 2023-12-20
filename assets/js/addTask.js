@@ -5,6 +5,7 @@ let subtasks = [];
 let tasks = [];
 let contacts = [];
 let taskOnEdit = 0;
+let categoryFromAddTask = undefined;
 
 let contactsRendered = false;
 
@@ -34,21 +35,36 @@ function openAssignedInput() {
 }
 
 function assign(i) {
-    // Toggle assigned status
-    contacts[i].assigned = !contacts[i].assigned;
+  // Toggle assigned status
+  contacts[i].assigned = !contacts[i].assigned;
 
-    if (contacts[i].assigned) {
-        markContactAssigned(i);
-        assignedTo.push(contacts[i]);
-    } else {
-        unmarkContactAssigned(i);
-        let indexToRemove = assignedTo.findIndex(contact => contact.email === contacts[i]["email"]);
-        if (indexToRemove !== -1) {
-            assignedTo.splice(indexToRemove, 1);
-        }
+  if (contacts[i].assigned) {
+    markContactAssigned(i);
+    assignedTo.push(contacts[i]);
+  } else {
+    unmarkContactAssigned(i);
+    let indexToRemove = assignedTo.findIndex(contact => contact.email === contacts[i]["email"]);
+    if (indexToRemove !== -1) {
+      assignedTo.splice(indexToRemove, 1);
     }
-    renderAssignedBadges();
+  }
+  renderAssignedBadges();
 }
+
+document.addEventListener('click', function(event) {
+  const contactsOverlay = document.getElementById('contactsOverlay');
+  const categoryOverlay = document.getElementById('categoryOverlay');
+  const categoryContainer = document.querySelector('.categoryContainer');
+  const assignedContainer = document.querySelector('.assignedContainer');
+
+  if (!assignedContainer.contains(event.target) && !contactsOverlay.contains(event.target)) {
+      contactsOverlay.classList.add('d_none');
+  }
+  if (!categoryContainer.contains(event.target)) {
+      categoryOverlay.classList.add('d_none');
+  }
+});
+
 
 function markContactAssigned(i) {
   let contactContainer = document.getElementById(`contact${i}`);
@@ -74,21 +90,21 @@ function resetAssignedContacts() {
   });
 }
 
-async function addTaskTest(){
-    if (CameFrom == "addTask"){
-        addTask()
-    } else if(CameFrom == "AddTaskOnStatus"){
-        overlayerAddTask()
-    } else if(CameFrom == "EditTaskFromBoard"){
-        saveTaskButton(taskOnEdit)
-    }
+async function addTaskTest() {
+  if (CameFrom == "addTask") {
+    addTask()
+  } else if (CameFrom == "AddTaskOnStatus") {
+    overlayerAddTask()
+  } else if (CameFrom == "EditTaskFromBoard") {
+    saveTaskButton(taskOnEdit)
+  }
 }
 
 async function addTask() {
   let title = document.getElementById("taskTitle").value;
   let description = document.getElementById("taskDescription").value;
   let date = document.getElementById("date").value;
-  let category = document.getElementById("categorySelect").value;
+  // let category = document.getElementById("categorySelect").value;
   prioCheck();
   tasks.push({
     title: title,
@@ -96,12 +112,25 @@ async function addTask() {
     assignedTo: assignedTo,
     date: date,
     prio: taskPrio,
-    category: category,
+    category: categoryFromAddTask,
     subtask: subtasks,
     status: "todo",
   });
   await setItem("tasks", JSON.stringify(tasks));
   clearInput();
+}
+
+function setCategory(element) {
+  let input = document.getElementById('categoryInput');
+  
+  categoryFromAddTask = element.getAttribute('data-value');
+  input.placeholder = element.innerHTML;
+  console.log(categoryFromAddTask);
+}
+
+function clearCategory() {
+  let input = document.getElementById('categoryInput');
+  input.placeholder = "Select task category";
 }
 
 function prioCheck() {
@@ -257,12 +286,12 @@ function clearInput() {
   date.value = "";
   subtaskInput.value = "";
   badgesAssignedTo.innerHTML = "";
-  categorySelect.value = "";
   subtaskListContainer.innerHTML = "";
   contactsRendered = false;
   resetAssignedContacts();
   assignedTo = [];
   deselectprio();
+  clearCategory();
 }
 
 function renderContacts() {
@@ -304,6 +333,12 @@ function setMinDate() {
   const date = new Date();
   const dateFormated = date.toISOString().split("T")[0];
   dateField.min = dateFormated;
+}
+
+function openOverlay() {
+  const overlay = document.getElementById('categoryOverlay');
+  overlay.style.display = 'block';
+  overlay.classList.toggle('d_none');
 }
 
 function createContact() {
