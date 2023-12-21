@@ -270,8 +270,10 @@ window.addEventListener("resize", function () {
   if (screenWidth >= 750) {
     document.getElementById("left_container").classList.remove("display_none");
   } else if (screenWidth <= 750) {
+    document.getElementById("editDeletOverlay").classList.remove("display_flex");
     document
       .getElementById("right_container")
       .classList.remove("display_block");
   }
 });
+

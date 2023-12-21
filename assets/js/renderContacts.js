@@ -155,7 +155,7 @@ function showName(id) {
   function renderResponseEditDelete(id) {
     document.getElementById("editDeletOverlay").innerHTML = "";
     document.getElementById("editDeletOverlay").innerHTML = `
-    <button onclick="editContact(${id})" class="editDeletOverlayButton">
+    <button onclick="openEditContactDialog(${id})" class="editDeletOverlayButton">
       <img class="editDeletOverlayIMG" src="./assets/img/contact_icons/edit.svg"/>
         Edit
     </button>

@@ -59,17 +59,20 @@ async function valueAppender() {
 function calcValuesToAppend(task, difference) {
   let subtasks = task["subtask"];
   if (difference < 0) {
-    for (let i = 0; i < (-difference); i++) {
+    for (let i = 0; i < -difference; i++) {
       task.progressValue.push(0);
-    } task.progressSum = subtasks.length;
-  } else if (difference > 0){
-    for (let i = 0; i < (-difference); i++) {
-        task.progressValue.splice(subtasks.length, 1);
-      } task.progressSum = subtasks.length;
-  }else {
+    }
+    task.progressSum = subtasks.length;
+  } else if (difference > 0) {
+    for (let i = 0; i < difference; i++) {
+      task.progressValue.splice(subtasks.length, 1);
+    }
+    task.progressSum = subtasks.length;
+  } else {
     for (let i = 0; i < subtasks.length; i++) {
       task.progressValue.push(0);
-    } task.progressSum = subtasks.length;
+    }
+    task.progressSum = subtasks.length;
   }
 }
 
@@ -150,6 +153,14 @@ function changeButtonToRegularAddTask() {
     </button>`;
 }
 
+function prettyCategory(category) {
+  if (category == "user_story") {
+    return "User Story";
+  } else {
+    return "Technical Task";
+  }
+}
+
 function fillForm(
   titel,
   description,
@@ -164,10 +175,12 @@ function fillForm(
   assignedTo = assignedToEdit;
   document.getElementById("date").value = dueDate;
   setPrio(prio);
-  // document.getElementById("categorySelect").value = category;
+  document.getElementById("categoryInput").value = prettyCategory(category);
   categoryFromAddTask = category;
   subtasks = subtasksEdit;
 }
+
+
 
 function changeEditSettings() {
   document.getElementById("createButton").classList.add("d_none");
@@ -248,24 +261,20 @@ async function overlayerAddTask() {
 function renderSubtasksToEdit() {
   if (subtasks.length > 0) {
     let subtaskOutput = document.getElementById("subtaskListContainer");
-    let subtaskId = `subtask_${subtasks.length}`;
     for (let i = 0; i < subtasks.length; i++) {
       let subtask = subtasks[i];
-      renderSubtasksHTML(subtaskOutput, subtaskId, subtask);
+      renderSubtasksHTML(subtaskOutput, subtask, i);
     }
   }
 }
 
-function renderSubtasksHTML(subtaskOutput, subtaskId, subtask) {
+function renderSubtasksHTML(subtaskOutput, subtask, i) {
+  let subtaskId = i
   subtaskOutput.innerHTML += `
-       <div class="subtaskContainer d_flex">
-            <li id="${subtaskId}" ondblclick="editSubtask('${subtaskId}')">${subtask}</li>
-            <div class="subtaskChange d_flex">
-                <img src="./assets/img/addTask_icons/subtask_edit.png" alt="">
-                <div class="seperatorSubtask"></div>
-                <img src="./assets/img/addTask_icons/subtask_delete.png" alt="">
-            </div>
-       </div>`;
+  <div id="subtask_${subtaskId}" class="subtaskContainer d_flex" ondblclick="editSubtask('${subtaskId}')">
+       <li  >${subtask}</li>
+       ${generateSubtaskChange(subtaskId)}
+  </div>`;     
 }
 
 function addAssignedToContacts(id) {

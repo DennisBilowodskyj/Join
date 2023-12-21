@@ -65,6 +65,11 @@
     #doneCards{
         padding-bottom: 120px;
     }
+
+    .wrapperOverlay {
+        margin-top: 0;
+        margin-left: 0;
+    }
 }
 
 @media (max-width: 500px) {

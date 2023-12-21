@@ -1,4 +1,17 @@
-let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+let months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
 
 let todos = 0;
 let done = 0;
@@ -23,29 +36,20 @@ function resetCounters() {
 }
 resetCounters();
 async function addToSummary() {
- 
   await updateTaskCounts();
-  updateTodoNumber();   
-
-
+  updateTodoNumber();
 }
-
-
 
 async function summaryInit() {
   init();
-  
+
   await loadUser();
   await loadTasks();
   greet();
-  addToSummary(); 
+  addToSummary();
   checkEmailSummary();
   displayEarliestDueDate();
   renderUserName();
-
-   
- 
-
 }
 async function loadTasks() {
   tasks = JSON.parse(await getItem("tasks"));
@@ -71,7 +75,7 @@ function greet() {
 
 greet();
 
-function renderUserName(){
+function renderUserName() {
   const guestUser = localStorage.getItem("guestUser");
   if (guestUser === "Guest") {
     document.getElementById("userName").innerHTML = "Guest";
@@ -85,23 +89,21 @@ function renderUserName(){
  */
 function countTasksByStatus(status) {
   let count = 0;
-  
 
   tasks.forEach((tasks) => {
-    if (tasks.status === status){ 
+    if (tasks.status === status) {
       count++;
 
-      if (tasks.prio === 'urgent') {
+      if (tasks.prio === "urgent") {
         urgent++;
       }
-      if (tasks.status === 'done') {
+      if (tasks.status === "done") {
         urgent--;
       }
     }
   });
-  
+
   return count;
-  
 }
 
 function countAllTasks() {
@@ -114,7 +116,6 @@ async function updateTaskCounts() {
   inBoard = countAllTasks();
   inProgress = countTasksByStatus("inProgress");
   feedback = countTasksByStatus("awaitFeedback");
-
 }
 
 function updateTodoNumber() {
@@ -129,10 +130,11 @@ function updateTodoNumber() {
 // display the earliest prio:urgent dueDate
 function displayEarliestDueDate() {
   const earliestTask = findEarliestDueDate(tasks);
-  if (urgent === 0) {
-    document.getElementById("date").innerHTML = "No upcoming deadlines";
-  }else if (earliestTask && earliestTask.prio === 'urgent') {
-    const earliestDate = new Date(earliestTask.date.replace(/(\d{2}).(\d{2}).(\d{4})/, '$3-$2-$1'));
+
+  if (earliestTask && earliestTask.prio === "urgent") {
+    const earliestDate = new Date(
+      earliestTask.date.replace(/(\d{2}).(\d{2}).(\d{4})/, "$3-$2-$1")
+    );
     const monthIndex = earliestDate.getMonth();
     const month = months[monthIndex];
     const formattedDate = `${month} ${earliestDate.getDate()}, ${earliestDate.getFullYear()}`;
@@ -144,44 +146,49 @@ function displayEarliestDueDate() {
 }
 
 function findEarliestDueDate(tasks) {
-  const urgentTasks = tasks.filter(tasks => tasks.prio === 'urgent'&& tasks.status !== 'done');
+  const urgentTasks = tasks.filter((tasks) => tasks.prio === "urgent");
 
   if (urgentTasks.length === 0) {
-    return null; 
+    return null;
   }
 
   return urgentTasks.reduce((earliest, current) => {
-    const currentDate = new Date(current.date.replace(/(\d{2}).(\d{2}).(\d{4})/, '$3-$2-$1'));
-    const earliestDate = new Date(earliest.date.replace(/(\d{2}).(\d{2}).(\d{4})/, '$3-$2-$1'));
+    const currentDate = new Date(
+      current.date.replace(/(\d{2}).(\d{2}).(\d{4})/, "$3-$2-$1")
+    );
+    const earliestDate = new Date(
+      earliest.date.replace(/(\d{2}).(\d{2}).(\d{4})/, "$3-$2-$1")
+    );
     return currentDate < earliestDate ? current : earliest;
-  }, urgentTasks[0]); 
+  }, urgentTasks[0]);
 }
 findEarliestDueDate(tasks);
-
 
 // display name after login
 
 function welcomeMobile() {
-  document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOMContentLoaded event fired');
-    if (!sessionStorage.getItem('welcomeScreenExecuted') && window.innerWidth <= 750) {
+  document.addEventListener("DOMContentLoaded", function () {
+    console.log("DOMContentLoaded event fired");
+    if (
+      !sessionStorage.getItem("welcomeScreenExecuted") &&
+      window.innerWidth <= 750
+    ) {
       showWelcomeScreen();
-      sessionStorage.setItem('welcomeScreenExecuted', 'true');
-    }else{ 
-      let welcomeOverlayer = document.querySelector('.welcomeOverlayer');
-      welcomeOverlayer.classList.add('d-none');
-
+      sessionStorage.setItem("welcomeScreenExecuted", "true");
+    } else {
+      let welcomeOverlayer = document.querySelector(".welcomeOverlayer");
+      welcomeOverlayer.classList.add("d-none");
     }
   });
 
   function showWelcomeScreen() {
-    let welcomeOverlayer = document.querySelector('.welcomeOverlayer');
+    let welcomeOverlayer = document.querySelector(".welcomeOverlayer");
 
-    setTimeout(function() {
+    setTimeout(function () {
       if (welcomeOverlayer) {
-        welcomeOverlayer.style.opacity = '0';
-        setTimeout(function() {
-        welcomeOverlayer.classList.add('d-none');
+        welcomeOverlayer.style.opacity = "0";
+        setTimeout(function () {
+          welcomeOverlayer.classList.add("d-none");
         }, 500);
       }
     }, 2000);
@@ -189,5 +196,3 @@ function welcomeMobile() {
 }
 
 welcomeMobile();
-
-

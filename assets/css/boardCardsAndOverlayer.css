@@ -6,8 +6,9 @@
 .cardPosition{
     display: flex;
     flex-wrap: wrap;
+    align-content: flex-start;
     width: 100%;
-    min-height: 280px;
+    height: 100%;
     gap: 16px;
 }
 
