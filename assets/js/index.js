@@ -233,8 +233,6 @@ function pushIntoCurrentUser(){
 function keyframeAnimationSignUp(){
     document.getElementById('body').classList.add('succes-sign-up');
     document.getElementById('keyframeSignUp').classList.add('start-animation');
-    document.getElementById('body').classList.remove('succes-sign-up');
-    document.getElementById('keyframeSignUp').classList.remove('start-animation');
 }
 
 
