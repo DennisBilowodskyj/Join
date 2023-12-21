@@ -94,6 +94,9 @@ function countTasksByStatus(status) {
       if (tasks.prio === 'urgent') {
         urgent++;
       }
+      if (tasks.status === 'done') {
+        urgent--;
+      }
     }
   });
   
@@ -108,7 +111,6 @@ function countAllTasks() {
 async function updateTaskCounts() {
   todos = countTasksByStatus("todo");
   done = countTasksByStatus("done");
-  urgent = countTasksByStatus("urgent");
   inBoard = countAllTasks();
   inProgress = countTasksByStatus("inProgress");
   feedback = countTasksByStatus("awaitFeedback");
