@@ -10,7 +10,7 @@
   bottom: 0;
   width: 200px;
   padding: 64px 0 64px 0;
-  z-index: 9999;
+  z-index: 1;
 }
 
 .navBar {

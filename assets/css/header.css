@@ -6,7 +6,7 @@
     align-items: center;
     padding: 0 40px 0 348px;
     position: relative;
-    z-index: 9999;
+    z-index: 1;
 }
 
 .header_content{
