@@ -163,7 +163,6 @@ findEarliestDueDate(tasks);
 
 function welcomeMobile() {
   document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOMContentLoaded event fired');
     if (!sessionStorage.getItem('welcomeScreenExecuted') && window.innerWidth <= 750) {
       showWelcomeScreen();
       sessionStorage.setItem('welcomeScreenExecuted', 'true');
