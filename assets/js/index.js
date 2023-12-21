@@ -49,10 +49,14 @@ function checkInputLogIn() {  /**LOGIN */
       let input = document.getElementById(inputId);
       let img = document.getElementById(imgIds[index]);
       if (input.value.trim() !== "") {
+        if(input.type === 'text'){
+          img.src = "assets/img/signUp_icons/showPassword.png";
+        }else{
+        input.type = "password";
         img.src = "assets/img/signUp_icons/hidePassword.png";
         img.onclick = function () {
           hidePassword(input, img);
-        };
+        }};
       } else {
         changeInputTypeToPassword(img, input);
       }
@@ -275,10 +279,14 @@ function checkInputSignUp() {
       let input = document.getElementById(inputId);
       let img = document.getElementById(imgIds[index]);
       if (input.value.trim() !== "") {
+        if(input.type === 'text'){
+          img.src = "assets/img/signUp_icons/showPassword.png";
+        }else{
+        input.type = "password";
         img.src = "assets/img/signUp_icons/hidePassword.png";
         img.onclick = function () {
           hidePassword(input, img);
-        };
+        }};
       } else {
         changeInputTypeToPassword(img, input);
       }

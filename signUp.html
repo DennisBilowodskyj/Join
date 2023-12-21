@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join</title>
-    <link rel="icon" href="assets/img/logos/JoinLogo.png">
-    <link rel="stylesheet" href="assets/css/index.css">
-    <link rel="stylesheet" href="assets/css/signUp.css">
-    <link rel="stylesheet" href="assets/css/inter.css">
-    <link rel="stylesheet" href="assets/css/keyframeAnimation.css">
-    <script src="assets/js/index.js"></script>
-    <script src="assets/js/storage.js"></script>
-    <script src="assets/js/undersides.js"></script>
+    <link rel="icon" href="./assets/img/logos/JoinLogo.png">
+    <link rel="stylesheet" href="./assets/css/index.css">
+    <link rel="stylesheet" href="./assets/css/signUp.css">
+    <link rel="stylesheet" href="./assets/css/inter.css">
+    <link rel="stylesheet" href="./assets/css/keyframeAnimation.css">
+    <script src="./assets/js/index.js"></script>
+    <script src="./assets/js/storage.js"></script>
+    <script src="./assets/js/undersides.js"></script>
 </head>
 <body id="body" onload="initSignUp()">
     <!-- HEADER -->
     <div class="index-top-section">
         <div>
-            <img class="join-logo" src="assets/img/logos/JoinLogoDark.png">
+            <img class="join-logo" src="./assets/img/logos/JoinLogoDark.png">
         </div>
     </div>
     <!-- MAIN CONTAINER -->
@@ -25,7 +25,7 @@
         <div id="sign-up-box" class="sign-up-box">
             <div class="sign-up-box-top-section">
                 <div class="get-back-arrow">
-                    <a href="index.html"><img src="assets/img/signUp_icons/getBackArrow.png"></a>
+                    <a href="index.html"><img src="./assets/img/signUp_icons/getBackArrow.png"></a>
                 </div>
                 <div class="sign-up-box-headline">
                     <h1 class="headline">Sign up</h1>
@@ -36,20 +36,20 @@
             <div class="input-section">
                     <div class="input-div">
                         <input required id="userName" class="input-field cursor" type="text" placeholder="Vollständiger Name" autocomplete="username">
-                        <img class="input-img cursor" src="assets/img/signUp_icons/person.png">
+                        <img class="input-img cursor" src="./assets/img/signUp_icons/person.png">
                     </div>
                     <div id="inputEmailDivRedBorderSignUp" class="input-div">
                         <input required id="email" class="input-field cursor" type="email" placeholder="Email" autocomplete="username">
-                        <img class="input-img cursor" src="assets/img/signUp_icons/mail.png">
+                        <img class="input-img cursor" src="./assets/img/signUp_icons/mail.png">
                     </div>
                     <div id="emailErrorMessageSignUp" class="error-message-section"></div>
                     <div class="input-div">
                         <input required id="password" class="input-field cursor" type="password" placeholder="Password" autocomplete="new-password" oninput="checkInputSignUp()">
-                        <img id="passwordInputImg" class="input-img cursor" src="assets/img/signUp_icons/lock.png">
+                        <img id="passwordInputImg" class="input-img cursor" src="./assets/img/signUp_icons/lock.png">
                     </div>
                     <div id="inputPasswordDivRedBorderSignUp" class="input-div">
                         <input required id="checkPassword" class="input-field cursor" type="password" placeholder="Confirm Password" autocomplete="new-password" oninput="checkInputSignUp()">
-                        <img id="checkPasswordInputImg"  class="input-img cursor" src="assets/img/signUp_icons/lock.png">
+                        <img id="checkPasswordInputImg"  class="input-img cursor" src="./assets/img/signUp_icons/lock.png">
                     </div>
                     <div id="passwordErrorMessageSignUp" class="error-message-section"></div>
                 <div class="sign-up-checkbox-section">
@@ -68,7 +68,7 @@
     </div>
     <!-- FOOTER -->
     <div id="keyframeSignUp" class="keyframe-sign-up">
-        <img src="assets/img/signUp_icons/signUpSuccessfully.png">
+        <img src="./assets/img/signUp_icons/signUpSuccessfully.png">
     </div>
     <div class="sign-up-footer-section">
         <a href="#" class="footer-link cursor" onclick="openNewTab('privacyPolice_notLoggedIn.html')">Privacy Policy</a>
