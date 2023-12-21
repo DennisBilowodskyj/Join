@@ -12,7 +12,7 @@ section {
 
 .section-scrollbar{
     overflow: scroll;
-    height: calc(100vh - 96px);
+    height: calc(100vh - 60px);
 }
 
 span{
