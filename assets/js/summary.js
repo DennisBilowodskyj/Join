@@ -129,8 +129,9 @@ function updateTodoNumber() {
 // display the earliest prio:urgent dueDate
 function displayEarliestDueDate() {
   const earliestTask = findEarliestDueDate(tasks);
-
-  if (earliestTask && earliestTask.prio === 'urgent') {
+  if (urgent === 0) {
+    document.getElementById("date").innerHTML = "No upcoming deadlines";
+  }else if (earliestTask && earliestTask.prio === 'urgent') {
     const earliestDate = new Date(earliestTask.date.replace(/(\d{2}).(\d{2}).(\d{4})/, '$3-$2-$1'));
     const monthIndex = earliestDate.getMonth();
     const month = months[monthIndex];
@@ -143,7 +144,7 @@ function displayEarliestDueDate() {
 }
 
 function findEarliestDueDate(tasks) {
-  const urgentTasks = tasks.filter(tasks => tasks.prio === 'urgent');
+  const urgentTasks = tasks.filter(tasks => tasks.prio === 'urgent'&& tasks.status !== 'done');
 
   if (urgentTasks.length === 0) {
     return null; 
