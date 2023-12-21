@@ -23,23 +23,7 @@ function resetCounters() {
 }
 resetCounters();
 async function addToSummary() {
-  // task = [
-  //   {
-  //     title: "test",
-  //     description: "beispieltask in datenbank speichern",
-  //     duedate: "10.12.2023",
-  //     priority: "urgent",
-  //     status: "inProgress",
-  //   },
-  //   {
-  //     title: "test",
-  //     description: "beispieltask in datenbank speichern",
-  //     duedate: "15.01.2024",
-  //     priority: "urgent",
-  //     status: "feedback",
-  //   },
-  // ];
-  
+ 
   await updateTaskCounts();
   updateTodoNumber();   
 
@@ -66,13 +50,6 @@ async function summaryInit() {
 async function loadTasks() {
   tasks = JSON.parse(await getItem("tasks"));
 }
-
-
-// function loadTask(){
-//   try{
-//     task=JSON.parse(await getItem())
-//   }
-// }
 
 /**
  * daytime and display user
@@ -103,16 +80,15 @@ function renderUserName(){
   }
 }
 
-
-
 /**
  * count tasks
  */
 function countTasksByStatus(status) {
   let count = 0;
+  
 
   tasks.forEach((tasks) => {
-    if (tasks.status === status) {
+    if (tasks.status === status){ 
       count++;
 
       if (tasks.prio === 'urgent') {
@@ -122,12 +98,12 @@ function countTasksByStatus(status) {
   });
   
   return count;
+  
 }
 
 function countAllTasks() {
   return tasks.length;
 }
-
 
 async function updateTaskCounts() {
   todos = countTasksByStatus("todo");
@@ -139,7 +115,6 @@ async function updateTaskCounts() {
 
 }
 
-
 function updateTodoNumber() {
   document.getElementById("todos").innerText = todos;
   document.getElementById("done").innerText = done;
@@ -148,7 +123,6 @@ function updateTodoNumber() {
   document.getElementById("inProgress").innerText = inProgress;
   document.getElementById("feedback").innerText = feedback;
 }
-
 
 // display the earliest prio:urgent dueDate
 function displayEarliestDueDate() {
