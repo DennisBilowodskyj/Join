@@ -61,11 +61,10 @@ function checkInputLogIn() {  /**LOGIN */
 
 
 function guestLogIn(){
-    emailLogIn.value = '';
-    passwordLogIn = '';
-    localStorage.removeItem('checkinUser');
-    localStorage.setItem('guestUser', 'Guest');
-    openSummary();
+  emailLogIn.value = '';
+  localStorage.removeItem('checkinUser');
+  localStorage.setItem('guestUser', 'Guest');
+  openSummary();
 }
 
 
@@ -234,6 +233,8 @@ function pushIntoCurrentUser(){
 function keyframeAnimationSignUp(){
     document.getElementById('body').classList.add('succes-sign-up');
     document.getElementById('keyframeSignUp').classList.add('start-animation');
+    document.getElementById('body').classList.remove('succes-sign-up');
+    document.getElementById('keyframeSignUp').classList.remove('start-animation');
 }
 
 

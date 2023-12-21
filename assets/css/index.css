@@ -3,7 +3,9 @@ body{
     font-family: 'Inter';
     margin: 0;
 }
-
+form{
+    z-index: 1;
+}
 .cursor{
     cursor: pointer;
 }
