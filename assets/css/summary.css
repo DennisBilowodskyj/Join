@@ -24,6 +24,9 @@ body {
   margin: 0;
 }
 
+.d-none{
+  display: none;
+}
 .section_Summary {
   overflow: auto;
   height: calc(100vh - 96px);

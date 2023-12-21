@@ -183,16 +183,34 @@ findEarliestDueDate(tasks);
 
 
 // display name after login
-document.addEventListener('DOMContentLoaded', function() {
- 
-  if (window.innerWidth <= 750) {
-    setTimeout(function() {
+
+function welcomeMobile() {
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOMContentLoaded event fired');
+    if (!sessionStorage.getItem('welcomeScreenExecuted') && window.innerWidth <= 750) {
+      showWelcomeScreen();
+      sessionStorage.setItem('welcomeScreenExecuted', 'true');
+    }else{ 
       let welcomeOverlayer = document.querySelector('.welcomeOverlayer');
-      welcomeOverlayer.style.opacity = '0';
-      setTimeout(function() {
-        welcomeOverlayer.style.display = 'none';
-      }, 500);
+      welcomeOverlayer.classList.add('d-none');
+
+    }
+  });
+
+  function showWelcomeScreen() {
+    let welcomeOverlayer = document.querySelector('.welcomeOverlayer');
+
+    setTimeout(function() {
+      if (welcomeOverlayer) {
+        welcomeOverlayer.style.opacity = '0';
+        setTimeout(function() {
+        welcomeOverlayer.classList.add('d-none');
+        }, 500);
+      }
     }, 2000);
   }
-});
- 
+}
+
+welcomeMobile();
+
+
