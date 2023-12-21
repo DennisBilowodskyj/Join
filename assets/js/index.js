@@ -1,11 +1,9 @@
 let users = [];
-
 let currentUser = [];
 
-
-/*LOG IN */
-
-
+/**
+ * This function is used to //////
+ */
 async function initLogIn(){ /**LOGIN */
     await loadUser();
     showLastUser(currentUser);
@@ -14,8 +12,6 @@ async function initLogIn(){ /**LOGIN */
 
 /**
  * This function is used to open the signUp.html
- * 
- * @param {string} pageURL - The URL of the page to open.
  */
 function openSignUpWindow(){ /**LOGIN */
     let pageURL = 'signUp.html';
@@ -23,6 +19,9 @@ function openSignUpWindow(){ /**LOGIN */
 }
 
 
+/**
+ * This function is used to load the last sign up user 
+ */
 function showLastUser() {
     /**LOGIN */
     let currentData = localStorage.getItem("currentUser");
@@ -40,7 +39,9 @@ function showLastUser() {
 }
   
 
-
+/**
+ * This function is used to check the content of the input field and, if necessary, converts the image and type of input
+ */
 function checkInputLogIn() {  /**LOGIN */
     let inputIds = ["passwordLogIn"];
     let imgIds = ["passwordLogInImg"];
@@ -59,6 +60,9 @@ function checkInputLogIn() {  /**LOGIN */
 }
 
 
+/**
+ * This function is used to log in as a guest
+ */
 function guestLogIn(){
   emailLogIn.value = '';
   localStorage.removeItem('checkinUser');
@@ -67,6 +71,9 @@ function guestLogIn(){
 }
 
 
+/**
+ * This function is used to check the email with the password and possibly sets an error message
+ */
 function logInUser() {
     /**LOGIN */
     localStorage.removeItem("guestUser");
@@ -109,7 +116,9 @@ function clearErrorDiv(passwordErrorDiv, emailErrorDiv){
     emailErrorDiv.innerHTML = '';
 }
 
-
+/**
+ * 
+ */
 function findPasswordByEmail(users, emailToCheck) {
     for (const user of users) {
       if (user.email === emailToCheck) {
