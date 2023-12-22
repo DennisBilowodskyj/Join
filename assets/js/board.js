@@ -180,8 +180,6 @@ function fillForm(
   subtasks = subtasksEdit;
 }
 
-
-
 function changeEditSettings() {
   document.getElementById("createButton").classList.add("d_none");
   document.getElementById("createButton").classList.remove("d_flex");
@@ -269,12 +267,12 @@ function renderSubtasksToEdit() {
 }
 
 function renderSubtasksHTML(subtaskOutput, subtask, i) {
-  let subtaskId = i
+  let subtaskId = i;
   subtaskOutput.innerHTML += `
   <div id="subtask_${subtaskId}" class="subtaskContainer d_flex" ondblclick="editSubtask('${subtaskId}')">
        <li  >${subtask}</li>
        ${generateSubtaskChange(subtaskId)}
-  </div>`;     
+  </div>`;
 }
 
 function addAssignedToContacts(id) {
@@ -305,7 +303,10 @@ function searchingCard() {
   let wantedTask = inputFieldFinder();
   for (let i = 0; i < tasks.length; i++) {
     let task = tasks[i];
-    if (task["title"].toLowerCase().includes(wantedTask)) {
+    if (
+      task["title"].toLowerCase().includes(wantedTask) ||
+      task["description"].toLowerCase().includes(wantedTask)
+    ) {
       filterTask.push(task);
     }
   }

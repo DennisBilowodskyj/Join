@@ -5,12 +5,16 @@
 
 .cardPosition{
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     align-content: flex-start;
     width: 100%;
     height: 100%;
     gap: 16px;
 }
+
+/* .cardPosition::-webkit-scrollbar{
+    display: none;
+} */
 
 .dragHighlight {
     border-style: dotted;
@@ -19,6 +23,7 @@
 
 .user_cards{
     width: 252px;
+    min-width: 252px;
     height: 244px;
     border-radius: 24px;
     box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
@@ -88,6 +93,7 @@
 
 .assigned_list{
     display: flex;
+    flex-wrap: wrap;
 }
 
 .assigned_list div{
@@ -122,6 +128,7 @@
 
 .cardDetails{
     width: 525px;
+    /* height: 724px; */
     border-radius: 30px;
     background-color: white;
     margin-left: 24px;
@@ -130,7 +137,7 @@
 
 .cardDetails_content{
     padding: 48px 40px;
-    max-height: 88vh;
+    max-height: 724px;
     overflow: auto;
 }
 

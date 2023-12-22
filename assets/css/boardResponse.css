@@ -1,3 +1,24 @@
+@media (max-width: 1750px) {
+    .section_board {
+        padding-left: calc(8% + 232px);
+        padding-right: 1%;
+    }
+}
+
+@media (max-width: 1550px) {
+    .section_board {
+        padding-left: calc(3% + 232px);
+        padding-right: 1%;
+    }
+}
+
+@media (max-width: 1450px) {
+    .section_board {
+        padding-left: calc(232px);
+        padding-right: 1%;
+    }
+}
+
 @media (max-width: 1400px) {
     .boardDiv{
         display: block;
@@ -10,10 +31,24 @@
         flex-direction: row;
         flex-wrap: wrap;
     }
+
+    .cardPosition{
+        min-height: 48px;
+    }
     
     #doneCards{
         padding-bottom: 80px;
     }
+
+    .cardPosition{
+        flex-direction: row;
+        overflow-x: auto;
+        width: 100%;
+    }
+
+    .emptyTasks {
+        width: 100%;
+      }
 }
 
 @media (max-width: 1200px) {
@@ -25,7 +60,7 @@
     }
 
     .searching_form{
-        width: 100%;
+        width: 95%;
     }
 
     .boardDiv{
@@ -93,3 +128,10 @@
         font-size: 30px;
     }
 }
+
+
+@media (max-height: 850px) {
+    .cardDetails_content{
+        max-height: 500px;
+    }
+  }
