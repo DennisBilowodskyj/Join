@@ -252,21 +252,6 @@ function renderHeader(task) {
               </div></div>`;
 }
 
-function openPositionMenu(event, taskId) {
-  event.stopPropagation();
-  let positionNav = document.getElementById(`positionNav${taskId}`);
-  positionNav.classList.remove('d_none');
-  currentMenuOpen = taskId;
-  currentDraggedElement = taskId;
-}
-
-document.addEventListener('click', function (event) {
-  var positionNav = document.getElementById(`positionNav${currentMenuOpen}`);
-  if (!positionNav.contains(event.target) && event.target.id !== 'responseDragAndDropButton') {
-      positionNav.classList.add('d_none');
-  }
-});
-
 function renderPositionMenu(id){
   return `
   <div id="positionNav${id}" class="positionNav d_none">

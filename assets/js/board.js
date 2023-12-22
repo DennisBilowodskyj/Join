@@ -23,6 +23,7 @@ let done = [];
 let currentDraggedElement;
 let currentMenuOpen = "";
 let statusCheck = "todo";
+let wasSubmenuOpen = false;
 
 function setIdFunction() {
   for (let i = 0; i < tasks.length; i++) {
@@ -114,6 +115,25 @@ function findIdToremoveHighlight() {
     return "doneCards";
   }
 }
+
+// ###################### Open and Close Submenu #######################
+// #####################################################################
+function openPositionMenu(event, taskId) {
+  event.stopPropagation();
+  let positionNav = document.getElementById(`positionNav${taskId}`);
+  positionNav.classList.remove('d_none');
+  currentMenuOpen = taskId;
+  currentDraggedElement = taskId;
+  wasSubmenuOpen = true;
+}
+
+document.addEventListener('click', function (event) {
+  var positionNav = document.getElementById(`positionNav${currentMenuOpen}`);
+  if (wasSubmenuOpen){
+  if (!positionNav.contains(event.target) && event.target.id !== 'responseDragAndDropButton') {
+      positionNav.classList.add('d_none');
+  }}
+});
 
 // ########################## Delete and Edit ##########################
 // #####################################################################
