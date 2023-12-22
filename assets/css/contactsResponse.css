@@ -219,7 +219,6 @@
   .newContactField {
     flex-direction: column;
     align-items: center;
-    height: 760px;
   }
 
   .newContactField_left {
@@ -237,7 +236,6 @@
 
   .newContactField_left h2 {
     font-size: 47px;
-    padding-top: 124px;
     padding-left: 24px;
   }
 
@@ -311,14 +309,33 @@
   }
 }
 
-@media (max-width: 390px) {
-  .newContactField_left h2 {
-    padding-top: 100px;
-  }
-}
-
 @media (max-width: 370px) {
   .email_leftContainer {
     line-break: anywhere;
   }
+}
+
+@media (max-height: 890px) {
+  .newContactField_left h2 {
+    padding-top: 0;
+    font-size: 40px;
+  }
+
+  .newContactField {
+    height: 90vh;
+}
+
+.newContactField_left {
+  max-height: 280px;
+}
+
+.newContactForm {
+  height: 260px;
+  transform: translate(0%);
+}
+
+.createButton {
+  margin-top: 0;
+  margin-bottom: 32px;
+}
 }

@@ -127,7 +127,7 @@ function createCreateContactForm() {
       type="text" placeholder="Firstname Secondname"/>
     <input class="input_email" required id="contactEmail" type="email"
       placeholder="Email" />
-    <input class="input_tel" required id="contactTel" type="tel"
+    <input class="input_tel" required id="contactTel" type="number"
       placeholder="Phone" />
     <div class="newContactButtons" id="OverlayerButtons"></div>
   </form>`;
