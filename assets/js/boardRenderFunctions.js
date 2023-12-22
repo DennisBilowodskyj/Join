@@ -239,9 +239,9 @@ function renderHeader(task) {
       <div class="user_card_content"> <div class="cardHeader">
         <div class="category" style="background-color: #${color}">${category}</div>
         <button id="responseDragAndDropButton" 
-        class="responseDragAndDropButton" onclick="openPositionMenu(${task.id})">
+        class="responseDragAndDropButton" onclick="openPositionMenu(event, ${task.id})">
           <img src="./assets/img/board/dots.png" alt=""/>
-          </button><div class="menuForPosition">${renderPositionMenu()}</div>
+          </button><div class="menuForPosition">${renderPositionMenu(task.id)}</div>
         </div>
           <div class="text_content_card">
               <div class="titel_content_card">
@@ -252,19 +252,34 @@ function renderHeader(task) {
               </div></div>`;
 }
 
-function openPositionMenu(id){
-  currentDraggedElement = id;
-  document.getElementById('positionNav').classList.remove('d_none')
+function openPositionMenu(event, taskId) {
+  event.stopPropagation();
+  let positionNav = document.getElementById(`positionNav${taskId}`);
+  positionNav.classList.remove('d_none');
+  currentMenuOpen = taskId;
+  currentDraggedElement = taskId;
 }
 
-function renderPositionMenu(){
+document.addEventListener('click', function (event) {
+  var positionNav = document.getElementById(`positionNav${currentMenuOpen}`);
+  if (!positionNav.contains(event.target) && event.target.id !== 'responseDragAndDropButton') {
+      positionNav.classList.add('d_none');
+  }
+});
+
+function renderPositionMenu(id){
   return `
-  <div id="positionNav" class="d_none">
-    <a onclick="moveTo('todo')">Todo</a>
-    <a onclick="moveTo('inProgress')">In Progress</a>
-    <a onclick="moveTo('awaitFeedback')">Await feddback</a>
-    <a onclick="moveTo('done')">Await feddback</a>
+  <div id="positionNav${id}" class="positionNav d_none">
+    <a onclick="stopOpenCardDetailsBeforMoveTo(event, 'todo')">Todo</a>
+    <a onclick="stopOpenCardDetailsBeforMoveTo(event, 'inProgress')">In Progress</a>
+    <a onclick="stopOpenCardDetailsBeforMoveTo(event, 'awaitFeedback')">Await feddback</a>
+    <a onclick="stopOpenCardDetailsBeforMoveTo(event, 'done')">Await feddback</a>
   </div>`
+}
+
+function stopOpenCardDetailsBeforMoveTo(event, status){
+  event.stopPropagation();
+  moveTo(status);
 }
 
 function renderProgressBar(task) {

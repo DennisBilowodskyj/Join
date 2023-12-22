@@ -21,6 +21,7 @@ let inProgress = [];
 let feedback = [];
 let done = [];
 let currentDraggedElement;
+let currentMenuOpen = "";
 let statusCheck = "todo";
 
 function setIdFunction() {
