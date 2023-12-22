@@ -300,10 +300,12 @@ form{
     .log-in-button{
         height: 4vh;
         width: 40vw;
+        font-size: 18px;
     }
     .guest-log-in-button{
         height: 4vh;
         width: 40vw;
+        font-size: 18px;
     }
 }
 @media (max-width: 380px) {
