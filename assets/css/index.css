@@ -50,6 +50,7 @@ form{
 .index-main-section{
     display: flex;
     justify-content: center;
+    padding-top: 4vh;
 }
 
 .log-in-box{
@@ -282,15 +283,30 @@ form{
     }
 }
 @media (max-width: 450px) {
+    .index-top-section{
+        margin-top: 1vh;
+        margin-left: 1vw;
+    }
+    .index-main-section{
+        padding-top: 0;
+    }
     .log-in-box{     
-    height: 55vh;
+        height: 55vh;
     }
     .login-button-section {
         margin-top: 0;
         padding-top: 1vh;
     }
+    .log-in-button{
+        height: 4vh;
+        width: 40vw;
+    }
+    .guest-log-in-button{
+        height: 4vh;
+        width: 40vw;
+    }
 }
-@media (max-width: 360px) {
+@media (max-width: 380px) {
     .log-in-box{
         width: 90vw;
     }

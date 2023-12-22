@@ -2,6 +2,21 @@
     display: none;
 }
 
+.index-top-section-sign-up{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 50px;
+    margin-top: 5vh;
+    margin-right: 50px;
+    padding-bottom: 2vh;
+    font-size: 22px;
+}
+
+.index-main-section-sign-up{
+    display: flex;
+    justify-content: center;
+    padding-top: 4vh;
+}
 .sign-up-box{
     display: flex;
     flex-direction: column;
@@ -94,7 +109,7 @@
     }
 }
 
-@media (max-width : 800px){
+@media (max-width : 820px){
     .sign-up-box{
         height: 60vh;
         width: 70vw; 
@@ -102,10 +117,18 @@
 }
 
 @media (max-width : 700px){
+    .index-top-section-sign-up{
+        margin-top: 1vh;
+        margin-left: 1vw;
+    }
     .join-logo{
-        width: 8vh;
-        height: 12vw;
-    }.sign-up-box{
+        width: 90px;
+        height: 100px;
+    }
+    .index-main-section-sign-up{
+        padding-top: 0;
+    }
+    .sign-up-box{
         margin-top: 5vh;
     }
     .get-back-arrow{
@@ -126,6 +149,9 @@
 }
 
 @media (max-width: 550px) {
+    .index-top-section-sign-up{
+        padding-bottom: 0;
+    }
     .get-back-arrow{
         right: 40px;
     }
@@ -149,15 +175,24 @@
         height: 100px;
     }
     .sign-up-footer-section{
-        margin-top: 2vh;
+        margin-top: 7vh;
     }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 380px) {
+    .join-logo{
+        width: 45px;
+        height: 60px;
+    }
     .sign-up-box{
         width: 90vw;
+        height: 72vh;
     }
     .input-div{
         width: 80vw;
-    }      
+        height: 5vh;
+    }     
+    .sign-up-footer-section{
+        margin-top: 1vh;
+    } 
 }
