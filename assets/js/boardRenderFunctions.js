@@ -13,7 +13,10 @@ function renderCardsTodo(status) {
     for (let i = 0; i < todos.length; i++) {
       let todo = todos[i];
       renderCardFunction(status, todo, i);
-    }} else {renderEmptyField(status);}
+    }
+  } else {
+    renderEmptyField(status);
+  }
 }
 
 function renderCardsProgress(status) {
@@ -22,7 +25,10 @@ function renderCardsProgress(status) {
     for (let i = 0; i < inProgress.length; i++) {
       let inProgressTask = inProgress[i];
       renderCardFunction(status, inProgressTask, i);
-    }} else {renderEmptyField(status);}
+    }
+  } else {
+    renderEmptyField(status);
+  }
 }
 
 function renderCardsAwait(status) {
@@ -31,7 +37,10 @@ function renderCardsAwait(status) {
     for (let i = 0; i < awaitFeedback.length; i++) {
       let awaitFeedbackTask = awaitFeedback[i];
       renderCardFunction(status, awaitFeedbackTask, i);
-    }} else {renderEmptyField(status);}
+    }
+  } else {
+    renderEmptyField(status);
+  }
 }
 
 function renderCardsDone(status) {
@@ -40,7 +49,10 @@ function renderCardsDone(status) {
     for (let i = 0; i < done.length; i++) {
       let doneTask = done[i];
       renderCardFunction(status, doneTask, i);
-    }} else {renderEmptyField(status);}
+    }
+  } else {
+    renderEmptyField(status);
+  }
 }
 
 function renderCardFunction(status, task, i) {
@@ -222,10 +234,15 @@ function openCardDetails(index) {
 function renderHeader(task) {
   let category = changeCategoryValue(task["category"]);
   let color = categoryColorCheck(category);
-  return `<div class="user_cards" draggable="true" ondragstart="startDragging(${task.id})"
-    onclick="openCardDetails(${task.id})">
-      <div class="user_card_content"> <div class="category" 
-          style="background-color: #${color}">${category}</div>
+  return `<div id="user_cards" class="user_cards" draggable="true" 
+    ondragstart="startDragging(${task.id})" onclick="openCardDetails(${task.id})">
+      <div class="user_card_content"> <div class="cardHeader">
+        <div class="category" style="background-color: #${color}">${category}</div>
+        <button id="responseDragAndDropButton" 
+        class="responseDragAndDropButton" onclick="openPositionMenu(${task.id})">
+          <img src="./assets/img/board/dots.png" alt=""/>
+          </button><div class="menuForPosition">${renderPositionMenu()}</div>
+        </div>
           <div class="text_content_card">
               <div class="titel_content_card">
                   ${task["title"]}
@@ -233,6 +250,21 @@ function renderHeader(task) {
               <div class="description_content_card">
                   ${task["description"]}
               </div></div>`;
+}
+
+function openPositionMenu(id){
+  currentDraggedElement = id;
+  document.getElementById('positionNav').classList.remove('d_none')
+}
+
+function renderPositionMenu(){
+  return `
+  <div id="positionNav" class="d_none">
+    <a onclick="moveTo('todo')">Todo</a>
+    <a onclick="moveTo('inProgress')">In Progress</a>
+    <a onclick="moveTo('awaitFeedback')">Await feddback</a>
+    <a onclick="moveTo('done')">Await feddback</a>
+  </div>`
 }
 
 function renderProgressBar(task) {

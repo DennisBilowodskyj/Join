@@ -43,6 +43,43 @@
     width: 100%;
 }
 
+.cardHeader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.responseDragAndDropButton{
+    display: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.menuForPosition{
+    position: relative;
+}
+
+#positionNav{
+    position: absolute;
+    top: -30px;
+    right: 0px;
+    width: 150px;
+    height: 158px !important;
+    border-radius: 20px 0 20px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #2A3647;
+}
+
+#positionNav a{
+    text-decoration: none;
+    color: white;
+    width: 100%;
+    padding: 8px 16px 8px 16px;
+}
+
 .category{
     display: flex;
     align-items: center;
