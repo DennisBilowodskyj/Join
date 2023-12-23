@@ -221,7 +221,7 @@ form{
     display: none;
 }
 
-/*MAX HEIGHT 917xPX*/
+/*MAX HEIGHT 917PX*/
 
 @media (max-width:1440px) and (max-height:917px){
     .log-in-box{
@@ -300,22 +300,22 @@ form{
     }
 }
 
-/*MAX HEIGHT 850PX*/
+/*MAX HEIGHT 851PX*/
 
-@media (max-width:1440px) and (max-height:850px){
+@media (max-width:1440px) and (max-height:851px){
     .checkbox-section{
         margin: 0;
         margin-left: 2vw;
     }
 }
 
-@media (max-width:650px) and (max-height:850px){
+@media (max-width:650px) and (max-height:851px){
     .index-footer-section{
         padding-top: 7vh;
     }
 }
 
-@media (max-width:500px) and (max-height:850px){
+@media (max-width:500px) and (max-height:851px){
     .log-in-box{
         width: 90vw;
     }
@@ -570,5 +570,13 @@ form{
 @media (max-width:370px) and (max-height:640px){
     .input-div{
         width: 80vw;
+    }
+}
+
+/*MAX HEIGHT 620PX*/
+
+@media (max-width:650px) and (max-height:620px){
+    .index-footer-section{
+        padding-top: 2vh;
     }
 }
