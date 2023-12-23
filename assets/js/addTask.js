@@ -92,7 +92,7 @@ async function addTaskTest() {
   if (CameFrom == "addTask") {
     addTask()
   } else if (CameFrom == "AddTaskOnStatus") {
-    overlayerAddTask()
+   overlayerAddTask()
   } else if (CameFrom == "EditTaskFromBoard") {
     saveTaskButton(taskOnEdit)
   }
@@ -116,6 +116,24 @@ async function addTask() {
   });
   await setItem("tasks", JSON.stringify(tasks));
   clearInput();
+  handleTaskAddedOverlay();
+}
+
+async function handleTaskAddedOverlay() {
+  showTaskAddedOverlay();
+  setTimeout(() => {
+    forwardToBoard();
+  }, 1500);
+}
+
+function forwardToBoard() {
+  window.open('board.html', '_self');
+}
+
+function showTaskAddedOverlay() {
+  let taskAddedOverlay = document.getElementById('taskAddedOverlay');
+
+  taskAddedOverlay.style.display = 'block';
 }
 
 function setCategory(element) {

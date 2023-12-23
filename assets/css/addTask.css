@@ -460,6 +460,44 @@ li:focus {
     cursor: pointer;
 }
 
+#taskAddedOverlay {
+    position: fixed;
+    z-index: 99;
+    top: 65%;
+    bottom: 0;
+    right: 0;
+    left: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display:none;
+    transform: translate(-50%, -50%);
+
+}
+#taskAdded {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: #2A3647;
+    padding: 22px 30.5px;
+    border-radius: 20px;
+    gap: 16px;
+    animation: slideIn 0.35s ease-in-out forwards;
+}
+
+.slide-up {
+    transform: translateY(0); /* Endposition des Elements (hochgeschoben) */
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateY(100%); /* Startposition der Animation */
+    }
+    to {
+      transform: translateY(0); /* Endposition der Animation */
+    }
+  }
 
 @media (max-width: 1100px) {
     .section_addTask {

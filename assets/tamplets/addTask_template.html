@@ -5,14 +5,14 @@
 
       <div class="leftContent">
         <p>Title<span class="required">*</span></p>
-          <input class="OverlayerInput" required type="text" id="taskTitle" placeholder="Enter a title" />
+        <input class="OverlayerInput" required type="text" id="taskTitle" placeholder="Enter a title" />
         <p>Description</p>
-          <textarea class="textareaOverlayer" id="taskDescription" cols="30" rows="10"
+        <textarea class="textareaOverlayer" id="taskDescription" cols="30" rows="10"
           placeholder="Enter a description"></textarea>
         <p>Assigned to</p>
         <div class="assignedContainer">
           <input class="OverlayerInput arrowNotactive" onclick="openAssignedInput()" class="assignedInput inputArrow"
-          type="text" id="assignedInput" placeholder="Select contacts to assign" />
+            type="text" id="assignedInput" placeholder="Select contacts to assign" />
           <div class="contacts d_none" id="contactsOverlay">
             <div id="contactsContent"></div>
           </div>
@@ -42,8 +42,8 @@
         </div>
         <p>Category<span class="required">*</span></p>
         <div class="categoryContainer">
-          <input class="OverlayerInput arrowNotactive"  type="text" id="categoryInput"
-            placeholder="Select task category" onclick="openOverlay()" required/>
+          <input class="OverlayerInput arrowNotactive" type="text" id="categoryInput" placeholder="Select task category"
+            onclick="openOverlay()" required />
 
           <div class="categoryAddTask d_none" id="categoryOverlay">
             <div id="categoryOptions">
@@ -52,24 +52,24 @@
             </div>
           </div>
         </div>
-        
+
         <p>Subtasks</p>
         <div class="SubtasksInputField">
           <input class="OverlayerInput" type="text" placeholder="Add new subtask" id="subtaskInput"
             oninput="renderSubtaskBtn()" />
           <span id="subtaskAddBtn">
-              <div id="subtaskControls" class="d_flex d_none">
-                <img id="restTaskPanel" src="./assets/img/addTask_icons/subtask_close.png"
-                  onclick="resetSubtaskInput()" />
-                <img id="addTaskPanel" src="./assets/img/addTask_icons/subtask_check.png" onclick="addSubtask()" />
-              </div>
+            <div id="subtaskControls" class="d_flex d_none">
+              <img id="restTaskPanel" src="./assets/img/addTask_icons/subtask_close.png"
+                onclick="resetSubtaskInput()" />
+              <img id="addTaskPanel" src="./assets/img/addTask_icons/subtask_check.png" onclick="addSubtask()" />
+            </div>
             <img src="./assets/img/addTask_icons/add_subtask.png" onclick="addSubtask()" id="add_subtaskBtn" />
           </span>
         </div>
         <div id="subtaskListContainer">
           <!-- render new subtasks -->
         </div>
-        
+
       </div>
     </div>
 
@@ -88,5 +88,13 @@
         </button>
       </div>
     </div>
+
+    <div id="taskAddedOverlay" class="">
+      <div id="taskAdded">
+        <span>Task added to board</span>
+        <img src="./assets/img/addTask_icons/board_icon.svg" >
+      </div>
+    </div>
   </form>
+
 </section>
