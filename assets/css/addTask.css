@@ -355,6 +355,8 @@ h1 {
 #badgesAssignedTo {
     display: flex;
     gap: 6px;
+    flex-wrap: wrap;
+    padding-top: 8px;
 }
 
 .contactRight {
@@ -449,6 +451,15 @@ li:focus {
     background-color: #D1D1D1;
     border-radius: 50%;
 }
+
+#optionUserStory {
+    cursor: pointer;
+}
+
+#optionTechnicalTask {
+    cursor: pointer;
+}
+
 
 @media (max-width: 1100px) {
     .section_addTask {

@@ -1,5 +1,5 @@
 let CameFrom = "addTask";
-let taskPrio;
+let taskPrio = 'medium';
 let assignedTo = [];
 let subtasks = [];
 let tasks = [];
@@ -13,6 +13,7 @@ async function initAddTask() {
   await loadTasks();
   await getContacts();
   renderContacts();
+  setPrioBtn(prio_medium, "#FFA800", "prio_medium_white.svg");
 }
 
 async function loadTasks() {
@@ -119,7 +120,7 @@ async function addTask() {
 
 function setCategory(element) {
   let input = document.getElementById('categoryInput');
-  
+
   categoryFromAddTask = element.getAttribute('data-value');
   input.placeholder = element.innerHTML;
   openOverlay();
@@ -136,6 +137,16 @@ function openOverlay() {
   const overlay = document.getElementById('categoryOverlay');
   overlay.style.display = 'block';
   overlay.classList.toggle('d_none');
+
+  setCategorytoRequired(overlay);
+}
+
+function setCategorytoRequired(overlay) {
+  if ((overlay.classList.contains('d_none')) && (overlay.innerHTML == 'Select task category')) {
+    categoryInput.setAttribute('required', 'required');
+  } else {
+    categoryInput.removeAttribute('required');
+  }
 }
 
 /**
@@ -210,17 +221,17 @@ function editSubtask(subtaskId) {
 /**
  * close overlays when not focused
  */
-document.addEventListener('click', function(event) {
+document.addEventListener('click', function (event) {
   const contactsOverlay = document.getElementById('contactsOverlay');
   const categoryOverlay = document.getElementById('categoryOverlay');
   const categoryContainer = document.querySelector('.categoryContainer');
   const assignedContainer = document.querySelector('.assignedContainer');
 
   if (!assignedContainer.contains(event.target) && !contactsOverlay.contains(event.target)) {
-      contactsOverlay.classList.add('d_none');
+    contactsOverlay.classList.add('d_none');
   }
   if (!categoryContainer.contains(event.target)) {
-      categoryOverlay.classList.add('d_none');
+    categoryOverlay.classList.add('d_none');
   }
 });
 
