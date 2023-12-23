@@ -165,16 +165,26 @@ function addSubtask() {
   let subtask = subtaskInput.value;
   let subtaskId = subtasks.length;
 
-  subtaskOutput.innerHTML += /*html*/ `
-       <div id="subtask_${subtaskId}" class="subtaskContainer d_flex" ondblclick="editSubtask('${subtaskId}')">
-            <li  >${subtask}</li>
-            ${generateSubtaskChange(subtaskId)}
-       </div>
-    `;
+  subtaskOutput.innerHTML += generateSubtaskContainerHtml(subtaskId, subtask);
   subtasks.push(subtask);
 
   resetSubtaskInput();
 }
+
+/**
+ * generates html for subtask container 
+ * @returns html
+ */
+function generateSubtaskContainerHtml(subtaskId, subtask) {
+  return /*html*/ `
+  <div id="subtask_${subtaskId}" class="subtaskContainer d_flex" ondblclick="editSubtask('${subtaskId}')">
+       <li  >${subtask}</li>
+       ${generateSubtaskChange(subtaskId)}
+  </div>
+`;
+}
+
+
 /**
  * generates html for subtask options button 
  * @returns html
