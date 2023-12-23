@@ -221,7 +221,12 @@ function saveTaskButton(id) {
   statusCheck = tasks[id]["status"];
   saveFunction();
   valueAppender();
-  closeAddTaskOverlay();
+  showTaskAddedOverlay();
+  setTimeout(() => {
+    closeAddTaskOverlay();
+    hideTaskAddedOverlay();
+  }, 1500);
+  
 }
 
 // ######################## Overlayer AddTask ##########################
@@ -274,7 +279,12 @@ async function overlayerAddTask() {
   });
   saveFunction();
   valueAppender();
-  closeAddTaskOverlay();
+  showTaskAddedOverlay();
+  setTimeout(() => {
+    closeAddTaskOverlay();
+    hideTaskAddedOverlay();
+  }, 1500);
+  
 }
 
 function renderSubtasksToEdit() {

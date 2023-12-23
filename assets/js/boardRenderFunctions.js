@@ -148,7 +148,7 @@ function renderCardDetailsAssignedTo(index) {
               style="background-color: #${assignedToColor};">${
       initialsAssignedTo(assignedToText, 0) +
       initialsAssignedTo(assignedToText, 1)
-    }</div><div>${assignedToText}</div></div>`;
+      }</div><div>${assignedToText}</div></div>`;
   }
 }
 
@@ -164,8 +164,8 @@ function renderCardDetailsSubTasks(index) {
           onclick="addProgress(${index}, ${i})">
               <div>
                   <img src="${progressCheckOnSubtask(
-                    progressValue[i]
-                  )}" alt="" />
+      progressValue[i]
+    )}" alt="" />
               </div>
               <div>${subTask}</div>
           </div>`;
@@ -211,6 +211,7 @@ function openAddTaskOverlay(status) {
   statusCheck = status;
   CameFrom = "AddTaskOnStatus";
   document.getElementById("addTaskOverlay").classList.remove("d_none");
+  setPrioBtn(prio_medium, "#FFA800", "prio_medium_white.svg");
 }
 
 function closeAddTaskOverlay() {
@@ -320,7 +321,7 @@ function calcAssignedPersons(task) {
       style = "background-color: #${assignedTo.color};">${
       initialsAssignedTo(assignedTo.name, 0) +
       initialsAssignedTo(assignedTo.name, 1)
-    }</div>`;
+      }</div>`;
   }
   return assignedToHTML;
 }

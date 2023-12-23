@@ -92,7 +92,7 @@ async function addTaskTest() {
   if (CameFrom == "addTask") {
     addTask()
   } else if (CameFrom == "AddTaskOnStatus") {
-   overlayerAddTask()
+    overlayerAddTask()
   } else if (CameFrom == "EditTaskFromBoard") {
     saveTaskButton(taskOnEdit)
   }
@@ -134,6 +134,12 @@ function showTaskAddedOverlay() {
   let taskAddedOverlay = document.getElementById('taskAddedOverlay');
 
   taskAddedOverlay.style.display = 'block';
+}
+
+function hideTaskAddedOverlay() {
+  let taskAddedOverlay = document.getElementById('taskAddedOverlay');
+
+  taskAddedOverlay.style.display = 'none';
 }
 
 function setCategory(element) {
@@ -367,7 +373,7 @@ function clearInput() {
   contactsRendered = false;
   resetAssignedContacts();
   assignedTo = [];
-  deselectprio();
+  setPrioBtn(prio_medium, "#FFA800", "prio_medium_white.svg");
   clearCategory();
 }
 
