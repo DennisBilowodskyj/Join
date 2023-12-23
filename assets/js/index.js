@@ -174,21 +174,27 @@ async function userSignUp() {
     let emailErrorDiv = document.getElementById("emailErrorMessageSignUp");
     let passwordErrorDiv = document.getElementById("passwordErrorMessageSignUp");
     let emailToSearch = document.getElementById("email");
+    let checkbox = document.getElementById('accept-privacy-police');
+    let checkboxErrorDiv = document.getElementById('checkboxErrorMessageSignUp');
     removeRedBorderClassList();
     emptyErrorDivText(emailErrorDiv, passwordErrorDiv);
     if (checkEmail(users, emailToSearch.value)) {
       emailErrorDiv = setEmailAlertSignUp(emailErrorDiv);
     } else {
       if (password.value === checkPassword.value) {
-        signUpButton.disabled = true;
-        pushIntoUsers();
-        await setItem("users", JSON.stringify(users));
-        deleteCurrentUser();
-        pushIntoCurrentUser();
-        localStorage.setItem("currentUser", JSON.stringify(currentUser));
-        keyframeAnimationSignUp();
-        loadIndex();
-        resetForm();
+        if(checkbox.checked){
+          signUpButton.disabled = true;
+          pushIntoUsers();
+          await setItem("users", JSON.stringify(users));
+          deleteCurrentUser();
+          pushIntoCurrentUser();
+          localStorage.setItem("currentUser", JSON.stringify(currentUser));
+          keyframeAnimationSignUp();
+          loadIndex();
+          resetForm();
+        }else{
+          checkboxErrorDiv = setCheckBoxAlertSignUp(checkboxErrorDiv);
+        }
       } else {
         passwordErrorDiv = setPasswordAlertSignUp(passwordErrorDiv);
       }
@@ -206,6 +212,13 @@ function removeRedBorderClassList(){
 function emptyErrorDivText(emailErrorDiv, passwordErrorDiv){
     emailErrorDiv.innerHTML = '';
     passwordErrorDiv.innerHTML = '';
+    emailErrorDiv.innerHTML = '';
+}
+
+
+function setCheckBoxAlertSignUp(checkboxErrorDiv){
+  checkboxErrorDiv.innerHTML = 'Ups! Bitte akzeptieren sie die Privacy Police.';
+  return checkboxErrorDiv;
 }
 
 
