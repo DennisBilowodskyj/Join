@@ -102,7 +102,7 @@
     font-size: 14px;
     display: flex;
     justify-content: flex-start;
-    margin-top: -10px;
+    margin-top: -18px;
 }
 
 .sign-up-checkbox-section{
@@ -229,7 +229,7 @@
 
 /*MAX HEIGHT 880PX*/
 
-@media (max-width:1650px) and (max-height:880px){
+@media (max-width:2270px) and (max-height:880px){
     .sign-up-footer-section{
         padding-top: 2vh;
     }
@@ -292,7 +292,7 @@
 
 /*MAX HEIGHT 840PX*/
 
-@media (max-width:1650px) and (max-height:840px){
+@media (max-width:2270px) and (max-height:840px){
     .input-section-sign-up{
         margin-top: 0;
     }
@@ -318,7 +318,7 @@
 
 /*MAX HEIGHT 800PX*/
 
-@media (max-width:1650px) and (max-height:800px){
+@media (max-width:2270px) and (max-height:800px){
     .sign-up-button-section{
          margin-top: 1vh;
     }
@@ -355,7 +355,7 @@
 
 /*MAX HEIGHT 750PX*/
 
-@media (max-width:1650px) and (max-height:750px){
+@media (max-width:2270px) and (max-height:750px){
     .join-logo{
         display: none;
     }
@@ -398,7 +398,7 @@
 
 /*MAX HEIGHT 660PX*/
 
-@media (max-width:1650px) and (max-height:660px){
+@media (max-width:2270px) and (max-height:660px){
     .sign-up-box{
         margin-top: 6vh;
         height: 70vh;
@@ -407,7 +407,7 @@
 
 /*MAX HEIGHT 640PX*/
 
-@media (max-width:1650px) and (max-height:640px){
+@media (max-width:2270px) and (max-height:640px){
     .index-main-section-sign-up{
         padding-top: 0;
     }
