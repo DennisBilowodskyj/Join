@@ -20,9 +20,6 @@ let inBoard = 0;
 let inProgress = 0;
 let feedback = 0;
 
-/**
- * test json
- */
 
 let tasks = [];
 
@@ -42,7 +39,6 @@ async function addToSummary() {
 
 async function summaryInit() {
   init();
-
   await loadUser();
   await loadTasks();
   greet();
@@ -51,6 +47,7 @@ async function summaryInit() {
   displayEarliestDueDate();
   renderUserName();
 }
+ 
 async function loadTasks() {
   tasks = JSON.parse(await getItem("tasks"));
 }
@@ -97,9 +94,7 @@ function countTasksByStatus(status) {
       if (tasks.prio === "urgent") {
         urgent++;
       }
-      if (tasks.status === "done") {
-        urgent--;
-      }
+      
     }
   });
 
@@ -116,7 +111,14 @@ async function updateTaskCounts() {
   inBoard = countAllTasks();
   inProgress = countTasksByStatus("inProgress");
   feedback = countTasksByStatus("awaitFeedback");
+
+  const urgentToDoneTasks = tasks.filter(
+    (task) => task.prio === "urgent" && task.status === "done"
+  );
+
+  urgent -= urgentToDoneTasks.length;
 }
+
 
 function updateTodoNumber() {
   document.getElementById("todos").innerText = todos;
@@ -130,8 +132,11 @@ function updateTodoNumber() {
 // display the earliest prio:urgent dueDate
 function displayEarliestDueDate() {
   const earliestTask = findEarliestDueDate(tasks);
+  const hasUndoneUrgentTasks = tasks.some(task => task.prio === "urgent" && task.status !== "done");
 
-  if (earliestTask && earliestTask.prio === "urgent") {
+  if (!earliestTask || !hasUndoneUrgentTasks) {
+    document.getElementById("date").innerHTML = "No Urgent tasks found.";
+  } else {
     const earliestDate = new Date(
       earliestTask.date.replace(/(\d{2}).(\d{2}).(\d{4})/, "$3-$2-$1")
     );
@@ -140,8 +145,6 @@ function displayEarliestDueDate() {
     const formattedDate = `${month} ${earliestDate.getDate()}, ${earliestDate.getFullYear()}`;
 
     document.getElementById("date").innerHTML = formattedDate;
-  } else {
-    document.getElementById("date").innerHTML = "No urgent tasks found.";
   }
 }
 
@@ -168,7 +171,6 @@ findEarliestDueDate(tasks);
 
 function welcomeMobile() {
   document.addEventListener("DOMContentLoaded", function () {
-    console.log("DOMContentLoaded event fired");
     if (
       !sessionStorage.getItem("welcomeScreenExecuted") &&
       window.innerWidth <= 750
