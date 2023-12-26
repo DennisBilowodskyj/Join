@@ -23,7 +23,6 @@ function openSignUpWindow(){ /**LOGIN */
  * This function is used to load the last sign up user 
  */
 function showLastUser() {
-    /**LOGIN */
     let currentData = localStorage.getItem("currentUser");
     const logInEmailInput = document.getElementById("emailLogIn");
     const logInPasswordInput = document.getElementById("passwordLogIn");
@@ -101,7 +100,6 @@ function logInUser() {
 }
   
 
-
 function setVariablesForLogInInput(){
     let passwordErrorDiv = document.getElementById('passwordErrorMessageLogIn');
     let emailErrorDiv = document.getElementById('emailErrorMessageLogIn');
@@ -169,7 +167,6 @@ function checkEmail(users, emailToSearch) {
 }
   
 
-
 async function userSignUp() {
     let emailErrorDiv = document.getElementById("emailErrorMessageSignUp");
     let passwordErrorDiv = document.getElementById("passwordErrorMessageSignUp");
@@ -201,7 +198,6 @@ async function userSignUp() {
     }
 }
   
-
 
 function removeRedBorderClassList(){
     document.getElementById('inputEmailDivRedBorderSignUp').classList.remove('check-password-red-border');
@@ -238,7 +234,6 @@ function pushIntoUsers() {
     });
 }
   
-
 
 function deleteCurrentUser(){
     while (currentUser.length > 0) {
@@ -306,7 +301,6 @@ function checkInputSignUp() {
     });
 }
   
-
 
 /*HELP FUNCTIONS */
 
