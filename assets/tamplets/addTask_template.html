@@ -29,15 +29,15 @@
         <div class="prioContainer d_flex">
           <div class="prioCard" id="prio_urgent" onclick="setPrio('urgent')">
             <p>Urgent</p>
-            <img src="./assets/img/addTask_icons/prio_urgent.svg" />
+            <img src="../assets/img/addTask_icons/prio_urgent.svg" />
           </div>
           <div class="prioCard" id="prio_medium" onclick="setPrio('medium')">
             <p>Medium</p>
-            <img src="./assets/img/addTask_icons/prio_medium.svg" />
+            <img src="../assets/img/addTask_icons/prio_medium.svg" />
           </div>
           <div class="prioCard" id="prio_low" onclick="setPrio('low')">
             <p>Low</p>
-            <img src="./assets/img/addTask_icons/prio_low.svg" />
+            <img src="../assets/img/addTask_icons/prio_low.svg" />
           </div>
         </div>
         <p>Category<span class="required">*</span></p>
@@ -59,11 +59,11 @@
             oninput="renderSubtaskBtn()" />
           <span id="subtaskAddBtn">
             <div id="subtaskControls" class="d_flex d_none">
-              <img id="restTaskPanel" src="./assets/img/addTask_icons/subtask_close.png"
+              <img id="restTaskPanel" src="../assets/img/addTask_icons/subtask_close.png"
                 onclick="resetSubtaskInput()" />
-              <img id="addTaskPanel" src="./assets/img/addTask_icons/subtask_check.png" onclick="addSubtask()" />
+              <img id="addTaskPanel" src="../assets/img/addTask_icons/subtask_check.png" onclick="addSubtask()" />
             </div>
-            <img src="./assets/img/addTask_icons/add_subtask.png" onclick="addSubtask()" id="add_subtaskBtn" />
+            <img src="../assets/img/addTask_icons/add_subtask.png" onclick="addSubtask()" id="add_subtaskBtn" />
           </span>
         </div>
         <div id="subtaskListContainer">
@@ -80,11 +80,11 @@
       <div class="btnContainer d_flex" id="createButton">
         <div class="clearBtn d_flex" onclick="clearInput()">
           <span>Clear</span>
-          <img src="./assets/img/addTask_icons/cancel.png" />
+          <img src="../assets/img/addTask_icons/cancel.png" />
         </div>
         <button class="createBtn d_flex" type="submit">
           <span>Create Task</span>
-          <img src="./assets/img/addTask_icons/check.png" />
+          <img src="../assets/img/addTask_icons/check.png" />
         </button>
       </div>
     </div>
@@ -92,7 +92,7 @@
     <div id="taskAddedOverlay" class="">
       <div id="taskAdded">
         <span>Task added to board</span>
-        <img src="./assets/img/addTask_icons/board_icon.svg" >
+        <img src="../assets/img/addTask_icons/board_icon.svg" >
       </div>
     </div>
   </form>

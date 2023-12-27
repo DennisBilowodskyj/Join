@@ -73,7 +73,7 @@ h1 {
 }
 
 .arrowNotactive {
-    background-image: url(../img/addTask_icons/arrow_drop_downaa.png);
+    background-image: url(../assets/img/addTask_icons/arrow_drop_downaa.png);
     background-repeat: no-repeat;
     background-size: 24px;
     background-position-x: calc(100% - 16px);
@@ -169,7 +169,7 @@ h1 {
     box-sizing: border-box;
     font-size: 20px;
     font-family: inherit;
-    background-image: url(../img/addTask_icons/resize.png);
+    background-image: url(../assets/img/addTask_icons/resize.png);
     background-repeat: no-repeat;
     background-position-x: 99%;
     background-position-y: 94%;
@@ -208,7 +208,7 @@ h1 {
     font-size: 20px;
     font-family: inherit;
     appearance: none;
-    background-image: url(../img/addTask_icons/arrow_drop_downaa.png);
+    background-image: url(../assets/img/addTask_icons/arrow_drop_downaa.png);
     background-repeat: no-repeat;
     background-size: 24px;
     background-position-x: calc(100% - 16px);
@@ -221,7 +221,7 @@ h1 {
 
 #date {
 
-    background-image: url(../img/addTask_icons/date.png);
+    background-image: url(../assets/img/addTask_icons/date.png);
     background-repeat: no-repeat;
     background-size: 24px;
     background-position-x: calc(100% - 16px);

@@ -156,7 +156,7 @@ function changeTaskButtonOnEdit() {
   OverlayerButtons.innerHTML = `
     <button class="createBtn d_flex" type="submit">
           <span>Save Task</span>
-          <img src="./assets/img/addTask_icons/check.png" />
+          <img src="../assets/img/addTask_icons/check.png" />
     </button>`;
 }
 
@@ -166,11 +166,11 @@ function changeButtonToRegularAddTask() {
   OverlayerButtons.innerHTML = `
     <div class="clearBtn d_flex" onclick="clearInput()">
         <span>Clear</span>
-        <img src="./assets/img/addTask_icons/cancel.png" />
+        <img src="../assets/img/addTask_icons/cancel.png" />
     </div>
     <button class="createBtn d_flex" type="submit">
         <span>Create Task</span>
-        <img src="./assets/img/addTask_icons/check.png" />
+        <img src="../assets/img/addTask_icons/check.png" />
     </button>`;
 }
 

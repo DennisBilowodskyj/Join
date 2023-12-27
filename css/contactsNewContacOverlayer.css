@@ -138,19 +138,19 @@
 }
 
 .input_name {
-  background: url(../img/contact_icons/contact_mini_icons/person.svg) no-repeat
+  background: url(../assets/img/contact_icons/contact_mini_icons/person.svg) no-repeat
     scroll 7px 7px;
   background-position: 95%;
 }
 
 .input_email {
-  background: url(../img/contact_icons/contact_mini_icons/mail.svg) no-repeat
+  background: url(../assets/img/contact_icons/contact_mini_icons/mail.svg) no-repeat
     scroll 7px 7px;
   background-position: 95%;
 }
 
 .input_tel {
-  background: url(../img/contact_icons/contact_mini_icons/call.svg) no-repeat
+  background: url(../assets/img/contact_icons/contact_mini_icons/call.svg) no-repeat
     scroll 7px 7px;
   background-position: 95%;
 }

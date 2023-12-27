@@ -4,27 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join</title>
-    <link rel="icon" href="assets/img/logos/JoinLogo.png" />
-    <link rel="stylesheet" href="./assets/css/header.css" />
-    <link rel="stylesheet" href="./assets/css/sideBar.css" />
-    <link rel="stylesheet" href="./assets/css/addTask.css" />
-    <link rel="stylesheet" href="./assets/css/inter.css" />
-    <link rel="stylesheet" href="./assets/css/openSans.css" />
-    <link rel="stylesheet" href="assets/css/board.css" />
-    <link rel="stylesheet" href="assets/css/boardCardsAndOverlayer.css" />
-    <link rel="stylesheet" href="assets/css/boardResponse.css" />
+    <link rel="icon" href="../assets/img/logos/JoinLogo.png" />
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/sideBar.css" />
+    <link rel="stylesheet" href="../css/addTask.css" />
+    <link rel="stylesheet" href="../css/inter.css" />
+    <link rel="stylesheet" href="../css/openSans.css" />
+    <link rel="stylesheet" href="../css/board.css" />
+    <link rel="stylesheet" href="../css/boardCardsAndOverlayer.css" />
+    <link rel="stylesheet" href="../css/boardResponse.css" />
 
-    <script src="./assets/js/script.js"></script>
-    <script src="./assets/js/addTask.js"></script>
-    <script src="./assets/js/board.js"></script>
-    <script src="./assets/js/boardRenderFunctions.js"></script>
-    <script src="./assets/js/storage.js"></script>
-    <script src="assets/js/undersides.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/addTask.js"></script>
+    <script src="../js/board.js"></script>
+    <script src="../js/boardRenderFunctions.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/undersides.js"></script>
   </head>
 
   <body onload="boardInit()">
-    <div w3-include-html="./assets/tamplets/header.html"></div>
-    <div w3-include-html="./assets/tamplets/sideBar.html"></div>
+    <div w3-include-html="../assets/tamplets/header.html"></div>
+    <div w3-include-html="../assets/tamplets/sideBar.html"></div>
 
     <section id="card_details_bg" class="card_details_bg d_none">
       <div class="cardDetails">
@@ -42,7 +42,7 @@
           <div class="cardDetails_description">
             <div class="cardDetails_description_text_width">Priority:</div>
             <div id="cardDetails_prio">
-              Medium <img src="./assets/img/board/PrioMedia.png" alt="" />
+              Medium <img src="../assets/img/board/PrioMedia.png" alt="" />
             </div>
           </div>
           <div class="assignedToCard">
@@ -72,14 +72,14 @@
             />
             <div class="search_seperator"></div>
             <button class="searching_button" type="submit">
-              <img src="./assets/img/board/search.png" alt="search" />
+              <img src="../assets/img/board/search.png" alt="search" />
             </button>
           </form>
           <button onclick="openAddTaskOverlay('todo')" class="AddTaskButton">
-            Add Task <img src="./assets/img/board/add.png" alt="" />
+            Add Task <img src="../assets/img/board/add.png" alt="" />
           </button>
           <button onclick="openAddTaskOverlay('todo')" class="responseAddTaskButton">
-            <img src="./assets/img/board/add.png" alt="" />
+            <img src="../assets/img/board/add.png" alt="" />
           </button>
         </div>
       </div>
@@ -94,7 +94,7 @@
           />
           <div class="search_seperator"></div>
           <button class="searching_button" type="submit">
-            <img src="./assets/img/board/search.png" alt="search" />
+            <img src="../assets/img/board/search.png" alt="search" />
           </button>
         </form>
       </div>
@@ -109,7 +109,7 @@
           <div class="boardTabHeader">
             <p>To do</p>
             <div class="boardTabAddButton" onclick="openAddTaskOverlay('todo')">
-              <img src="./assets/img/board/addTask.png" alt="" />
+              <img src="../assets/img/board/addTask.png" alt="" />
             </div>
           </div>
 
@@ -125,7 +125,7 @@
           <div class="boardTabHeader">
             <p>In progress</p>
             <div class="boardTabAddButton" onclick="openAddTaskOverlay('inProgress')">
-              <img src="./assets/img/board/addTask.png" alt="" />
+              <img src="../assets/img/board/addTask.png" alt="" />
             </div>
           </div>
 
@@ -142,7 +142,7 @@
           <div class="boardTabHeader">
             <p>Await feedback</p>
             <div class="boardTabAddButton" onclick="openAddTaskOverlay('awaitFeedback')">
-              <img src="./assets/img/board/addTask.png" alt="" />
+              <img src="../assets/img/board/addTask.png" alt="" />
             </div>
           </div>
 
@@ -166,9 +166,9 @@
     <div class="overlay d_none" id="addTaskOverlay">
       <div class="wrapperOverlay">
         <div class="closeBtn" onclick="closeAddTaskOverlay()">
-          <img src="./assets/img/addTask_icons/close.png" alt="" />
+          <img src="../assets/img/addTask_icons/close.png" alt="" />
         </div>
-        <div w3-include-html="./assets/tamplets/addTask_template.html"></div>
+        <div w3-include-html="../assets/tamplets/addTask_template.html"></div>
       </div>
     </div>
 

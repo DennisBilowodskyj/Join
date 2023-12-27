@@ -89,7 +89,7 @@ function renderCardDetailsHeader(index) {
   header.innerHTML = `<div class="category" 
     style="background-color: #${color}">${category}</div>
       <a onclick="closeCardDetails()" class="cardCloseButton">
-        <img src="./assets/img/board/close.png" alt="" />
+        <img src="../assets/img/board/close.png" alt="" />
       </a>`;
 }
 
@@ -174,9 +174,9 @@ function renderCardDetailsSubTasks(index) {
 
 function progressCheckOnSubtask(progressValue) {
   if (progressValue == 1) {
-    return "./assets/img/board/checkButton.png";
+    return "../assets/img/board/checkButton.png";
   } else {
-    return "./assets/img/board/noneCheckButton.png";
+    return "../assets/img/board/noneCheckButton.png";
   }
 }
 
@@ -194,12 +194,12 @@ function renderCardDetailsDeleteEdit(index) {
   let deleteEdit = document.getElementById("deleteEditCard");
   deleteEdit.innerHTML = `<div class="deleteEditCardContent">
       <div class="renderDeleteEditCardContent" onclick="deleteTask(${index})">
-        <img src="./assets/img/board/delete.png" alt="" />
+        <img src="../assets/img/board/delete.png" alt="" />
         <div>Delete</div>
       </div>
       <hr />
       <div class="renderDeleteEditCardContent" onclick="editTask(${index})">
-        <img src="./assets/img/board/edit.png" alt="" />
+        <img src="../assets/img/board/edit.png" alt="" />
         <div>Edit</div>
       </div>
     </div>`;
@@ -241,7 +241,7 @@ function renderHeader(task) {
         <div class="category" style="background-color: #${color}">${category}</div>
         <button id="responseDragAndDropButton" 
         class="responseDragAndDropButton" onclick="openPositionMenu(event, ${task.id})">
-          <img src="./assets/img/board/dots.png" alt=""/>
+          <img src="../assets/img/board/dots.png" alt=""/>
           </button><div class="menuForPosition">${renderPositionMenu(task.id)}</div>
         </div>
           <div class="text_content_card">
@@ -333,11 +333,11 @@ function initialsAssignedTo(name, position) {
 
 function rightPrioImg(task) {
   if (task["prio"] == "urgent") {
-    return "./assets/img/board/PrioUrgent.png";
+    return "../assets/img/board/PrioUrgent.png";
   } else if (task["prio"] == "medium") {
-    return "./assets/img/board/PrioMedia.png";
+    return "../assets/img/board/PrioMedia.png";
   } else {
-    return "./assets/img/board/PrioLight.png";
+    return "../assets/img/board/PrioLight.png";
   }
 }
 
