@@ -10,6 +10,7 @@
     width: 100%;
     height: 100%;
     gap: 16px;
+    padding-bottom: 8px;
 }
 
 /* .cardPosition::-webkit-scrollbar{
@@ -105,6 +106,8 @@
 .description_content_card{
     font-weight: 400;
     color: #A8A8A8;
+    height: 40px;
+    overflow: hidden;
 }
 
 .progress_bar_card{

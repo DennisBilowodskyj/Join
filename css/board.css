@@ -23,7 +23,7 @@ body {
   margin: 0;
   font-family: "Inter";
   font-size: 20px;
-  /* overflow-y: -moz-hidden-unscrollable; */
+  /* overflow-y: p;*/
 }
 
 .d-flex {

@@ -49,10 +49,10 @@ function checkInputLogIn() {  /**LOGIN */
       let img = document.getElementById(imgIds[index]);
       if (input.value.trim() !== "") {
         if(input.type === 'text'){
-          img.src = "assets/img/signUp_icons/showPassword.png";
+          img.src = "../assets/img/signUp_icons/showPassword.png";
         }else{
         input.type = "password";
-        img.src = "assets/img/signUp_icons/hidePassword.png";
+        img.src = "../assets/img/signUp_icons/hidePassword.png";
         img.onclick = function () {
           hidePassword(input, img);
         }};
@@ -288,10 +288,10 @@ function checkInputSignUp() {
       let img = document.getElementById(imgIds[index]);
       if (input.value.trim() !== "") {
         if(input.type === 'text'){
-          img.src = "assets/img/signUp_icons/showPassword.png";
+          img.src = "../assets/img/signUp_icons/showPassword.png";
         }else{
         input.type = "password";
-        img.src = "assets/img/signUp_icons/hidePassword.png";
+        img.src = "../assets/img/signUp_icons/hidePassword.png";
         img.onclick = function () {
           hidePassword(input, img);
         }};
@@ -316,7 +316,7 @@ async function loadUser(){
 
 function hidePassword(input, img) {
     input.type = "password";
-    img.src = "assets/img/signUp_icons/hidePassword.png";
+    img.src = "../assets/img/signUp_icons/hidePassword.png";
     img.onclick = function () {
         showPassword(input, img);
     };
@@ -325,7 +325,7 @@ function hidePassword(input, img) {
 
 function showPassword(input, img) {
     input.type = "text";
-    img.src = "assets/img/signUp_icons/showPassword.png";
+    img.src = "../assets/img/signUp_icons/showPassword.png";
     img.onclick = function () {
         hidePassword(input, img);
     };
@@ -333,7 +333,7 @@ function showPassword(input, img) {
 
 
 function changeInputTypeToPassword(img, input){
-    img.src = "assets/img/signUp_icons/lock.png";
+    img.src = "../assets/img/signUp_icons/lock.png";
     input.type = "password";
 }
 
