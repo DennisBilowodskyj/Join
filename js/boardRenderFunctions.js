@@ -1,5 +1,7 @@
 // ########################### Render Cards ############################
-// #####################################################################
+/**
+ * Calls the rendering functions of the different positions
+ */
 function renderCards() {
   renderCardsTodo("toDo");
   renderCardsProgress("inProgress");
@@ -7,6 +9,11 @@ function renderCards() {
   renderCardsDone("done");
 }
 
+/**
+ * Renders ToDo Tasks
+ * 
+ * @param {string} status 
+ */
 function renderCardsTodo(status) {
   document.getElementById(`${status}Cards`).innerHTML = "";
   if (todos.length > 0) {
@@ -19,6 +26,11 @@ function renderCardsTodo(status) {
   }
 }
 
+/**
+ * Renders In Progress Tasks
+ * 
+ * @param {string} status 
+ */
 function renderCardsProgress(status) {
   document.getElementById(`${status}Cards`).innerHTML = "";
   if (inProgress.length > 0) {
@@ -31,6 +43,11 @@ function renderCardsProgress(status) {
   }
 }
 
+/**
+ * Renders "await Feedback" Tasks
+ * 
+ * @param {string} status 
+ */
 function renderCardsAwait(status) {
   document.getElementById(`${status}Cards`).innerHTML = "";
   if (awaitFeedback.length > 0) {
@@ -43,6 +60,11 @@ function renderCardsAwait(status) {
   }
 }
 
+/**
+ * Renders "Done" Tasks
+ * 
+ * @param {string} status 
+ */
 function renderCardsDone(status) {
   document.getElementById(`${status}Cards`).innerHTML = "";
   if (done.length > 0) {
@@ -55,6 +77,13 @@ function renderCardsDone(status) {
   }
 }
 
+/**
+ * Renders the different sections of the cards by calling them up
+ * 
+ * @param {string} status 
+ * @param {string} task 
+ * @param {number} i 
+ */
 function renderCardFunction(status, task, i) {
   document.getElementById(`${status}Cards`).innerHTML += `
     ${renderHeader(task, i)} 
@@ -63,13 +92,22 @@ function renderCardFunction(status, task, i) {
     ${renderPrio(task, i)}`;
 }
 
+/**
+ * Renders the placeholder if the card is present in this section
+ * 
+ * @param {string} status 
+ */
 function renderEmptyField(status) {
   document.getElementById(`${status}Cards`).innerHTML = `
     <div class="emptyTasks">No tasks</div>`;
 }
 
 // ############################ Render Info ############################
-// #####################################################################
+/**
+ * Calls all functions necessary to display the detailed information of a card
+ * 
+ * @param {number} index 
+ */
 function renderCardDetails(index) {
   renderCardDetailsHeader(index);
   renderCardDetailsTitel(index);
@@ -81,6 +119,11 @@ function renderCardDetails(index) {
   renderCardDetailsDeleteEdit(index);
 }
 
+/**
+ * Renders the header for the detailed information of the desired task
+ * 
+ * @param {number} index 
+ */
 function renderCardDetailsHeader(index) {
   let category = tasks[index]["category"];
   category = changeCategoryValue(category);
@@ -93,6 +136,12 @@ function renderCardDetailsHeader(index) {
       </a>`;
 }
 
+/**
+ * Makes the category view more beautiful
+ * 
+ * @param {string} category 
+ * @returns Nicer look of the category
+ */
 function changeCategoryValue(category) {
   if (category == "technical_task") {
     return "Technical Task";
@@ -103,18 +152,33 @@ function changeCategoryValue(category) {
   }
 }
 
+/**
+ * Renders the Titel for the detailed information of the desired task
+ * 
+ * @param {number} index 
+ */
 function renderCardDetailsTitel(index) {
   let titelText = tasks[index]["title"];
   let titelSection = document.getElementById("cardDetails_titel");
   titelSection.innerHTML = `<h2>${titelText}</h2>`;
 }
 
+/**
+ * Renders the Description for the detailed information of the desired task
+ * 
+ * @param {number} index 
+ */
 function renderCardDetailsDescription(index) {
   let descriptionText = tasks[index]["description"];
   let descriptionSection = document.getElementById("cardDetails_description");
   descriptionSection.innerHTML = `${descriptionText}`;
 }
 
+/**
+ * Renders the Date for the detailed information of the desired task
+ * 
+ * @param {number} index 
+ */
 function renderCardDetailsDate(index) {
   let dateText = tasks[index]["date"].split("-");
   let year = dateText[0];
@@ -124,6 +188,11 @@ function renderCardDetailsDate(index) {
   dateSection.innerHTML = `${day}/${month}/${year}`;
 }
 
+/**
+ * Renders the Priority for the detailed information of the desired task
+ * 
+ * @param {number} index 
+ */
 function renderCardDetailsPriority(index) {
   let standardPrioText = tasks[index];
   prioText = standardPrioText["prio"];
@@ -134,9 +203,13 @@ function renderCardDetailsPriority(index) {
       ${prioText} <img src="${prioImg}" alt="" />`;
 }
 
+/**
+ * Renders the "AssignedTo" for the detailed information of the desired task
+ * 
+ * @param {number} index 
+ */
 function renderCardDetailsAssignedTo(index) {
   let assignedToArray = tasks[index]["assignedTo"];
-  //   let prioImg = calcAssignedPersons(task);
   let assignedToSection = document.getElementById("assignedToCardName");
   assignedToSection.innerHTML = ``;
   for (let i = 0; i < assignedToArray.length; i++) {
@@ -152,6 +225,11 @@ function renderCardDetailsAssignedTo(index) {
   }
 }
 
+/**
+ * Renders the "SubTasks" for the detailed information of the desired task
+ * 
+ * @param {number} index 
+ */
 function renderCardDetailsSubTasks(index) {
   let subTasksSection = document.getElementById("renderSubtasksToCard");
   subTasksSection.innerHTML = "";
@@ -160,18 +238,20 @@ function renderCardDetailsSubTasks(index) {
   for (let i = 0; i < subTasks.length; i++) {
     let subTask = subTasks[i];
     subTasksSection.innerHTML += `
-          <div class="renderSubtasksToCard" 
-          onclick="addProgress(${index}, ${i})">
-              <div>
-                  <img src="${progressCheckOnSubtask(
-      progressValue[i]
-    )}" alt="" />
+          <div class="renderSubtasksToCard" onclick="addProgress(${index}, ${i})">
+              <div><img src="${progressCheckOnSubtask(progressValue[i])}" alt="" />
               </div>
               <div>${subTask}</div>
           </div>`;
   }
 }
 
+/**
+ * This function returns an empty or filled checkbox, depending on whether the subtask has already been completed.
+ * 
+ * @param {boolean} progressValue 
+ * @returns 
+ */
 function progressCheckOnSubtask(progressValue) {
   if (progressValue == 1) {
     return "../assets/img/board/checkButton.png";
@@ -180,6 +260,12 @@ function progressCheckOnSubtask(progressValue) {
   }
 }
 
+/**
+ * Changes value of progress Value when task is completed
+ * 
+ * @param {string} task 
+ * @param {string} subtask 
+ */
 async function addProgress(task, subtask) {
   if (tasks[task]["progressValue"][subtask] == 0) {
     tasks[task]["progressValue"][subtask]++;
@@ -190,6 +276,11 @@ async function addProgress(task, subtask) {
   saveFunction();
 }
 
+/**
+ * Renders the Delete and Edit buttons for the desired task
+ * 
+ * @param {number} index 
+ */
 function renderCardDetailsDeleteEdit(index) {
   let deleteEdit = document.getElementById("deleteEditCard");
   deleteEdit.innerHTML = `<div class="deleteEditCardContent">
@@ -206,7 +297,11 @@ function renderCardDetailsDeleteEdit(index) {
 }
 
 // ################### Open & Close Layer and Cards ####################
-// #####################################################################
+/**
+ * Opens overlayer when you click the AddTask button
+ * 
+ * @param {string} status 
+ */
 function openAddTaskOverlay(status) {
   statusCheck = status;
   CameFrom = "AddTaskOnStatus";
@@ -214,6 +309,9 @@ function openAddTaskOverlay(status) {
   setPrioBtn(prio_medium, "#FFA800", "prio_medium_white.svg");
 }
 
+/**
+ * closes the overlayer without making any changes
+ */
 function closeAddTaskOverlay() {
   clearInput();
   changeButtonToRegularAddTask();
@@ -221,17 +319,30 @@ function closeAddTaskOverlay() {
   document.getElementById("addTaskOverlay").classList.add("d_none");
 }
 
+/**
+ * closes the detail information without making any changes
+ */
 function closeCardDetails() {
   document.getElementById("card_details_bg").classList.add("d_none");
 }
 
+/**
+ * open card details
+ * 
+ * @param {number} index 
+ */
 function openCardDetails(index) {
   renderCardDetails(index);
   document.getElementById("card_details_bg").classList.remove("d_none");
 }
 
 // ############################ Card Templets ##########################
-// #####################################################################
+/**
+ * Returns the HTML code for the header
+ * 
+ * @param {string} task 
+ * @returns HTML Code for Header
+ */
 function renderHeader(task) {
   let category = changeCategoryValue(task["category"]);
   let color = categoryColorCheck(category);
@@ -252,9 +363,11 @@ function renderHeader(task) {
                   ${task["description"]}
               </div></div>`;
 }
+
 /**
+ * Returns the HTML code for the submenu
  * 
- * @param {*} id 
+ * @param {number} id 
  * @returns 
  */
 function renderPositionMenu(id){
@@ -268,15 +381,22 @@ function renderPositionMenu(id){
 }
 
 /**
+ * Prevents the information card from opening when changing the position of the card
  * 
- * @param {*} event 
- * @param {*} status 
+ * @param {event} event 
+ * @param {string} status 
  */
 function stopOpenCardDetailsBeforMoveTo(event, status){
   event.stopPropagation();
   moveTo(status);
 }
 
+/**
+ * Render the progress bar if subtasks are present
+ * 
+ * @param {string} task 
+ * @returns 
+ */
 function renderProgressBar(task) {
   let finalSubTasks = calcSubtask(task);
   let sumOfTasks = task["progressValue"].length;
@@ -292,18 +412,38 @@ function renderProgressBar(task) {
   }
 }
 
+/**
+ * Renders people assigned to the task
+ * 
+ * @param {*} task 
+ * @returns 
+ */
 function renderAssignedPerson(task) {
   return `<div class="contact_prio">
       <div class="assigned_list">
       ${calcAssignedPersons(task)}
       </div>`;
 }
+
+/**
+ * Renders the priority of the task
+ * 
+ * @param {*} task 
+ * @param {*} i 
+ * @returns 
+ */
 function renderPrio(task, i) {
   return `<div class="prio_card">
               <img src="${rightPrioImg(task)}" alt="" />
               </div></div></div></div>`;
 }
 
+/**
+ * Calculates the sum of all subtasks of the selected tasks
+ * 
+ * @param {string} task 
+ * @returns Sum of subtasks
+ */
 function calcSubtask(task) {
   let sum = 0;
   let values = task["progressValue"];
@@ -316,12 +456,25 @@ function calcSubtask(task) {
   return sum;
 }
 
+/**
+ * Calculation of subtasks completed in percent
+ * 
+ * @param {number} finalSubTasks 
+ * @param {number} sumOfTasks 
+ * @returns Percent of subtasks completed
+ */
 function calcValueOfProgressbar(finalSubTasks, sumOfTasks) {
   let progressBarValue = 0;
   progressBarValue = (finalSubTasks / sumOfTasks) * 100;
   return progressBarValue;
 }
 
+/**
+ * Shows the first three assigned people
+ * 
+ * @param {string} task 
+ * @returns 
+ */
 function calcAssignedPersons(task) {
   let assignedToHTML = "";
   for (let i = 0; i < 3; i++) {
@@ -335,6 +488,13 @@ function calcAssignedPersons(task) {
   return assignedToHTML;
 }
 
+/**
+ * calculates the number of people still present if it exceeds three
+ *  
+ * @param {string} task 
+ * @param {string} assignedToHTML 
+ * @returns 
+ */
 function overThreePersonsInTasks(task, assignedToHTML){
   if (task["assignedTo"].length > 3){
     let calcOverThree = task["assignedTo"].length - 3;
@@ -343,11 +503,24 @@ function overThreePersonsInTasks(task, assignedToHTML){
   } return assignedToHTML
 }
 
+/**
+ * Renders the initials of a name
+ * 
+ * @param {string} name 
+ * @param {number} position 
+ * @returns first letter of the first or the second name
+ */
 function initialsAssignedTo(name, position) {
   let nameArray = name.split(" ");
   return nameArray[position].charAt(0);
 }
 
+/**
+ * Returns the necessary image depending on the priority of the tasks
+ * 
+ * @param {string} task 
+ * @returns image of prio 
+ */
 function rightPrioImg(task) {
   if (task["prio"] == "urgent") {
     return "../assets/img/board/PrioUrgent.png";
@@ -358,6 +531,12 @@ function rightPrioImg(task) {
   }
 }
 
+/**
+ * Add a color to the two categories
+ * 
+ * @param {string} category 
+ * @returns color code of category
+ */
 function categoryColorCheck(category) {
   if (category == "Technical Task") {
     return "1FD7C1";

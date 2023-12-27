@@ -142,7 +142,7 @@ function highlight(id) {
 }
 
 /**
- * Function ensures that the area is no longer highlighted when you leave the area with the map
+ * Function ensures that the area is no longer highlighted when you leave the area with the card
  *
  * @param {number} id
  */
@@ -151,7 +151,7 @@ function removeHighlight(id) {
 }
 
 /**
- * Is called in the moveTo() function in order to be able to execute the removeHighlight() function when the map is dropped
+ * Is called in the moveTo() function in order to be able to execute the removeHighlight() function when the cacrd is dropped
  *
  * @returns status of the dropped Card
  */
