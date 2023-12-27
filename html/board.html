@@ -61,13 +61,45 @@
     </section>
 
     <section class="section_board">
-      <div class="headSection">
-        <h1>Board</h1>
-        <div class="header_button_area">
-          <form onsubmit="searchingCard(); return false;" class="searching_form">
+      <div class="section_board_content">
+        <div class="headSection">
+          <h1>Board</h1>
+          <div class="header_button_area">
+            <form
+              onsubmit="searchingCard(); return false;"
+              class="searching_form"
+            >
+              <input
+                type="text"
+                id="searching_form_input"
+                placeholder="Find Task"
+                onkeyup="searchingCard()"
+              />
+              <div class="search_seperator"></div>
+              <button class="searching_button" type="submit">
+                <img src="../assets/img/board/search.png" alt="search" />
+              </button>
+            </form>
+            <button onclick="openAddTaskOverlay('todo')" class="AddTaskButton">
+              Add Task <img src="../assets/img/board/add.png" alt="" />
+            </button>
+            <button
+              onclick="openAddTaskOverlay('todo')"
+              class="responseAddTaskButton"
+            >
+              <img src="../assets/img/board/add.png" alt="" />
+            </button>
+          </div>
+        </div>
+
+        <div class="response_searchbar">
+          <form
+            onsubmit="searchingCard(); return false;"
+            class="searching_form"
+          >
             <input
               type="text"
-              id="searching_form_input"
+              id="responseSearching_form_input"
               placeholder="Find Task"
               onkeyup="searchingCard()"
             />
@@ -76,90 +108,78 @@
               <img src="../assets/img/board/search.png" alt="search" />
             </button>
           </form>
-          <button onclick="openAddTaskOverlay('todo')" class="AddTaskButton">
-            Add Task <img src="../assets/img/board/add.png" alt="" />
-          </button>
-          <button onclick="openAddTaskOverlay('todo')" class="responseAddTaskButton">
-            <img src="../assets/img/board/add.png" alt="" />
-          </button>
         </div>
-      </div>
 
-      <div class="response_searchbar">
-        <form onsubmit="searchingCard()" class="searching_form">
-          <input
-            type="text"
-            id="responseSearching_form_input"
-            placeholder="Find Task"
-            onkeyup="searchingCard()"
-          />
-          <div class="search_seperator"></div>
-          <button class="searching_button" type="submit">
-            <img src="../assets/img/board/search.png" alt="search" />
-          </button>
-        </form>
-      </div>
-
-      <div class="boardDiv">
-        <div
-          class="toDo boardTab"
-          ondrop="moveTo('todo')"
-          ondragleave="removeHighlight('toDoCards')"
-          ondragover="allowDrop(event); highlight('toDoCards')"
-        >
-          <div class="boardTabHeader">
-            <p>To do</p>
-            <div class="boardTabAddButton" onclick="openAddTaskOverlay('todo')">
-              <img src="../assets/img/board/addTask.png" alt="" />
+        <div class="boardDiv">
+          <div
+            class="toDo boardTab"
+            ondrop="moveTo('todo')"
+            ondragleave="removeHighlight('toDoCards')"
+            ondragover="allowDrop(event); highlight('toDoCards')"
+          >
+            <div class="boardTabHeader">
+              <p>To do</p>
+              <div
+                class="boardTabAddButton"
+                onclick="openAddTaskOverlay('todo')"
+              >
+                <img src="../assets/img/board/addTask.png" alt="" />
+              </div>
             </div>
+
+            <div id="toDoCards" class="cardPosition"></div>
           </div>
 
-          <div id="toDoCards" class="cardPosition"></div>
-        </div>
-
-        <div
-          class="inProgress boardTab"
-          ondrop="moveTo('inProgress')"
-          ondragleave="removeHighlight('inProgressCards')"
-          ondragover="allowDrop(event); highlight('inProgressCards')"
-        >
-          <div class="boardTabHeader">
-            <p>In progress</p>
-            <div class="boardTabAddButton" onclick="openAddTaskOverlay('inProgress')">
-              <img src="../assets/img/board/addTask.png" alt="" />
+          <div
+            class="inProgress boardTab"
+            ondrop="moveTo('inProgress')"
+            ondragleave="removeHighlight('inProgressCards')"
+            ondragover="allowDrop(event); highlight('inProgressCards')"
+          >
+            <div class="boardTabHeader">
+              <p>In progress</p>
+              <div
+                class="boardTabAddButton"
+                onclick="openAddTaskOverlay('inProgress')"
+              >
+                <img src="../assets/img/board/addTask.png" alt="" />
+              </div>
             </div>
+
+            <div id="inProgressCards" class="cardPosition"></div>
           </div>
 
-          <div id="inProgressCards" class="cardPosition"></div>
-        </div>
-
-        <div
-          class="awaitFeedback boardTab"
-          ondrop="moveTo('awaitFeedback')"
-          ondragleave="removeHighlight('awaitFeedbackCards')"
-          ondragover="allowDrop(event); highlight('awaitFeedbackCards')"
-          ontouchstart
-        >
-          <div class="boardTabHeader">
-            <p>Await feedback</p>
-            <div class="boardTabAddButton" onclick="openAddTaskOverlay('awaitFeedback')">
-              <img src="../assets/img/board/addTask.png" alt="" />
+          <div
+            class="awaitFeedback boardTab"
+            ondrop="moveTo('awaitFeedback')"
+            ondragleave="removeHighlight('awaitFeedbackCards')"
+            ondragover="allowDrop(event); highlight('awaitFeedbackCards')"
+            ontouchstart
+          >
+            <div class="boardTabHeader">
+              <p>Await feedback</p>
+              <div
+                class="boardTabAddButton"
+                onclick="openAddTaskOverlay('awaitFeedback')"
+              >
+                <img src="../assets/img/board/addTask.png" alt="" />
+              </div>
             </div>
+
+            <div id="awaitFeedbackCards" class="cardPosition"></div>
           </div>
 
-          <div id="awaitFeedbackCards" class="cardPosition"></div>
-        </div>
-
-        <div
-          class="Done boardTab"
-          ondrop="moveTo('done')"
-          ondragleave="removeHighlight('doneCards')"
-          ondragover="allowDrop(event); highlight('doneCards')"
-        >
-          <div class="boardTabHeader">
-            <p>Done</p>
+          <div
+            class="Done boardTab"
+            ondrop="moveTo('done')"
+            ondragleave="removeHighlight('doneCards')"
+            ondragover="allowDrop(event); highlight('doneCards')"
+          >
+            <div class="boardTabHeader">
+              <p>Done</p>
+            </div>
+            <div id="doneCards" class="cardPosition"></div>
           </div>
-          <div id="doneCards" class="cardPosition"></div>
         </div>
       </div>
     </section>
@@ -172,6 +192,5 @@
         <div w3-include-html="../assets/tamplets/addTask_template.html"></div>
       </div>
     </div>
-
   </body>
 </html>

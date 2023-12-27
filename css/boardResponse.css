@@ -1,19 +1,19 @@
 @media (max-width: 1750px) {
-  .section_board {
+  .section_board_content {
     padding-left: calc(8% + 232px);
     padding-right: 1%;
   }
 }
 
 @media (max-width: 1550px) {
-  .section_board {
+  .section_board_content {
     padding-left: calc(3% + 232px);
     padding-right: 1%;
   }
 }
 
 @media (max-width: 1450px) {
-  .section_board {
+  .section_board_content {
     padding-left: calc(232px);
     padding-right: 1%;
   }
@@ -74,7 +74,7 @@
 }
 
 @media (max-width: 750px) {
-  .section_board {
+  .section_board_content {
     padding-left: 16px;
   }
 
