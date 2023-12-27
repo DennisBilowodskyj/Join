@@ -1,75 +1,9 @@
-// ########################### Render Cards ############################
-// #####################################################################
-function renderCards() {
-  renderCardsTodo("toDo");
-  renderCardsProgress("inProgress");
-  renderCardsAwait("awaitFeedback");
-  renderCardsDone("done");
-}
-
-function renderCardsTodo(status) {
-  document.getElementById(`${status}Cards`).innerHTML = "";
-  if (todos.length > 0) {
-    for (let i = 0; i < todos.length; i++) {
-      let todo = todos[i];
-      renderCardFunction(status, todo, i);
-    }
-  } else {
-    renderEmptyField(status);
-  }
-}
-
-function renderCardsProgress(status) {
-  document.getElementById(`${status}Cards`).innerHTML = "";
-  if (inProgress.length > 0) {
-    for (let i = 0; i < inProgress.length; i++) {
-      let inProgressTask = inProgress[i];
-      renderCardFunction(status, inProgressTask, i);
-    }
-  } else {
-    renderEmptyField(status);
-  }
-}
-
-function renderCardsAwait(status) {
-  document.getElementById(`${status}Cards`).innerHTML = "";
-  if (awaitFeedback.length > 0) {
-    for (let i = 0; i < awaitFeedback.length; i++) {
-      let awaitFeedbackTask = awaitFeedback[i];
-      renderCardFunction(status, awaitFeedbackTask, i);
-    }
-  } else {
-    renderEmptyField(status);
-  }
-}
-
-function renderCardsDone(status) {
-  document.getElementById(`${status}Cards`).innerHTML = "";
-  if (done.length > 0) {
-    for (let i = 0; i < done.length; i++) {
-      let doneTask = done[i];
-      renderCardFunction(status, doneTask, i);
-    }
-  } else {
-    renderEmptyField(status);
-  }
-}
-
-function renderCardFunction(status, task, i) {
-  document.getElementById(`${status}Cards`).innerHTML += `
-    ${renderHeader(task, i)} 
-    ${renderProgressBar(task)} 
-    ${renderAssignedPerson(task, i)} 
-    ${renderPrio(task, i)}`;
-}
-
-function renderEmptyField(status) {
-  document.getElementById(`${status}Cards`).innerHTML = `
-    <div class="emptyTasks">No tasks</div>`;
-}
-
 // ############################ Render Info ############################
-// #####################################################################
+/**
+ * Calls all functions necessary to display the detailed information of a card
+ * 
+ * @param {number} index 
+ */
 function renderCardDetails(index) {
   renderCardDetailsHeader(index);
   renderCardDetailsTitel(index);
@@ -81,6 +15,11 @@ function renderCardDetails(index) {
   renderCardDetailsDeleteEdit(index);
 }
 
+/**
+ * Renders the header for the detailed information of the desired task
+ * 
+ * @param {number} index 
+ */
 function renderCardDetailsHeader(index) {
   let category = tasks[index]["category"];
   category = changeCategoryValue(category);
@@ -93,6 +32,12 @@ function renderCardDetailsHeader(index) {
       </a>`;
 }
 
+/**
+ * Makes the category view more beautiful
+ * 
+ * @param {string} category 
+ * @returns Nicer look of the category
+ */
 function changeCategoryValue(category) {
   if (category == "technical_task") {
     return "Technical Task";
@@ -103,18 +48,33 @@ function changeCategoryValue(category) {
   }
 }
 
+/**
+ * Renders the Titel for the detailed information of the desired task
+ * 
+ * @param {number} index 
+ */
 function renderCardDetailsTitel(index) {
   let titelText = tasks[index]["title"];
   let titelSection = document.getElementById("cardDetails_titel");
   titelSection.innerHTML = `<h2>${titelText}</h2>`;
 }
 
+/**
+ * Renders the Description for the detailed information of the desired task
+ * 
+ * @param {number} index 
+ */
 function renderCardDetailsDescription(index) {
   let descriptionText = tasks[index]["description"];
   let descriptionSection = document.getElementById("cardDetails_description");
   descriptionSection.innerHTML = `${descriptionText}`;
 }
 
+/**
+ * Renders the Date for the detailed information of the desired task
+ * 
+ * @param {number} index 
+ */
 function renderCardDetailsDate(index) {
   let dateText = tasks[index]["date"].split("-");
   let year = dateText[0];
@@ -124,6 +84,11 @@ function renderCardDetailsDate(index) {
   dateSection.innerHTML = `${day}/${month}/${year}`;
 }
 
+/**
+ * Renders the Priority for the detailed information of the desired task
+ * 
+ * @param {number} index 
+ */
 function renderCardDetailsPriority(index) {
   let standardPrioText = tasks[index];
   prioText = standardPrioText["prio"];
@@ -134,9 +99,13 @@ function renderCardDetailsPriority(index) {
       ${prioText} <img src="${prioImg}" alt="" />`;
 }
 
+/**
+ * Renders the "AssignedTo" for the detailed information of the desired task
+ * 
+ * @param {number} index 
+ */
 function renderCardDetailsAssignedTo(index) {
   let assignedToArray = tasks[index]["assignedTo"];
-  //   let prioImg = calcAssignedPersons(task);
   let assignedToSection = document.getElementById("assignedToCardName");
   assignedToSection.innerHTML = ``;
   for (let i = 0; i < assignedToArray.length; i++) {
@@ -152,6 +121,11 @@ function renderCardDetailsAssignedTo(index) {
   }
 }
 
+/**
+ * Renders the "SubTasks" for the detailed information of the desired task
+ * 
+ * @param {number} index 
+ */
 function renderCardDetailsSubTasks(index) {
   let subTasksSection = document.getElementById("renderSubtasksToCard");
   subTasksSection.innerHTML = "";
@@ -160,18 +134,20 @@ function renderCardDetailsSubTasks(index) {
   for (let i = 0; i < subTasks.length; i++) {
     let subTask = subTasks[i];
     subTasksSection.innerHTML += `
-          <div class="renderSubtasksToCard" 
-          onclick="addProgress(${index}, ${i})">
-              <div>
-                  <img src="${progressCheckOnSubtask(
-      progressValue[i]
-    )}" alt="" />
+          <div class="renderSubtasksToCard" onclick="addProgress(${index}, ${i})">
+              <div><img src="${progressCheckOnSubtask(progressValue[i])}" alt="" />
               </div>
               <div>${subTask}</div>
           </div>`;
   }
 }
 
+/**
+ * This function returns an empty or filled checkbox, depending on whether the subtask has already been completed.
+ * 
+ * @param {boolean} progressValue 
+ * @returns 
+ */
 function progressCheckOnSubtask(progressValue) {
   if (progressValue == 1) {
     return "../assets/img/board/checkButton.png";
@@ -180,6 +156,12 @@ function progressCheckOnSubtask(progressValue) {
   }
 }
 
+/**
+ * Changes value of progress Value when task is completed
+ * 
+ * @param {string} task 
+ * @param {string} subtask 
+ */
 async function addProgress(task, subtask) {
   if (tasks[task]["progressValue"][subtask] == 0) {
     tasks[task]["progressValue"][subtask]++;
@@ -190,6 +172,11 @@ async function addProgress(task, subtask) {
   saveFunction();
 }
 
+/**
+ * Renders the Delete and Edit buttons for the desired task
+ * 
+ * @param {number} index 
+ */
 function renderCardDetailsDeleteEdit(index) {
   let deleteEdit = document.getElementById("deleteEditCard");
   deleteEdit.innerHTML = `<div class="deleteEditCardContent">
@@ -206,7 +193,11 @@ function renderCardDetailsDeleteEdit(index) {
 }
 
 // ################### Open & Close Layer and Cards ####################
-// #####################################################################
+/**
+ * Opens overlayer when you click the AddTask button
+ * 
+ * @param {string} status 
+ */
 function openAddTaskOverlay(status) {
   statusCheck = status;
   CameFrom = "AddTaskOnStatus";
@@ -214,6 +205,9 @@ function openAddTaskOverlay(status) {
   setPrioBtn(prio_medium, "#FFA800", "prio_medium_white.svg");
 }
 
+/**
+ * closes the overlayer without making any changes
+ */
 function closeAddTaskOverlay() {
   clearInput();
   changeButtonToRegularAddTask();
@@ -221,149 +215,19 @@ function closeAddTaskOverlay() {
   document.getElementById("addTaskOverlay").classList.add("d_none");
 }
 
+/**
+ * closes the detail information without making any changes
+ */
 function closeCardDetails() {
   document.getElementById("card_details_bg").classList.add("d_none");
 }
 
+/**
+ * open card details
+ * 
+ * @param {number} index 
+ */
 function openCardDetails(index) {
   renderCardDetails(index);
   document.getElementById("card_details_bg").classList.remove("d_none");
-}
-
-// ############################ Card Templets ##########################
-// #####################################################################
-function renderHeader(task) {
-  let category = changeCategoryValue(task["category"]);
-  let color = categoryColorCheck(category);
-  return `<div id="user_cards" class="user_cards" draggable="true" 
-    ondragstart="startDragging(${task.id})" onclick="openCardDetails(${task.id})">
-      <div class="user_card_content"> <div class="cardHeader">
-        <div class="category" style="background-color: #${color}">${category}</div>
-        <button id="responseDragAndDropButton" 
-        class="responseDragAndDropButton" onclick="openPositionMenu(event, ${task.id})">
-          <img src="../assets/img/board/dots.png" alt=""/>
-          </button><div class="menuForPosition">${renderPositionMenu(task.id)}</div>
-        </div>
-          <div class="text_content_card">
-              <div class="titel_content_card">
-                  ${task["title"]}
-              </div>
-              <div class="description_content_card">
-                  ${task["description"]}
-              </div></div>`;
-}
-/**
- * 
- * @param {*} id 
- * @returns 
- */
-function renderPositionMenu(id){
-  return `
-  <div id="positionNav${id}" class="positionNav d_none">
-    <a onclick="stopOpenCardDetailsBeforMoveTo(event, 'todo')">Todo</a>
-    <a onclick="stopOpenCardDetailsBeforMoveTo(event, 'inProgress')">In Progress</a>
-    <a onclick="stopOpenCardDetailsBeforMoveTo(event, 'awaitFeedback')">Await feddback</a>
-    <a onclick="stopOpenCardDetailsBeforMoveTo(event, 'done')">Await feddback</a>
-  </div>`
-}
-
-/**
- * 
- * @param {*} event 
- * @param {*} status 
- */
-function stopOpenCardDetailsBeforMoveTo(event, status){
-  event.stopPropagation();
-  moveTo(status);
-}
-
-function renderProgressBar(task) {
-  let finalSubTasks = calcSubtask(task);
-  let sumOfTasks = task["progressValue"].length;
-  if (sumOfTasks > 0) {
-    let calcValueOfProgress = calcValueOfProgressbar(finalSubTasks, sumOfTasks);
-    return `<div class="progress_bar_card">
-          <progress id="fileSubtask(${task.id})" max="100" value="${calcValueOfProgress}">
-          </progress>
-          <div id="calcSubtask(${task.id})">${finalSubTasks}/${sumOfTasks} Subtask</div>
-      </div>`;
-  } else {
-    return `<div class="progress_bar_card"></div>`;
-  }
-}
-
-function renderAssignedPerson(task) {
-  return `<div class="contact_prio">
-      <div class="assigned_list">
-      ${calcAssignedPersons(task)}
-      </div>`;
-}
-function renderPrio(task, i) {
-  return `<div class="prio_card">
-              <img src="${rightPrioImg(task)}" alt="" />
-              </div></div></div></div>`;
-}
-
-function calcSubtask(task) {
-  let sum = 0;
-  let values = task["progressValue"];
-  if (values.length > 0) {
-    for (let i = 0; i < values.length; i++) {
-      let value = values[i];
-      sum += value;
-    }
-  }
-  return sum;
-}
-
-function calcValueOfProgressbar(finalSubTasks, sumOfTasks) {
-  let progressBarValue = 0;
-  progressBarValue = (finalSubTasks / sumOfTasks) * 100;
-  return progressBarValue;
-}
-
-function calcAssignedPersons(task) {
-  let assignedToHTML = "";
-  for (let i = 0; i < 3; i++) {
-    let assignedTo = task["assignedTo"][i];
-    assignedToHTML += `<div class="assigned_person" 
-      style = "background-color: #${assignedTo.color};">${
-      initialsAssignedTo(assignedTo.name, 0) +
-      initialsAssignedTo(assignedTo.name, 1)
-      }</div>`;
-  } assignedToHTML = overThreePersonsInTasks(task, assignedToHTML);
-  return assignedToHTML;
-}
-
-function overThreePersonsInTasks(task, assignedToHTML){
-  if (task["assignedTo"].length > 3){
-    let calcOverThree = task["assignedTo"].length - 3;
-    assignedToHTML += `<div class="assigned_person" 
-      style = "background-color: #grey;">+${calcOverThree}</div>`;
-  } return assignedToHTML
-}
-
-function initialsAssignedTo(name, position) {
-  let nameArray = name.split(" ");
-  return nameArray[position].charAt(0);
-}
-
-function rightPrioImg(task) {
-  if (task["prio"] == "urgent") {
-    return "../assets/img/board/PrioUrgent.png";
-  } else if (task["prio"] == "medium") {
-    return "../assets/img/board/PrioMedia.png";
-  } else {
-    return "../assets/img/board/PrioLight.png";
-  }
-}
-
-function categoryColorCheck(category) {
-  if (category == "Technical Task") {
-    return "1FD7C1";
-  } else if (category == "User Story") {
-    return "0938FF";
-  } else {
-    return "808080";
-  }
 }
