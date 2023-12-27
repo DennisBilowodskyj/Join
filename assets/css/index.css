@@ -221,9 +221,6 @@ form{
     display: none;
 }
 
-/*MIN HEIGHT 1400PX*/
-
-
 /*MIN HEIGHT 1150PX*/
 
 @media(min-width:820px) and (min-height:1150px){
