@@ -23,6 +23,9 @@ let feedback = 0;
 
 let tasks = [];
 
+/**
+ * set the summary status counter to zero
+ */
 function resetCounters() {
   todos = 0;
   done = 0;
@@ -32,6 +35,7 @@ function resetCounters() {
   feedback = 0;
 }
 resetCounters();
+
 async function addToSummary() {
   await updateTaskCounts();
   updateTodoNumber();
@@ -48,6 +52,9 @@ async function summaryInit() {
   renderUserName();
 }
  
+/**
+ * load tasks from server
+ */
 async function loadTasks() {
   tasks = JSON.parse(await getItem("tasks"));
 }
@@ -72,6 +79,9 @@ function greet() {
 
 greet();
 
+/**
+ * this function displayed the name of the user or the guest
+ */
 function renderUserName() {
   const guestUser = localStorage.getItem("guestUser");
   if (guestUser === "Guest") {
@@ -101,10 +111,16 @@ function countTasksByStatus(status) {
   return count;
 }
 
+/**
+ * 
+ * @returns the length of all tasks
+ */
 function countAllTasks() {
   return tasks.length;
 }
-
+/**
+ * update the count of tasks
+ */
 async function updateTaskCounts() {
   todos = countTasksByStatus("todo");
   done = countTasksByStatus("done");
@@ -119,7 +135,9 @@ async function updateTaskCounts() {
   urgent -= urgentToDoneTasks.length;
 }
 
-
+/**
+ * show the count of tasks
+ */
 function updateTodoNumber() {
   document.getElementById("todos").innerText = todos;
   document.getElementById("done").innerText = done;
@@ -129,7 +147,9 @@ function updateTodoNumber() {
   document.getElementById("feedback").innerText = feedback;
 }
 
-// display the earliest prio:urgent dueDate
+/**
+ * if a task had the status urgent, DISPLAY the earliest urgent date
+ */ 
 function displayEarliestDueDate() {
   const earliestTask = findEarliestDueDate(tasks);
   const hasUndoneUrgentTasks = tasks.some(task => task.prio === "urgent" && task.status !== "done");
@@ -148,6 +168,9 @@ function displayEarliestDueDate() {
   }
 }
 
+/**
+ * if a task had the status urgent, FIND the earliest urgent date
+ */
 function findEarliestDueDate(tasks) {
   const urgentTasks = tasks.filter((tasks) => tasks.prio === "urgent");
 
@@ -167,8 +190,9 @@ function findEarliestDueDate(tasks) {
 }
 findEarliestDueDate(tasks);
 
-// display name after login
-
+/**
+ * display name after login
+ */ 
 function welcomeMobile() {
   document.addEventListener("DOMContentLoaded", function () {
     if (
@@ -183,7 +207,11 @@ function welcomeMobile() {
     }
   });
 
-  function showWelcomeScreen() {
+
+  /**
+   * hide the welcome screen after login (only in the mobile view)
+   */
+function showWelcomeScreen() {
     let welcomeOverlayer = document.querySelector(".welcomeOverlayer");
 
     setTimeout(function () {
