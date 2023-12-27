@@ -252,7 +252,11 @@ function renderHeader(task) {
                   ${task["description"]}
               </div></div>`;
 }
-
+/**
+ * 
+ * @param {*} id 
+ * @returns 
+ */
 function renderPositionMenu(id){
   return `
   <div id="positionNav${id}" class="positionNav d_none">
@@ -263,6 +267,11 @@ function renderPositionMenu(id){
   </div>`
 }
 
+/**
+ * 
+ * @param {*} event 
+ * @param {*} status 
+ */
 function stopOpenCardDetailsBeforMoveTo(event, status){
   event.stopPropagation();
   moveTo(status);
@@ -315,15 +324,23 @@ function calcValueOfProgressbar(finalSubTasks, sumOfTasks) {
 
 function calcAssignedPersons(task) {
   let assignedToHTML = "";
-  for (let i = 0; i < task["assignedTo"].length; i++) {
+  for (let i = 0; i < 3; i++) {
     let assignedTo = task["assignedTo"][i];
     assignedToHTML += `<div class="assigned_person" 
       style = "background-color: #${assignedTo.color};">${
       initialsAssignedTo(assignedTo.name, 0) +
       initialsAssignedTo(assignedTo.name, 1)
       }</div>`;
-  }
+  } assignedToHTML = overThreePersonsInTasks(task, assignedToHTML);
   return assignedToHTML;
+}
+
+function overThreePersonsInTasks(task, assignedToHTML){
+  if (task["assignedTo"].length > 3){
+    let calcOverThree = task["assignedTo"].length - 3;
+    assignedToHTML += `<div class="assigned_person" 
+      style = "background-color: #grey;">+${calcOverThree}</div>`;
+  } return assignedToHTML
 }
 
 function initialsAssignedTo(name, position) {
