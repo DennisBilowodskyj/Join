@@ -137,12 +137,12 @@ form{
     top: 0;
     width: 16px; 
     height: 16px; 
-    background-image: url(../img/login_icons/unchecked.png); 
+    background-image: url(../assets/img/login_icons/unchecked.png); 
     background-size: cover;
 }
 
 .checkbox-input:checked + label:before {
-    background-image: url(../img/login_icons/checked.png); 
+    background-image: url(../assets/img/login_icons/checked.png); 
 }
 
 .checkbox-input + label {

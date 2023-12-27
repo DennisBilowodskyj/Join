@@ -67,7 +67,7 @@ function markContactAssigned(i) {
 
   contactContainer.classList.add("contactAktive");
   contactContainer.style.backgroundColor = "#2A3647";
-  checkbox.src = "./assets/img/addTask_icons/checked-white.png";
+  checkbox.src = "../assets/img/addTask_icons/checked-white.png";
 }
 
 /**
@@ -79,7 +79,7 @@ function unmarkContactAssigned(i) {
 
   contactContainer.classList.remove("contactAktive");
   contactContainer.style.backgroundColor = "";
-  checkbox.src = "./assets/img/addTask_icons/check_button.png";
+  checkbox.src = "../assets/img/addTask_icons/check_button.png";
 }
 
 function resetAssignedContacts() {
@@ -216,9 +216,9 @@ function generateSubtaskContainerHtml(subtaskId, subtask) {
 function generateSubtaskChange(subtaskId) {
   return /*html*/ `
         <div class="subtaskChange d_flex">
-                <img src="./assets/img/addTask_icons/subtask_edit.png" alt=""  onclick="editSubtask('${subtaskId}')">
+                <img src="../assets/img/addTask_icons/subtask_edit.png" alt=""  onclick="editSubtask('${subtaskId}')">
                 <div class="seperatorSubtask"></div>
-                <img src="./assets/img/addTask_icons/subtask_delete.png" alt="" onclick="deleteSubtask('${subtaskId}')">
+                <img src="../assets/img/addTask_icons/subtask_delete.png" alt="" onclick="deleteSubtask('${subtaskId}')">
             </div>
     `;
 }
@@ -336,7 +336,7 @@ function setPrioBtn(btnID, bgColor, imgSrc) {
   btnID.style.color = "white";
   btnID.style.boxShadow = "0px 4px 4px 0px #00000040";
   let img = btnID.querySelector("img");
-  img.src = "./assets/img/addTask_icons/" + imgSrc;
+  img.src = "../assets/img/addTask_icons/" + imgSrc;
 }
 
 function setPrioBtnInactive(btn) {
@@ -396,7 +396,7 @@ function generateContactsHTML(i, contact, initials) {
                     <div class="contactName"><span>${contact.name}</span></div>
                  </div>
                 <div class="contactRight">
-                    <img id="assignedCechbox${i}" src="./assets/img/addTask_icons/check_button.png" alt="">
+                    <img id="assignedCechbox${i}" src="../assets/img/addTask_icons/check_button.png" alt="">
                 </div>
             </div>
     `;

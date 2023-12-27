@@ -23,7 +23,7 @@ body {
   margin: 0;
   font-family: "Inter";
   font-size: 20px;
-  /* overflow-y: -moz-hidden-unscrollable; */
+  /* overflow-y: p;*/
 }
 
 .d-flex {
@@ -31,12 +31,16 @@ body {
 }
 
 .section_board {
-  padding-left: calc(8% + 232px);
-  padding-right: 9.5%;
-  height: calc(100vh - 96px);
   background-color: #f6f7f8;
   overflow-y: auto;
   overflow-x: hidden;
+}
+
+.section_board_content{
+  padding-left: calc(8% + 232px);
+  padding-right: 9.5%;
+  height: calc(100vh - 96px);
+  max-width: 1440px;
 }
 
 .boardDiv {

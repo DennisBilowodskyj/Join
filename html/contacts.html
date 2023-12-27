@@ -4,24 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join</title>
-    <link rel="icon" href="assets/img/logos/JoinLogo.png" />
-    <link rel="stylesheet" href="./assets/css/header.css" />
-    <link rel="stylesheet" href="./assets/css/sideBar.css" />
-    <link rel="stylesheet" href="./assets/css/contacts.css" />
-    <link rel="stylesheet" href="./assets/css/contactsNewContacOverlayer.css" />
-    <link rel="stylesheet" href="./assets/css/contactsResponse.css" />
-    <link rel="stylesheet" href="./assets/css/inter.css" />
-    <link rel="stylesheet" href="./assets/css/openSans.css" />
+    <link rel="icon" href="../assets/img/logos/JoinLogo.png" />
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/sideBar.css" />
+    <link rel="stylesheet" href="../css/contacts.css" />
+    <link rel="stylesheet" href="../css/contactsNewContacOverlayer.css" />
+    <link rel="stylesheet" href="../css/contactsResponse.css" />
+    <link rel="stylesheet" href="../css/inter.css" />
+    <link rel="stylesheet" href="../css/openSans.css" />
 
-    <script src="./assets/js/contacts.js"></script>
-    <script src="./assets/js/renderContacts.js"></script>
-    <script src="./assets/js/script.js"></script>
-    <script src="./assets/js/storage.js"></script>
-    <script src="assets/js/undersides.js"></script>
+    <script src="../js/contacts.js"></script>
+    <script src="../js/renderContacts.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/undersides.js"></script>
   </head>
   <body onload="contactInit()">
-    <div w3-include-html="./assets/tamplets/header.html"></div>
-    <div w3-include-html="./assets/tamplets/sideBar.html"></div>
+    <div w3-include-html="../assets/tamplets/header.html"></div>
+    <div w3-include-html="../assets/tamplets/sideBar.html"></div>
     <section id="newContact_bg" class="newContact_bg display_none">
       <div class="newContactField">
         <div class="newContactField_left" id="newContactField_left"></div>
@@ -30,7 +30,7 @@
           <div>
             <a class="closeButton" onclick="closeButton()"
               ><img
-                src="./assets/img/contact_icons/contact_mini_icons/Close.svg"
+                src="../assets/img/contact_icons/contact_mini_icons/Close.svg"
             /></a>
             <div id="contactForm"></div>
           </div>
@@ -46,14 +46,14 @@
         <button id="addContactButton" onclick="openNewContactDialog()">
           Add new contact
           <img
-            src="./assets/img/contact_icons/person_add.png"
+            src="../assets/img/contact_icons/person_add.png"
             alt="plus Person"
           />
         </button>
 
         <button id="addContactButtonResponse" onclick="openNewContactDialog()">
           <img
-            src="./assets/img/contact_icons/person_add.png"
+            src="../assets/img/contact_icons/person_add.png"
             alt="plus Person"
           />
         </button>
@@ -73,7 +73,7 @@
           </div>
         </div>
         <a id="backArrow" onclick="rensponseBackToList()">
-          <img src="./assets/img/contact_icons/backarrow.png" />
+          <img src="../assets/img/contact_icons/backarrow.png" />
         </a>
 
         <!-- automated created content of the right side -->
@@ -96,7 +96,7 @@
           onclick="showEditDeletOverlayButton()"
         >
           <img
-            src="./assets/img/contact_icons/contact_mini_icons/more_vert.png"
+            src="../assets/img/contact_icons/contact_mini_icons/more_vert.png"
             alt="Edit Remove Person"
           />
         </button>

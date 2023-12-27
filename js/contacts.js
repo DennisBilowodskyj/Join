@@ -103,9 +103,9 @@ function editLeftSideOfOverlayer() {
   document.getElementById("newContactField_left").innerHTML = "";
   document.getElementById("newContactField_left").innerHTML = `
   <a onclick="closeButton()" id="closeResponse">
-    <img src="./assets/img/contact_icons/contact_mini_icons/CloseResponse.png"/>
+    <img src="../assets/img/contact_icons/contact_mini_icons/CloseResponse.png"/>
   </a>
-  <img class="newContactLogo" src="./assets/img/contact_icons/JoinLogo.png" />
+  <img class="newContactLogo" src="../assets/img/contact_icons/JoinLogo.png" />
   <h2>Add contact</h2>
   <span>Task are better with a team!</span>
   <hr />`;
@@ -115,7 +115,7 @@ function changeCycleImg() {
   let cycle = document.getElementById("newContact_cycle");
   cycle.innerHTML = "";
   cycle.style.backgroundColor = "#d1d1d1";
-  cycle.innerHTML = `<img src="./assets/img/contact_icons/person.svg" alt="" />`;
+  cycle.innerHTML = `<img src="../assets/img/contact_icons/person.svg" alt="" />`;
 }
 
 function createCreateContactForm() {
@@ -140,11 +140,11 @@ function changeButtonOnCreate() {
   <button type="reset" class="cancelButton" id="cancelButton" 
     onclick="closeButton()">
     Cancel
-    <img src="./assets/img/contact_icons/contact_mini_icons/iconoir_cancel.svg"/>
+    <img src="../assets/img/contact_icons/contact_mini_icons/iconoir_cancel.svg"/>
   </button>
   <button type="submit" class="createButton" id="createButton">
     Create contact
-    <img src="./assets/img/contact_icons/contact_mini_icons/check.svg"/>
+    <img src="../assets/img/contact_icons/contact_mini_icons/check.svg"/>
   </button>`;
 }
 
@@ -165,9 +165,9 @@ function editLeftSideOfOverlayerForEdit() {
   document.getElementById("newContactField_left").innerHTML = "";
   document.getElementById("newContactField_left").innerHTML = `
     <a onclick="closeButton()" id="closeResponse">
-      <img src="./assets/img/contact_icons/contact_mini_icons/CloseResponse.png"/>
+      <img src="../assets/img/contact_icons/contact_mini_icons/CloseResponse.png"/>
     </a>
-    <img class="newContactLogo" src="./assets/img/contact_icons/JoinLogo.png" alt=""/>
+    <img class="newContactLogo" src="../assets/img/contact_icons/JoinLogo.png" alt=""/>
     <h2>Edit contact</h2>
     <hr />`;
 }
@@ -213,7 +213,7 @@ function changeButtonOnEdit(id) {
   </button>
   <button type="submit" class="createButton" id="createButton">
     Save
-    <img src="./assets/img/contact_icons/contact_mini_icons/check.svg"/>
+    <img src="../assets/img/contact_icons/contact_mini_icons/check.svg"/>
   </button>`;
 }
 

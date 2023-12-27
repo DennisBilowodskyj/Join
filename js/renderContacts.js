@@ -143,11 +143,11 @@ function showName(id) {
     document.getElementById("edit_delete").innerHTML = "";
     document.getElementById("edit_delete").innerHTML = `
       <a onclick="openEditContactDialog(${id})">
-          <img src="./assets/img/contact_icons/edit.svg"
+          <img src="../assets/img/contact_icons/edit.svg"
           alt="Edit Icon"/>Edit
       </a>
       <a onclick="deleteContact(${id})">
-          <img src="./assets/img/contact_icons/delete.svg"
+          <img src="../assets/img/contact_icons/delete.svg"
           alt="Delete Icon"/>Delete
       </a>`;
   }
@@ -156,11 +156,11 @@ function showName(id) {
     document.getElementById("editDeletOverlay").innerHTML = "";
     document.getElementById("editDeletOverlay").innerHTML = `
     <button onclick="openEditContactDialog(${id})" class="editDeletOverlayButton">
-      <img class="editDeletOverlayIMG" src="./assets/img/contact_icons/edit.svg"/>
+      <img class="editDeletOverlayIMG" src="../assets/img/contact_icons/edit.svg"/>
         Edit
     </button>
     <button onclick="deleteContact(${id})" class="editDeletOverlayButton">
-      <img class="editDeletOverlayIMG" src="./assets/img/contact_icons/delete.svg"
+      <img class="editDeletOverlayIMG" src="../assets/img/contact_icons/delete.svg"
       onclick=""/>
         Delete
     </button>`;
