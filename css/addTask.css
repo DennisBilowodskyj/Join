@@ -140,6 +140,7 @@ h1 {
 .footSection {
     justify-content: space-between;
     margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .OverlayerInput {
@@ -445,6 +446,7 @@ li:focus {
     top: calc(20vh - 64px);
     left: calc(90vw - 60px);
     cursor: pointer;
+    
 }
 
 .closeBtn:hover {
@@ -470,10 +472,11 @@ li:focus {
     display: flex;
     justify-content: center;
     align-items: center;
-    display:none;
+    display: none;
     transform: translate(-50%, -50%);
 
 }
+
 #taskAdded {
     display: flex;
     align-items: center;
@@ -486,18 +489,33 @@ li:focus {
     animation: slideIn 0.35s ease-in-out forwards;
 }
 
+form {
+    max-width: 980px;
+}
+
 .slide-up {
-    transform: translateY(0); /* Endposition des Elements (hochgeschoben) */
-  }
-  
-  @keyframes slideIn {
+    transform: translateY(0);
+    /* Endposition des Elements (hochgeschoben) */
+}
+
+@keyframes slideIn {
     from {
-      transform: translateY(100%); /* Startposition der Animation */
+        transform: translateY(100%);
+        /* Startposition der Animation */
     }
+
     to {
-      transform: translateY(0); /* Endposition der Animation */
+        transform: translateY(0);
+        /* Endposition der Animation */
     }
-  }
+}
+
+@media (width > 1920px) {
+    .section_addTask {
+        max-width: 1920px;
+    }
+
+}
 
 @media (max-width: 1100px) {
     .section_addTask {
@@ -555,5 +573,9 @@ li:focus {
 
     .footSection {
         margin-bottom: 100px;
+    }
+
+    .closeBtn {
+        left: 87%;
     }
 }
