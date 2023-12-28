@@ -213,7 +213,7 @@ function emptyErrorDivText(emailErrorDiv, passwordErrorDiv){
 
 
 function setCheckBoxAlertSignUp(checkboxErrorDiv){
-  checkboxErrorDiv.innerHTML = 'Ups! Bitte akzeptieren sie die Privacy Police.';
+  checkboxErrorDiv.innerHTML = 'Ups! Please accept the Privacy Policy.';
   return checkboxErrorDiv;
 }
 
