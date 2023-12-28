@@ -1,3 +1,6 @@
+/**
+ * global Variables
+ */
 let CameFrom = "addTask";
 let taskPrio = 'medium';
 let assignedTo = [];
@@ -8,6 +11,9 @@ let taskOnEdit = 0;
 let categoryFromAddTask = undefined;
 let contactsRendered = false;
 
+/**
+ * onload function to initialize the site 
+ */
 async function initAddTask() {
   await init();
   await loadTasks();
@@ -16,9 +22,13 @@ async function initAddTask() {
   setPrioBtn(prio_medium, "#FFA800", "prio_medium_white.svg");
 }
 
+/**
+ * fetch tasks from remoteStorage
+ */
 async function loadTasks() {
   tasks = JSON.parse(await getItem("tasks"));
 }
+
 /**
  * open Overlay below Input and mark contacts if assigned
  */
@@ -38,7 +48,7 @@ function openAssignedInput() {
 
 /**
  * set a contact as assigned
- * @param {index of contacts-array} i 
+ * @param {number} i 
  */
 function assign(i) {
   contacts[i].assigned = !contacts[i].assigned;
@@ -56,10 +66,9 @@ function assign(i) {
   renderAssignedBadges();
 }
 
-
-
 /**
  * change css properties when assigned
+ * @param {number} i 
  */
 function markContactAssigned(i) {
   let contactContainer = document.getElementById(`contact${i}`);
@@ -72,6 +81,7 @@ function markContactAssigned(i) {
 
 /**
  * change css proberties to initially
+ * @param {number} i 
  */
 function unmarkContactAssigned(i) {
   let contactContainer = document.getElementById(`contact${i}`);
@@ -82,6 +92,9 @@ function unmarkContactAssigned(i) {
   checkbox.src = "../assets/img/addTask_icons/check_button.png";
 }
 
+/**
+ * set contacts to not assigned
+ */
 function resetAssignedContacts() {
   contacts.forEach((contact) => {
     contact.assigned = false;
@@ -98,6 +111,9 @@ async function addTaskTest() {
   }
 }
 
+/**
+ * save task to global array and remoteStorage
+ */
 async function addTask() {
   let title = document.getElementById("taskTitle").value;
   let description = document.getElementById("taskDescription").value;
@@ -119,6 +135,9 @@ async function addTask() {
   handleTaskAddedOverlay();
 }
 
+/**
+ * handle overlay and forward when task added
+ */
 async function handleTaskAddedOverlay() {
   showTaskAddedOverlay();
   setTimeout(() => {
@@ -126,22 +145,35 @@ async function handleTaskAddedOverlay() {
   }, 1500);
 }
 
+/**
+ * forward to board.html
+ */
 function forwardToBoard() {
   window.open('board.html', '_self');
 }
 
+/**
+ * unhide TaskAdded overlay
+ */
 function showTaskAddedOverlay() {
   let taskAddedOverlay = document.getElementById('taskAddedOverlay');
 
   taskAddedOverlay.style.display = 'block';
 }
 
+/**
+ * hide TaskAdded overlay
+ */
 function hideTaskAddedOverlay() {
   let taskAddedOverlay = document.getElementById('taskAddedOverlay');
 
   taskAddedOverlay.style.display = 'none';
 }
 
+/**
+ * set selected category to data-value
+ * @param {HTMLElement} element 
+ */
 function setCategory(element) {
   let input = document.getElementById('categoryInput');
 
@@ -150,6 +182,9 @@ function setCategory(element) {
   openOverlay();
 }
 
+/**
+ * set the category to default
+ */
 function clearCategory() {
   let input = document.getElementById('categoryInput');
   input.placeholder = "Select task category";
@@ -165,6 +200,10 @@ function openOverlay() {
   setCategorytoRequired(overlay);
 }
 
+/**
+ * toggle the category-Element to required
+ * @param {HTMLElement} overlay 
+ */
 function setCategorytoRequired(overlay) {
   if ((overlay.classList.contains('d_none')) && (overlay.innerHTML == 'Select task category')) {
     categoryInput.setAttribute('required', 'required');
@@ -182,6 +221,9 @@ function prioCheck() {
   }
 }
 
+/**
+ * add subtask an save to subtasks-Array
+ */
 function addSubtask() {
   let subtaskInput = document.getElementById("subtaskInput");
   let subtaskOutput = document.getElementById("subtaskListContainer");
@@ -197,7 +239,9 @@ function addSubtask() {
 
 /**
  * generates html for subtask container 
- * @returns html
+ * @param {number} subtaskId 
+ * @param {String} subtask 
+ * @returns htmlTemplate
  */
 function generateSubtaskContainerHtml(subtaskId, subtask) {
   return /*html*/ `
@@ -211,7 +255,8 @@ function generateSubtaskContainerHtml(subtaskId, subtask) {
 
 /**
  * generates html for subtask options button 
- * @returns html
+ * @param {number} subtaskId 
+ * @returns htmlTemplate
  */
 function generateSubtaskChange(subtaskId) {
   return /*html*/ `
@@ -223,32 +268,42 @@ function generateSubtaskChange(subtaskId) {
     `;
 }
 
-
+/**
+ * edit subtask-String
+ * @param {number} subtaskId 
+ */
 function editSubtask(subtaskId) {
   let subtaskElement = document.getElementById(`subtask_${subtaskId}`);
   let subtaskText = subtaskElement.querySelector("li");
   let subtaskContainer = subtaskElement.closest(".subtaskContainer");
 
-  // make subtask editable
+  makeSubtaskEditable(subtaskText, subtaskContainer);
+  subtaskLeaveEditModus (subtaskId, subtaskText, subtaskContainer);
+}
+
+/**
+ * set selected element to editable
+ * @param {HTMLElement} subtaskText 
+ * @param {HTMLElement} subtaskContainer 
+ */
+function makeSubtaskEditable(subtaskText, subtaskContainer) {
   subtaskText.contentEditable = true;
   subtaskText.focus();
 
   subtaskContainer.classList.add("subtaskContainerActive");
+}
 
-  // eventlistener to leave editable-modus
+/**
+ * stops editaable-Modus when not focused
+ * @param {number} subtaskId 
+ * @param {HTMLElement} subtaskText 
+ * @param {HTMLElement} subtaskContainer 
+ */
+function subtaskLeaveEditModus (subtaskId, subtaskText, subtaskContainer){
   subtaskText.addEventListener("blur", function () {
     subtaskText.contentEditable = false;
     subtasks[subtaskId] = subtaskText.innerHTML;
     subtaskContainer.classList.remove("subtaskContainerActive");
-  });
-
-  // eventlistener to leave editable-modus with "Enter"
-  subtaskText.addEventListener("keydown", function (event) {
-    if (event.key === "Enter") {
-      subtaskText.contentEditable = false;
-      subtasks[subtaskId] = subtaskText.innerHTML;
-      subtaskContainer.classList.remove("subtaskContainerActive");
-    }
   });
 }
 
@@ -269,7 +324,10 @@ document.addEventListener('click', function (event) {
   }
 });
 
-
+/**
+ * delete selected subtask
+ * @param {number} subtaskId 
+ */
 function deleteSubtask(subtaskId) {
   let subtaskContainer = document.getElementById(`subtask_${subtaskId}`);
 
@@ -277,9 +335,13 @@ function deleteSubtask(subtaskId) {
   subtaskContainer.remove();
 }
 
+/**
+ * fetch contacts from remoteStorage
+ */
 async function getContacts() {
   contacts = JSON.parse(await getItem("contacts"));
 }
+
 /**
  * render otption button for subtasks oninput
  */
@@ -287,6 +349,7 @@ function renderSubtaskBtn() {
   subtaskControls.classList.remove("d_none");
   add_subtaskBtn.classList.add("d_none");
 }
+
 /**
  * set the value of subtaskInput to default
  */
@@ -295,6 +358,7 @@ function resetSubtaskInput() {
   subtaskControls.classList.add("d_none");
   add_subtaskBtn.classList.remove("d_none");
 }
+
 /**
  * render the initials for the assigned contacts with different colors
  */
@@ -309,8 +373,10 @@ function renderAssignedBadges() {
         `;
   });
 }
+
 /**
  * set priority for the task in the global variable and set the button on active
+ * @param {HTMLElement} buttonID 
  */
 function setPrio(buttonID) {
   taskPrio = buttonID;
@@ -331,6 +397,12 @@ function setPrio(buttonID) {
   }
 }
 
+/**
+ * set priority for the task in the global variable and set the button on active
+ * @param {HTMLElement} btnID 
+ * @param {String} bgColor 
+ * @param {String} imgSrc 
+ */
 function setPrioBtn(btnID, bgColor, imgSrc) {
   btnID.style.backgroundColor = bgColor;
   btnID.style.color = "white";
@@ -339,6 +411,10 @@ function setPrioBtn(btnID, bgColor, imgSrc) {
   img.src = "../assets/img/addTask_icons/" + imgSrc;
 }
 
+/**
+ * set button to inactive
+ * @param {HTMLElement} btn 
+ */
 function setPrioBtnInactive(btn) {
   btn.style.backgroundColor = "white";
   btn.style.color = "black";
@@ -347,6 +423,7 @@ function setPrioBtnInactive(btn) {
   let img = btn.querySelector("img");
   img.src = img.src.replace("_white.svg", ".svg");
 }
+
 /**
  * set priority to undefined an deselect the Button
  */
@@ -360,8 +437,9 @@ function deselectprio() {
   }
   taskPrio = undefined;
 }
+
 /**
- * clear the form
+ * clear the form to default
  */
 function clearInput() {
   taskTitle.value = "";
@@ -377,6 +455,9 @@ function clearInput() {
   clearCategory();
 }
 
+/**
+ * render contacts from contacts-Array
+ */
 function renderContacts() {
   let contactsOverlay = document.getElementById("contactsContent");
 
@@ -388,6 +469,13 @@ function renderContacts() {
   }
 }
 
+/**
+ * 
+ * @param {number} i 
+ * @param {String} contact 
+ * @param {String} initials 
+ * @returns htmlTemplate
+ */
 function generateContactsHTML(i, contact, initials) {
   return /*html*/ `
          <div class="contact d_flex" id='contact${i}' onclick="assign(${i})">
@@ -401,8 +489,11 @@ function generateContactsHTML(i, contact, initials) {
             </div>
     `;
 }
+
 /**
- * @returns initials of the contact´s fullname
+ * initials of the contact´s fullname
+ * @param {String} fullName 
+ * @returns String
  */
 function getInitials(fullName) {
   const names = fullName.split(" ");
