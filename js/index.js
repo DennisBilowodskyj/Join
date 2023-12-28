@@ -1,6 +1,7 @@
 let users = [];
 let currentUser = [];
 
+
 /**
  * This function is used to //////
  */
@@ -14,6 +15,7 @@ async function initLogIn(){ /**LOGIN */
  * This function is used to open the signUp.html
  */
 function openSignUpWindow(){ /**LOGIN */
+    sessionStorage.clear('SignUp');
     let pageURL = 'signUp.html';
     window.location.href = pageURL;
 }
@@ -23,9 +25,17 @@ function openSignUpWindow(){ /**LOGIN */
  * This function is used to load the last sign up user 
  */
 function showLastUser() {
-    let currentData = localStorage.getItem("currentUser");
+    let data = sessionStorage.getItem('SignUp');
     const logInEmailInput = document.getElementById("emailLogIn");
     const logInPasswordInput = document.getElementById("passwordLogIn");
+    if(data == "2"){
+      let lastLogInUser = localStorage.getItem("checkinUser");
+      let lastLogInPassword = localStorage.getItem("checkinPassword");
+      logInEmailInput.value = lastLogInUser.replace(/"/g, '').trim();
+      logInPasswordInput.value = lastLogInPassword.replace(/"/g, '').trim();
+    }
+    if(data == 1){
+    let currentData = localStorage.getItem("currentUser");
     if (currentData) {
       const currentUserArray = JSON.parse(currentData);
       if (currentUserArray.length > 0) {
@@ -34,9 +44,9 @@ function showLastUser() {
         logInPasswordInput.value = lastUser.currentPassword;
       }
     }
-    checkInputLogIn();
 }
-  
+checkInputLogIn();
+}  
 
 /**
  * This function is used to check the content of the input field and, if necessary, converts the image and type of input
@@ -70,6 +80,7 @@ function guestLogIn(){
   emailLogIn.value = '';
   localStorage.removeItem('checkinUser');
   localStorage.setItem('guestUser', 'Guest');
+  sessionStorage.clear('SignUp');
   openSummary();
 }
 
@@ -82,6 +93,7 @@ function logInUser() {
     localStorage.removeItem("guestUser");
     event.preventDefault();
     let { passwordErrorDiv, emailErrorDiv } = setVariablesForLogInInput();
+    let checkbox = document.getElementById('remember-me');
     removeClasslistFromInputDivRedBorderLogIn();
     clearErrorDiv(passwordErrorDiv, emailErrorDiv);
     const emailInput = document.getElementById("emailLogIn").value;
@@ -90,6 +102,11 @@ function logInUser() {
     if (foundPassword !== "E-Mail nicht gefunden") {
       if (foundPassword === passwordInput) {
         localStorage.setItem("checkinUser", JSON.stringify(emailInput));
+        localStorage.setItem("checkinPassword", JSON.stringify(foundPassword));
+        sessionStorage.clear('SignUp');
+        if(checkbox.checked){
+          sessionStorage.setItem('SignUp', 2);
+        }
         openSummary();
       } else {
         passwordErrorDiv = setPasswordAlertLogIn(passwordErrorDiv);
@@ -196,6 +213,7 @@ async function userSignUp() {
         passwordErrorDiv = setPasswordAlertSignUp(passwordErrorDiv);
       }
     }
+    sessionStorage.setItem('SignUp', 1);
 }
   
 
