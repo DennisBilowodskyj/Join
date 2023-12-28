@@ -113,9 +113,10 @@ body {
 .wrapperOverlay {
   background-color: white;
   border-radius: 20px;
-  height: 80vh;
-  width: 80vw;
   overflow: auto;
+  margin: 10px;
+  max-height: 90vh;
+  max-width: 90vw;
 }
 
 .headSection {
