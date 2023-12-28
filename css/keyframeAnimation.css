@@ -42,107 +42,55 @@
     100% {top: 0vh; left: 0vw;transform: scale(1);}
 }
 
-/*KEYFRAME 917PX*/
-
-@media (max-width:500px) and (max-height:917px){
+@media(max-width:700px) and (max-height:1400px){
     @keyframes mymove {
-        0% {top: 45vh; left: 45vw;transform:  scale(2.5);}
-        50% {top: 45vh; left: 45vw; transform: scale(2.5);}
+        0% {top: 40vh; left: 40vw;transform:  scale(2.74);}
+        50% {top: 40vh; left: 40vw; transform: scale(2.74);}
         100% {top: 0vh; left: 0vw;transform: scale(1);}
     }
 }
 
-/*KEYFRAME 851PX*/
-
-@media (max-width:850px) and (max-height:851px){
+@media(max-width:500px) and (max-height:1400px){
     @keyframes mymove {
-        0% {top: 40vh; left: 40vw;transform:  scale(2);}
-        50% {top: 40vh; left: 40vw; transform: scale(2);}
+        0% {top: 40vh; left: 35vw;transform:  scale(2.74);}
+        50% {top: 40vh; left: 35vw; transform: scale(2.74);}
         100% {top: 0vh; left: 0vw;transform: scale(1);}
     }
 }
 
-@media (max-width:600px) and (max-height:851px){
+@media(max-width:400px) and (max-height:1400px){
     @keyframes mymove {
-        0% {top: 40vh; left: 35vw;transform:  scale(1.8);}
-        50% {top: 40vh; left: 35vw; transform: scale(1.8);}
+        0% {top: 40vh; left: 30vw;transform:  scale(2.3);}
+        50% {top: 40vh; left: 30vw; transform: scale(2.3);}
         100% {top: 0vh; left: 0vw;transform: scale(1);}
     }
 }
 
-@media (max-width:500px) and (max-height:851px){
+@media(max-width:600px) and (max-height:1000px){
     @keyframes mymove {
-        0% {top: 45vh; left: 45vw;transform:  scale(1.8);}
-        50% {top: 45vh; left: 45vw; transform: scale(1.8);}
+        0% {top: 45vh; left: 40vw;transform:  scale(2.3);}
+        50% {top: 45vh; left: 40vw; transform: scale(2.3);}
         100% {top: 0vh; left: 0vw;transform: scale(1);}
     }
 }
 
-/*KEYFRAME 830PX*/
-
-@media (max-width:650px) and (max-height:830px){
+@media(max-width:400px) and (max-height:1000px){
     @keyframes mymove {
-        0% {top: 40vh; left: 35vw;transform:  scale(1.8);}
-        50% {top: 40vh; left: 35vw; transform: scale(1.8);}
+        0% {top: 45vh; left: 35vw;transform:  scale(2.3);}
+        50% {top: 45vh; left: 35vw; transform: scale(2.3);}
         100% {top: 0vh; left: 0vw;transform: scale(1);}
     }
 }
 
-@media (max-width:450px) and (max-height:830px){
+@media(max-width:600px) and (max-height:900px){
     @keyframes mymove {
-        0% {top: 45vh; left: 45vw;transform:  scale(1.8);}
-        50% {top: 45vh; left: 45vw; transform: scale(1.8);}
+        0% {top: 45vh; left: 42vw;transform:  scale(2.3);}
+        50% {top: 45vh; left: 42vw; transform: scale(2.3);}
         100% {top: 0vh; left: 0vw;transform: scale(1);}
     }
 }
 
-/*KEYFRAME 770PX*/
-
-@media (max-width:900px) and (max-height:770px){
-    @keyframes mymove {
-        0% {top: 40vh; left: 40vw;transform:  scale(1.8);}
-        50% {top: 40vh; left: 40vw; transform: scale(1.8);}
-        100% {top: 0vh; left: 0vw;transform: scale(1);}
-    }
-}
-
-@media (max-width:650px) and (max-height:770px){
-    @keyframes mymove {
-        0% {top: 40vh; left: 35vw;transform:  scale(1.8);}
-        50% {top: 40vh; left: 35vw; transform: scale(1.8);}
-        100% {top: 0vh; left: 0vw;transform: scale(1);}
-    }
-}
-
-@media (max-width:500px) and (max-height:770px){
-    @keyframes mymove {
-        0% {top: 45vh; left: 45vw;transform:  scale(1.8);}
-        50% {top: 45vh; left: 45vw; transform: scale(1.8);}
-        100% {top: 0vh; left: 0vw;transform: scale(1);}
-    }
-}
-
-/*KEYFRAME 670PX*/
-
-@media (max-width:500px) and (max-height:670px){
-    @keyframes mymove {
-        0% {top: 45vh; left: 50vw;transform:  scale(2);}
-        50% {top: 45vh; left: 50vw; transform: scale(2);}
-        100% {top: 0vh; left: 0vw;transform: scale(1);}
-    }
-}
-
-/*KEYFRAME 640PX*/
-
-@media (max-width:1650px) and (max-height:640px){
-    @keyframes mymove {
-        0% {top: 40vh; left: 45vw;transform:  scale(2);}
-        50% {top: 40vh; left: 45vw; transform: scale(2);}
-        100% {top: 0vh; left: 0vw;transform: scale(1);}
-    }
-}
-
-@media (max-width:900px) and (max-height:640px){
+@media(max-width:900px) and (max-height:700px){
     @keyframes mymove {
         0% {top: 35vh; left: 40vw;transform:  scale(2);}
         50% {top: 35vh; left: 40vw; transform: scale(2);}
@@ -150,44 +98,26 @@
     }
 }
 
-@media (max-width:650px) and (max-height:640px){
+@media(max-width:600px) and (max-height:700px){
     @keyframes mymove {
-        0% {top: 40vh; left: 45vw;transform:  scale(2);}
-        50% {top: 40vh; left: 45vw; transform: scale(2);}
+        0% {top: 50vh; left: 50vw;transform:  scale(2.74);}
+        50% {top: 50vh; left: 50vw; transform: scale(2.74);}
         100% {top: 0vh; left: 0vw;transform: scale(1);}
     }
 }
 
-@media (max-width:500px) and (max-height:640px){
+@media(max-width:1920px) and (max-height:600px){
     @keyframes mymove {
-        0% {top: 50vh; left: 50vw;transform:  scale(2);}
-        50% {top: 50vh; left: 50vw; transform: scale(2);}
+        0% {top: 35vh; left: 45vw;transform:  scale(2.74);}
+        50% {top: 35vh; left: 45vw; transform: scale(2.74);}
         100% {top: 0vh; left: 0vw;transform: scale(1);}
     }
 }
 
-/*KEYFRAME 640PX*/
-
-@media (max-width:1000px) and (max-height:620px){
+@media(max-width:900px) and (max-height:600px){
     @keyframes mymove {
-        0% {top: 35vh; left: 40vw;transform:  scale(2);}
-        50% {top: 35vh; left: 40vw; transform: scale(2);}
-        100% {top: 0vh; left: 0vw;transform: scale(1);}
-    }
-}
-
-@media (max-width:650px) and (max-height:620px){
-    @keyframes mymove {
-        0% {top: 40vh; left: 45vw;transform:  scale(2);}
-        50% {top: 40vh; left: 45vw; transform: scale(2);}
-        100% {top: 0vh; left: 0vw;transform: scale(1);}
-    }
-}
-
-@media (max-width:500px) and (max-height:620px){
-    @keyframes mymove {
-        0% {top: 50vh; left: 50vw;transform:  scale(2);}
-        50% {top: 50vh; left: 50vw; transform: scale(2);}
+        0% {top: 45vh; left: 45vw;transform:  scale(2.74);}
+        50% {top: 45vh; left: 45vw; transform: scale(2.74);}
         100% {top: 0vh; left: 0vw;transform: scale(1);}
     }
 }
