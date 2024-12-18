@@ -33,9 +33,26 @@ async function checkEmailSummary() {
   }
 }
 function loadInitialsHeader(matchingUser) {
-  const [firstName, lastName] = matchingUser.name.split(" ");
-  const firstLetterFirstName = firstName.charAt(0).toUpperCase();
-  const firstLetterLastName = lastName.charAt(0).toUpperCase();
+  if (!matchingUser || !matchingUser.name) {
+    console.error("Matching user or user name is undefined");
+    return;
+  }
+
+  const nameParts = matchingUser.name.split(" ");
+  let firstLetterFirstName = "";
+  let firstLetterLastName = "";
+
+  if (nameParts.length === 1) {
+    firstLetterFirstName = nameParts[0].charAt(0).toUpperCase();
+  } else if (nameParts.length >= 2) {
+    firstLetterFirstName = nameParts[0].charAt(0).toUpperCase();
+    firstLetterLastName = nameParts[1].charAt(0).toUpperCase();
+  } else {
+    console.error("User name format is incorrect");
+    document.getElementById("user").innerHTML = "N/A";
+    return;
+  }
+
   document.getElementById("user").innerHTML =
     firstLetterFirstName + firstLetterLastName;
 }
