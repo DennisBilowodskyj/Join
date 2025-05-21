@@ -82,6 +82,7 @@ h1 {
 
 .d_flex {
     display: flex;
+    gap: 16px;
 }
 
 .mainContent {
@@ -329,6 +330,17 @@ h1 {
     align-items: center;
     padding: 7px 16px 7px 16px;
     margin-bottom: 4px;
+    cursor: pointer;
+}
+
+.contact:hover{
+    background-color: #f6f7f8;
+    border-radius: 16px;
+}
+
+.contactName{
+    display: flex;
+    align-items: center;
 }
 
 .contactAktive {

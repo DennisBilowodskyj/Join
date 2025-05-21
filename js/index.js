@@ -21,6 +21,7 @@ async function loadUser(){
   } catch(e){
       console.info('Could not load Users')
   }
+  console.log(users)
 }
 
 
@@ -416,4 +417,4 @@ function checkInputSignUp() {
       changeInputTypeToPassword(img, input);
     }
   });
-}
+}  
